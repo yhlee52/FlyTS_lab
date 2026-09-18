@@ -6,3 +6,10 @@ __pycache__/
 build/
 dist/
 outputs/
+data/
+private_data/
+wheelhouse/
+*.pt
+*.npz
+*.npy
+*.zip

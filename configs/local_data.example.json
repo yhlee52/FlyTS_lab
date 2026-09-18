@@ -1,0 +1,30 @@
+{
+  "sources": {
+    "company-process": {
+      "license": "internal-approved-use-only",
+      "owner": "replace-with-data-owner",
+      "approval_reference": "replace-with-approved-internal-reference",
+      "note": "Never upload these raw files or company-trained checkpoints to public GitHub."
+    }
+  },
+  "records": [
+    {
+      "path": "../private_data/train_run.csv",
+      "dataset": "company-process", "domain": "semiconductor",
+      "split": "train", "group": "toolA-chamber1-wafer001", "dt": 1.0,
+      "time_column": "elapsed_seconds", "channels": ["pressure", "temperature", "rf_power"]
+    },
+    {
+      "path": "../private_data/val_run.csv",
+      "dataset": "company-process", "domain": "semiconductor",
+      "split": "val", "group": "toolA-chamber1-wafer101", "dt": 1.0,
+      "time_column": "elapsed_seconds", "channels": ["pressure", "temperature", "rf_power"]
+    },
+    {
+      "path": "../private_data/test_run.csv",
+      "dataset": "company-process", "domain": "semiconductor",
+      "split": "test", "group": "toolB-chamber2-wafer201", "dt": 1.0,
+      "time_column": "elapsed_seconds", "channels": ["pressure", "temperature", "rf_power"]
+    }
+  ]
+}

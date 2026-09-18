@@ -1,0 +1,13 @@
+{
+  "seed": 7,
+  "epochs": 50,
+  "batch_size": 32,
+  "steps_per_epoch": 1000,
+  "context": 512,
+  "stride": 256,
+  "threads": 4,
+  "lr": 0.0003,
+  "mask_ratio": 0.4,
+  "val_batches": 0,
+  "model": {"patch_size": 8, "width": 128, "hidden": 256, "slots": 4, "populations": 16}
+}

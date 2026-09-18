@@ -13,5 +13,8 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
+      - run: python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
       - run: python -m pip install -e ".[dev]"
       - run: python -m pytest
+      - run: python -m flyts synthetic --output data/ci
+      - run: python -m flyts pretrain --manifest data/ci/manifest.json --config configs/smoke.json --output outputs/ci --device cpu
