@@ -145,6 +145,8 @@ Stage 1의 승인된 세부 결정은 `docs/research/DECISION_LOG.md`의 DEC-007
 
 ### 단계 2 — channel masking과 channel dropout
 
+진행 상태 (2026-09-25): Stage 02 implementation and independent QA `PASS` are complete after bounded remediation. The human result gate is pending; no performance claim or Stage 03 work is complete.
+
 현재 temporal patch masking에 채널 축 자기지도 학습과 robustness 학습을 추가한다.
 
 구현 범위:

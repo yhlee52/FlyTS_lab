@@ -155,6 +155,7 @@ def collate_windows(rows):
         x[i, :len(row["x"]), :row["x"].shape[1]] = row["x"]
     return dict(x=x, observed=torch.isfinite(x),
                 lengths=torch.tensor([len(row["x"]) for row in rows]),
+                channel_counts=torch.tensor([row["x"].shape[1] for row in rows]),
                 dt=torch.tensor([row["dt"] for row in rows]),
                 time_known=torch.tensor([row["time_known"] for row in rows]),
                 label=torch.tensor([row["label"] for row in rows]),

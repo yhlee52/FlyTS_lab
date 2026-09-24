@@ -12,6 +12,7 @@ from torch.utils.data import DataLoader
 
 from .corpus import WindowDataset, collate_windows, sha256, verify_corpus
 from .foundation import EncoderConfig, FlyTSFoundation, reconstruction_loss, sample_hide
+from .masking import canonical_masking, sample_mask_plan
 
 
 def resolve_device(name):
@@ -29,10 +30,28 @@ def move(batch, device):
     return {k: v.to(device) if isinstance(v, torch.Tensor) else v for k, v in batch.items()}
 
 
-def forward_batch(model, batch, ratio, generator):
-    hidden = sample_hide(batch["observed"], model.config.patch_size, ratio, generator)
-    return model(batch["x"], batch["observed"], batch["dt"], hide=hidden,
-                 time_known=batch["time_known"], lengths=batch["lengths"])
+def forward_batch(model, batch, masking, temporal_generator, channel_generator=None,
+                  dropout_generator=None, validation=False):
+    # Preserve the public legacy call signature and its exact temporal sampler.
+    if isinstance(masking, (int, float)):
+        hidden = sample_hide(batch["observed"], model.config.patch_size, masking, temporal_generator)
+        return model(batch["x"], batch["observed"], batch["dt"], hide=hidden,
+                     time_known=batch["time_known"], lengths=batch["lengths"],
+                     channel_counts=batch.get("channel_counts"))
+    if not masking.channel_ratio and not masking.channel_dropout_ratio:
+        return forward_batch(model, batch, masking.temporal_ratio, temporal_generator)
+    if validation:
+        from dataclasses import replace
+        masking = replace(masking, channel_dropout_ratio=0.0)
+    plan = sample_mask_plan(batch["observed"], model.config.patch_size, masking,
+                            temporal_generator, channel_generator, dropout_generator,
+                            lengths=batch["lengths"])
+    out = model(batch["x"], batch["observed"], batch["dt"], mask_plan=plan,
+                time_known=batch["time_known"], lengths=batch["lengths"],
+                channel_counts=batch.get("channel_counts"))
+    if not out["target_mask"].any():
+        raise ValueError("no reconstruction targets in batch; use a positive temporal_ratio when batches can be all single-channel")
+    return out
 
 
 def save_checkpoint(path, model, optimizer, epoch, config, manifest_hash, history, best):
@@ -59,13 +78,14 @@ def load_encoder(checkpoint, device="cpu"):
 
 def train(manifest, config_path, output, device="auto", resume=None, epochs=None):
     config = json.loads(Path(config_path).read_text())
+    masking = canonical_masking(config)
     if epochs is not None:
         config["epochs"] = epochs
     for key in ("epochs", "batch_size", "steps_per_epoch", "context", "stride", "threads"):
         if config[key] < 1:
             raise ValueError(f"{key} must be positive")
-    if not 0 < config["mask_ratio"] < 1 or config["lr"] <= 0:
-        raise ValueError("invalid mask ratio/learning rate")
+    if config["lr"] <= 0:
+        raise ValueError("invalid learning rate")
     device = resolve_device(device)
     torch.set_num_threads(config["threads"])
     seed = config["seed"]
@@ -82,8 +102,10 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
         restored, state = load_encoder(resume, device=str(device))
         if state["manifest_sha256"] != digest or state["model_config"] != asdict(mcfg):
             raise ValueError("resume requires identical model and corpus manifest")
-        old = {k: v for k, v in state["training_config"].items() if k != "epochs"}
-        new = {k: v for k, v in config.items() if k != "epochs"}
+        old = {k: v for k, v in state["training_config"].items() if k not in ("epochs", "mask_ratio", "masking")}
+        new = {k: v for k, v in config.items() if k not in ("epochs", "mask_ratio", "masking")}
+        old["masking"] = canonical_masking(state["training_config"])
+        new["masking"] = masking
         if old != new:
             raise ValueError("resume may change epochs/device only; keep training config fixed")
         model.load_state_dict(restored.state_dict())
@@ -115,6 +137,8 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
         # Epoch-indexed sampling/corruption enables exact CPU epoch-boundary resume.
         sample_rng = torch.Generator().manual_seed(seed+epoch)
         mask_rng = torch.Generator(device=device).manual_seed(seed+10000+epoch)
+        channel_rng = torch.Generator(device=device).manual_seed(seed+30000+epoch)
+        dropout_rng = torch.Generator(device=device).manual_seed(seed+40000+epoch)
         sampler = train_data.balanced_sampler(config["steps_per_epoch"]*config["batch_size"], sample_rng)
         loader = DataLoader(train_data, batch_size=config["batch_size"], sampler=sampler, collate_fn=collate_windows)
         model.train()
@@ -122,7 +146,7 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
         for batch in loader:
             batch = move(batch, device)
             optimizer.zero_grad(set_to_none=True)
-            result = forward_batch(model, batch, config["mask_ratio"], mask_rng)
+            result = forward_batch(model, batch, masking, mask_rng, channel_rng, dropout_rng)
             loss = reconstruction_loss(result)
             if not torch.isfinite(loss):
                 raise FloatingPointError("non-finite training loss")
@@ -132,21 +156,23 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
             losses.append(loss.item())
         model.eval()
         val_rng = torch.Generator(device=device).manual_seed(seed+20000)
+        val_channel_rng = torch.Generator(device=device).manual_seed(seed+50000)
         domain_losses = {}
         domain_baselines = {}
         with torch.no_grad():
             for j, batch in enumerate(valid_loader):
                 if config.get("val_batches", 0) and j >= config["val_batches"]:
                     break
-                result = forward_batch(model, move(batch, device), config["mask_ratio"], val_rng)
+                result = forward_batch(model, move(batch, device), masking, val_rng,
+                                       val_channel_rng, validation=True)
                 for i, domain in enumerate(batch["domain"]):
                     mask = result["target_mask"][i]
                     if mask.any():
                         value = torch.nn.functional.smooth_l1_loss(
-                            result["prediction"][i][mask], result["target"][i][mask]).item()
+                            result["prediction"][i][mask], result["target"][i][mask], beta=1.0).item()
                         domain_losses.setdefault(domain, []).append(value)
                         baseline = torch.nn.functional.smooth_l1_loss(
-                            torch.zeros_like(result["target"][i][mask]), result["target"][i][mask]).item()
+                            torch.zeros_like(result["target"][i][mask]), result["target"][i][mask], beta=1.0).item()
                         domain_baselines.setdefault(domain, []).append(baseline)
         by_domain = {key: sum(vals)/len(vals) for key, vals in domain_losses.items()}
         val = sum(by_domain.values())/len(by_domain) if by_domain else float("nan")
@@ -178,7 +204,8 @@ def embed(manifest, checkpoint, output, split="test", device="auto", context=256
     with torch.no_grad():
         for batch in loader:
             args = move(batch, device)
-            z = model.encode(args["x"], args["observed"], args["dt"], args["time_known"], args["lengths"])
+            z = model.encode(args["x"], args["observed"], args["dt"], args["time_known"],
+                             args["lengths"], args.get("channel_counts"))
             embeddings.append(z["global"].cpu().numpy())
             labels.extend(batch["label"].tolist())
             names.extend(batch["dataset"])
@@ -207,7 +234,9 @@ def probe(manifest, checkpoint, dataset, device="auto", context=128):
             rows, labels = [], []
             for batch in DataLoader(torch.utils.data.Subset(data, selected), batch_size=32, collate_fn=collate_windows):
                 args = move(batch, device)
-                rows.append(model.encode(args["x"], args["observed"], args["dt"], args["time_known"], args["lengths"])["global"].cpu())
+                rows.append(model.encode(args["x"], args["observed"], args["dt"],
+                                         args["time_known"], args["lengths"],
+                                         args.get("channel_counts"))["global"].cpu())
                 labels.append(batch["label"])
             sets[split] = (torch.cat(rows).double(), torch.cat(labels))
     x, y = sets["train"]

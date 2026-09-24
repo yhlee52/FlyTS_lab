@@ -11,6 +11,7 @@ from torch import nn
 from torch.nn import functional as F
 
 from .model import FlyRNNConfig, _make_fly_mask
+from .masking import MaskPlan
 
 
 @dataclass(frozen=True)
@@ -117,7 +118,8 @@ class FlyTSFoundation(nn.Module):
         self.context = nn.Sequential(nn.Linear(3*d, d), nn.GELU(), nn.LayerNorm(d))
         self.decoder = nn.Linear(d, k)
 
-    def forward(self, x, observed=None, dt=1.0, hide=None, time_known=None, lengths=None):
+    def forward(self, x, observed=None, dt=1.0, hide=None, time_known=None, lengths=None,
+                mask_plan=None, channel_counts=None):
         if x.ndim != 3 or min(x.shape) < 1 or not x.is_floating_point():
             raise ValueError("x must be a nonempty floating [B,T,C] tensor")
         b, t, c = x.shape
@@ -126,9 +128,17 @@ class FlyTSFoundation(nn.Module):
             raise ValueError("lengths must be [B] within [1,T]")
         if observed is not None and observed.shape != x.shape:
             raise ValueError("observed must match x")
-        observed = torch.isfinite(x) if observed is None else observed.bool() & torch.isfinite(x)
+        channel_counts = (torch.full((b,), c, device=x.device) if channel_counts is None
+                          else torch.as_tensor(channel_counts, device=x.device))
+        if channel_counts.shape != (b,) or channel_counts.dtype not in (torch.int8, torch.int16,
+                torch.int32, torch.int64, torch.uint8) or (channel_counts < 1).any() or (channel_counts > c).any():
+            raise ValueError("channel_counts must be integer [B] within [1,C]")
         present = torch.arange(t, device=x.device)[None] < lengths[:, None]
-        observed = observed & present[..., None]
+        channel_present = torch.arange(c, device=x.device)[None] < channel_counts[:, None]
+        sample_padding = ~(present[..., None] & channel_present[:, None, :])
+        observed = ((torch.isfinite(x) if observed is None else observed.bool() & torch.isfinite(x))
+                    & ~sample_padding)
+        missing = ~observed & ~sample_padding
         if not observed.flatten(1).any(1).all():
             raise ValueError("each record needs at least one observed value")
         x = torch.where(observed, x, torch.zeros_like(x))
@@ -144,15 +154,38 @@ class FlyTSFoundation(nn.Module):
         # B,P,C,K, preserving intra-patch samples rather than averaging spikes away.
         patches = F.pad(x.transpose(1, 2), (0, p*k-t)).unfold(-1, k, k).transpose(1, 2)
         obs = F.pad(observed.transpose(1, 2), (0, p*k-t)).unfold(-1, k, k).transpose(1, 2)
+        missing_patches = F.pad(missing.transpose(1, 2), (0, p*k-t)).unfold(-1, k, k).transpose(1, 2)
+        padding_patches = ~F.pad((~sample_padding).transpose(1, 2), (0, p*k-t)).unfold(-1, k, k).transpose(1, 2)
+        if hide is not None and mask_plan is not None:
+            raise ValueError("provide hide or mask_plan, not both")
+        if mask_plan is not None:
+            if not isinstance(mask_plan, MaskPlan):
+                raise ValueError("mask_plan must be a MaskPlan")
+            for cause in (mask_plan.temporal, mask_plan.channel, mask_plan.dropout):
+                if cause.shape != (b, p, c) or cause.dtype != torch.bool or cause.device != x.device:
+                    raise ValueError("mask_plan causes must be boolean [B,P,C] on x device")
+            if (mask_plan.channel != mask_plan.channel[:, :1]).any() or (mask_plan.dropout != mask_plan.dropout[:, :1]).any():
+                raise ValueError("channel and dropout causes must each cover full channels")
+            if (mask_plan.channel & mask_plan.dropout).any():
+                raise ValueError("channel and dropout causes cannot overlap")
+            if not (obs & ~mask_plan.hide[..., None]).flatten(1).any(1).all():
+                raise ValueError("mask_plan must retain an originally observed visible sample per record")
+            hide = mask_plan.hide
         if hide is None:
             hide = torch.zeros((b, p, c), device=x.device, dtype=torch.bool)
         if hide.shape != (b, p, c) or hide.dtype != torch.bool:
             raise ValueError("hide must be boolean [B,ceil(T/patch_size),C]")
         visible = obs & ~hide[..., None]
-        count = visible.sum((1, 3)).clamp_min(1)
-        mean = (patches * visible).sum((1, 3)) / count
+        raw_count = visible.sum((1, 3))
+        count = raw_count.clamp_min(1)
+        channel_mean = (patches * visible).sum((1, 3)) / count
+        pooled_count = visible.sum((1, 2, 3)).clamp_min(1)
+        pooled_mean = (patches * visible).sum((1, 2, 3)) / pooled_count
+        mean = torch.where(raw_count > 0, channel_mean, pooled_mean[:, None])
         centered = patches - mean[:, None, :, None]
-        variance = (centered.square() * visible).sum((1, 3)) / count
+        channel_variance = (centered.square() * visible).sum((1, 3)) / count
+        pooled_variance = ((patches - pooled_mean[:, None, None, None]).square() * visible).sum((1, 2, 3)) / pooled_count
+        variance = torch.where(raw_count > 0, channel_variance, pooled_variance[:, None])
         scale = variance.sqrt().clamp_min(0.01)
         normalized = centered / scale[:, None, :, None]
         tokens = self.tokenizer(torch.cat([
@@ -190,14 +223,26 @@ class FlyTSFoundation(nn.Module):
         pred = self.decoder(contextual)
         reconstruction = (pred * scale[:, None, :, None] + mean[:, None, :, None])
         reconstruction = reconstruction.transpose(1, 2).flatten(2).transpose(1, 2)[:, :t]
+        temporal_target = obs & (mask_plan.temporal[..., None] if mask_plan is not None else hide[..., None])
+        channel_target = (obs & mask_plan.channel[..., None] if mask_plan is not None else torch.zeros_like(obs))
+        dropout_samples = (obs & mask_plan.dropout[..., None] if mask_plan is not None else torch.zeros_like(obs))
+        temporal_target = temporal_target & ~channel_target & ~dropout_samples
+        channel_target = channel_target & ~dropout_samples
         return {"global": global_embedding, "channel": channel,
                 "time": temporal * patch_valid[..., None], "patch_channel": contextual,
-                "prediction": pred, "target": normalized, "target_mask": obs & hide[..., None],
+                "prediction": pred, "target": normalized,
+                "target_mask": temporal_target | channel_target,
+                "temporal_target_mask": temporal_target, "channel_target_mask": channel_target,
+                "dropout_mask": dropout_samples, "visible_mask": visible,
+                "observed_mask": obs, "missing_mask": missing_patches,
+                "padding_mask": padding_patches, "hidden_patch_mask": hide,
                 "reconstruction": reconstruction, "patch_valid": patch_valid}
 
-    def encode(self, x, observed=None, dt=1.0, time_known=None, lengths=None):
+    def encode(self, x, observed=None, dt=1.0, time_known=None, lengths=None,
+               channel_counts=None):
         """Use eval() and torch.no_grad() for frozen inference; returns unnormalized embeddings."""
-        out = self(x, observed, dt, time_known=time_known, lengths=lengths)
+        out = self(x, observed, dt, time_known=time_known, lengths=lengths,
+                   channel_counts=channel_counts)
         return {key: out[key] for key in ("global", "time", "channel", "patch_channel")}
 
 
@@ -224,4 +269,4 @@ def reconstruction_loss(out):
     if not mask.any():
         raise ValueError("no observed masked targets")
     # Huber prevents one unusually large physical signal from dominating the batch.
-    return F.smooth_l1_loss(out["prediction"][mask], out["target"][mask])
+    return F.smooth_l1_loss(out["prediction"][mask], out["target"][mask], beta=1.0)
