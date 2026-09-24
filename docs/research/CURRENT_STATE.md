@@ -87,7 +87,8 @@ Prepare the Stage 02 evidence and Draft PR for the user's `GO`, `REVISE`, `HOLD`
 - Initial Stage 02 independent QA issued `FAIL` for forced minimum channel targets, target-free single-channel handling, manual-plan validation, missing/padding distinction, charter completeness, records, and reproductions. The implementation follow-up removes the forced minimum, adds plan and padding checks, and preserves the initial QA verdict until re-review.
 - After remediation, independent QA reproduced the corrected low-ratio sampling, invalid-plan rejection, missing/padding separation, target-free error, finite two-epoch CPU smoke, and 29-tensor bitwise resume, then issued final `PASS`.
 - The full suite passes with 36 tests and two CUDA hardware skips; notebook/governance validators and diff check pass.
+- Draft PR #8 (`https://github.com/yhlee52/FlyTS_lab/pull/8`) is open from `codex/stage-02-channel-masking`; it is unmerged and records the approved contract, compatibility evidence, QA `PASS`, and limitations.
 
 ## Next action
 
-Open a Stage 02 Draft PR and request the user's result-gate decision. Do not merge the PR or advance to Stage 03.
+Present Draft PR #8 and request the user's result-gate decision. Do not merge the PR or advance to Stage 03.

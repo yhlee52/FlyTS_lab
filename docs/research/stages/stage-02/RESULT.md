@@ -28,5 +28,6 @@ Stage 02 implements the approved masking mechanics, leakage guards, compatibilit
 - Contract: `docs/MASKING.md`
 - Configuration: `configs/stage02_smoke.json`
 - Independent QA: `docs/research/stages/stage-02/QA_REPORT.md`
+- Draft PR: `https://github.com/yhlee52/FlyTS_lab/pull/8`
 
 CUDA, numerical robustness thresholds, Stage 03 evaluator behavior, representation quality, topology benefit, and final-test performance remain `미검증`. Fully hidden channels cannot be distinguished without metadata. Stage 03 has not begun, and the Stage 02 result gate remains pending.
