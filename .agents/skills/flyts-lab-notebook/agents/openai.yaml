@@ -1,0 +1,4 @@
+interface:
+  display_name: "FlyTS Lab Notebook"
+  short_description: "Maintain concise shared FlyTS research context"
+  default_prompt: "Use $flyts-lab-notebook to update the shared FlyTS research state after this work."

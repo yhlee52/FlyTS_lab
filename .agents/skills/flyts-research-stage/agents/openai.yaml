@@ -1,0 +1,4 @@
+interface:
+  display_name: "FlyTS Research Stage"
+  short_description: "Run one FlyTS research stage with gated agents"
+  default_prompt: "Use $flyts-research-stage to run the next approved FlyTS research stage."

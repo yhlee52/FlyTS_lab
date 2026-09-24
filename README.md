@@ -8,6 +8,10 @@ CPU / CUDA 공용, **다채널 시계열 자기지도 표현학습**을 위한 �
 [FlyTS 단계별 개발 계획](docs/DEVELOPMENT_PLAN.md)에 정리되어 있습니다. 현재 첫 완결 목표는
 공개 데이터 기반의 재현 가능한 **FlyTS-Mini v0.1**입니다.
 
+Codex 작업은 [AI 연구팀 헌장](docs/research/TEAM_CHARTER.md)과
+[공용 연구노트](docs/research/CURRENT_STATE.md)를 기준으로 진행합니다. 저장소 범위 custom agent와
+research-stage/lab-notebook skill이 역할 분리, 단계 승인, 독립 QA와 토큰 예산을 적용합니다.
+
 ## 구현 범위
 
 - `[B,T,C]` 가변 길이·가변 채널을 동일 가중치로 처리
