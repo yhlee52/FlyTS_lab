@@ -1,6 +1,6 @@
 # Stage 02 Charter — Channel masking and dropout
 
-Status: review
+Status: closed
 Date: 2026-09-24
 Base commit: `8addce5`
 Branch: `codex/stage-02-channel-masking`
@@ -56,7 +56,8 @@ Can the existing channel-agnostic encoder train with full-channel reconstruction
 |---|---|
 | Stage 02 charter and architecture contract | `GO`, 2026-09-24 |
 | Protected research, architecture, data, metric, or budget change | `HOLD` until user decision |
-| Stage 02 result / PR merge / Stage 03 | pending |
+| Stage 02 result | `GO`, 2026-09-25; PR #8 ready for user-managed merge |
+| Stage 03 | pending separate Charter and user approval |
 
 ## Agent plan
 
@@ -87,4 +88,6 @@ QA independently checks stochastic rounding, API guards, padding/missing masks, 
 
 ## User approval
 
-Decision: `GO`, 2026-09-24, for this bounded Stage 02 contract and acceptance criteria. The result decision remains pending.
+Implementation decision: `GO`, 2026-09-24, for this bounded Stage 02 contract and acceptance criteria.
+
+Result decision: `GO`, 2026-09-25, accepting the final QA `PASS` and closing Stage 02. PR #8 is left unmerged for the user to merge; Stage 03 is not authorized.

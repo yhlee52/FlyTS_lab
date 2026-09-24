@@ -1,6 +1,6 @@
 # Stage 02 Result — Channel Masking and Channel Dropout
 
-Status: review
+Status: closed
 
 Date: 2026-09-25
 Base commit: `8addce5f24785cf4438c4f9136046637e2ba2563`
@@ -30,4 +30,8 @@ Stage 02 implements the approved masking mechanics, leakage guards, compatibilit
 - Independent QA: `docs/research/stages/stage-02/QA_REPORT.md`
 - Draft PR: `https://github.com/yhlee52/FlyTS_lab/pull/8`
 
-CUDA, numerical robustness thresholds, Stage 03 evaluator behavior, representation quality, topology benefit, and final-test performance remain `미검증`. Fully hidden channels cannot be distinguished without metadata. Stage 03 has not begun, and the Stage 02 result gate remains pending.
+CUDA, numerical robustness thresholds, Stage 03 evaluator behavior, representation quality, topology benefit, and final-test performance remain `미검증`. Fully hidden channels cannot be distinguished without metadata. Stage 03 has not begun.
+
+## Stage gate
+
+The user accepted all Stage 02 acceptance evidence and final independent QA `PASS` with `GO` on 2026-09-25. Stage 02 is closed. PR #8 remains unmerged for the user to merge directly, and this decision does not authorize Stage 03.
