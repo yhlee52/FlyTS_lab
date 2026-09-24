@@ -28,6 +28,7 @@ Independent QA reproduced the core corpus, training, resume, export, test, and d
 
 ## Artifacts
 
+- Draft PR: `https://github.com/yhlee52/FlyTS_lab/pull/6`
 - Baseline report: `docs/BASELINE_VALIDATION.md`
 - Independent QA: `docs/research/stages/stage-00/QA_REPORT.md`
 - Ignored implementation artifacts: `outputs/phase0-baseline/`

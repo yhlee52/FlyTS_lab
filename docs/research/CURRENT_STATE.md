@@ -4,7 +4,7 @@ Updated: 2026-09-24
 
 ## Current stage
 
-Stage 00 — Baseline Reproduction has completed implementation and independent QA on `codex/stage-00-baseline-reproduction` from `main` commit `9a6f3d8`. The stage is awaiting the human result gate.
+Stage 00 — Baseline Reproduction has completed implementation and independent QA on `codex/stage-00-baseline-reproduction` from `main` commit `9a6f3d8`. Draft PR #6 is open and the stage is awaiting the human result gate.
 
 ## Current goal
 
@@ -59,7 +59,8 @@ Present the recorded baseline evidence, independent QA result, limitations, and 
 - The project-local Python 3.12 environment contains PyTorch 2.14.0+cpu and pytest 9.1.1; the full suite passed with 24 tests and one CUDA hardware skip.
 - The CPU smoke run completed two finite-loss epochs with 17,936 parameters; epoch-boundary resume reproduced all 29 model tensors bitwise and embedding export produced finite `[9, 32]` vectors.
 - Independent QA reproduced the corpus split and hash, exact smoke losses, bitwise resume, embedding schema, full tests, and CUDA-unavailable classification. After the notebook refresh and validator rerun, QA issued `PASS`.
+- Draft PR #6 contains only the five Stage 00 evidence and governance documents; it is open, mergeable, unmerged, and remains a draft.
 
 ## Next action
 
-Open the Stage 00 Draft PR and request the user's `GO`, `REVISE`, `HOLD`, or `STOP` result-gate decision. Do not merge or begin Stage 01.
+Request the user's `GO`, `REVISE`, `HOLD`, or `STOP` result-gate decision for Draft PR #6. Do not merge or begin Stage 01.
