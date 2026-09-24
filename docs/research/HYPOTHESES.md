@@ -1,10 +1,10 @@
 # FlyTS Hypothesis Register
 
-| ID | Hypothesis | Required evidence | Status |
-|---|---|---|---|
-| H-01 | A channel-agnostic front-end can encode variable channel counts with channel-order-invariant global representations. | permutation and channel-count evaluation across public datasets | 미검증 |
-| H-02 | Channel masking/dropout improves robustness to missing sensors without unacceptable representation collapse. | matched pretraining and 10/30/50% dropout evaluation | 미검증 |
-| H-03 | Fly-like sparse recurrent topology provides useful inductive bias beyond matched rewired and random topology. | matched multi-seed topology study | 미검증 |
-| H-04 | Public multi-domain pretraining produces reusable representations for held-out domains. | frozen probe and held-out-domain comparison | 미검증 |
+| ID | Hypothesis | Protocol mapping | Evidence stage | Claim boundary | Status |
+|---|---|---|---:|---|---|
+| H-01 | A channel-agnostic front-end can encode variable channel counts with channel-order-invariant global representations. | Development/final held-out domains; permutation `1-cosine`; paired relative domain-macro Huber degradation against nearest seen-count nested views, with interpolation and extrapolation separate; 3 development and 5 formal paired seeds. | 3, 6, 9 | Representation invariance and count generalization only; not downstream quality or universal domain transfer. | 미검증 |
+| H-02 | Channel masking/dropout improves robustness to missing sensors without unacceptable representation collapse. | Matched masking pretraining; paired 0/10/30/50% dropout; per-rate relative degradation; domain-macro primary; identical step/exposure budget. | 2, 3, 9 | Robustness under registered corruption and datasets only; no physical sensor-failure guarantee. | 미검증 |
+| H-03 | Fly-like sparse recurrent topology provides useful inductive bias beyond matched rewired and random topology. | Primary paired domain-macro Smooth L1 (`beta=1.0`) differences versus both rewired and random; single-factor controls; tokenizer/router/backbone fixed; ±5% parameters; matched optimizer steps/exposure; five formal paired seeds. | 4, 5, 9 | Benefit, null, or harm under the registered controls only; secondary robustness/probe results cannot rescue a failed primary endpoint, and a null result does not refute the front-end. | 미검증 |
+| H-04 | Public multi-domain pretraining produces reusable representations for held-out domains. | Two-tier isolation; target-local frozen probes using macro-F1 or train-standardized RMSE against paired random-init and visible-statistics controls; Stage 09 one-time final test; optional source transfer only with compatible label ontology. | 6, 9 | Target-local representation transfer by task family; not a pooled task-agnostic, zero-shot, universal, or semiconductor-transfer claim. | 미검증 |
 
 Update evidence status only from recorded experiments, not architectural intuition.

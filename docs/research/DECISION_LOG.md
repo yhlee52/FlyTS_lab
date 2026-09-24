@@ -48,3 +48,14 @@
 - Operating rule: present options, recommendation, and impacts; treat no response as `HOLD`; record explicit "you decide" delegation
 - Rejected alternative: agents resolving ambiguous requirements internally and reporting only the final conclusion
 - Revisit when: the user explicitly changes the desired oversight level
+
+## DEC-007 — Stage 01 research and experiment protocol
+
+- Date: 2026-09-24
+- Decision authority: user `GO` after reviewing the Stage 01 Charter and decision options
+- User-selected rules: two-tier domain isolation; domain-macro masked Huber model selection; 1/3/5 smoke/development/formal repetitions; ±5% trainable-parameter tolerance; optimizer steps as the primary compute match; Stage 03 numerical-threshold calibration; separate interpolation and extrapolation channel-count evaluation; target-local frozen probes; one diagnostic rerun before final negative-result classification.
+- Delegated and approved protocol details: final test first opens in Stage 09 after model/protocol freeze; record-to-domain macro aggregation with per-domain and micro diagnostics; cosine permutation distance with relative-L2 diagnostics; paired per-rate channel-dropout degradation; controlled time, memory, latency, parameter, and estimated-FLOPs reporting; single-factor isolation of topology, tokenizer, router, and backbone.
+- Rejected alternatives: permanent single-domain holdout, full formal LODO at every stage, weighted composite selection, fixed three or five seeds at every stage, ±1% or component-exact parameter matching, FLOPs or wall time as the primary compute match, immediate numerical thresholds, extrapolation-only channel counts, mandatory source-trained probes, and zero or two diagnostic reruns.
+- Impact: Stage 02 implements masking without performance gates; Stage 03 calibrates evaluator counts and numerical thresholds without final-test access; Stages 04–09 use the frozen protocol; Stage 10 packages already recorded final evidence.
+- Revisit when: the user explicitly changes a protocol decision or Stage 03 calibration finds a metric technically invalid, in which case work returns to `HOLD` before revision.
+- QA-blocker resolution approved by the user: unseen channel counts use paired relative domain-macro Huber degradation against the nearest seen-count nested view; target-local probes use macro-F1 for classification and train-standardized RMSE for regression against random-init and visible-statistics controls; H-03 uses paired domain-macro masked Huber against both rewired and random controls as its primary endpoint; masked Huber is fixed to Smooth L1 `beta=1.0` after train-only normalization. Stage 03 still owns numerical effect thresholds and uncertainty calibration, not these metric identities.

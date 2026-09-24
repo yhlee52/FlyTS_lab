@@ -109,6 +109,9 @@ FlyTS의 장기 목표는 서로 다른 도메인, 채널 수, 채널 순서와 
 - `docs/PROJECT_CONSENSUS.md`
 - 이 문서 `docs/DEVELOPMENT_PLAN.md`
 - `docs/EXPERIMENT_PROTOCOL.md`
+- `docs/research/stages/stage-01/CHARTER.md`
+- `docs/research/stages/stage-01/QA_REPORT.md`
+- `docs/research/stages/stage-01/RESULT.md`
 
 `EXPERIMENT_PROTOCOL.md`에는 다음을 포함한다.
 
@@ -119,6 +122,10 @@ FlyTS의 장기 목표는 서로 다른 도메인, 채널 수, 채널 순서와 
 - test set 최종 사용 원칙
 - foundation 특성별 평가 metric
 - 단계별 중단·재검토 조건
+
+Stage 1의 승인된 세부 결정은 `docs/research/DECISION_LOG.md`의 DEC-007을 기준으로 하며,
+운영 규약은 `docs/EXPERIMENT_PROTOCOL.md`를 따른다. 수치 pass/fail threshold는 final test를
+보지 않은 Stage 3 개발 evidence로 calibration한 뒤 후속 비교 전에 동결한다.
 
 주요 평가 항목:
 
@@ -206,6 +213,7 @@ D_perm = 1 - cosine(Z(X), Z(PermuteChannels(X)))
 - channel permutation distance가 기대한 수치 오차 범위인가?
 - dropout 비율에 따른 degradation을 일관되게 측정하는가?
 - 동일한 evaluator를 모든 backbone에 적용할 수 있는가?
+- final held-out/test를 보지 않고 threshold와 uncertainty rule을 동결했는가?
 
 ### 단계 4 — topology 모듈화
 
@@ -306,6 +314,7 @@ schema와 이용 조건을 확인한 뒤 하나씩 추가한다.
 - 시간 분할 후 window를 생성한다.
 - train/val/test source range가 겹치지 않는다.
 - 이용 조건이 불명확한 데이터가 기본 corpus에 들어가지 않는다.
+- 성능 결과를 보기 전에 development와 final held-out domain 역할을 registry에 동결한다.
 
 ### 단계 7 — conventional baseline
 
@@ -375,7 +384,7 @@ outputs/pilot/
 
 최소 실험 구성:
 
-- seed 3개 이상
+- 사전 등록한 paired seed 5개
 - fly-like / rewired / random / GRU
 - 동일 parameter 및 optimizer-step budget
 - multi-domain self-supervised pretraining
@@ -383,6 +392,7 @@ outputs/pilot/
 - channel permutation/dropout/count 평가
 - frozen linear probe
 - 계산 효율 측정
+- 동결된 protocol 아래 final held-out/test 1회 공개
 
 산출물:
 
@@ -456,8 +466,9 @@ FlyTS-Mini v0.1에서 가능성을 확인한 뒤에만 다음을 진행한다.
 - [x] 초기 FlyRNN PoC
 - [x] variable-channel foundation encoder MVP
 - [x] 공개 starter corpus와 offline-first pipeline
-- [ ] 단계 0 — 현재 기준점 재현
+- [x] 단계 0 — 현재 기준점 재현
 - [ ] 단계 1 — 연구·실험 규약 고정
 - [ ] 단계 2 이후 — 위 순서에 따라 진행
 
-다음 작업은 단계 0만 수행하고, 검증 기록과 PR을 확인한 뒤 단계 1로 넘어간다.
+현재 작업은 단계 1의 공식 연구 합의·실험 규약·독립 QA를 완료하는 것이다. Stage 1 결과와
+PR을 사용자가 승인하기 전에는 단계 2 구현을 시작하지 않는다.
