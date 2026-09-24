@@ -4,6 +4,10 @@ CPU / CUDA 공용, **다채널 시계열 자기지도 표현학습**을 위한 �
 이미 학습된 foundation model이나 검증된 범용 성능을 제공하는 릴리스는 아닙니다.
 현재 topology는 **fly-inspired 합성 graph**이며 실제 FlyWire connectome이 아닙니다.
 
+단계별 연구·구현 순서, 산출물과 검토 기준은
+[FlyTS 단계별 개발 계획](docs/DEVELOPMENT_PLAN.md)에 정리되어 있습니다. 현재 첫 완결 목표는
+공개 데이터 기반의 재현 가능한 **FlyTS-Mini v0.1**입니다.
+
 ## 구현 범위
 
 - `[B,T,C]` 가변 길이·가변 채널을 동일 가중치로 처리
