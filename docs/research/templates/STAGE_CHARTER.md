@@ -28,6 +28,14 @@ One falsifiable or verifiable question.
 
 - [ ]
 
+## User checkpoints
+
+| Decision gate | When to ask | Current approval |
+|---|---|---|
+| stage charter | before implementation | pending |
+| material ambiguity or change | before affected work continues | pending as needed |
+| stage result | before merge or next stage | pending |
+
 ## Agent plan
 
 - Primary owner:

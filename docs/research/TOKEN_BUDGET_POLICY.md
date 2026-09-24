@@ -19,7 +19,7 @@ The Codex project config caps open spawned-agent threads separately. This policy
 
 ## Delegation gate
 
-Before spawning, the Research Director records:
+Before spawning, the primary Research Director records:
 
 - the independent question;
 - why the primary agent should not answer it alone;

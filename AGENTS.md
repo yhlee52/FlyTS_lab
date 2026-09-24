@@ -16,15 +16,26 @@ Treat `CURRENT_STATE.md` as the shared lab notebook, not chat history. Update it
 
 ## Research-team operation
 
+- The primary Codex agent is the Research Director. `research_director` is not a spawned role.
 - Default to one primary agent. Use `$flyts-research-stage` only for a bounded research stage or stage review.
 - The user is the academic PI/customer and final `GO`, `REVISE`, `HOLD`, or `STOP` authority.
-- Only the Research Director may delegate. Subagents must not create subagents.
+- Only the primary Research Director may delegate. Specialist subagents must not create subagents.
 - Activate only roles justified by `docs/research/AGENT_ACTIVATION_MATRIX.md`.
 - Follow `docs/research/TOKEN_BUDGET_POLICY.md`; do not run a full lab meeting for a routine edit.
 - Give specialists a bounded context packet, not the full conversation.
 - Keep the main thread focused on requirements, decisions, evidence, and user-facing outcomes.
-- One implementation owner edits a code path at a time. Research and QA roles are read-only unless explicitly authorized.
+- One implementation owner edits a code path at a time. Research roles are read-only. QA may write only temporary or Git-ignored test artifacts and must not edit tracked files.
 - Preserve material dissent. Resolve unresolved scientific disagreement with a small experiment or user decision, not repeated debate.
+
+## Human alignment and ambiguity gate
+
+- Agent agreement never substitutes for user intent or approval.
+- Stop with status `HOLD` and ask the user before choosing among materially different interpretations.
+- Always ask before changing the research question, architecture direction, dataset eligibility or split, evaluation metric or acceptance criterion, stage scope, token/compute budget, or a previously confirmed decision.
+- Present the ambiguity, 2-3 concrete options, the recommended option and why, and the effect of each option. Do not hide a choice inside implementation details.
+- Continue without asking only for reversible implementation details that are unambiguous and remain inside an approved charter.
+- If the user says "you decide," record that delegation and the resulting decision in the research notebook. Silence or unavailable feedback is `HOLD`, not consent.
+- Specialists surface questions to the primary Research Director; they do not resolve user-intent ambiguity among themselves.
 
 ## Research integrity
 

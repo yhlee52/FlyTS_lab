@@ -1,6 +1,7 @@
 # Agent Activation Matrix
 
 Custom agents are a capability pool, not a standing meeting. Default to the primary agent alone and activate the smallest useful set.
+`Director` means the primary Codex agent, not a spawned custom agent. Every other role is a bounded specialist subagent.
 
 | Stage | Default active roles | Conditional roles |
 |---|---|---|
