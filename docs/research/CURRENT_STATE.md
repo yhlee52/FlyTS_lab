@@ -1,14 +1,14 @@
 # FlyTS Current Research State
 
-Updated: 2026-09-24
+Updated: 2026-09-25
 
 ## Current stage
 
-Stage 01 — Research and Experiment Protocol is complete after independent QA `PASS` and the user's result-gate `GO` on 2026-09-24. PR #7 is the approved integration PR. Stage 02 is not authorized.
+Stages 00–02 are closed. The user accepted the Stage 02 result and final independent QA `PASS` with `GO` on 2026-09-25. PR #8 is awaiting user-managed merge; Stage 03 is not authorized.
 
 ## Current goal
 
-Integrate the approved Stage 01 records through PR #7 and preserve the separate human gate before any Stage 02 work.
+Preserve the accepted Stage 02 evidence while the user merges PR #8. Do not begin Stage 03 without a separate Charter and explicit approval.
 
 ## Canonical references
 
@@ -19,6 +19,8 @@ Integrate the approved Stage 01 records through PR #7 and preserve the separate 
 - `docs/OFFLINE.md`
 - `docs/research/TEAM_CHARTER.md`
 - `docs/research/TOKEN_BUDGET_POLICY.md`
+- `docs/research/stages/stage-02/CHARTER.md`
+- `docs/MASKING.md`
 
 ## Confirmed decisions
 
@@ -40,6 +42,8 @@ Integrate the approved Stage 01 records through PR #7 and preserve the separate 
 - Stage 01 also fixes interpolation/extrapolation channel-count evaluation, target-local frozen probes, one diagnostic rerun, and single-factor attribution for topology, tokenizer, router, and backbone.
 - The user approved paired unseen/seen count degradation, task-specific controlled frozen probes, paired masked-Huber topology endpoints, and Smooth L1 `beta=1.0` to resolve the Stage 01 QA hold.
 - The user accepted the Stage 01 result and independent QA `PASS` with `GO` on 2026-09-24, closing Stage 01 and authorizing PR #7 merge without authorizing Stage 02.
+- The user separately approved Stage 02's architecture and acceptance contract with `GO` on 2026-09-24; DEC-009 records the implementation boundary.
+- The user accepted the Stage 02 result and final QA `PASS` with `GO` on 2026-09-25; DEC-010 closes Stage 02, leaves PR #8 for user-managed merge, and does not authorize Stage 03.
 
 ## Open questions
 
@@ -54,6 +58,7 @@ Integrate the approved Stage 01 records through PR #7 and preserve the separate 
 - The foundation-model and topology-benefit claims remain unverified.
 - Too many agents or full-lab reviews could waste tokens without improving evidence.
 - Premature final-test access, post-hoc threshold selection, or unmatched multi-factor comparisons could invalidate later claims.
+- Fully hidden channels cannot be distinguished without metadata; overlap and dropout require explicit target and statistic leakage checks.
 
 ## Latest evidence
 
@@ -78,7 +83,15 @@ Integrate the approved Stage 01 records through PR #7 and preserve the separate 
 - Draft PR #7 (`https://github.com/yhlee52/FlyTS_lab/pull/7`) records the documentation-only scope, QA `PASS`, remaining limitations, and the approved integration path.
 - Draft PR #7 GitHub Actions `tests` run #33 passed on commit `cbe483e` before the result gate.
 - The user issued the Stage 01 result-gate `GO` after reviewing all acceptance results, QA, limitations, artifacts, and the Stage 02 boundary.
+- Stage 02 implementation adds independent cause masks, nested configuration, visible-only pooled fallback, and focused tests; the result was accepted with user `GO`.
+- The Stage 02 full CPU suite passes with two CUDA skips; the synthetic CPU smoke completed two finite-loss epochs with 17,936 parameters. Bitwise legacy and nested-config epoch resume, notebook/governance validators, and diff check pass.
+- Initial Stage 02 independent QA issued `FAIL` for forced minimum channel targets, target-free single-channel handling, manual-plan validation, missing/padding distinction, charter completeness, records, and reproductions. The implementation follow-up removes the forced minimum, adds plan and padding checks, and preserves the initial QA verdict until re-review.
+- After remediation, independent QA reproduced the corrected low-ratio sampling, invalid-plan rejection, missing/padding separation, target-free error, finite two-epoch CPU smoke, and 29-tensor bitwise resume, then issued final `PASS`.
+- The full suite passes with 36 tests and two CUDA hardware skips; notebook/governance validators and diff check pass.
+- Draft PR #8 (`https://github.com/yhlee52/FlyTS_lab/pull/8`) is open from `codex/stage-02-channel-masking`; it is unmerged and records the approved contract, compatibility evidence, QA `PASS`, and limitations.
+- Draft PR #8 GitHub Actions `tests` run #40 passed on commit `3a25b46` after PR evidence links were added.
+- The user issued the Stage 02 result-gate `GO` after reviewing implementation, compatibility, QA, risks, and unverified claims; PR #8 remains unmerged by design.
 
 ## Next action
 
-Await a separate user request to propose the Stage 02 Charter. Do not begin Stage 02 from the Stage 01 result decision.
+Await user-managed merge of PR #8 and a separate request for Stage 03 Charter preparation. Do not begin Stage 03.

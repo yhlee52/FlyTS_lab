@@ -67,3 +67,20 @@
 - Decision: close Stage 01 and authorize PR #7 for merge
 - Boundary: this decision does not authorize Stage 02 implementation; Stage 02 requires its own Charter proposal and explicit user approval
 - Evidence: `docs/research/stages/stage-01/RESULT.md`, `QA_REPORT.md`, and Draft PR #7
+
+## DEC-009 — Stage 02 implementation contract
+
+- Date: 2026-09-24
+- Decision authority: user Stage 02 `GO` on the approved architecture contract and charter
+- Decision: implement input-only channel dropout, full-channel reconstruction masking, separate causes with channel overlap ownership, visible-only statistics with pooled record fallback for fully hidden channels, and unchanged legacy temporal sampling and version-1 checkpoints.
+- Boundary: no evaluator threshold, performance claim, model parameter, data split, or architecture direction change.
+- Evidence: `docs/research/stages/stage-02/CHARTER.md` and `docs/MASKING.md`; final QA and result authority are recorded separately in DEC-010.
+
+## DEC-010 — Stage 02 result gate
+
+- Date: 2026-09-25
+- Decision authority: user `GO` after reviewing implementation evidence, compatibility, limitations, Draft PR #8, and final independent QA `PASS`
+- Decision: accept the Stage 02 result and close the stage
+- Delivery boundary: PR #8 remains unmerged for the user to merge directly
+- Stage boundary: this decision does not authorize Stage 03; Stage 03 requires a separate Charter and explicit user approval
+- Evidence: `docs/research/stages/stage-02/RESULT.md`, `QA_REPORT.md`, and PR #8

@@ -14,3 +14,5 @@
 | RK-10 | Frozen-probe or source-transfer tasks use incompatible label ontologies. | uninterpretable transfer claim | target-local probes by default; source transfer requires pre-result ontology evidence | active |
 | RK-11 | Topology comparisons change tokenizer, router, backbone, or graph controls simultaneously. | false topology attribution | single-factor matrix, graph statistics, ±5% parameters, matched steps/exposure | active |
 | RK-12 | FLOPs, wall time, or sparse-kernel efficiency are treated as interchangeable compute budgets. | unfair comparison or misleading efficiency claim | optimizer steps are primary; report estimator limits, controlled time, memory, and latency separately | active |
+| RK-13 | Fully hidden channels cannot be distinguished without channel identity metadata. | ambiguous per-channel reconstruction | document limitation; use pooled record-visible normalization; defer metadata design | active |
+| RK-14 | Mask overlap or dropout contaminates targets or statistics. | target leakage or invalid loss | independent cause masks, overlap ownership, visible-only normalization, focused tests, and independent QA | active |

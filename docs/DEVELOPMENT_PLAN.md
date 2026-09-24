@@ -145,6 +145,8 @@ Stage 1의 승인된 세부 결정은 `docs/research/DECISION_LOG.md`의 DEC-007
 
 ### 단계 2 — channel masking과 channel dropout
 
+진행 상태 (2026-09-25): Stage 02 implementation and independent QA `PASS` were accepted with user `GO`. PR #8 awaits user-managed merge; no performance claim or Stage 03 work is authorized.
+
 현재 temporal patch masking에 채널 축 자기지도 학습과 robustness 학습을 추가한다.
 
 구현 범위:
@@ -468,7 +470,8 @@ FlyTS-Mini v0.1에서 가능성을 확인한 뒤에만 다음을 진행한다.
 - [x] 공개 starter corpus와 offline-first pipeline
 - [x] 단계 0 — 현재 기준점 재현
 - [x] 단계 1 — 연구·실험 규약 고정
-- [ ] 단계 2 이후 — 위 순서에 따라 진행
+- [x] 단계 2 — channel masking과 channel dropout
+- [ ] 단계 3 이후 — 위 순서에 따라 진행
 
-단계 1의 공식 연구 합의·실험 규약·독립 QA는 사용자 `GO`로 완료되었다. 단계 2는 별도
-Charter 제안과 사용자 승인을 받기 전에는 시작하지 않는다.
+단계 1의 연구 규약과 단계 2의 channel masking/dropout은 각각 사용자 `GO`로 완료되었다.
+단계 3은 별도 Charter 제안과 사용자 승인을 받기 전에는 시작하지 않는다.
