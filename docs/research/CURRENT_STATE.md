@@ -4,7 +4,7 @@ Updated: 2026-09-24
 
 ## Current stage
 
-Pre-stage 0 governance setup. `docs/DEVELOPMENT_PLAN.md` is merged; the AI research-team system is being proposed.
+Pre-stage 0 governance setup. `docs/DEVELOPMENT_PLAN.md` is merged; AI research-team governance is proposed in Draft PR #4.
 
 ## Current goal
 
@@ -45,7 +45,7 @@ Add a token-conscious Codex research team, concise shared lab notebook, stage-ga
 
 - Initial PoC and foundation MVP PRs are merged.
 - Development plan PR #3 is merged.
-- Repository agent and skill configuration is documentation/governance only; no model code changes are intended.
+- Draft PR #4 adds repository agent and skill configuration without model code changes.
 
 ## Next action
 
