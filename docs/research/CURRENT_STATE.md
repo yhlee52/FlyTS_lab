@@ -74,7 +74,8 @@ Present the frozen research question, experiment protocol, traceability, indepen
 - Independent QA issued `FAIL` because unseen channel-count and frozen-probe evaluations lack complete primary metric/control contracts, H-03 lacks a prespecified topology claim endpoint, and the Huber transition parameter is not fixed.
 - The approved remediation now specifies all four missing contracts in DEC-007, project consensus, experiment protocol, hypotheses, and requirements traceability; scientific results remain `미검증` until later stages.
 - Independent QA revalidated the approved remediation and issued final `PASS`; notebook, governance, and diff validation also pass.
+- Draft PR #7 (`https://github.com/yhlee52/FlyTS_lab/pull/7`) is open from `codex/stage-01-research-protocol` at commit `e5aa72e`; it is unmerged and records the documentation-only scope, QA `PASS`, and remaining limitations.
 
 ## Next action
 
-Open the Stage 01 Draft PR and request the user's `GO`, `REVISE`, `HOLD`, or `STOP` result-gate decision. Do not merge or begin Stage 02.
+Present Draft PR #7 and request the user's `GO`, `REVISE`, `HOLD`, or `STOP` result-gate decision. Do not merge or begin Stage 02.

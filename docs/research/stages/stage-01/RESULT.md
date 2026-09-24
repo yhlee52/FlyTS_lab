@@ -48,5 +48,6 @@ Stage 03 must still calibrate numerical thresholds, uncertainty rules, permutati
 - Independent QA: `docs/research/stages/stage-01/QA_REPORT.md`
 - Decision authority: `docs/research/DECISION_LOG.md` DEC-007
 - Traceability and risks: `docs/research/HYPOTHESES.md`, `REQUIREMENTS_TRACEABILITY.md`, and `RISK_REGISTER.md`
+- Draft PR: `https://github.com/yhlee52/FlyTS_lab/pull/7`
 
-No PR is merged and Stage 02 has not begun.
+Draft PR #7 is open and unmerged. Stage 02 has not begun.
