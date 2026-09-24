@@ -22,7 +22,7 @@ Stage 01 produced an approved, leakage-resistant, budget-matched, claim-to-evide
 | Factor isolation | Pass | Separate topology, tokenizer, router, and backbone single-factor contrasts. |
 | Negative results | Pass | Support/no-support/harm/revisit/stop with one retained diagnostic rerun. |
 | Scope integrity | Pass | Documentation changes only; no implementation, data, config, training, or performance claim. |
-| Independent QA and validators | Pass | Final QA `PASS`; notebook, governance, and diff validation pass. |
+| Independent QA and validators | Pass | Final QA `PASS`; notebook, governance, diff validation, and Draft PR #7 Actions `tests` run #31 pass. |
 
 ## Frozen protocol summary
 

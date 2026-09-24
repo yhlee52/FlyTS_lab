@@ -75,6 +75,7 @@ Present the frozen research question, experiment protocol, traceability, indepen
 - The approved remediation now specifies all four missing contracts in DEC-007, project consensus, experiment protocol, hypotheses, and requirements traceability; scientific results remain `미검증` until later stages.
 - Independent QA revalidated the approved remediation and issued final `PASS`; notebook, governance, and diff validation also pass.
 - Draft PR #7 (`https://github.com/yhlee52/FlyTS_lab/pull/7`) is open from `codex/stage-01-research-protocol` at commit `e5aa72e`; it is unmerged and records the documentation-only scope, QA `PASS`, and remaining limitations.
+- Draft PR #7 GitHub Actions `tests` run #31 passed on commit `934e28a` after the PR evidence links were added.
 
 ## Next action
 
