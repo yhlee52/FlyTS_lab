@@ -1,6 +1,6 @@
 # Stage 00 Result — Baseline Reproduction
 
-Status: review
+Status: closed
 
 Date: 2026-09-24
 Baseline commit: `9a6f3d8d612f742815b1124f2a0c6ee1da544628`
@@ -26,6 +26,10 @@ The merged foundation MVP baseline was reproduced on CPU without source, configu
 
 Independent QA reproduced the core corpus, training, resume, export, test, and device evidence and issued `PASS` after independently revalidating the refreshed notebook. QA did not independently reinstall into a second environment or reproduce peak process memory. CUDA behavior, foundation-model quality, public-data performance, transfer, and topology benefit remain unverified.
 
+## User decision
+
+The user issued `GO` on 2026-09-24. Stage 00 is closed and PR #6 is approved for merge. This decision does not authorize Stage 01 work before its charter is separately approved.
+
 ## Artifacts
 
 - Draft PR: `https://github.com/yhlee52/FlyTS_lab/pull/6`
@@ -34,4 +38,4 @@ Independent QA reproduced the core corpus, training, resume, export, test, and d
 - Ignored implementation artifacts: `outputs/phase0-baseline/`
 - Ignored independent QA artifacts: `outputs/phase0-baseline/qa/`
 
-No PR is merged and Stage 01 has not begun.
+Stage 01 has not begun.

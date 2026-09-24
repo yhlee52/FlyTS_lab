@@ -4,11 +4,11 @@ Updated: 2026-09-24
 
 ## Current stage
 
-Stage 00 — Baseline Reproduction has completed implementation and independent QA on `codex/stage-00-baseline-reproduction` from `main` commit `9a6f3d8`. Draft PR #6 is open and the stage is awaiting the human result gate.
+Stage 00 — Baseline Reproduction is closed with user `GO` after implementation and independent QA `PASS`. PR #6 contains the accepted evidence set.
 
 ## Current goal
 
-Present the recorded baseline evidence, independent QA result, limitations, and Draft PR for the user's Stage 00 gate without beginning Stage 01.
+Preserve the accepted Stage 00 baseline and prepare a Stage 01 charter proposal without beginning Stage 01 before separate user approval.
 
 ## Canonical references
 
@@ -34,6 +34,7 @@ Present the recorded baseline evidence, independent QA result, limitations, and 
 - Explicit "you decide" delegation is itself a user decision and must be recorded.
 - QA independently re-runs relevant checks and writes only temporary or Git-ignored artifacts.
 - The user approved the Stage 00 charter and execution plan with `GO` on 2026-09-24.
+- The user approved the Stage 00 result with `GO` on 2026-09-24 after QA `PASS`; this closes Stage 00 and authorizes PR #6 merge, but does not begin Stage 01.
 
 ## Open questions
 
@@ -59,8 +60,8 @@ Present the recorded baseline evidence, independent QA result, limitations, and 
 - The project-local Python 3.12 environment contains PyTorch 2.14.0+cpu and pytest 9.1.1; the full suite passed with 24 tests and one CUDA hardware skip.
 - The CPU smoke run completed two finite-loss epochs with 17,936 parameters; epoch-boundary resume reproduced all 29 model tensors bitwise and embedding export produced finite `[9, 32]` vectors.
 - Independent QA reproduced the corpus split and hash, exact smoke losses, bitwise resume, embedding schema, full tests, and CUDA-unavailable classification. After the notebook refresh and validator rerun, QA issued `PASS`.
-- Draft PR #6 contains only the five Stage 00 evidence and governance documents; it is open, mergeable, unmerged, and remains a draft.
+- PR #6 contains only the five Stage 00 evidence and governance documents, and its GitHub Actions test workflow passed before the result gate.
 
 ## Next action
 
-Request the user's `GO`, `REVISE`, `HOLD`, or `STOP` result-gate decision for Draft PR #6. Do not merge or begin Stage 01.
+Propose the Stage 01 charter for user review. Do not begin Stage 01 until its scope and acceptance criteria receive separate approval.

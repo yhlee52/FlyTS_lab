@@ -1,6 +1,6 @@
 # Stage 00 Charter — Baseline Reproduction
 
-Status: review
+Status: closed
 
 ## Research question
 
@@ -48,7 +48,7 @@ Can the merged foundation MVP be reproduced from a clean environment sufficientl
 | Stage 00 charter | before environment setup or implementation | approved (`GO`, 2026-09-24) |
 | system-level install or paid compute | before action | pending as needed |
 | scope, baseline protocol, or acceptance change | before affected work continues | pending as needed |
-| Stage 00 result | before merge or Stage 01 | pending |
+| Stage 00 result | before merge or Stage 01 | approved (`GO`, 2026-09-24) |
 
 ## Agent plan
 
@@ -82,3 +82,6 @@ agent_budget:
 - Decision: GO
 - Date: 2026-09-24
 - Conditions: Execute the approved charter and checkpoint plan without changing architecture, datasets, model behavior, evaluation criteria, scope, or acceptance criteria. Hold before system-level installation, paid compute, or any material ambiguity or scope change. Keep implementation and independent QA separate, open a Draft PR, and do not merge it.
+- Result gate: GO
+- Result date: 2026-09-24
+- Result conditions: Close Stage 00 and merge PR #6. Do not begin Stage 01 without separate approval of its charter.
