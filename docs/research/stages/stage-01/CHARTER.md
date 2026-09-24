@@ -1,6 +1,6 @@
 # Stage 01 Charter — Research and Experiment Protocol
 
-Status: review
+Status: closed
 
 ## Research question
 
@@ -65,7 +65,7 @@ Can every planned FlyTS claim in Stages 2–10 be mapped, before further model c
 | Stage 01 charter and decision bundle | before tracked edits or specialist activation | approved (`GO`, 2026-09-24) |
 | research question, split, metric, threshold timing, budget, scope, or acceptance change | before affected work continues | pending as needed |
 | Architecture Scientist and specialist-budget expansion | before activation | pending as needed |
-| Stage 01 result | before PR merge or Stage 02 | pending |
+| Stage 01 result | before PR merge or Stage 02 | approved (`GO`, 2026-09-24); PR merge authorized, Stage 02 not authorized |
 
 ## Agent plan
 
@@ -105,3 +105,4 @@ agent_budget:
 - Decision: GO
 - Date: 2026-09-24
 - Conditions: Execute only the approved documentation and protocol scope. Do not change model code, configuration, data, training behavior, research question, split, metrics, threshold timing, budget, scope, or acceptance criteria. Open a Draft PR, do not merge it, and do not begin Stage 02 without a separate user decision.
+- Result gate: GO (`PASS` accepted, 2026-09-24). Close Stage 01 and merge PR #7; do not begin Stage 02 without a separate Charter approval.

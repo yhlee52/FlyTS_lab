@@ -4,11 +4,11 @@ Updated: 2026-09-24
 
 ## Current stage
 
-Stage 01 — Research and Experiment Protocol has completed document integration and independent QA `PASS` on `codex/stage-01-research-protocol` from `main` commit `ad9655f`. The stage is awaiting the human result gate.
+Stage 01 — Research and Experiment Protocol is complete after independent QA `PASS` and the user's result-gate `GO` on 2026-09-24. PR #7 is the approved integration PR. Stage 02 is not authorized.
 
 ## Current goal
 
-Present the frozen research question, experiment protocol, traceability, independent QA evidence, limitations, and Draft PR for the Stage 01 result gate without beginning Stage 02.
+Integrate the approved Stage 01 records through PR #7 and preserve the separate human gate before any Stage 02 work.
 
 ## Canonical references
 
@@ -39,6 +39,7 @@ Present the frozen research question, experiment protocol, traceability, indepen
 - Stage 01 uses two-tier domain isolation, domain-macro masked Huber selection, 1/3/5 repetitions, ±5% parameter tolerance, optimizer-step compute matching, and Stage 03 numerical-threshold calibration.
 - Stage 01 also fixes interpolation/extrapolation channel-count evaluation, target-local frozen probes, one diagnostic rerun, and single-factor attribution for topology, tokenizer, router, and backbone.
 - The user approved paired unseen/seen count degradation, task-specific controlled frozen probes, paired masked-Huber topology endpoints, and Smooth L1 `beta=1.0` to resolve the Stage 01 QA hold.
+- The user accepted the Stage 01 result and independent QA `PASS` with `GO` on 2026-09-24, closing Stage 01 and authorizing PR #7 merge without authorizing Stage 02.
 
 ## Open questions
 
@@ -74,9 +75,10 @@ Present the frozen research question, experiment protocol, traceability, indepen
 - Independent QA issued `FAIL` because unseen channel-count and frozen-probe evaluations lack complete primary metric/control contracts, H-03 lacks a prespecified topology claim endpoint, and the Huber transition parameter is not fixed.
 - The approved remediation now specifies all four missing contracts in DEC-007, project consensus, experiment protocol, hypotheses, and requirements traceability; scientific results remain `미검증` until later stages.
 - Independent QA revalidated the approved remediation and issued final `PASS`; notebook, governance, and diff validation also pass.
-- Draft PR #7 (`https://github.com/yhlee52/FlyTS_lab/pull/7`) is open from `codex/stage-01-research-protocol` at commit `e5aa72e`; it is unmerged and records the documentation-only scope, QA `PASS`, and remaining limitations.
-- Draft PR #7 GitHub Actions `tests` run #31 passed on commit `934e28a` after the PR evidence links were added.
+- Draft PR #7 (`https://github.com/yhlee52/FlyTS_lab/pull/7`) records the documentation-only scope, QA `PASS`, remaining limitations, and the approved integration path.
+- Draft PR #7 GitHub Actions `tests` run #33 passed on commit `cbe483e` before the result gate.
+- The user issued the Stage 01 result-gate `GO` after reviewing all acceptance results, QA, limitations, artifacts, and the Stage 02 boundary.
 
 ## Next action
 
-Present Draft PR #7 and request the user's `GO`, `REVISE`, `HOLD`, or `STOP` result-gate decision. Do not merge or begin Stage 02.
+Await a separate user request to propose the Stage 02 Charter. Do not begin Stage 02 from the Stage 01 result decision.

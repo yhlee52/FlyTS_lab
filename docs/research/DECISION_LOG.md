@@ -59,3 +59,11 @@
 - Impact: Stage 02 implements masking without performance gates; Stage 03 calibrates evaluator counts and numerical thresholds without final-test access; Stages 04–09 use the frozen protocol; Stage 10 packages already recorded final evidence.
 - Revisit when: the user explicitly changes a protocol decision or Stage 03 calibration finds a metric technically invalid, in which case work returns to `HOLD` before revision.
 - QA-blocker resolution approved by the user: unseen channel counts use paired relative domain-macro Huber degradation against the nearest seen-count nested view; target-local probes use macro-F1 for classification and train-standardized RMSE for regression against random-init and visible-statistics controls; H-03 uses paired domain-macro masked Huber against both rewired and random controls as its primary endpoint; masked Huber is fixed to Smooth L1 `beta=1.0` after train-only normalization. Stage 03 still owns numerical effect thresholds and uncertainty calibration, not these metric identities.
+
+## DEC-008 — Stage 01 result gate
+
+- Date: 2026-09-24
+- Decision authority: user `GO` after reviewing the acceptance evidence, frozen protocol, independent QA `PASS`, limitations, and Draft PR #7
+- Decision: close Stage 01 and authorize PR #7 for merge
+- Boundary: this decision does not authorize Stage 02 implementation; Stage 02 requires its own Charter proposal and explicit user approval
+- Evidence: `docs/research/stages/stage-01/RESULT.md`, `QA_REPORT.md`, and Draft PR #7

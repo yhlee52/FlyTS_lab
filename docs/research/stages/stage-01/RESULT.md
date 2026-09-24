@@ -1,6 +1,6 @@
 # Stage 01 Result — Research and Experiment Protocol
 
-Status: review
+Status: closed
 
 Date: 2026-09-24
 Base commit: `ad9655f76bd140776514a4029ccc77ccf779b20f`
@@ -50,4 +50,6 @@ Stage 03 must still calibrate numerical thresholds, uncertainty rules, permutati
 - Traceability and risks: `docs/research/HYPOTHESES.md`, `REQUIREMENTS_TRACEABILITY.md`, and `RISK_REGISTER.md`
 - Draft PR: `https://github.com/yhlee52/FlyTS_lab/pull/7`
 
-Draft PR #7 is open and unmerged. Stage 02 has not begun.
+## Stage gate
+
+The user accepted the completed acceptance evidence and independent QA `PASS` with `GO` on 2026-09-24. PR #7 is authorized for merge. This decision closes Stage 01 but does not authorize Stage 02.
