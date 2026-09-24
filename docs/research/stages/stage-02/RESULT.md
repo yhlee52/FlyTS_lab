@@ -21,7 +21,7 @@ Stage 02 implements the approved masking mechanics, leakage guards, compatibilit
 | Leakage prevention | Pass | Hidden/dropped perturbations do not affect visible context; pooled record-visible fallback is target-independent. |
 | Equivariance and CPU execution | Pass | Paired channel permutation, finite forward/backward, two-epoch CPU smoke. |
 | Reproducibility | Pass | Uninterrupted and epoch-resumed training match all 29 model tensors bitwise. |
-| QA and governance | Pass | Final independent QA `PASS`; 36 tests pass, two CUDA skips; validators and diff check pass. |
+| QA and governance | Pass | Final independent QA `PASS`; 36 tests pass, two CUDA skips; validators, diff check, and Draft PR #8 Actions `tests` run #40 pass. |
 
 ## Artifacts and limitations
 

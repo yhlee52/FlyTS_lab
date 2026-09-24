@@ -88,6 +88,7 @@ Prepare the Stage 02 evidence and Draft PR for the user's `GO`, `REVISE`, `HOLD`
 - After remediation, independent QA reproduced the corrected low-ratio sampling, invalid-plan rejection, missing/padding separation, target-free error, finite two-epoch CPU smoke, and 29-tensor bitwise resume, then issued final `PASS`.
 - The full suite passes with 36 tests and two CUDA hardware skips; notebook/governance validators and diff check pass.
 - Draft PR #8 (`https://github.com/yhlee52/FlyTS_lab/pull/8`) is open from `codex/stage-02-channel-masking`; it is unmerged and records the approved contract, compatibility evidence, QA `PASS`, and limitations.
+- Draft PR #8 GitHub Actions `tests` run #40 passed on commit `3a25b46` after PR evidence links were added.
 
 ## Next action
 
