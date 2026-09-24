@@ -1,6 +1,6 @@
 # Stage 00 Charter — Baseline Reproduction
 
-Status: proposed
+Status: review
 
 ## Research question
 
@@ -33,19 +33,19 @@ Can the merged foundation MVP be reproduced from a clean environment sufficientl
 
 ## Acceptance criteria
 
-- [ ] Project installation steps are recorded and reproducible.
-- [ ] Relevant tests pass, or each failure has a reproducible diagnosis.
-- [ ] CPU synthetic smoke pretraining completes with finite loss.
-- [ ] Checkpoint resume and embedding export complete.
-- [ ] CUDA status is measured or explicitly marked unavailable.
-- [ ] No existing validation claim is silently strengthened.
-- [ ] Shared notebook passes its validator.
+- [x] Project installation steps are recorded and reproducible.
+- [x] Relevant tests pass, or each failure has a reproducible diagnosis.
+- [x] CPU synthetic smoke pretraining completes with finite loss.
+- [x] Checkpoint resume and embedding export complete.
+- [x] CUDA status is measured or explicitly marked unavailable.
+- [x] No existing validation claim is silently strengthened.
+- [x] Shared notebook passes its validator.
 
 ## User checkpoints
 
 | Decision gate | When to ask | Current approval |
 |---|---|---|
-| Stage 00 charter | before environment setup or implementation | pending |
+| Stage 00 charter | before environment setup or implementation | approved (`GO`, 2026-09-24) |
 | system-level install or paid compute | before action | pending as needed |
 | scope, baseline protocol, or acceptance change | before affected work continues | pending as needed |
 | Stage 00 result | before merge or Stage 01 | pending |
@@ -79,6 +79,6 @@ agent_budget:
 
 ## User approval
 
-- Decision: pending
-- Date:
-- Conditions:
+- Decision: GO
+- Date: 2026-09-24
+- Conditions: Execute the approved charter and checkpoint plan without changing architecture, datasets, model behavior, evaluation criteria, scope, or acceptance criteria. Hold before system-level installation, paid compute, or any material ambiguity or scope change. Keep implementation and independent QA separate, open a Draft PR, and do not merge it.
