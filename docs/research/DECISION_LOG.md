@@ -39,3 +39,12 @@
 - Evidence: subagents duplicate model/tool work and coordination cost
 - Rejected alternative: full-lab activation for every task
 - Revisit when: stage retrospectives show insufficient independent review
+
+## DEC-006 — Human alignment and ambiguity gate
+
+- Date: 2026-09-24
+- Decision: Stop and ask the user at material decision gates or whenever multiple plausible interpretations would change the work; agent consensus does not substitute for user intent.
+- Evidence: explicit user request after reviewing the Agent/Skill/Harness design
+- Operating rule: present options, recommendation, and impacts; treat no response as `HOLD`; record explicit "you decide" delegation
+- Rejected alternative: agents resolving ambiguous requirements internally and reporting only the final conclusion
+- Revisit when: the user explicitly changes the desired oversight level

@@ -20,6 +20,10 @@
 
 -
 
+## User decisions and delegated choices
+
+- decision, or explicit "you decide" delegation, with selected option
+
 ## Decisions recorded
 
 -

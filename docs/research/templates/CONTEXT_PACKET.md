@@ -12,6 +12,10 @@
 
 -
 
+## Open ambiguity
+
+- none, or the exact question that must be escalated to the user
+
 ## Return
 
 1. Conclusion
@@ -28,6 +32,7 @@ Maximum: N words
 - inspect unrelated stages;
 - repeat project background;
 - spawn another agent.
+- infer or negotiate user intent with other agents.
 
 ## Stop condition
 

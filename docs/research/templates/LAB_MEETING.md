@@ -16,6 +16,10 @@ Date: YYYY-MM-DD
 
 - role, objection, evidence needed
 
+## User-intent ambiguity
+
+- none, or question/options/recommendation requiring `HOLD`
+
 ## Decision
 
 - accepted direction or experiment required

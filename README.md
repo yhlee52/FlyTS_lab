@@ -9,8 +9,9 @@ CPU / CUDA 공용, **다채널 시계열 자기지도 표현학습**을 위한 �
 공개 데이터 기반의 재현 가능한 **FlyTS-Mini v0.1**입니다.
 
 Codex 작업은 [AI 연구팀 헌장](docs/research/TEAM_CHARTER.md)과
-[공용 연구노트](docs/research/CURRENT_STATE.md)를 기준으로 진행합니다. 저장소 범위 custom agent와
-research-stage/lab-notebook skill이 역할 분리, 단계 승인, 독립 QA와 토큰 예산을 적용합니다.
+[공용 연구노트](docs/research/CURRENT_STATE.md)를 기준으로 진행합니다. 메인 Codex가 Research Director를 맡고,
+저장소 범위 specialist agent와 research-stage/lab-notebook skill이 역할 분리, 사용자 확인 게이트,
+독립 QA와 토큰 예산을 적용합니다.
 
 ## 구현 범위
 

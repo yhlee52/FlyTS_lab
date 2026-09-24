@@ -41,6 +41,15 @@ Can the merged foundation MVP be reproduced from a clean environment sufficientl
 - [ ] No existing validation claim is silently strengthened.
 - [ ] Shared notebook passes its validator.
 
+## User checkpoints
+
+| Decision gate | When to ask | Current approval |
+|---|---|---|
+| Stage 00 charter | before environment setup or implementation | pending |
+| system-level install or paid compute | before action | pending as needed |
+| scope, baseline protocol, or acceptance change | before affected work continues | pending as needed |
+| Stage 00 result | before merge or Stage 01 | pending |
+
 ## Agent plan
 
 - Primary owner: Implementation Engineer
