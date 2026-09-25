@@ -46,6 +46,16 @@ def main():
     fit.add_argument("--device", default="auto")
     fit.add_argument("--resume")
     fit.add_argument("--epochs", type=int)
+    fit.add_argument("--development-only", action="store_true",
+                     help="Stage 3: verify train/val only and never open test arrays")
+    robust = commands.add_parser("evaluate-robustness", help="OFFLINE: Stage 3 development robustness evaluator")
+    robust.add_argument("--manifest", required=True)
+    robust.add_argument("--checkpoint", required=True)
+    robust.add_argument("--config", required=True)
+    robust.add_argument("--output", required=True)
+    robust.add_argument("--device", default="cpu")
+    robust.add_argument("--split", default="val")
+    robust.add_argument("--threads", type=int, default=2)
     for command in ("embed", "probe"):
         child = commands.add_parser(command)
         child.add_argument("--manifest", required=True)
@@ -64,6 +74,11 @@ def main():
         from .training import train
         kwargs["config_path"] = kwargs.pop("config")
         train(**kwargs)
+    elif command == "evaluate-robustness":
+        from .evaluation import evaluate_robustness
+        kwargs["config_path"] = kwargs.pop("config")
+        result = evaluate_robustness(**kwargs)
+        print(json.dumps(result["stable"]["provenance"], indent=2))
     elif command in ("embed", "probe"):
         from .training import embed, probe
         print(json.dumps((embed if command == "embed" else probe)(**kwargs), indent=2))

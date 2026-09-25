@@ -2,11 +2,13 @@
 
 Version: Stage 01 approved protocol, 2026-09-24
 
+Stage 03 handoff (DEC-014, 2026-09-25): the approved evaluator and development evidence are accepted, but numerical guards, effect/pass-fail thresholds and uncertainty configuration remain `candidate` and unfrozen. References below to Stage 03 freezing describe the original Stage 01 target, not an achieved freeze. Until separately approved reopened calibration freezes these settings, report descriptive metrics only and make no robustness pass/fail or final claim. The metric identities, aggregation rules and test-access boundary below are unchanged.
+
 ## 1. Protocol freeze and provenance
 
 Every reported run records the Git commit, complete config, dataset manifest and hashes, domain-role registry, seed, parameter count, optimizer steps, sample exposure, environment, device, primary and diagnostic metrics, timing, memory, and artifact paths.
 
-Before a formal Stage 09 run, freeze and hash the model definitions, dataset/domain roles, split manifests, seeds, evaluator version, Stage 03 thresholds and interval method, probe settings, budget target, and run configs. Any post-freeze change creates a new protocol version and requires the applicable user gate. Final-test output never tunes, filters, reranks, or selects a run.
+Before a formal Stage 09 run, freeze and hash the model definitions, dataset/domain roles, split manifests, seeds, evaluator version, numerical thresholds and interval method (currently Stage 03 candidates), probe settings, budget target, and run configs. Any post-freeze change creates a new protocol version and requires the applicable user gate. Final-test output never tunes, filters, reranks, or selects a run.
 
 ## 2. Domain roles and split safety
 
@@ -23,6 +25,8 @@ The Stage 06 domain-role registry records the assignment date, eligibility, sour
 Split source records, entities/groups, and chronological ranges before windowing. Apply purge gaps where adjacent windows could share target or contextual information. No source group, raw range, or derived window may cross train, validation, and test roles.
 
 Fit normalization and other preprocessing statistics from training-visible values only. Originally missing values, padding, masked targets, validation, and held-out data are excluded. Save the fitted state and its training manifest hash.
+
+Stage 03 clarification approved by the user (DEC-012): the frozen, fitted preprocessing state above remains train-only. For *paired evaluator scoring*, a separate nonparametric record-local reference coordinate is computed from context positions visible to both paired views. It is not a learned or fitted preprocessing parameter and is not reused across records. Its mean/scale exclude masked targets, artificial corruption, channel dropout, originally missing values, and time/channel padding. Both raw predictions and raw targets are transformed into this same shared coordinate before Smooth L1; the target values never fit the coordinate. The reference coordinate is recomputed for each pair when its shared visible context changes.
 
 ### 2.3 Selection and final test
 
@@ -48,7 +52,7 @@ Huber is fixed to PyTorch Smooth L1 loss with transition parameter `beta=1.0`, a
 - Development and ablation: three paired seeds shared by all comparison arms.
 - Stage 09 formal study: five paired seeds shared by all comparison arms.
 
-Retain every record-, domain-, seed-, and arm-level result. Report individual values, mean, standard deviation, and paired arm differences. Stage 03 selects and freezes the uncertainty-interval estimator using null/development evidence; seed variation alone does not establish generalization across domains.
+Retain every record-, domain-, seed-, and arm-level result. Report individual values, mean, standard deviation, and paired arm differences. Stage 03 recorded a candidate uncertainty-interval estimator from development evidence; DEC-014 defers its freeze to separately approved reopened calibration. Seed variation alone does not establish generalization across domains.
 
 ## 5. Parameter and compute matching
 
@@ -74,7 +78,7 @@ For global representation `Z` and a deterministic non-identity channel permutati
 D_perm = 1 - cosine(normalize(Z(X)), normalize(Z(P(X))))
 ```
 
-Report relative L2 representation distance as a diagnostic. Stage 03 freezes the deterministic permutation set, repeat count, numerical floor, and pass/fail threshold from no-op and order-sensitive controls without final-test access.
+Report relative L2 representation distance as a diagnostic. Stage 03 recorded deterministic permutation fixtures and candidate numerical floor/pass-fail thresholds; DEC-014 defers numerical freeze and pass/fail use until separately approved reopened calibration without final-test access.
 
 ### 6.3 Channel-dropout robustness
 
@@ -84,7 +88,7 @@ Evaluate paired deterministic channel masks at 0%, 10%, 30%, and 50%, always ret
 degradation(p) = (metric_p - metric_0) / abs(metric_0)
 ```
 
-For higher-is-better scores, reverse the numerator sign so positive values always mean degradation. If the baseline magnitude is below the Stage 03-frozen numerical guard, report absolute change and mark relative degradation undefined. Each rate is primary evidence; an area-under-curve summary is diagnostic and cannot hide a severe 50% failure.
+For higher-is-better scores, reverse the numerator sign so positive values always mean degradation. If the baseline magnitude is below the numerical guard, report absolute change and mark relative degradation undefined; the Stage 03 guard remains candidate under DEC-014. Each rate is primary evidence once a guard and pass/fail rule are separately frozen; until then the values are descriptive. An area-under-curve summary is diagnostic and cannot hide a severe 50% failure.
 
 ### 6.4 Unseen channel counts
 
@@ -99,9 +103,9 @@ For an unseen count `c_u`, choose the nearest seen count `c_s`; ties choose the 
 D_count(c_u) = (L_u - L_s) / abs(L_s)
 ```
 
-Positive values mean degradation and lower is better. If `L_s` is below the Stage 03-frozen numerical guard, report the absolute paired difference and mark the relative result undefined. A dataset without valid paired nested views supplies descriptive evidence only and cannot satisfy the primary channel-count claim.
+Positive values mean degradation and lower is better. If `L_s` is below the numerical guard, report the absolute paired difference and mark the relative result undefined; the Stage 03 guard remains candidate under DEC-014. A dataset without valid paired nested views supplies descriptive evidence only and cannot satisfy the primary channel-count claim.
 
-Do not pool interpolation and extrapolation into one pass/fail result. Stage 03 freezes the deterministic channel-view fixtures, supported counts, numerical guard, thresholds, and uncertainty rule; Stage 06/09 adds corpus evidence where eligible domains permit it.
+Do not pool interpolation and extrapolation into one pass/fail result. Stage 03 recorded deterministic channel-view fixtures, supported counts and candidate numerical rules; DEC-014 defers numerical guard, threshold and uncertainty freeze to separately approved reopened calibration. Stage 06/09 adds corpus evidence where eligible domains permit it.
 
 ### 6.5 Frozen probes and held-out transfer
 
@@ -126,7 +130,7 @@ For regression, it is
 Delta_probe = min(RMSE_random_init, RMSE_visible_stats) - RMSE_pretrained
 ```
 
-Positive values favor the pretrained representation. Aggregate domains equally within classification and regression families, but do not pool the two task families into one scalar. Stage 03 freezes the effect/uncertainty rule; H-04 support requires the frozen rule in every eligible reported task family and no family-level harm.
+Positive values favor the pretrained representation. Aggregate domains equally within classification and regression families, but do not pool the two task families into one scalar. DEC-014 defers effect/uncertainty-rule freeze; H-04 support requires a separately approved frozen rule in every eligible reported task family and no family-level harm.
 
 Within each classification domain, compute macro-F1 from all target-test predictions by giving each registered class equal weight. Within each regression domain, compute RMSE over all target-test predictions in train-standardized target units. Only after these within-domain metrics and paired control effects are computed are domains given equal weight within their task family.
 
@@ -161,11 +165,11 @@ Delta_rewired = L_fly_like - L_rewired
 Delta_random = L_fly_like - L_random
 ```
 
-Negative values favor fly-like topology. A topology-support claim requires both contrasts to meet the Stage 03-frozen effect and uncertainty rules with no protocol or guardrail failure. Robustness, frozen-probe, transfer, and efficiency results are secondary; they may support bounded secondary claims but cannot rescue a no-support primary topology result.
+Negative values favor fly-like topology. A topology-support claim requires both contrasts to meet separately approved frozen effect and uncertainty rules with no protocol or guardrail failure. Robustness, frozen-probe, transfer, and efficiency results are secondary; they may support bounded secondary claims but cannot rescue a no-support primary topology result.
 
 ## 9. Outcome, diagnostic rerun, and stop rules
 
-- `support`: valid prespecified primary evidence meets the Stage 03-frozen effect and uncertainty rules without a protocol or guardrail failure.
+- `support`: valid prespecified primary evidence meets separately approved frozen effect and uncertainty rules without a protocol or guardrail failure.
 - `no-support`: valid evidence is null, inconclusive, or below the support rule.
 - `harm`: valid paired evidence meets the frozen adverse-effect rule.
 - `revisit`: a preregistered instrumentation, data-integrity, or protocol defect justifies one diagnostic rerun. Retain and report both results.
@@ -176,7 +180,7 @@ Do not add seeds, domains, metrics, thresholds, or reruns after viewing results 
 ## 10. Stage handoffs and prohibited interpretation
 
 - Stage 02 implements masking/dropout and leakage tests without a performance gate.
-- Stage 03 implements the common evaluator and freezes calibration-owned constants without final-test access.
+- Stage 03 implemented the common evaluator and accepted development-only candidate evidence without final-test access. DEC-014 closes this bounded scope without a numerical freeze after final QA; pass/fail use requires separately approved reopened calibration and freeze before formal claims.
 - Stages 04–07 implement factor interfaces and comparison arms under this protocol.
 - Stage 08 is an operational pilot, not formal performance evidence.
 - Stage 09 performs the five-seed formal study and first final-test opening.

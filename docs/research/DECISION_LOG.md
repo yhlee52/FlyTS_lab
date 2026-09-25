@@ -84,3 +84,46 @@
 - Delivery boundary: PR #8 remains unmerged for the user to merge directly
 - Stage boundary: this decision does not authorize Stage 03; Stage 03 requires a separate Charter and explicit user approval
 - Evidence: `docs/research/stages/stage-02/RESULT.md`, `QA_REPORT.md`, and PR #8
+
+## DEC-011 — Stage 03 evaluator and calibration candidate GO
+
+- Date: 2026-09-25
+- Decision authority: user `GO` on the Stage 03 Charter and detailed implementation plan
+- Decision: implement an offline robustness evaluator with a minimal `encode/reconstruct/provenance` adapter; fixed deterministic paired fixtures; Smooth L1 `beta=1.0`; record/domain-macro primary; permutation, dropout, count, padding and missingness checks.
+- Calibration approval: synthetic controls plus exact-hash public development-only evidence; seeds `7/17/29`, 400 optimizer steps each, 95% paired hierarchical bootstrap with 10,000 resamples. Hard reject test/final-held-out access.
+- Boundary: numerical guards, thresholds and uncertainty config are `candidate` only. User threshold decision is a mandatory HOLD. No stage closure, final QA or merge is authorized by this decision.
+- Evidence: `docs/research/stages/stage-03/CHARTER.md`, `docs/EVALUATION.md`; candidate report follows only if the exact public corpus is available.
+
+## DEC-012 — Stage 03 normalization clarification and one follow-up budget exception
+
+- Date: 2026-09-25
+- Decision authority: user explicitly selected option A and approved one additional Implementation Engineer follow-up.
+- Decision: retain train-visible-only fitted preprocessing. Stage 03 paired scoring uses one nonparametric record-local reference coordinate derived only from the intersection of both views' visible non-target context; targets, corruption, dropout, missingness and padding never enter its statistics. The coordinate is recomputed per pair and is not a fitted preprocessing parameter.
+- Execution: rebuild only the exact approved public starter corpus hash if canonical LF manifest serialization is required; run seeds `7/17/29` for 400 optimizer steps each and use `last.pt` for development calibration. Do not use `best.pt` as a protocol-compliant primary selection claim.
+- Budget: the user approved one extra bounded implementation follow-up to resolve QA findings and produce candidate evidence; the other specialist limits remain unchanged.
+- Boundary: all guards, thresholds and uncertainty results remain `candidate`; Stage 03 threshold decision is still `HOLD`.
+
+## DEC-013 — Stage 03 candidate gate: GO to defer freeze
+
+- Date: 2026-09-25
+- Decision authority: user `GO — defer freeze` after reviewing candidate evidence and remediation QA `PASS`.
+- Decision: accept the evaluator/calibration candidate evidence milestone for user review, while deferring threshold, numerical guard and uncertainty-config freeze. Their values remain `candidate`.
+- Boundary: Stage 03 stays active/open. This decision does not authorize final Stage 03 QA, stage closure, a Draft PR, merge or Stage 04. Additional evidence scope requires separate user approval; until then the next action is `HOLD`.
+- Evidence: `reports/robustness/calibration-candidate-v1.{json,csv,md}` and the Stage 03 Charter checkpoint.
+
+## DEC-014 — Stage 03 closure path without numerical freeze
+
+- Date: 2026-09-25
+- Decision authority: user explicitly approved closing Stage 03 without freezing thresholds, numerical guards or uncertainty configuration and authorized a Draft PR after independent final QA.
+- Decision: accept the evaluator and development-only calibration candidate evidence as a bounded engineering result. Numerical settings remain `candidate` and unfrozen; reported robustness metrics are descriptive only. No robustness pass/fail or final foundation-quality claim is allowed until a separately approved reopening and freeze.
+- Evidence interpretation: sparse channel-count arms and absent executed sensitivity calibration make an effect-threshold freeze unsupported. This is an interpretable no-freeze outcome, not a negative model-quality claim.
+- Boundary: Stage 03 is in closure review, not closed before independent final QA. Stage 04 and PR merge are not authorized by this decision.
+- Evidence: `docs/research/stages/stage-03/CHARTER.md`, `RESULT.md` (draft), and `reports/robustness/calibration-candidate-v1.{json,csv,md}`.
+
+## DEC-015 — Stage 03 no-freeze closure after final QA
+
+- Date: 2026-09-25
+- Decision authority: user-approved DEC-014 closure path; independent QA supplied the final gate verdict.
+- Outcome: final independent QA reported `PASS — approved evaluator and candidate deliverables under no-frozen-threshold closure`. All eight Charter acceptance criteria are satisfied in that scope; Stage 03 is closed and the user-authorized Draft PR may be prepared.
+- Boundary: thresholds, numerical guards and uncertainty configuration remain `candidate` and unfrozen; robustness metrics are descriptive only. Formal pass/fail requires separately approved reopened calibration and freeze. PR merge and Stage 04 require separate user approval.
+- Evidence: `docs/research/stages/stage-03/QA_REPORT.md`, `RESULT.md`, and `reports/robustness/calibration-candidate-v1.{json,csv,md}`.

@@ -124,8 +124,10 @@ FlyTS의 장기 목표는 서로 다른 도메인, 채널 수, 채널 순서와 
 - 단계별 중단·재검토 조건
 
 Stage 1의 승인된 세부 결정은 `docs/research/DECISION_LOG.md`의 DEC-007을 기준으로 하며,
-운영 규약은 `docs/EXPERIMENT_PROTOCOL.md`를 따른다. 수치 pass/fail threshold는 final test를
-보지 않은 Stage 3 개발 evidence로 calibration한 뒤 후속 비교 전에 동결한다.
+운영 규약은 `docs/EXPERIMENT_PROTOCOL.md`를 따른다. Stage 01의 원래 계획은 final test를
+보지 않은 Stage 3 개발 evidence로 수치 pass/fail threshold를 calibration·동결하는 것이었다.
+DEC-014에 따라 Stage 03은 candidate evidence만 수용하고 수치 guard·threshold·uncertainty 동결을 연기한다.
+별도 승인된 calibration 재개와 동결 전에는 후속 비교의 pass/fail 또는 최종 주장을 하지 않는다.
 
 주요 평가 항목:
 
@@ -145,7 +147,7 @@ Stage 1의 승인된 세부 결정은 `docs/research/DECISION_LOG.md`의 DEC-007
 
 ### 단계 2 — channel masking과 channel dropout
 
-진행 상태 (2026-09-25): Stage 02 implementation and independent QA `PASS` were accepted with user `GO`. PR #8 awaits user-managed merge; no performance claim or Stage 03 work is authorized.
+진행 상태 (2026-09-25): Stage 02 implementation and independent QA `PASS` were accepted with user `GO`; PR #8 was merged at `461f1fc`. Stage 03은 independent final QA `PASS` 후 수치 미동결 범위에서 종료됐다.
 
 현재 temporal patch masking에 채널 축 자기지도 학습과 robustness 학습을 추가한다.
 
@@ -208,14 +210,14 @@ D_perm = 1 - cosine(Z(X), Z(PermuteChannels(X)))
 - `flyts evaluate-robustness` CLI
 - `reports/robustness/*.json`
 - 사람에게 읽기 쉬운 Markdown/CSV 요약
-- threshold 기반 pass/fail 결과
+- 수치 미동결 candidate 결과와 descriptive Markdown/CSV/JSON; threshold 기반 pass/fail은 별도 승인된 calibration 재개·동결 이후
 
 체크포인트:
 
 - channel permutation distance가 기대한 수치 오차 범위인가?
 - dropout 비율에 따른 degradation을 일관되게 측정하는가?
 - 동일한 evaluator를 모든 backbone에 적용할 수 있는가?
-- final held-out/test를 보지 않고 threshold와 uncertainty rule을 동결했는가?
+- final held-out/test를 보지 않고 후보 evidence를 만들었는가? 수치 threshold·guard·uncertainty는 DEC-014에 따라 미동결이며, pass/fail 사용은 별도 승인된 calibration 재개·동결까지 보류한다.
 
 ### 단계 4 — topology 모듈화
 
@@ -471,7 +473,8 @@ FlyTS-Mini v0.1에서 가능성을 확인한 뒤에만 다음을 진행한다.
 - [x] 단계 0 — 현재 기준점 재현
 - [x] 단계 1 — 연구·실험 규약 고정
 - [x] 단계 2 — channel masking과 channel dropout
-- [ ] 단계 3 이후 — 위 순서에 따라 진행
+- [x] 단계 3 — evaluator와 development-only candidate evidence 수용; final QA `PASS`로 수치 미동결 종료
+- [ ] 단계 4 이후 — Stage 03 사용자 gate 이후 순서에 따라 진행
 
 단계 1의 연구 규약과 단계 2의 channel masking/dropout은 각각 사용자 `GO`로 완료되었다.
-단계 3은 별도 Charter 제안과 사용자 승인을 받기 전에는 시작하지 않는다.
+단계 3 evaluator와 candidate evidence는 사용자 `GO`로 수용되었고, independent final QA `PASS` 후 수치 threshold·guard·uncertainty를 동결하지 않은 범위에서 종료됐다. Draft PR 작성은 승인됐으나 병합은 별도 결정이다. 지표는 기술적·서술적 결과만 제공하고 robustness pass/fail 또는 최종 주장을 하지 않는다. Stage 04 진입은 별도 승인 대상이다.

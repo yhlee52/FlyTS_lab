@@ -1,5 +1,5 @@
 """Versioned, hash-verified, memory-mapped local corpus. No network dependencies."""
-from collections import Counter
+from collections import Counter, defaultdict
 import hashlib
 import json
 from pathlib import Path
@@ -60,8 +60,11 @@ class CorpusWriter:
         doc = dict(schema_version=1, preprocessing_version="flyts-v1", sources=self.sources,
                    records=self.records)
         path = self.root / "manifest.json"
-        path.write_text(json.dumps(doc, indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
-        (self.root / "manifest.sha256").write_text(sha256(path)+"\n", encoding="ascii")
+        # Canonical LF bytes preserve manifest identity across Windows and Unix.
+        with path.open("w", encoding="utf-8", newline="\n") as stream:
+            stream.write(json.dumps(doc, indent=2, ensure_ascii=False) + "\n")
+        with (self.root / "manifest.sha256").open("w", encoding="ascii", newline="\n") as stream:
+            stream.write(sha256(path) + "\n")
         return path
 
 
@@ -94,13 +97,57 @@ def verify_corpus(manifest):
     return doc
 
 
+def reject_forbidden(doc, split):
+    """Stage 03 policy: no test split or final-held-out train/evaluation domain."""
+    if split not in ("train", "val"):
+        raise ValueError("Stage 3 evaluator forbids test/final-held-out split")
+    roles = doc.get("domain_roles", {})
+    for row in doc["records"]:
+        if row["split"] not in ("train", split):
+            continue
+        role = str(row.get("domain_role", roles.get(row["domain"], "development"))).lower().replace("_", "-")
+        if role not in ("development", "development-held-out", "train", "validation", "val"):
+            raise ValueError(f"Stage 3 evaluator forbids domain role {role}")
+
+
+def verify_development_corpus(manifest, split):
+    """Check permitted arrays and train/val metadata without opening test arrays."""
+    manifest = Path(manifest)
+    if sha256(manifest) != manifest.with_suffix(".sha256").read_text().strip():
+        raise ValueError("manifest checksum mismatch")
+    doc = json.loads(manifest.read_text(encoding="utf-8"))
+    if doc.get("schema_version") != 1 or not doc.get("records"):
+        raise ValueError("unsupported or empty corpus")
+    reject_forbidden(doc, split)
+    intervals = defaultdict(list)
+    for row in doc["records"]:
+        if row["split"] not in ("train", "val"):
+            continue
+        key = (row["dataset"], row["group"])
+        for prior in intervals[key]:
+            if prior["split"] != row["split"] and max(prior["start"], row["start"]) < min(prior["stop"], row["stop"]):
+                raise ValueError("train/val source-range split overlap")
+        intervals[key].append(row)
+    for row in doc["records"]:
+        if row["split"] != split:
+            continue
+        path = safe_path(manifest.parent, row["path"])
+        if sha256(path) != row["sha256"]:
+            raise ValueError("development array checksum mismatch")
+        array = np.load(path, mmap_mode="r", allow_pickle=False)
+        if list(array.shape) != row["shape"] or array.dtype != np.float32:
+            raise ValueError("development array schema mismatch")
+    return doc
+
+
 class WindowDataset(Dataset):
     def __init__(self, manifest, split, context=256, stride=128, min_points=16):
         if context < min_points or stride < 1:
             raise ValueError("invalid context/stride")
         self.root = Path(manifest).parent
         doc = json.loads(Path(manifest).read_text(encoding="utf-8"))
-        self.records = [r for r in doc["records"] if r["split"] == split]
+        self.record_ids = [i for i, r in enumerate(doc["records"]) if r["split"] == split]
+        self.records = [doc["records"][i] for i in self.record_ids]
         self.context = context
         self.windows = []
         self.cache = {}
@@ -135,7 +182,8 @@ class WindowDataset(Dataset):
         x = np.array(self.cache[r][start:start+length], copy=True)
         return dict(x=torch.from_numpy(x), dt=row["dt"],
                     time_known=row["time_unit"] == "seconds", label=row.get("label", -1),
-                    dataset=row["dataset"], domain=row["domain"])
+                    dataset=row["dataset"], domain=row["domain"],
+                    record_id=self.record_ids[r], window_start=int(row["start"] + start))
 
     def balanced_sampler(self, count, generator):
         # Equal domain mass, equal dataset mass within each domain, then equal windows.
@@ -159,4 +207,6 @@ def collate_windows(rows):
                 dt=torch.tensor([row["dt"] for row in rows]),
                 time_known=torch.tensor([row["time_known"] for row in rows]),
                 label=torch.tensor([row["label"] for row in rows]),
-                dataset=[row["dataset"] for row in rows], domain=[row["domain"] for row in rows])
+                dataset=[row["dataset"] for row in rows], domain=[row["domain"] for row in rows],
+                record_id=[row.get("record_id") for row in rows],
+                window_start=[row.get("window_start") for row in rows])
