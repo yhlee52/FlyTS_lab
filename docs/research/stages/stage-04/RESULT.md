@@ -54,6 +54,12 @@ Independent QA issued final `PASS` after the shared notebook's stale test count 
 - Checkpoint format remains version 1; only `fly_like` is registered in Stage 04.
 - No dataset, split, metric, numerical-threshold or scientific-claim change was made.
 
+## Pull request
+
+- Draft PR #10: `https://github.com/yhlee52/FlyTS_lab/pull/10`
+- Initial implementation and result commit: `c4fdc62`
+- Merge and Stage 05 remain separately gated.
+
 ## User stage gate
 
 - Requested: `GO`, `REVISE`, `HOLD`, or `STOP`.

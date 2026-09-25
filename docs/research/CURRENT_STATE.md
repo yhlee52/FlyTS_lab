@@ -4,11 +4,11 @@ Updated: 2026-09-25
 
 ## Current stage
 
-Stages 00–04 are closed. Stage 04 topology modularization received independent QA `PASS` and user result `GO` (DEC-017); Draft PR creation is requested. Stage 03 PR #9 is stale because its changes are already in `origin/main` at `f3362b24`. Numerical robustness settings remain candidate.
+Stages 00–04 are closed. Stage 04 topology modularization received independent QA `PASS` and user result `GO` (DEC-017); Draft PR #10 is open. Stage 03 PR #9 is stale because its changes are already in `origin/main` at `f3362b24`. Numerical robustness settings remain candidate.
 
 ## Current goal
 
-Commit the accepted Stage 04 compatibility work and open a Draft PR with scope, evidence, limitations and QA status. Do not merge or begin Stage 05.
+Review Draft PR #10 and its CI evidence. Do not merge or begin Stage 05.
 
 ## Canonical references
 
@@ -111,7 +111,8 @@ Commit the accepted Stage 04 compatibility work and open a Draft PR with scope, 
 - The user subsequently approved Stage 03 closure without numerical freeze and a Draft PR after final QA. Independent final QA reported `PASS` for all eight Charter criteria in that bounded scope; `RESULT.md` is closed. Robustness pass/fail and final claims remain prohibited.
 - Draft PR #9 (`https://github.com/yhlee52/FlyTS_lab/pull/9`) was created at commit `a522f772512c005ce695f48fd71dfa231e22328e`; merge and Stage 04 are not authorized.
 - Stage 04 pre-refactor CPU evidence is under ignored `outputs/stage04/`: five seeded golden graphs, ordered state/parameters, fixed forward/backward/loss, and a runtime legacy-v1 checkpoint. Post-refactor comparison is bitwise for same-backend CPU state/order/forward/loss/gradients; strict v1 load, bitwise epoch-boundary resume and stable evaluator-row tests pass. The focused suite passes 13 tests and the full suite passes 68 tests with three CUDA hardware skips; notebook/governance validators and diff check pass. Independent QA issued final `PASS`, and the user accepted the result with `GO` (DEC-017).
+- Draft PR #10 (`https://github.com/yhlee52/FlyTS_lab/pull/10`) records the accepted Stage 04 scope, QA `PASS`, evidence and limitations. Merge and Stage 05 are not authorized.
 
 ## Next action
 
-Create the requested Stage 04 Draft PR and record its URL and CI status. Do not merge or begin Stage 05 without separate explicit approval.
+Review Draft PR #10 and record its CI result when available. Do not merge or begin Stage 05 without separate explicit approval.

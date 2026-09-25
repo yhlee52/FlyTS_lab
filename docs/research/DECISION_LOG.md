@@ -5,7 +5,7 @@
 - Date: 2026-09-25
 - Decision authority: user accepted the Stage 04 result after independent QA `PASS` and requested a PR.
 - Decision: close Stage 04 within its compatibility-only scope and prepare a Draft PR.
-- Evidence: `docs/research/stages/stage-04/{RESULT,QA_REPORT}.md`; focused 13 passed, full 68 passed with three CUDA hardware skips, validators and diff check passed.
+- Evidence: `docs/research/stages/stage-04/{RESULT,QA_REPORT}.md`; focused 13 passed, full 68 passed with three CUDA hardware skips, validators and diff check passed; Draft PR #10.
 - Boundary: this does not authorize merge, Stage 05, a CUDA claim, topology comparisons or a topology-benefit claim.
 
 ## DEC-016 — Stage 04 topology modularization GO
