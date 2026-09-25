@@ -4,11 +4,11 @@ Updated: 2026-09-25
 
 ## Current stage
 
-Stages 00–03 are closed. PR #8 was merged into `main` at `461f1fc`. Stage 03 closed after user-approved no-freeze closure and independent final QA `PASS`; thresholds, numerical guards and uncertainty config remain candidate.
+Stages 00–04 are closed. Stage 04 topology modularization received independent QA `PASS` and user result `GO` (DEC-017); Draft PR #10 is open. Stage 03 PR #9 is stale because its changes are already in `origin/main` at `f3362b24`. Numerical robustness settings remain candidate.
 
 ## Current goal
 
-Review Stage 03 Draft PR #9 at commit `a522f772512c005ce695f48fd71dfa231e22328e`. Preserve candidate numerical settings; report descriptive robustness metrics only. Merge and Stage 04 remain separately gated.
+Review Draft PR #10 and its CI evidence. Do not merge or begin Stage 05.
 
 ## Canonical references
 
@@ -24,6 +24,7 @@ Review Stage 03 Draft PR #9 at commit `a522f772512c005ce695f48fd71dfa231e22328e`
 - `docs/EXPERIMENT_PROTOCOL.md`
 - `docs/EVALUATION.md`
 - `docs/research/stages/stage-03/CHARTER.md`
+- `docs/research/stages/stage-04/CHARTER.md`
 
 ## Confirmed decisions
 
@@ -52,6 +53,8 @@ Review Stage 03 Draft PR #9 at commit `a522f772512c005ce695f48fd71dfa231e22328e`
 - DEC-013 records user `GO — defer freeze`: candidate evidence milestone accepted, numerical settings remain candidate, and additional evidence scope is a separate approval gate.
 - DEC-014 records the user's closure path without numerical freeze: evaluator/candidate evidence accepted, final QA before closure, Draft PR creation authorized afterward, Stage 04 and merge separately gated.
 - DEC-015 records independent final QA `PASS` and Stage 03 closure within the no-frozen-threshold scope; formal robustness pass/fail still requires separately approved reopened calibration and freeze.
+- DEC-016 records user `GO` for bounded Stage 04 topology modularization and the stale PR #9 integration status.
+- DEC-017 records the user's Stage 04 result `GO`, closure after independent QA `PASS`, and request for a Draft PR; merge and Stage 05 remain separately gated.
 
 ## Open questions
 
@@ -107,7 +110,10 @@ Review Stage 03 Draft PR #9 at commit `a522f772512c005ce695f48fd71dfa231e22328e`
 - The user accepted the candidate evidence milestone with `GO — defer freeze`; this did not authorize additional evidence work or Stage 03 closure.
 - The user subsequently approved Stage 03 closure without numerical freeze and a Draft PR after final QA. Independent final QA reported `PASS` for all eight Charter criteria in that bounded scope; `RESULT.md` is closed. Robustness pass/fail and final claims remain prohibited.
 - Draft PR #9 (`https://github.com/yhlee52/FlyTS_lab/pull/9`) was created at commit `a522f772512c005ce695f48fd71dfa231e22328e`; merge and Stage 04 are not authorized.
+- Stage 04 pre-refactor CPU evidence is under ignored `outputs/stage04/`: five seeded golden graphs, ordered state/parameters, fixed forward/backward/loss, and a runtime legacy-v1 checkpoint. Post-refactor comparison is bitwise for same-backend CPU state/order/forward/loss/gradients; strict v1 load, bitwise epoch-boundary resume and stable evaluator-row tests pass. The focused suite passes 13 tests and the full suite passes 68 tests with three CUDA hardware skips; notebook/governance validators and diff check pass. Independent QA issued final `PASS`, and the user accepted the result with `GO` (DEC-017).
+- Draft PR #10 (`https://github.com/yhlee52/FlyTS_lab/pull/10`) records the accepted Stage 04 scope, QA `PASS`, evidence and limitations. Merge and Stage 05 are not authorized.
+- Draft PR #10 GitHub Actions `pytest` run `36106979369` passed on commit `8563df3` before the final CI evidence note.
 
 ## Next action
 
-Review Draft PR #9. Merge requires separate user approval. Do not freeze numerical settings or start Stage 04 without a separate gate.
+Review Draft PR #10. Do not merge or begin Stage 05 without separate explicit approval.

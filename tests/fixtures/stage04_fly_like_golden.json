@@ -1,0 +1,29 @@
+{
+  "base_commit": "f3362b24",
+  "schema_version": 1,
+  "config": {"patch_size": 4, "width": 8, "hidden": 12, "slots": 2, "populations": 3},
+  "cases": [
+    {"hidden": 2, "modules": 1, "hub_fraction": 0.0, "seed": 7, "edge_count": 2, "edge_sha256": "ac320b742751f8f0aaa45b6bff6a15e60453540c875cc4deba6b4bb30e673fcf"},
+    {"hidden": 5, "modules": 2, "hub_fraction": 0.0, "seed": 3, "edge_count": 6, "edge_sha256": "93dd20f36c7ad03a184eb7a5feee397108586cda24f0a31afb1b18d8a1d1f528"},
+    {"hidden": 8, "modules": 3, "hub_fraction": 0.08, "seed": 7, "edge_count": 11, "edge_sha256": "6062df7f0febc22516f0005cd4100961148bc891260a126f55c8c1dae1ffa5b3"},
+    {"hidden": 16, "modules": 4, "hub_fraction": 0.2, "seed": 17, "edge_count": 52, "edge_sha256": "62f338fa0fd8279b2908e0e21d857f398067d01eb56e4ee6e8527ae94935bbbc"},
+    {"hidden": 24, "modules": 4, "hub_fraction": 0.08, "seed": 29, "edge_count": 77, "edge_sha256": "b3bc53bd4608da8bd01cad1470c6ce6356a740aa986893c34ad69a907fd95247"}
+  ],
+  "state": [
+    ["queries",[2,8],"float32"],["tokenizer.0.weight",[8,8],"float32"],["tokenizer.0.bias",[8],"float32"],
+    ["tokenizer.2.weight",[8,8],"float32"],["tokenizer.2.bias",[8],"float32"],
+    ["stats.weight",[8,2],"float32"],["stats.bias",[8],"float32"],
+    ["clock.weight",[8,4],"float32"],["clock.bias",[8],"float32"],
+    ["key.weight",[8,8],"float32"],["value.weight",[8,8],"float32"],
+    ["graph.type_weight",[9],"float32"],["graph.tau_logits",[3],"float32"],["graph.bias",[12],"float32"],
+    ["graph.dst",[22],"int64"],["graph.src",[22],"int64"],["graph.pop",[12],"int64"],
+    ["graph.edge_type",[22],"int64"],["graph.degree",[12],"float32"],
+    ["graph.drive.weight",[12,16],"float32"],["graph.drive.bias",[12],"float32"],
+    ["graph.out.weight",[8,12],"float32"],["graph.out.bias",[8],"float32"],
+    ["context.0.weight",[8,24],"float32"],["context.0.bias",[8],"float32"],
+    ["context.2.weight",[8],"float32"],["context.2.bias",[8],"float32"],
+    ["decoder.weight",[4,8],"float32"],["decoder.bias",[4],"float32"]
+  ],
+  "parameters": ["queries","tokenizer.0.weight","tokenizer.0.bias","tokenizer.2.weight","tokenizer.2.bias","stats.weight","stats.bias","clock.weight","clock.bias","key.weight","value.weight","graph.type_weight","graph.tau_logits","graph.bias","graph.drive.weight","graph.drive.bias","graph.out.weight","graph.out.bias","context.0.weight","context.0.bias","context.2.weight","context.2.bias","decoder.weight","decoder.bias"],
+  "parameter_count": 936
+}

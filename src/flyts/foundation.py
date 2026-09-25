@@ -10,8 +10,8 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
-from .model import FlyRNNConfig, _make_fly_mask
 from .masking import MaskPlan
+from .topology import build_topology
 
 
 @dataclass(frozen=True)
@@ -26,6 +26,7 @@ class EncoderConfig:
     tau_max: float = 3_000_000.0
     topology_seed: int = 7
     backend: str = "dense"
+    topology: str = "fly_like"
 
     def __post_init__(self):
         if min(self.patch_size, self.width, self.hidden, self.slots) < 1:
@@ -38,6 +39,8 @@ class EncoderConfig:
             raise ValueError("invalid tau bounds")
         if self.backend not in ("dense", "scatter"):
             raise ValueError("backend must be dense or scatter")
+        if self.topology != "fly_like":
+            raise ValueError(f"unknown topology kind {self.topology!r}; supported: fly_like")
 
 
 class PopulationGraph(nn.Module):
@@ -49,19 +52,17 @@ class PopulationGraph(nn.Module):
     def __init__(self, cfg):
         super().__init__()
         self.cfg = cfg
-        mask = _make_fly_mask(FlyRNNConfig(
-            input_size=cfg.width, hidden_size=cfg.hidden,
-            num_populations=cfg.populations, num_modules=min(4, cfg.hidden),
-            sparsity=1-cfg.density, topology_seed=cfg.topology_seed,
-        ))
-        dst, src = mask.nonzero(as_tuple=True)
         pop = torch.arange(cfg.hidden) * cfg.populations // cfg.hidden
-        self.register_buffer("dst", dst)
-        self.register_buffer("src", src)
-        self.register_buffer("pop", pop)
-        self.register_buffer("edge_type", pop[dst] * cfg.populations + pop[src])
+        graph = build_topology(cfg.topology, hidden_size=cfg.hidden,
+                               num_modules=min(4, cfg.hidden),
+                               num_populations=cfg.populations, population=pop,
+                               sparsity=1-cfg.density, seed=cfg.topology_seed)
+        self.register_buffer("dst", graph.dst)
+        self.register_buffer("src", graph.src)
+        self.register_buffer("pop", graph.population)
+        self.register_buffer("edge_type", graph.edge_type)
         # L1-normalized incoming weights keep recurrence non-expansive in infinity norm.
-        self.register_buffer("degree", mask.sum(1).clamp_min(1))
+        self.register_buffer("degree", graph.degree)
         self.type_weight = nn.Parameter(torch.randn(cfg.populations**2) * 0.2)
         self.tau_logits = nn.Parameter(torch.linspace(-3, 3, cfg.populations))
         self.drive = nn.Linear(cfg.slots * cfg.width, cfg.hidden)

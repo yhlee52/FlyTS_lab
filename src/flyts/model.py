@@ -8,6 +8,8 @@ import math
 import torch
 from torch import Tensor, nn
 
+from .topology import build_topology
+
 
 @dataclass(frozen=True)
 class FlyRNNConfig:
@@ -48,36 +50,14 @@ class FlyRNNConfig:
 
 def _make_fly_mask(config: FlyRNNConfig) -> Tensor:
     """Create a reproducible sparse modular mask with reciprocal and hub edges."""
-
-    n = config.hidden_size
-    generator = torch.Generator().manual_seed(config.topology_seed)
-    module = torch.arange(n) * config.num_modules // n
-
-    base_density = 1.0 - config.sparsity
-    same_module = module[:, None] == module[None, :]
-    probabilities = torch.full((n, n), base_density * 0.55)
-    probabilities[same_module] = min(1.0, base_density * 2.25)
-    mask = torch.rand((n, n), generator=generator) < probabilities
-
-    reciprocal_candidates = mask & ~mask.T
-    add_reverse = (
-        torch.rand((n, n), generator=generator) < config.reciprocal_fraction
-    ) & reciprocal_candidates
-    mask |= add_reverse.T
-
-    hub_count = max(1, round(n * config.hub_fraction)) if config.hub_fraction else 0
-    if hub_count:
-        hubs = torch.randperm(n, generator=generator)[:hub_count]
-        hub_density = min(0.50, max(0.15, base_density * 3.0))
-        mask[hubs, :] |= torch.rand((hub_count, n), generator=generator) < hub_density
-        mask[:, hubs] |= torch.rand((n, hub_count), generator=generator) < hub_density
-
-    mask.fill_diagonal_(False)
-    # Every neuron needs at least one incoming edge.
-    for target in torch.where(mask.sum(dim=1) == 0)[0].tolist():
-        source = (target + 1) % n
-        mask[target, source] = True
-    return mask.float()
+    population = torch.arange(config.hidden_size) % config.num_populations
+    return build_topology("fly_like", hidden_size=config.hidden_size,
+                          num_modules=config.num_modules,
+                          num_populations=config.num_populations, population=population,
+                          sparsity=config.sparsity,
+                          reciprocal_fraction=config.reciprocal_fraction,
+                          hub_fraction=config.hub_fraction,
+                          seed=config.topology_seed).mask
 
 
 class FlyRNNCell(nn.Module):
