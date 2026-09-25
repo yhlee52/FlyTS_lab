@@ -8,7 +8,7 @@ Stages 00–03 are closed. PR #8 was merged into `main` at `461f1fc`. Stage 03 c
 
 ## Current goal
 
-Prepare the user-authorized Stage 03 Draft PR for review. Preserve candidate numerical settings; report descriptive robustness metrics only. Merge and Stage 04 remain separately gated.
+Review Stage 03 Draft PR #9 at commit `a522f772512c005ce695f48fd71dfa231e22328e`. Preserve candidate numerical settings; report descriptive robustness metrics only. Merge and Stage 04 remain separately gated.
 
 ## Canonical references
 
@@ -106,7 +106,8 @@ Prepare the user-authorized Stage 03 Draft PR for review. Preserve candidate num
 - Experiment Scientist judged the candidate's reproducibility and aggregation structure suitable but numerical freeze unsupported. Independent QA issued a pre-remediation `CONDITIONAL PASS`; portable provenance, algebraic-reference wording, floor labels, and sparse count-arm coverage were corrected. Post-remediation implementation self-check passed, and independent remediation QA issued `PASS` for candidate review only. Threshold, guard and uncertainty freeze evidence remains insufficient.
 - The user accepted the candidate evidence milestone with `GO — defer freeze`; this did not authorize additional evidence work or Stage 03 closure.
 - The user subsequently approved Stage 03 closure without numerical freeze and a Draft PR after final QA. Independent final QA reported `PASS` for all eight Charter criteria in that bounded scope; `RESULT.md` is closed. Robustness pass/fail and final claims remain prohibited.
+- Draft PR #9 (`https://github.com/yhlee52/FlyTS_lab/pull/9`) was created at commit `a522f772512c005ce695f48fd71dfa231e22328e`; merge and Stage 04 are not authorized.
 
 ## Next action
 
-Let the Research Director prepare the authorized Stage 03 Draft PR for review. Merge requires separate user approval. Do not freeze numerical settings or start Stage 04 without a separate gate.
+Review Draft PR #9. Merge requires separate user approval. Do not freeze numerical settings or start Stage 04 without a separate gate.

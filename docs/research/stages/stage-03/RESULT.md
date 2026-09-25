@@ -51,4 +51,4 @@ CUDA execution, formal pass/fail thresholds, frozen probes, transfer, topology e
 - Charter and decision: `docs/research/stages/stage-03/CHARTER.md`, DEC-011–014.
 - Independent final QA: `docs/research/stages/stage-03/QA_REPORT.md` (`PASS` within the no-freeze scope).
 
-The Research Director may prepare the user-authorized Draft PR. Merge and Stage 04 require separate user approval. Formal robustness pass/fail requires a separately approved reopening and numerical freeze.
+Draft PR #9 (`https://github.com/yhlee52/FlyTS_lab/pull/9`) was created at commit `a522f772512c005ce695f48fd71dfa231e22328e`. Merge and Stage 04 require separate user approval. Formal robustness pass/fail requires a separately approved reopening and numerical freeze.
