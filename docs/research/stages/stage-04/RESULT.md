@@ -58,6 +58,7 @@ Independent QA issued final `PASS` after the shared notebook's stale test count 
 
 - Draft PR #10: `https://github.com/yhlee52/FlyTS_lab/pull/10`
 - Initial implementation and result commit: `c4fdc62`
+- GitHub Actions `pytest` run `36106979369`: passed on record commit `8563df3` before this CI evidence note.
 - Merge and Stage 05 remain separately gated.
 
 ## User stage gate

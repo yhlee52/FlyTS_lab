@@ -112,7 +112,8 @@ Review Draft PR #10 and its CI evidence. Do not merge or begin Stage 05.
 - Draft PR #9 (`https://github.com/yhlee52/FlyTS_lab/pull/9`) was created at commit `a522f772512c005ce695f48fd71dfa231e22328e`; merge and Stage 04 are not authorized.
 - Stage 04 pre-refactor CPU evidence is under ignored `outputs/stage04/`: five seeded golden graphs, ordered state/parameters, fixed forward/backward/loss, and a runtime legacy-v1 checkpoint. Post-refactor comparison is bitwise for same-backend CPU state/order/forward/loss/gradients; strict v1 load, bitwise epoch-boundary resume and stable evaluator-row tests pass. The focused suite passes 13 tests and the full suite passes 68 tests with three CUDA hardware skips; notebook/governance validators and diff check pass. Independent QA issued final `PASS`, and the user accepted the result with `GO` (DEC-017).
 - Draft PR #10 (`https://github.com/yhlee52/FlyTS_lab/pull/10`) records the accepted Stage 04 scope, QA `PASS`, evidence and limitations. Merge and Stage 05 are not authorized.
+- Draft PR #10 GitHub Actions `pytest` run `36106979369` passed on commit `8563df3` before the final CI evidence note.
 
 ## Next action
 
-Review Draft PR #10 and record its CI result when available. Do not merge or begin Stage 05 without separate explicit approval.
+Review Draft PR #10. Do not merge or begin Stage 05 without separate explicit approval.
