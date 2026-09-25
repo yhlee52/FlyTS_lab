@@ -10,7 +10,7 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-from .corpus import WindowDataset, collate_windows, sha256, verify_corpus
+from .corpus import WindowDataset, collate_windows, sha256, verify_corpus, verify_development_corpus
 from .foundation import EncoderConfig, FlyTSFoundation, reconstruction_loss, sample_hide
 from .masking import canonical_masking, sample_mask_plan
 
@@ -76,7 +76,8 @@ def load_encoder(checkpoint, device="cpu"):
     return model.to(device).eval(), state
 
 
-def train(manifest, config_path, output, device="auto", resume=None, epochs=None):
+def train(manifest, config_path, output, device="auto", resume=None, epochs=None,
+          development_only=False):
     config = json.loads(Path(config_path).read_text())
     masking = canonical_masking(config)
     if epochs is not None:
@@ -92,7 +93,11 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
-    verify_corpus(manifest)
+    if development_only:
+        verify_development_corpus(manifest, "train")
+        verify_development_corpus(manifest, "val")
+    else:
+        verify_corpus(manifest)
     digest = sha256(manifest)
     mcfg = EncoderConfig(**config["model"])
     model = FlyTSFoundation(mcfg).to(device)

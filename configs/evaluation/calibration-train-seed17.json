@@ -1,0 +1,13 @@
+{
+  "seed": 17,
+  "epochs": 2,
+  "batch_size": 4,
+  "steps_per_epoch": 200,
+  "context": 128,
+  "stride": 64,
+  "threads": 2,
+  "lr": 0.001,
+  "masking": {"temporal_ratio": 0.4, "channel_ratio": 0.2, "channel_dropout_ratio": 0.1},
+  "val_batches": 0,
+  "model": {"patch_size": 8, "width": 32, "hidden": 64, "slots": 4, "populations": 8}
+}

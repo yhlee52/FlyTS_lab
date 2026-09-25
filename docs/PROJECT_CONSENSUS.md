@@ -2,6 +2,8 @@
 
 Status: approved for Stage 01 protocol work on 2026-09-24
 
+DEC-014 Stage 03 handoff (2026-09-25): the evaluator and development candidate evidence were accepted, but numerical guards, effect/pass-fail thresholds and uncertainty configuration remain `candidate` and unfrozen. The Stage 01 freeze references below state a prerequisite for later formal claims, not an achieved Stage 03 freeze. Descriptive reporting is allowed; pass/fail use requires separately approved reopened calibration and freeze before final claims.
+
 ## Mission and research question
 
 FlyTS is a channel-agnostic multivariate time-series foundation encoder. The first complete target is the public-data `FlyTS-Mini v0.1` evidence package; semiconductor adaptation remains deferred until after its Stage 10 gate.
@@ -15,7 +17,7 @@ The active hypotheses are H-01 through H-04 in `docs/research/HYPOTHESES.md`. Th
 - The user is the final authority for stage scope, research questions, splits, metrics, budgets, acceptance criteria, PR merge, and stage advancement.
 - `docs/research/DECISION_LOG.md` DEC-007 records the approved Stage 01 choices.
 - `docs/EXPERIMENT_PROTOCOL.md` is the operational protocol. If it conflicts with the development plan, hypothesis register, or a run configuration, work stops until the documents are reconciled through the user gate.
-- Numerical performance thresholds are not set in Stage 01. Stage 03 calibrates and freezes them using development evidence without final-test access.
+- Numerical performance thresholds were not set in Stage 01. Stage 03 produced development-only candidates; DEC-014 deferred their freeze without final-test access.
 
 ## Domain and split contract
 
@@ -40,13 +42,13 @@ The common evaluation family is masked reconstruction, channel permutation dista
 
 Topology, tokenizer, router, and backbone are separate experimental factors. A topology claim requires tokenizer, router, backbone capacity, data, optimization, exposure, and budget controls to remain fixed. Router, tokenizer, or backbone ablations hold topology fixed. A contrast that changes more than one factor cannot attribute the outcome to topology.
 
-H-03's primary topology endpoint is the paired difference in final domain-macro masked Huber between fly-like and each of the rewired and random controls. Both registered contrasts must satisfy the Stage 03-frozen effect and uncertainty rules for a topology-support claim. Robustness, probes, transfer, and efficiency are secondary outcomes and cannot rescue a failed primary topology endpoint.
+H-03's primary topology endpoint is the paired difference in final domain-macro masked Huber between fly-like and each of the rewired and random controls. Both registered contrasts must satisfy separately approved frozen effect and uncertainty rules for a topology-support claim; such rules are not yet frozen. Robustness, probes, transfer, and efficiency are secondary outcomes and cannot rescue a failed primary topology endpoint.
 
 Channel-count interpolation and extrapolation use deterministic nested channel views from the same source record. The primary outcome is relative domain-macro Huber degradation against the nearest seen-count paired view on shared targets. Target-local frozen probes use macro-F1 for classification and train-standardized RMSE for regression, compared with paired random-init encoder and visible-statistics controls. Classification and regression families remain separate rather than being combined into a task-agnostic score.
 
 ## Outcome and claim policy
 
-- `support`: the prespecified primary evidence meets the Stage 03-frozen threshold and uncertainty rule without a guardrail or protocol failure.
+- `support`: the prespecified primary evidence meets a separately approved frozen threshold and uncertainty rule without a guardrail or protocol failure; this classification is unavailable while rules remain candidate.
 - `no-support`: the valid result is null, inconclusive, or below the prespecified support rule.
 - `harm`: the valid paired evidence shows a credible adverse effect under the frozen rule.
 - `revisit`: a prespecified instrumentation, data-integrity, or protocol defect permits one diagnostic rerun. Preserve both original and rerun evidence.
@@ -59,7 +61,7 @@ A negative result supports only a bounded statement such as “no evidence of be
 | Stage | Protocol handoff |
 |---:|---|
 | 2 | Implement masking and dropout leakage controls; no performance gate. |
-| 3 | Implement the common evaluator and calibrate counts, interval method, and numerical thresholds on development evidence only. |
+| 3 | Implement the common evaluator and record development-only candidate counts, interval method and numerical thresholds; DEC-014 defers numerical freeze. |
 | 4 | Modularize topology without intended behavior change. |
 | 5 | Compare fly-like, degree-preserving rewired, and random sparse controls under the frozen matched protocol. |
 | 6 | Freeze the rights- and schema-audited public corpus and assign domain roles before performance inspection. |

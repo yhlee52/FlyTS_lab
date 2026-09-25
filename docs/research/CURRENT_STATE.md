@@ -4,11 +4,11 @@ Updated: 2026-09-25
 
 ## Current stage
 
-Stages 00–02 are closed. The user accepted the Stage 02 result and final independent QA `PASS` with `GO` on 2026-09-25. PR #8 is awaiting user-managed merge; Stage 03 is not authorized.
+Stages 00–03 are closed. PR #8 was merged into `main` at `461f1fc`. Stage 03 closed after user-approved no-freeze closure and independent final QA `PASS`; thresholds, numerical guards and uncertainty config remain candidate.
 
 ## Current goal
 
-Preserve the accepted Stage 02 evidence while the user merges PR #8. Do not begin Stage 03 without a separate Charter and explicit approval.
+Prepare the user-authorized Stage 03 Draft PR for review. Preserve candidate numerical settings; report descriptive robustness metrics only. Merge and Stage 04 remain separately gated.
 
 ## Canonical references
 
@@ -21,6 +21,9 @@ Preserve the accepted Stage 02 evidence while the user merges PR #8. Do not begi
 - `docs/research/TOKEN_BUDGET_POLICY.md`
 - `docs/research/stages/stage-02/CHARTER.md`
 - `docs/MASKING.md`
+- `docs/EXPERIMENT_PROTOCOL.md`
+- `docs/EVALUATION.md`
+- `docs/research/stages/stage-03/CHARTER.md`
 
 ## Confirmed decisions
 
@@ -44,6 +47,11 @@ Preserve the accepted Stage 02 evidence while the user merges PR #8. Do not begi
 - The user accepted the Stage 01 result and independent QA `PASS` with `GO` on 2026-09-24, closing Stage 01 and authorizing PR #7 merge without authorizing Stage 02.
 - The user separately approved Stage 02's architecture and acceptance contract with `GO` on 2026-09-24; DEC-009 records the implementation boundary.
 - The user accepted the Stage 02 result and final QA `PASS` with `GO` on 2026-09-25; DEC-010 closes Stage 02, leaves PR #8 for user-managed merge, and does not authorize Stage 03.
+- PR #8 was merged into `main` at `461f1fc`; the user separately approved Stage 03 evaluator scope, deterministic fixtures, three 400-step development seeds, hierarchical bootstrap candidate, and the candidate-only threshold gate with `GO` (DEC-011).
+- DEC-012 records the user's option A: train-only fitted preprocessing is retained; paired scoring uses a record-local common visible context reference frame. One extra bounded Implementation follow-up was approved for QA fixes and exact-hash public candidate evidence.
+- DEC-013 records user `GO — defer freeze`: candidate evidence milestone accepted, numerical settings remain candidate, and additional evidence scope is a separate approval gate.
+- DEC-014 records the user's closure path without numerical freeze: evaluator/candidate evidence accepted, final QA before closure, Draft PR creation authorized afterward, Stage 04 and merge separately gated.
+- DEC-015 records independent final QA `PASS` and Stage 03 closure within the no-frozen-threshold scope; formal robustness pass/fail still requires separately approved reopened calibration and freeze.
 
 ## Open questions
 
@@ -59,6 +67,7 @@ Preserve the accepted Stage 02 evidence while the user merges PR #8. Do not begi
 - Too many agents or full-lab reviews could waste tokens without improving evidence.
 - Premature final-test access, post-hoc threshold selection, or unmatched multi-factor comparisons could invalidate later claims.
 - Fully hidden channels cannot be distinguished without metadata; overlap and dropout require explicit target and statistic leakage checks.
+- The approved public starter manifest is present locally with exact SHA-256 `e538e9cbf761577740f43f6930ac4653834fdc00f9d0ee567b02b52e2d0d14eb`; test and final-held-out arrays remain sealed.
 
 ## Latest evidence
 
@@ -88,10 +97,16 @@ Preserve the accepted Stage 02 evidence while the user merges PR #8. Do not begi
 - Initial Stage 02 independent QA issued `FAIL` for forced minimum channel targets, target-free single-channel handling, manual-plan validation, missing/padding distinction, charter completeness, records, and reproductions. The implementation follow-up removes the forced minimum, adds plan and padding checks, and preserves the initial QA verdict until re-review.
 - After remediation, independent QA reproduced the corrected low-ratio sampling, invalid-plan rejection, missing/padding separation, target-free error, finite two-epoch CPU smoke, and 29-tensor bitwise resume, then issued final `PASS`.
 - The full suite passes with 36 tests and two CUDA hardware skips; notebook/governance validators and diff check pass.
-- Draft PR #8 (`https://github.com/yhlee52/FlyTS_lab/pull/8`) is open from `codex/stage-02-channel-masking`; it is unmerged and records the approved contract, compatibility evidence, QA `PASS`, and limitations.
+- PR #8 (`https://github.com/yhlee52/FlyTS_lab/pull/8`) was merged into `main` at `461f1fc`; its Stage 02 QA `PASS` remains the handoff basis.
 - Draft PR #8 GitHub Actions `tests` run #40 passed on commit `3a25b46` after PR evidence links were added.
-- The user issued the Stage 02 result-gate `GO` after reviewing implementation, compatibility, QA, risks, and unverified claims; PR #8 remains unmerged by design.
+- The user issued the Stage 02 result-gate `GO` after reviewing implementation, compatibility, QA, risks, and unverified claims.
+- Stage 03 is on `codex/stage-03-robustness-evaluator`. Public development calibration is complete; candidate QA issued a pre-remediation `CONDITIONAL PASS`, followed by remediation QA `PASS` for user-reviewable candidate evidence. The Charter `GO` covers evaluator and candidate generation only.
+- The exact-hash public starter corpus passed development-only train/val verification without opening test arrays. Three 400-step CPU runs at seeds `7/17/29` used uniformly trained `last.pt`; each full evaluator run covered 522 validation windows, 38,634 raw rows and 31 metric arms with identical fixture/source hashes.
+- `reports/robustness/calibration-candidate-v1.{json,csv,md}` records candidate-only control evidence and 10,000 paired hierarchical bootstrap intervals. Energy and transport each have one validation record; effect threshold freeze is not supported by independent controls.
+- Experiment Scientist judged the candidate's reproducibility and aggregation structure suitable but numerical freeze unsupported. Independent QA issued a pre-remediation `CONDITIONAL PASS`; portable provenance, algebraic-reference wording, floor labels, and sparse count-arm coverage were corrected. Post-remediation implementation self-check passed, and independent remediation QA issued `PASS` for candidate review only. Threshold, guard and uncertainty freeze evidence remains insufficient.
+- The user accepted the candidate evidence milestone with `GO — defer freeze`; this did not authorize additional evidence work or Stage 03 closure.
+- The user subsequently approved Stage 03 closure without numerical freeze and a Draft PR after final QA. Independent final QA reported `PASS` for all eight Charter criteria in that bounded scope; `RESULT.md` is closed. Robustness pass/fail and final claims remain prohibited.
 
 ## Next action
 
-Await user-managed merge of PR #8 and a separate request for Stage 03 Charter preparation. Do not begin Stage 03.
+Let the Research Director prepare the authorized Stage 03 Draft PR for review. Merge requires separate user approval. Do not freeze numerical settings or start Stage 04 without a separate gate.

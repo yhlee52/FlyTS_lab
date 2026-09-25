@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FlyTS Stage 3 robustness summary",
+  "type": "object",
+  "required": ["schema_version", "status", "stable", "runtime"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "status": {"const": "candidate"},
+    "stable": {
+      "type": "object",
+      "required": ["provenance", "fixture_sha256", "aggregation", "results"],
+      "properties": {
+        "provenance": {"type": "object"},
+        "fixture_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "aggregation": {"type": "object", "required": ["position_metrics", "within_record", "representation_within_record", "within_domain", "across_domains", "paired_degradation"]},
+        "results": {"type": "array", "items": {"type": "object", "required": ["metric", "arm", "domain_macro", "domains", "micro", "worst_domain"]}}
+      }
+    },
+    "runtime": {"type": "object"}
+  }
+}

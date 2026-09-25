@@ -1,0 +1,1859 @@
+{
+  "additional_evidence_scope": "requires separate user approval",
+  "candidate_milestone": "accepted",
+  "candidate_numerical_guards": {
+    "current_config_floor": 1e-08,
+    "direction": "higher floor marks more relative changes undefined; it is the stricter denominator guard",
+    "minimum_observed_absolute_baseline": 0.0004009057010989636,
+    "options": {
+      "high_floor": 1e-06,
+      "low_floor": 1e-08,
+      "medium_floor": 1e-07
+    }
+  },
+  "candidate_thresholds": {
+    "effect_thresholds": "insufficient independent controls; no numeric freeze candidate",
+    "limitation": "gap uses an algebraic order-sensitive reference, not an executed sensitivity fixture",
+    "permutation_formula_gap_options": {
+      "balanced": 0.01428573783703869,
+      "lenient": 0.028571450883209587,
+      "strict": 0.002857167400101974
+    },
+    "selection_impact": "strict risks false rejection from numerical jitter; lenient risks accepting material drift"
+  },
+  "candidate_uncertainty": {
+    "level": 0.95,
+    "method": "paired hierarchical percentile bootstrap",
+    "options": [
+      "hierarchical percentile",
+      "domain-only percentile",
+      "defer freeze"
+    ],
+    "resamples": 10000,
+    "units": [
+      "seed",
+      "domain",
+      "source-record"
+    ]
+  },
+  "controls": {
+    "executed_identity_permutation": [
+      0.0
+    ],
+    "executed_padding_domain_macro": [
+      2.4523110499903946e-08,
+      7.226886341829244e-09,
+      2.479086779491564e-08
+    ],
+    "executed_zero_dropout": [
+      0.0
+    ],
+    "formula_references_not_executed_fixtures": {
+      "loss_degradation": {
+        "formula": "(2-1)/abs(1)",
+        "value": 1.0
+      },
+      "order_sensitive_1_minus_cosine": {
+        "formula": "1 - dot([1,2,3],[3,2,1])/(sqrt(14)*sqrt(14))",
+        "value": 0.2857142857142857
+      }
+    },
+    "unit_test_guards": [
+      "near-zero norm undefined",
+      "zero denominator undefined"
+    ]
+  },
+  "decision_gate": "HOLD",
+  "domains": [
+    "energy",
+    "environment",
+    "transport"
+  ],
+  "excluded_domain_roles": [
+    "final-held-out"
+  ],
+  "excluded_splits": [
+    "test"
+  ],
+  "experiment_scientist": "Reproducibility and aggregation structure are suitable for candidate evidence; independent numerical freeze is not supported by the available controls/coverage.",
+  "fixture_sha256": "d48087dac8456d191a277c6e59421798a679e4079ca2e859faa398bde6324f0f",
+  "limitations": [
+    "three development domains and three seeds; energy and transport have one validation record each",
+    "some channel-count arms have only one eligible domain and one source record; their bootstrap interval cannot establish cross-domain uncertainty or justify freeze",
+    "candidate thresholds are not formal model-quality or final-test evidence",
+    "public development corpus is reused across threshold candidates"
+  ],
+  "manifest_sha256": "e538e9cbf761577740f43f6930ac4653834fdc00f9d0ee567b02b52e2d0d14eb",
+  "metric_results": [
+    {
+      "arm": "extrapolation:1->4",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 0.006688072627133018,
+        "29": 0.0035058349099730403,
+        "7": 0.0017673938255638806
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 0.0006749382160623088,
+          "environment": 0.0023397385940354017,
+          "transport": 0.01817231925866982
+        },
+        "29": {
+          "energy": 0.00010725836413175162,
+          "environment": 0.0013834612921962335,
+          "transport": 0.009695181768109252
+        },
+        "7": {
+          "energy": 0.00021408539582442278,
+          "environment": 0.00018645697439806025,
+          "transport": 0.005251195134064601
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": 0.0002532107961579518,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 0.011209491999416735,
+        "valid_resamples": 10000
+      },
+      "mean": 0.003987100454223313,
+      "metric": "channel_count",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 0.0024953922257061824
+    },
+    {
+      "arm": "extrapolation:3->4",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 0.0001739587576476237,
+        "29": -0.0005328726958584995,
+        "7": -0.000717932914823374
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 5.998284600099927e-05,
+          "environment": 0.00020356014061866093,
+          "transport": 0.0002670009399193234
+        },
+        "29": {
+          "energy": -4.4699443942909364e-05,
+          "environment": 1.3158022778014282e-05,
+          "transport": -0.0016216337618604178
+        },
+        "7": {
+          "energy": -2.710645221129658e-05,
+          "environment": -2.8765197712088956e-05,
+          "transport": -0.002177069258889076
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": -0.0013562693976247936,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 0.0001943181406035624,
+        "valid_resamples": 10000
+      },
+      "mean": -0.0003589489510114166,
+      "metric": "channel_count",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 0.0004706960703277681
+    },
+    {
+      "arm": "interpolation:10->11",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 9.329939018840766e-05,
+        "29": -8.769272444566072e-06,
+        "7": -2.757813057627147e-05
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": -9.06224486041065e-05,
+          "environment": 0.0002721378867353216
+        },
+        "29": {
+          "energy": -7.774326227833871e-05,
+          "environment": 5.8366322098613924e-05
+        },
+        "7": {
+          "energy": -6.142222576129514e-05,
+          "environment": 5.473003901129038e-06
+        }
+      },
+      "eligible_domain_count": 2,
+      "eligible_source_record_count": 13,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12
+      },
+      "interval": {
+        "domains": 2,
+        "level": 0.95,
+        "lower": -8.635624265654376e-05,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 0.00023105873135695234,
+        "valid_resamples": 10000
+      },
+      "mean": 1.898399572252337e-05,
+      "metric": "channel_count",
+      "records_by_seed": {
+        "17": 13,
+        "29": 13,
+        "7": 13
+      },
+      "std": 6.504249900656988e-05
+    },
+    {
+      "arm": "interpolation:12->11",
+      "coverage_status": "single_domain_single_record",
+      "domain_macro_by_seed": {
+        "17": -9.971433640343481e-05,
+        "29": -3.2117137228097054e-05,
+        "7": 3.68600032393376e-08
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": -9.971433640343481e-05
+        },
+        "29": {
+          "energy": -3.2117137228097054e-05
+        },
+        "7": {
+          "energy": 3.68600032393376e-08
+        }
+      },
+      "eligible_domain_count": 1,
+      "eligible_source_record_count": 1,
+      "eligible_source_records_by_domain": {
+        "energy": 1
+      },
+      "interval": {
+        "domains": 1,
+        "level": 0.95,
+        "lower": -9.971433640343481e-05,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 3.68600032393376e-08,
+        "valid_resamples": 10000
+      },
+      "mean": -4.393153787609751e-05,
+      "metric": "channel_count",
+      "records_by_seed": {
+        "17": 1,
+        "29": 1,
+        "7": 1
+      },
+      "std": 5.091424499238229e-05
+    },
+    {
+      "arm": "interpolation:18->11",
+      "coverage_status": "single_domain_single_record",
+      "domain_macro_by_seed": {
+        "17": -1.6830988307016842e-05,
+        "29": -6.222382028996623e-05,
+        "7": 1.9980754602599087e-05
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": -1.6830988307016842e-05
+        },
+        "29": {
+          "energy": -6.222382028996623e-05
+        },
+        "7": {
+          "energy": 1.9980754602599087e-05
+        }
+      },
+      "eligible_domain_count": 1,
+      "eligible_source_record_count": 1,
+      "eligible_source_records_by_domain": {
+        "energy": 1
+      },
+      "interval": {
+        "domains": 1,
+        "level": 0.95,
+        "lower": -6.222382028996623e-05,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 1.9980754602599087e-05,
+        "valid_resamples": 10000
+      },
+      "mean": -1.9691351331461328e-05,
+      "metric": "channel_count",
+      "records_by_seed": {
+        "17": 1,
+        "29": 1,
+        "7": 1
+      },
+      "std": 4.1176865966104705e-05
+    },
+    {
+      "arm": "interpolation:25->26",
+      "coverage_status": "single_domain_single_record",
+      "domain_macro_by_seed": {
+        "17": 2.7564122869350144e-05,
+        "29": 1.562463965135328e-05,
+        "7": 1.645176748525669e-05
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 2.7564122869350144e-05
+        },
+        "29": {
+          "energy": 1.562463965135328e-05
+        },
+        "7": {
+          "energy": 1.645176748525669e-05
+        }
+      },
+      "eligible_domain_count": 1,
+      "eligible_source_record_count": 1,
+      "eligible_source_records_by_domain": {
+        "energy": 1
+      },
+      "interval": {
+        "domains": 1,
+        "level": 0.95,
+        "lower": 1.562463965135328e-05,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 2.7564122869350144e-05,
+        "valid_resamples": 10000
+      },
+      "mean": 1.988017666865337e-05,
+      "metric": "channel_count",
+      "records_by_seed": {
+        "17": 1,
+        "29": 1,
+        "7": 1
+      },
+      "std": 6.667331327060792e-06
+    },
+    {
+      "arm": "interpolation:5->4",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": -0.00023322410885625143,
+        "29": -9.734995069309837e-05,
+        "7": -2.203513787622023e-05
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": -0.0001046398561895343,
+          "environment": -0.000373435783335105
+        },
+        "29": {
+          "energy": -6.797451362623181e-05,
+          "environment": -0.00012953712117035884
+        },
+        "7": {
+          "energy": -6.259223568192484e-05,
+          "environment": 2.2588784445438712e-05
+        }
+      },
+      "eligible_domain_count": 2,
+      "eligible_source_record_count": 13,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12
+      },
+      "interval": {
+        "domains": 2,
+        "level": 0.95,
+        "lower": -0.00034589410890932336,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": -9.212268894120107e-06,
+        "valid_resamples": 10000
+      },
+      "mean": -0.00011753639914185667,
+      "metric": "channel_count",
+      "records_by_seed": {
+        "17": 13,
+        "29": 13,
+        "7": 13
+      },
+      "std": 0.00010703184055051982
+    },
+    {
+      "arm": "interpolation:7->4",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": -0.0007649677003453949,
+        "29": -0.00019476740609867445,
+        "7": -2.398168644373735e-05
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": -0.0005628351641429398,
+          "environment": -0.0009853783710133096
+        },
+        "29": {
+          "energy": -0.00015664246699203892,
+          "environment": -0.00023654155610275399
+        },
+        "7": {
+          "energy": -9.44770690577792e-05,
+          "environment": 5.3582553800506995e-05
+        }
+      },
+      "eligible_domain_count": 2,
+      "eligible_source_record_count": 13,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12
+      },
+      "interval": {
+        "domains": 2,
+        "level": 0.95,
+        "lower": -0.0008364680954715006,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": -1.8536185375722497e-05,
+        "valid_resamples": 10000
+      },
+      "mean": -0.0003279055976292689,
+      "metric": "channel_count",
+      "records_by_seed": {
+        "17": 13,
+        "29": 13,
+        "7": 13
+      },
+      "std": 0.0003880198470858093
+    },
+    {
+      "arm": "0%",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 0.0,
+        "29": 0.0,
+        "7": 0.0
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 0.0,
+          "environment": 0.0,
+          "transport": 0.0
+        },
+        "29": {
+          "energy": 0.0,
+          "environment": 0.0,
+          "transport": 0.0
+        },
+        "7": {
+          "energy": 0.0,
+          "environment": 0.0,
+          "transport": 0.0
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": 0.0,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 0.0,
+        "valid_resamples": 10000
+      },
+      "mean": 0.0,
+      "metric": "dropout",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 0.0
+    },
+    {
+      "arm": "10%",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 8.026503097211855e-05,
+        "29": -9.454060117744567e-05,
+        "7": -0.00016677684546191157
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": -2.5651064074979582e-06,
+          "environment": 0.0001910949155411845,
+          "transport": 4.5189497917082514e-05
+        },
+        "29": {
+          "energy": -6.63632217795817e-06,
+          "environment": 5.4009037382303644e-05,
+          "transport": -0.00033980221170764105
+        },
+        "7": {
+          "energy": -8.066321808797428e-06,
+          "environment": -3.992560614871419e-06,
+          "transport": -0.0004974038892088922
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": -0.0003158574517519728,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 0.00010481353342785575,
+        "valid_resamples": 10000
+      },
+      "mean": -6.03508052224129e-05,
+      "metric": "dropout",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 0.00012702019047614727
+    },
+    {
+      "arm": "30%",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 0.0006474228109262414,
+        "29": -0.00014220829091478088,
+        "7": -0.00047789480707443195
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": -4.857927198332145e-06,
+          "environment": 0.0006965437163280385,
+          "transport": 0.0012433937525633215
+        },
+        "29": {
+          "energy": 4.547622993920988e-06,
+          "environment": 0.0001648813331266391,
+          "transport": -0.0006131735685929975
+        },
+        "7": {
+          "energy": -3.3771835052195406e-06,
+          "environment": -1.1187417729151311e-05,
+          "transport": -0.001441011395725742
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": -0.0007799956404849097,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 0.0006272610432678207,
+        "valid_resamples": 10000
+      },
+      "mean": 9.106570979009542e-06,
+      "metric": "dropout",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 0.0005777171244805973
+    },
+    {
+      "arm": "50%",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 0.000620170438024238,
+        "29": -0.0006377991141868385,
+        "7": -0.0011244625969212049
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": -0.00012005022583022997,
+          "environment": 0.0014515869811797916,
+          "transport": 0.0004675348568312767
+        },
+        "29": {
+          "energy": -3.3398052917478725e-06,
+          "environment": 0.0003718174985754074,
+          "transport": -0.0023550010916394784
+        },
+        "7": {
+          "energy": -9.532554520767055e-06,
+          "environment": -3.1823720062433626e-05,
+          "transport": -0.0034041247934196894
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": -0.0020401573996960995,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 0.0007734016210546479,
+        "valid_resamples": 10000
+      },
+      "mean": -0.00038069709102793507,
+      "metric": "dropout",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 0.000900284507469743
+    },
+    {
+      "arm": "block:10%",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 0.0018867788550210804,
+        "29": 0.0030397233421462816,
+        "7": 0.004078308826586604
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 0.009175155730972304,
+          "environment": -0.003772533623177122,
+          "transport": 0.0005779283828730942
+        },
+        "29": {
+          "energy": 0.009236964483079112,
+          "environment": -0.0005748810746337955,
+          "transport": 0.0006503583487498229
+        },
+        "7": {
+          "energy": 0.009096905887288946,
+          "environment": 0.0024285502388247076,
+          "transport": 0.0007752966661248212
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": -0.0018696829504835516,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 0.009149263291664983,
+        "valid_resamples": 10000
+      },
+      "mean": 0.0030016036745846553,
+      "metric": "missing",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 0.001096262165660547
+    },
+    {
+      "arm": "block:30%",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": -0.02371285667200798,
+        "29": -0.01586917307239008,
+        "7": -0.007189363401731394
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": -0.03378874002056691,
+          "environment": -0.034427144719276576,
+          "transport": 0.011170517843828538
+        },
+        "29": {
+          "energy": -0.025917067176103717,
+          "environment": -0.01971398717858797,
+          "transport": 0.010100166202860248
+        },
+        "7": {
+          "energy": -0.018370844689607774,
+          "environment": -0.0016445469886302297,
+          "transport": 0.009531734768447457
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": -0.03137386148453745,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 0.01008009455355197,
+        "valid_resamples": 10000
+      },
+      "mean": -0.015590464382043152,
+      "metric": "missing",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 0.008265271705381202
+    },
+    {
+      "arm": "block:50%",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": -0.031844933620800965,
+        "29": -0.01290842177806627,
+        "7": 0.005627171300487013
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": -0.044213595171175755,
+          "environment": -0.07594738078596167,
+          "transport": 0.08530037267969122
+        },
+        "29": {
+          "energy": -0.026186619280610116,
+          "environment": -0.04180926494743007,
+          "transport": 0.08270687824596962
+        },
+        "7": {
+          "energy": -0.008441648505168205,
+          "environment": -0.0059310815086148294,
+          "transport": 0.07767157286313009
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": -0.04945990061206916,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 0.08102592503781958,
+        "valid_resamples": 10000
+      },
+      "mean": -0.01304206136612674,
+      "metric": "missing",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 0.018736409913924983
+    },
+    {
+      "arm": "mcar:10%",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": -0.001135602717505944,
+        "29": -0.0005402903237143766,
+        "7": -9.193248957086148e-05
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 0.0007010618394596154,
+          "environment": -0.003267815144806923,
+          "transport": -0.0006963906156246977
+        },
+        "29": {
+          "energy": 0.0005170040493039309,
+          "environment": -0.0014085323350281507,
+          "transport": -0.0006732410495902474
+        },
+        "7": {
+          "energy": 0.0004162588574377508,
+          "environment": -0.00015689395125702217,
+          "transport": -0.0005324708873977178
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": -0.0024785596311892393,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 0.0005118646450131672,
+        "valid_resamples": 10000
+      },
+      "mean": -0.000589275176930394,
+      "metric": "missing",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 0.0005235566092152432
+    },
+    {
+      "arm": "mcar:30%",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": -0.008533000197128434,
+        "29": -0.004427774084156147,
+        "7": 0.0005093091269368133
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": -0.019428638767774068,
+          "environment": -0.006753061325465835,
+          "transport": 0.001161687292594346
+        },
+        "29": {
+          "energy": -0.011272057309790973,
+          "environment": -0.003221021576678588,
+          "transport": 0.0014788784420316657
+        },
+        "7": {
+          "energy": -0.0007952102652013904,
+          "environment": 0.0006346809464018644,
+          "transport": 0.0017344968714212696
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": -0.012822785583103418,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 0.001457747908460944,
+        "valid_resamples": 10000
+      },
+      "mean": -0.004150488384782589,
+      "metric": "missing",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 0.004527527470631972
+    },
+    {
+      "arm": "mcar:50%",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": -0.01095313564819841,
+        "29": -0.004811930012469059,
+        "7": 0.0026136453701541816
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": -0.01664606993732234,
+          "environment": -0.021404244659496148,
+          "transport": 0.007108078691418053
+        },
+        "29": {
+          "energy": -0.008972231330926292,
+          "environment": -0.011264461585112864,
+          "transport": 0.006871842804412514
+        },
+        "7": {
+          "energy": 0.0009464162512574253,
+          "environment": -0.00014936451437564383,
+          "transport": 0.00743199166795777
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": -0.016584071796480106,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 0.0070587162219723325,
+        "valid_resamples": 10000
+      },
+      "mean": -0.004383806763504429,
+      "metric": "missing",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 0.006793515580111013
+    },
+    {
+      "arm": "both",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 2.378231229675969e-08,
+        "29": 2.9082232679190027e-08,
+        "7": 2.0704786523762122e-08
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 2.7627377875326754e-08,
+          "environment": 2.3329223283972505e-08,
+          "transport": 2.0390335730979815e-08
+        },
+        "29": {
+          "energy": 3.614297773694859e-08,
+          "environment": 2.821596924509895e-08,
+          "transport": 2.2887751055522543e-08
+        },
+        "7": {
+          "energy": 1.7031669912787543e-08,
+          "environment": 2.284041787856128e-08,
+          "transport": 2.224227177993754e-08
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": 2.0614639264974353e-08,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 3.090892010514976e-08,
+        "valid_resamples": 10000
+      },
+      "mean": 2.4523110499903946e-08,
+      "metric": "padding",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 4.2375685841187e-09
+    },
+    {
+      "arm": "channel",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 8.264703321714252e-09,
+        "29": 5.791407492461431e-09,
+        "7": 7.624548211312051e-09
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 0.0,
+          "environment": 0.0,
+          "transport": 2.4794109965142753e-08
+        },
+        "29": {
+          "energy": 0.0,
+          "environment": 0.0,
+          "transport": 1.7374222477384293e-08
+        },
+        "7": {
+          "energy": 0.0,
+          "environment": 0.0,
+          "transport": 2.2873644633936153e-08
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": 0.0,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 2.104050391508553e-08,
+        "valid_resamples": 10000
+      },
+      "mean": 7.226886341829244e-09,
+      "metric": "padding",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 1.2837052958449107e-09
+    },
+    {
+      "arm": "time",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 2.4826274799063372e-08,
+        "29": 2.9032977468169078e-08,
+        "7": 2.0513351117514475e-08
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 3.0759265382237805e-08,
+          "environment": 2.3329223283972505e-08,
+          "transport": 2.0390335730979815e-08
+        },
+        "29": {
+          "energy": 3.5995212103885746e-08,
+          "environment": 2.821596924509895e-08,
+          "transport": 2.2887751055522543e-08
+        },
+        "7": {
+          "energy": 1.6457363694044602e-08,
+          "environment": 2.284041787856128e-08,
+          "transport": 2.224227177993754e-08
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": 2.0862920200683364e-08,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 3.155789723733223e-08,
+        "valid_resamples": 10000
+      },
+      "mean": 2.479086779491564e-08,
+      "metric": "padding",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 4.2599235357749214e-09
+    },
+    {
+      "arm": "identity",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 0.0,
+        "29": 0.0,
+        "7": 0.0
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 0.0,
+          "environment": 0.0,
+          "transport": 0.0
+        },
+        "29": {
+          "energy": 0.0,
+          "environment": 0.0,
+          "transport": 0.0
+        },
+        "7": {
+          "energy": 0.0,
+          "environment": 0.0,
+          "transport": 0.0
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": 0.0,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 0.0,
+        "valid_resamples": 10000
+      },
+      "mean": 0.0,
+      "metric": "permutation",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 0.0
+    },
+    {
+      "arm": "perm_0",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 1.851505758732978e-08,
+        "29": 2.5254632846833387e-08,
+        "7": 1.6030643084888022e-08
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 2.0481282336781703e-08,
+          "environment": 2.156039233883189e-08,
+          "transport": 1.3503498086375743e-08
+        },
+        "29": {
+          "energy": 2.7948073890524873e-08,
+          "environment": 2.5782194435173637e-08,
+          "transport": 2.2033630214801648e-08
+        },
+        "7": {
+          "energy": 1.2761485812529116e-08,
+          "environment": 2.1740449839454298e-08,
+          "transport": 1.358999360268065e-08
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": 1.4152358282812668e-08,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 2.5459143372610484e-08,
+        "valid_resamples": 10000
+      },
+      "mean": 1.9933444506350396e-08,
+      "metric": "permutation",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 4.7727730797886065e-09
+    },
+    {
+      "arm": "perm_1",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 2.0562205897948864e-08,
+        "29": 2.3163147425400736e-08,
+        "7": 1.5689221854038495e-08
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 2.1145905516505404e-08,
+          "environment": 2.0807360530163594e-08,
+          "transport": 1.97333516471776e-08
+        },
+        "29": {
+          "energy": 2.715194042833925e-08,
+          "environment": 2.5470564273451696e-08,
+          "transport": 1.686693757441127e-08
+        },
+        "7": {
+          "energy": 9.727031866837231e-09,
+          "environment": 2.240738207111755e-08,
+          "transport": 1.4933251624160705e-08
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": 1.4533310377317637e-08,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 2.477504541863294e-08,
+        "valid_resamples": 10000
+      },
+      "mean": 1.98048583924627e-08,
+      "metric": "permutation",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 3.794083854452243e-09
+    },
+    {
+      "arm": "perm_2",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 1.9987177904580732e-08,
+        "29": 2.7442575885902796e-08,
+        "7": 1.7326952746031225e-08
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 2.0401669959485055e-08,
+          "environment": 1.9838537515526335e-08,
+          "transport": 1.9721326238730796e-08
+        },
+        "29": {
+          "energy": 2.8225666929988916e-08,
+          "environment": 2.6782175168345764e-08,
+          "transport": 2.73198855593737e-08
+        },
+        "7": {
+          "energy": 1.491496104904561e-08,
+          "environment": 2.104788498907828e-08,
+          "transport": 1.601801219996979e-08
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": 1.691339275042477e-08,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 2.724413500259688e-08,
+        "valid_resamples": 10000
+      },
+      "mean": 2.1585568845504916e-08,
+      "metric": "permutation",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 5.243815221477362e-09
+    },
+    {
+      "arm": "perm_3",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 1.8912200894522116e-08,
+        "29": 2.5002018475458096e-08,
+        "7": 1.4538940372426921e-08
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 1.83931578907009e-08,
+          "environment": 2.0019267828186307e-08,
+          "transport": 1.832417696467914e-08
+        },
+        "29": {
+          "energy": 2.995523168403125e-08,
+          "environment": 2.6309734606211332e-08,
+          "transport": 1.8741089136131705e-08
+        },
+        "7": {
+          "energy": 1.3551778487265086e-08,
+          "environment": 2.02305147657215e-08,
+          "transport": 9.834527864294173e-09
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": 1.3498131139085116e-08,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 2.5500433049064022e-08,
+        "valid_resamples": 10000
+      },
+      "mean": 1.9484386580802377e-08,
+      "metric": "permutation",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 5.254954632746188e-09
+    },
+    {
+      "arm": "perm_4",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 2.372285929068926e-08,
+        "29": 2.7565085857528595e-08,
+        "7": 1.9478149231321004e-08
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 2.1367821880578154e-08,
+          "environment": 2.1479061429694837e-08,
+          "transport": 2.8321694561794786e-08
+        },
+        "29": {
+          "energy": 3.626177897852013e-08,
+          "environment": 2.622601450869011e-08,
+          "transport": 2.0207464085375547e-08
+        },
+        "7": {
+          "energy": 1.7231735684817485e-08,
+          "environment": 2.3554799561074462e-08,
+          "transport": 1.7647912448071067e-08
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": 1.9354280206274055e-08,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 2.917969165258856e-08,
+        "valid_resamples": 10000
+      },
+      "mean": 2.3588698126512954e-08,
+      "metric": "permutation",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 4.0451372550946045e-09
+    },
+    {
+      "arm": "perm_5",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 1.770869588801764e-08,
+        "29": 2.5277475176250233e-08,
+        "7": 1.571978140435526e-08
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 1.59864929577031e-08,
+          "environment": 2.2075212919904957e-08,
+          "transport": 1.506438178644487e-08
+        },
+        "29": {
+          "energy": 2.760111465140789e-08,
+          "environment": 2.5887443670889277e-08,
+          "transport": 2.234386720645354e-08
+        },
+        "7": {
+          "energy": 1.0330523769752631e-08,
+          "environment": 2.24827462536048e-08,
+          "transport": 1.4346074189708347e-08
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": 1.3795622314325721e-08,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 2.4971089055023357e-08,
+        "valid_resamples": 10000
+      },
+      "mean": 1.9568650822874375e-08,
+      "metric": "permutation",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 5.043010195221048e-09
+    },
+    {
+      "arm": "perm_6",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 2.0639221641766293e-08,
+        "29": 2.3468764387153856e-08,
+        "7": 1.7110160777360034e-08
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 1.6081691650066624e-08,
+          "environment": 2.1433850241892036e-08,
+          "transport": 2.4402123033340218e-08
+        },
+        "29": {
+          "energy": 2.484305329130233e-08,
+          "environment": 2.627093034247389e-08,
+          "transport": 1.9292309527685347e-08
+        },
+        "7": {
+          "energy": 1.5321173875048156e-08,
+          "environment": 2.1821749662577955e-08,
+          "transport": 1.4187558794453992e-08
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": 1.6081691650066624e-08,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 2.4150699380910755e-08,
+        "valid_resamples": 10000
+      },
+      "mean": 2.0406048935426728e-08,
+      "metric": "permutation",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 3.1857082571787775e-09
+    },
+    {
+      "arm": "perm_7",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 2.0207953491204825e-08,
+        "29": 2.8300637767551637e-08,
+        "7": 2.0034552637217837e-08
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 2.126709985389946e-08,
+          "environment": 2.131625079481355e-08,
+          "transport": 1.8040509824901463e-08
+        },
+        "29": {
+          "energy": 4.073125857807402e-08,
+          "environment": 2.7430279732805946e-08,
+          "transport": 1.6740374991774943e-08
+        },
+        "7": {
+          "energy": 1.5680096816920883e-08,
+          "environment": 2.1131380488250326e-08,
+          "transport": 2.3292180606482306e-08
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": 1.8217458080108026e-08,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 3.134892344869077e-08,
+        "valid_resamples": 10000
+      },
+      "mean": 2.284771463199143e-08,
+      "metric": "permutation",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 4.723165782162071e-09
+    },
+    {
+      "arm": "baseline",
+      "coverage_status": "limited_domain_or_record",
+      "domain_macro_by_seed": {
+        "17": 0.5249035319513259,
+        "29": 0.5197740926583271,
+        "7": 0.520097620376326
+      },
+      "domains_by_seed": {
+        "17": {
+          "energy": 0.5158916860818863,
+          "environment": 0.5454244899231724,
+          "transport": 0.5133944198489189
+        },
+        "29": {
+          "energy": 0.5099090351299806,
+          "environment": 0.5397573783082384,
+          "transport": 0.5096558645367623
+        },
+        "7": {
+          "energy": 0.5105339993130077,
+          "environment": 0.5393991930842806,
+          "transport": 0.5103596687316895
+        }
+      },
+      "eligible_domain_count": 3,
+      "eligible_source_record_count": 14,
+      "eligible_source_records_by_domain": {
+        "energy": 1,
+        "environment": 12,
+        "transport": 1
+      },
+      "interval": {
+        "domains": 3,
+        "level": 0.95,
+        "lower": 0.5099090351299806,
+        "method": "paired hierarchical percentile bootstrap",
+        "records_by_domain": {
+          "energy": 1,
+          "environment": 12,
+          "transport": 1
+        },
+        "requested_resamples": 10000,
+        "status": "candidate",
+        "upper": 0.5444698295165107,
+        "valid_resamples": 10000
+      },
+      "mean": 0.5215917483286597,
+      "metric": "reconstruction",
+      "records_by_seed": {
+        "17": 14,
+        "29": 14,
+        "7": 14
+      },
+      "std": 0.0028726469707568624
+    }
+  ],
+  "optimizer_steps_per_seed": 400,
+  "post_remediation_self_validation": "Implementation self-check: focused 19 passed/1 CUDA skip; full 55 passed/3 CUDA skips; governance and notebook validators and git diff --check passed. This is not independent QA.",
+  "qa_candidate_evidence": {
+    "confirmed": "seed7 raw-to-aggregate agreement; 31 arms and 10,000 intervals; JSON/CSV/Markdown numeric agreement; focused 18 pass/1 CUDA skip and full 54 pass/3 CUDA skips",
+    "limitations": "portable provenance, algebraic-reference wording, floor labels and sparse count-arm coverage required remediation; later remediation QA is recorded separately",
+    "scope": "implementation and original candidate report",
+    "verdict": "CONDITIONAL PASS (pre-remediation)"
+  },
+  "raw_rows_by_seed": {
+    "17": 38634,
+    "29": 38634,
+    "7": 38634
+  },
+  "recommendation": "defer threshold freeze (accepted by user); retain candidate controls and intervals",
+  "remediation_qa": {
+    "finding": "candidate evidence usable for user review; threshold, guard and uncertainty freeze evidence insufficient",
+    "scope": "candidate evidence remediation",
+    "stage_gate": "open; this is not Stage 03 final QA or closure",
+    "verdict": "PASS"
+  },
+  "runs": [
+    {
+      "batch_size": 4,
+      "checkpoint_sha256": "4a281462a7117f4fec33a844b8faa7e1046227c108c4da513d01da147205897e",
+      "config_sha256": "8495082014eb539e64c7671cc9227509b3769c4709a954f5dade71ced09e1211",
+      "evaluator_source_sha256": "e8417668ddb02f8ecf900df40a202e9427ba46f80ddbcf0fb46314f2577574f1",
+      "git_commit": "461f1fc1dc1c809a9486dc36a70e3f942e5d309c",
+      "raw": "outputs/stage03/eval-seed7/records.jsonl",
+      "raw_sha256": "794e3255835bb0a0390174b3a802561aa6b0823020a76c72324a1e74b6afaba6",
+      "sample_exposure": 1600,
+      "seed": 7,
+      "summary": "outputs/stage03/eval-seed7/summary.json",
+      "summary_sha256": "cc12583d66dde87c342db3068bc45ede2a1446c17905b1dde189b5e30d3bc7c3",
+      "training_config": "configs/evaluation/calibration-train-seed7.json",
+      "training_config_sha256": "66e1a0da40201fcc2cd4247b3af223b0060764ba894907a093630f4c8390aaf0",
+      "training_run_sha256": "539e43288f506f49c42d0cc6b459ad02e6f1481b8017885924e42df4d38e838a"
+    },
+    {
+      "batch_size": 4,
+      "checkpoint_sha256": "16190ea89458742410682319448bce2491f0993e560ada828fda03b0f4ec1224",
+      "config_sha256": "8495082014eb539e64c7671cc9227509b3769c4709a954f5dade71ced09e1211",
+      "evaluator_source_sha256": "e8417668ddb02f8ecf900df40a202e9427ba46f80ddbcf0fb46314f2577574f1",
+      "git_commit": "461f1fc1dc1c809a9486dc36a70e3f942e5d309c",
+      "raw": "outputs/stage03/eval-seed17/records.jsonl",
+      "raw_sha256": "bd4a19a955fb3974f0c27c09f2fbd0b6835e2964e82f8632e7857da2fa08dc44",
+      "sample_exposure": 1600,
+      "seed": 17,
+      "summary": "outputs/stage03/eval-seed17/summary.json",
+      "summary_sha256": "3bb6ffcb462fd70fc1b830ef3b5c75c334bc8be7083f0890fb55ab4baeb2be58",
+      "training_config": "configs/evaluation/calibration-train-seed17.json",
+      "training_config_sha256": "f83cb1396ef61bf0cd5ef51dcfabe7c61447f03ff8e7f362ff087b3f66bfa1e6",
+      "training_run_sha256": "c900659b5a74222958d15db260b7fc2ba09b21be2da27550c7543f230f685e43"
+    },
+    {
+      "batch_size": 4,
+      "checkpoint_sha256": "cce6cb1e0ab940fde7168c132b3735472ab75486dc296825f3af6a9e9c55947a",
+      "config_sha256": "8495082014eb539e64c7671cc9227509b3769c4709a954f5dade71ced09e1211",
+      "evaluator_source_sha256": "e8417668ddb02f8ecf900df40a202e9427ba46f80ddbcf0fb46314f2577574f1",
+      "git_commit": "461f1fc1dc1c809a9486dc36a70e3f942e5d309c",
+      "raw": "outputs/stage03/eval-seed29/records.jsonl",
+      "raw_sha256": "9e2df43511aa53ea59e45ddaba6b7558e9b516ac6aac4e35ab8da11b3daefa3a",
+      "sample_exposure": 1600,
+      "seed": 29,
+      "summary": "outputs/stage03/eval-seed29/summary.json",
+      "summary_sha256": "89c052020b7d2110e482d8fab6b7814d357264173f72b29b51a68954e9e1ad47",
+      "training_config": "configs/evaluation/calibration-train-seed29.json",
+      "training_config_sha256": "069881b530f5f4444e0777953fca1e196c7932ae3cea816294b2482a8b89c249",
+      "training_run_sha256": "6b20cfa57a2322512d446405147a2bfad8174801bb611f7ae32f2c55a5b84499"
+    }
+  ],
+  "schema_version": 1,
+  "seeds": [
+    7,
+    17,
+    29
+  ],
+  "split": "val",
+  "status": "candidate",
+  "user_decision": "GO \u2014 defer freeze"
+}

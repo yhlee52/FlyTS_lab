@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "status": "candidate",
+  "master_seed": 3007,
+  "split": "val",
+  "context": 128,
+  "temporal_ratio": 0.4,
+  "permutation_repeats": 8,
+  "dropout_repeats": 8,
+  "dropout_rates": [0.0, 0.1, 0.3, 0.5],
+  "missing_repeats": 4,
+  "missing_rates": [0.1, 0.3, 0.5],
+  "missing_patterns": ["mcar", "block"],
+  "relative_floor": 1e-8,
+  "norm_floor": 1e-8
+}
