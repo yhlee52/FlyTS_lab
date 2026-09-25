@@ -1,5 +1,22 @@
 # FlyTS Decision Log
 
+## DEC-017 — Stage 04 result GO
+
+- Date: 2026-09-25
+- Decision authority: user accepted the Stage 04 result after independent QA `PASS` and requested a PR.
+- Decision: close Stage 04 within its compatibility-only scope and prepare a Draft PR.
+- Evidence: `docs/research/stages/stage-04/{RESULT,QA_REPORT}.md`; focused 13 passed, full 68 passed with three CUDA hardware skips, validators and diff check passed.
+- Boundary: this does not authorize merge, Stage 05, a CUDA claim, topology comparisons or a topology-benefit claim.
+
+## DEC-016 — Stage 04 topology modularization GO
+
+- Date: 2026-09-25
+- Decision authority: user approved the full Stage 04 design and acceptance contract.
+- Decision: extract the exact fly-like graph into a reusable artifact, builder, validation and descriptive statistics interface. Foundation uses that interface directly; the legacy mask remains a wrapper. Preserve format-v1 strict checkpoint and same-backend CPU compatibility.
+- Integration status: Stage 03 PR #9 is stale because its content is already in `origin/main` at `f3362b24`; Stage 04 starts from that main commit.
+- Boundary: no random/rewired generator, topology performance claim, dataset or metric change, candidate-threshold freeze, or Stage 05 implementation.
+- Evidence: `docs/research/stages/stage-04/CHARTER.md` and approved architecture contract.
+
 ## DEC-001 — Public data first
 
 - Date: 2026-09-24

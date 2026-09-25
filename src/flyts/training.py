@@ -105,10 +105,16 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
     start, history, best = 0, [], float("inf")
     if resume:
         restored, state = load_encoder(resume, device=str(device))
-        if state["manifest_sha256"] != digest or state["model_config"] != asdict(mcfg):
+        saved_model_config = dict(state["model_config"])
+        saved_model_config.setdefault("topology", "fly_like")
+        if state["manifest_sha256"] != digest or saved_model_config != asdict(mcfg):
             raise ValueError("resume requires identical model and corpus manifest")
         old = {k: v for k, v in state["training_config"].items() if k not in ("epochs", "mask_ratio", "masking")}
         new = {k: v for k, v in config.items() if k not in ("epochs", "mask_ratio", "masking")}
+        old["model"] = dict(old["model"])
+        new["model"] = dict(new["model"])
+        old["model"].setdefault("topology", "fly_like")
+        new["model"].setdefault("topology", "fly_like")
         old["masking"] = canonical_masking(state["training_config"])
         new["masking"] = masking
         if old != new:
