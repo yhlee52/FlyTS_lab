@@ -768,8 +768,8 @@
     "base_commit": "944f8ed",
     "device": "cpu",
     "python": "3.12.14",
-    "reproduction": "git checkout f46093f1dccb717561c6476fbaedf75f11f13198 && python tools/report_topology_controls.py --source-commit f46093f1dccb717561c6476fbaedf75f11f13198",
-    "source_commit": "f46093f1dccb717561c6476fbaedf75f11f13198",
+    "reproduction": "git checkout ce997044c6bc770fb73d4f0eb03e374f2eb536c2 && python tools/report_topology_controls.py --source-commit ce997044c6bc770fb73d4f0eb03e374f2eb536c2",
+    "source_commit": "ce997044c6bc770fb73d4f0eb03e374f2eb536c2",
     "source_sha256": {
       "configs/topology/stage05-controls.json": "dc43710cd415f6e33ecda13437fb2d454fd1c1a2d0615d57bf817933b6d15097",
       "src/flyts/evaluation.py": "0c0d1bba05f96f9b44ccce5454a4e1691d40119a838f57affa2ed556116e393d",
@@ -777,7 +777,7 @@
       "src/flyts/topology/__init__.py": "c610c7fa99d14c816857ae2232ed912cac40cdbdf6293ee630a1de80be47b3d2",
       "src/flyts/topology/controls.py": "0f7a9cfa65213d77c6b26869f0a911b49bfa15432829329a99a496fe7cf9f51f",
       "src/flyts/topology/stats.py": "d298367f404899f09f70dcfed70b99779254911c241ef66cdb374199b1e6ba88",
-      "src/flyts/training.py": "00c7ff7a4c7a55e39588563fd99930ea42e48827541769e6e9975d842a9c42cd",
+      "src/flyts/training.py": "405059cea687b324685a4034d8bbb726a8cb67e42ba2645ff74326b82f92afe8",
       "tools/report_topology_controls.py": "a0d0a65a23612dccec2d3ea3c4baf1f5489920a33b4fe206b297a5c9f9cb795e"
     },
     "torch": "2.14.0+cpu"

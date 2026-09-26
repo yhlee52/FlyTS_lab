@@ -2,7 +2,7 @@
 
 Synthetic structural evidence only; no performance or biological claim.
 
-Source commit: `f46093f1dccb717561c6476fbaedf75f11f13198`. Reproduce: `git checkout f46093f1dccb717561c6476fbaedf75f11f13198 && python tools/report_topology_controls.py --source-commit f46093f1dccb717561c6476fbaedf75f11f13198`.
+Source commit: `ce997044c6bc770fb73d4f0eb03e374f2eb536c2`. Reproduce: `git checkout ce997044c6bc770fb73d4f0eb03e374f2eb536c2 && python tools/report_topology_controls.py --source-commit ce997044c6bc770fb73d4f0eb03e374f2eb536c2`.
 
 | Kind | Edges | Components | Hash | Retained fraction | Jaccard | Zero outdegree |
 |---|---:|---:|---|---:|---:|---:|
