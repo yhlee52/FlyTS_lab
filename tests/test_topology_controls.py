@@ -11,7 +11,8 @@ from flyts.evaluation import FlyTSAdapter
 from flyts.topology import build_topology, graph_statistics, reference_comparison_statistics
 from flyts.topology.base import artifact_from_mask
 from flyts.topology import controls
-from flyts.training import graph_provenance, load_encoder, require_resume_model_config, save_checkpoint
+from flyts.training import (graph_provenance, load_encoder, require_resume_model_config,
+                            save_checkpoint, training_reproduction_argv)
 
 
 KINDS = ("fly_like", "degree_preserving_rewired", "random_sparse")
@@ -162,3 +163,16 @@ def test_cross_topology_resume_config_rejected():
     legacy.pop("topology")
     legacy.pop("topology_control_seed")
     require_resume_model_config(legacy, config("fly_like", control_seed=None))
+
+
+def test_training_reproduction_argv_records_all_behavioral_overrides(tmp_path):
+    argv = training_reproduction_argv(
+        tmp_path / "manifest.json", tmp_path / "config.json", tmp_path / "run", "cpu",
+        resume=tmp_path / "last.pt", epochs=3, development_only=True)
+    assert argv == [
+        "python", "-m", "flyts", "pretrain",
+        "--manifest", str(tmp_path / "manifest.json"),
+        "--config", str(tmp_path / "config.json"),
+        "--output", str(tmp_path / "run"), "--device", "cpu",
+        "--resume", str(tmp_path / "last.pt"), "--epochs", "3", "--development-only",
+    ]

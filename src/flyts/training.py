@@ -51,6 +51,20 @@ def execution_provenance(reproduction_argv=None):
                                                          "--output", "<output>"])
 
 
+def training_reproduction_argv(manifest, config_path, output, device, *, resume=None,
+                               epochs=None, development_only=False):
+    argv = ["python", "-m", "flyts", "pretrain",
+            "--manifest", str(manifest), "--config", str(config_path),
+            "--output", str(output), "--device", str(device)]
+    if resume is not None:
+        argv.extend(("--resume", str(resume)))
+    if epochs is not None:
+        argv.extend(("--epochs", str(epochs)))
+    if development_only:
+        argv.append("--development-only")
+    return argv
+
+
 def resolve_device(name):
     if name == "auto":
         return torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -152,9 +166,9 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
     digest = sha256(manifest)
     mcfg = EncoderConfig(**config["model"])
     model = FlyTSFoundation(mcfg).to(device)
-    execution = execution_provenance(["python", "-m", "flyts", "pretrain",
-                                       "--manifest", str(manifest), "--config", str(config_path),
-                                       "--output", str(output), "--device", str(device)])
+    execution = execution_provenance(training_reproduction_argv(
+        manifest, config_path, output, device, resume=resume, epochs=epochs,
+        development_only=development_only))
     optimizer = torch.optim.AdamW(model.parameters(), lr=config["lr"], weight_decay=1e-4)
     start, history, best = 0, [], float("inf")
     if resume:
