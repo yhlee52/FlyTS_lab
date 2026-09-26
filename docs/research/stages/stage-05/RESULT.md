@@ -33,6 +33,7 @@ support a topology-performance claim.
 | Model/checkpoint | paired parameters; finite dense/scatter step; strict v1 and buffer guards | `tests/test_topology_controls.py` |
 | Regression suite | focused 60 passed/2 skipped; full 76 passed/3 skipped | `QA_REPORT.md` |
 | Reproducibility | source commit/path hashes, report `--check`, validators and clean diff/status | tracked report and QA |
+| Delivery CI | two GitHub `pytest` checks passed on Draft PR #11 head `433f9b2` | Draft PR #11 |
 
 ## Acceptance criteria
 

@@ -121,6 +121,7 @@ Review the Stage 05 result, final QA and Draft PR, then issue `GO`, `REVISE`, `H
 - Independent QA first found invalid report source attribution; remediation now records committed source paths/hashes and a valid checkout+generation command. The allowed QA follow-up then found omitted resume/epochs/development-only CLI flags in run provenance; remediation and a focused regression test are committed. Final self-check: full pytest passes with three CUDA skips, report `--check`, governance/notebook validators and `git diff --check` pass.
 - DEC-020 final independent QA issued `PASS`: focused 60 passed/two CUDA skips, full 76 passed/three CUDA skips, all 15 graph-buffer corruptions rejected, actual resume provenance verified, report/validators/diff/status clean. H-03 and all performance/transfer/CUDA claims remain `미검증`.
 - Stage 05 Draft PR #11 contains the implementation, deterministic evidence report, independent QA report and result record; it is not approved for merge.
+- Both GitHub `pytest` checks on Draft PR #11 head `433f9b2` passed (3m40s and 3m34s).
 
 ## Next action
 
