@@ -1,5 +1,13 @@
 # FlyTS Decision Log
 
+## DEC-021 — Stage 05 result GO
+
+- Date: 2026-09-26
+- Decision authority: user issued `GO` after reviewing the Stage 05 result, independent QA `PASS`, limitations, deterministic evidence, and Draft PR #11.
+- Decision: accept the bounded topology-controls engineering result and close Stage 05.
+- Evidence: `docs/research/stages/stage-05/{RESULT,QA_REPORT}.md`; focused 60 passed/two CUDA skips, full 76 passed/three CUDA skips, deterministic report check and validators passed, and Draft PR CI passed.
+- Boundary: H-03, topology superiority, robustness, transfer, foundation quality, CUDA, biological mechanism, and semiconductor suitability remain unverified. This decision does not authorize merging PR #11 or beginning Stage 06; both require separate user direction.
+
 ## DEC-020 — Stage 05 extra QA follow-up approval
 
 - Date: 2026-09-26

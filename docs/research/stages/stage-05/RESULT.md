@@ -1,6 +1,6 @@
 # Stage 05 Result — Topology Controls
 
-Status: review
+Status: closed
 
 Date: 2026-09-26
 
@@ -74,4 +74,6 @@ the user approved one extra bounded QA follow-up in DEC-020.
 ## User stage gate
 
 - Requested: `GO`, `REVISE`, `HOLD`, or `STOP`.
-- Decision: pending.
+- Decision: `GO`, 2026-09-26 (DEC-021).
+- Conditions: accept and close the bounded Stage 05 engineering result. Draft PR #11
+  merge and Stage 06 remain separately gated and are not authorized by this decision.

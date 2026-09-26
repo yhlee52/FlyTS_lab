@@ -1,6 +1,6 @@
 # Stage 05 Charter — Topology Controls
 
-Status: review
+Status: closed
 
 ## Research question
 
@@ -112,7 +112,7 @@ Raw graph masks, checkpoints, training outputs, and large artifacts are not comm
 | Overlap-guard revision | Before resuming implementation | GO, 2026-09-26 (DEC-019) |
 | Constraint infeasibility | Before changing a seed or rule | pending as needed |
 | Extra QA remediation follow-up | Before a second post-FAIL re-review | GO, 2026-09-26 (DEC-020) |
-| Stage result | After independent QA | pending user decision; QA `PASS` |
+| Stage result | After independent QA | GO, 2026-09-26 (DEC-021) |
 | Merge or Stage 06 | After result gate | separately pending |
 
 ## Agent plan
@@ -175,8 +175,8 @@ agent_budget:
   for resume, epoch overrides, and development-only runs. The command builder and
   regression test are corrected; targeted tests, the full self-check suite, report
   check, validators, and diff check pass.
-- DEC-020 approves one additional independent QA follow-up. The stage is active for
-  that bounded final verification only.
+- DEC-020 approved one additional independent QA follow-up. Final independent QA
+  issued `PASS`; DEC-021 accepts the result and closes the stage.
 
 ## User approval
 
@@ -184,3 +184,5 @@ agent_budget:
 - Date: 2026-09-26
 - Conditions: implement the uniform-rewiring revised contract through independent QA
   and a Draft PR only; do not merge or begin Stage 06 without a separate user decision.
+- Result decision: GO on 2026-09-26 after independent QA `PASS` (DEC-021). Draft PR
+  #11 merge and Stage 06 remain separately gated.

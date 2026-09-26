@@ -4,11 +4,11 @@ Updated: 2026-09-26
 
 ## Current stage
 
-Stages 00–04 are closed. Stage 04 PR #10 is merged in `origin/main` at `944f8ed`. Stage 05 topology controls is in result review in Draft PR #11 after independent final QA `PASS`; the user result decision, merge and Stage 06 remain pending. Numerical robustness settings remain candidate.
+Stages 00–05 are closed. Stage 04 PR #10 is merged in `origin/main` at `944f8ed`. The user accepted the Stage 05 topology-controls result with `GO` after independent QA `PASS`; Draft PR #11 remains unmerged and Stage 06 is not authorized. Numerical robustness settings remain candidate.
 
 ## Current goal
 
-Review the Stage 05 result, final QA and Draft PR, then issue `GO`, `REVISE`, `HOLD`, or `STOP`. Do not merge or begin Stage 06.
+Preserve the accepted Stage 05 handoff and wait for separate user direction on Draft PR #11 merge and/or a Stage 06 Charter. Do not infer either authorization from DEC-021.
 
 ## Canonical references
 
@@ -25,6 +25,8 @@ Review the Stage 05 result, final QA and Draft PR, then issue `GO`, `REVISE`, `H
 - `docs/EVALUATION.md`
 - `docs/research/stages/stage-03/CHARTER.md`
 - `docs/research/stages/stage-04/CHARTER.md`
+- `docs/research/stages/stage-05/CHARTER.md`
+- `docs/TOPOLOGY_CONTROLS.md`
 
 ## Confirmed decisions
 
@@ -58,6 +60,7 @@ Review the Stage 05 result, final QA and Draft PR, then issue `GO`, `REVISE`, `H
 - DEC-018 records user `GO` for the fixed Stage 05 control, seed, provenance, CPU one-step, agent-budget, and no-performance contract.
 - DEC-019 retains uniform `10E/200E` degree-preserving rewiring but makes overlap/Jaccard descriptive after the fixed fixture missed the original `0.10` guard.
 - DEC-020 approves one extra bounded QA follow-up only; all Stage 05 scientific, scope, merge and next-stage boundaries remain unchanged.
+- DEC-021 records the user's Stage 05 result `GO` after independent QA `PASS`; Stage 05 is closed while PR #11 merge and Stage 06 remain separately gated.
 
 ## Open questions
 
@@ -122,7 +125,8 @@ Review the Stage 05 result, final QA and Draft PR, then issue `GO`, `REVISE`, `H
 - DEC-020 final independent QA issued `PASS`: focused 60 passed/two CUDA skips, full 76 passed/three CUDA skips, all 15 graph-buffer corruptions rejected, actual resume provenance verified, report/validators/diff/status clean. H-03 and all performance/transfer/CUDA claims remain `미검증`.
 - Stage 05 Draft PR #11 contains the implementation, deterministic evidence report, independent QA report and result record; it is not approved for merge.
 - Both GitHub `pytest` checks on Draft PR #11 head `433f9b2` passed (3m40s and 3m34s).
+- The user issued the Stage 05 result-gate `GO` on 2026-09-26; DEC-021 closes the bounded engineering stage without authorizing merge or Stage 06.
 
 ## Next action
 
-Present the Stage 05 result, QA `PASS`, limitations and Draft PR for the user result gate. Do not merge or begin Stage 06 without separate approval.
+Hold at the closed Stage 05 handoff until the user separately directs PR #11 merge and/or Stage 06 Charter work.
