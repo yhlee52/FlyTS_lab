@@ -1,6 +1,6 @@
 # Stage 05 Charter — Topology Controls
 
-Status: hold
+Status: active
 
 ## Research question
 
@@ -111,7 +111,7 @@ Raw graph masks, checkpoints, training outputs, and large artifacts are not comm
 | Material scope/criteria/seed/budget change | Before affected work | HOLD if encountered |
 | Overlap-guard revision | Before resuming implementation | GO, 2026-09-26 (DEC-019) |
 | Constraint infeasibility | Before changing a seed or rule | pending as needed |
-| Extra QA remediation follow-up | Before a second post-FAIL re-review | pending user budget approval |
+| Extra QA remediation follow-up | Before a second post-FAIL re-review | GO, 2026-09-26 (DEC-020) |
 | Stage result | After independent QA | pending |
 | Merge or Stage 06 | After result gate | separately pending |
 
@@ -131,7 +131,7 @@ agent_budget:
   max_specialists: 3
   max_parallel_agents: 2
   max_debate_rounds: 1
-  max_followups_per_agent: 1
+  max_followups_per_agent: 1  # Stage 05 QA only: one extra follow-up approved in DEC-020
   max_agent_report_words: 700
   user_approval_for_expansion: true
 ```
@@ -175,12 +175,12 @@ agent_budget:
   for resume, epoch overrides, and development-only runs. The command builder and
   regression test are corrected; targeted tests, the full self-check suite, report
   check, validators, and diff check pass.
-- One additional independent QA follow-up exceeds the approved per-agent budget and
-  requires user approval before the stage can return to review.
+- DEC-020 approves one additional independent QA follow-up. The stage is active for
+  that bounded final verification only.
 
 ## User approval
 
-- Decision: GO, revised by DEC-019
+- Decision: GO, revised by DEC-019; QA budget exception DEC-020
 - Date: 2026-09-26
 - Conditions: implement the uniform-rewiring revised contract through independent QA
   and a Draft PR only; do not merge or begin Stage 06 without a separate user decision.

@@ -4,11 +4,11 @@ Updated: 2026-09-26
 
 ## Current stage
 
-Stages 00–04 are closed. Stage 04 PR #10 is merged in `origin/main` at `944f8ed`. Stage 05 topology controls is `HOLD` after two independently identified provenance defects were remediated; one extra QA follow-up needs user budget approval. Numerical robustness settings remain candidate.
+Stages 00–04 are closed. Stage 04 PR #10 is merged in `origin/main` at `944f8ed`. Stage 05 topology controls is active for the user-approved extra independent QA follow-up in DEC-020 after two provenance remediations. Numerical robustness settings remain candidate.
 
 ## Current goal
 
-Obtain approval for one extra independent QA follow-up, then complete the Stage 05 result gate. Do not run performance comparisons, merge, or begin Stage 06.
+Complete the bounded final independent QA follow-up, then prepare Stage 05 result records and a Draft PR for the user result gate. Do not merge or begin Stage 06.
 
 ## Canonical references
 
@@ -57,6 +57,7 @@ Obtain approval for one extra independent QA follow-up, then complete the Stage 
 - DEC-017 records the user's Stage 04 result `GO`, closure after independent QA `PASS`, and request for a Draft PR; merge and Stage 05 remain separately gated.
 - DEC-018 records user `GO` for the fixed Stage 05 control, seed, provenance, CPU one-step, agent-budget, and no-performance contract.
 - DEC-019 retains uniform `10E/200E` degree-preserving rewiring but makes overlap/Jaccard descriptive after the fixed fixture missed the original `0.10` guard.
+- DEC-020 approves one extra bounded QA follow-up only; all Stage 05 scientific, scope, merge and next-stage boundaries remain unchanged.
 
 ## Open questions
 
@@ -121,4 +122,4 @@ Obtain approval for one extra independent QA follow-up, then complete the Stage 
 
 ## Next action
 
-Request one extra bounded QA follow-up. After an independent final verdict, update Stage 05 result records and request the user result decision; merge and Stage 06 remain separately gated.
+Run the DEC-020 final QA follow-up. On `PASS` or user-reviewable `CONDITIONAL PASS`, update Stage 05 result records, open a Draft PR, and request the user result decision; merge and Stage 06 remain separately gated.

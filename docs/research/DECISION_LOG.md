@@ -1,5 +1,12 @@
 # FlyTS Decision Log
 
+## DEC-020 — Stage 05 extra QA follow-up approval
+
+- Date: 2026-09-26
+- Decision authority: user explicitly approved one additional independent QA verification after the first allowed remediation follow-up.
+- Decision: permit the existing QA Engineer one extra bounded turn to rerun the final focused/full suites, report provenance check, governance/notebook validators, diff check, and Charter audit on the remediated commits.
+- Boundary: this exception changes only `max_followups_per_agent` for this single Stage 05 QA re-review from 1 to 2. It does not add a specialist, change topology/seed/acceptance scope, authorize performance work, merge, or Stage 06.
+
 ## DEC-019 — Stage 05 overlap-guard revision GO
 
 - Date: 2026-09-26
