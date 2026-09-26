@@ -68,7 +68,7 @@ def make_report(source_commit):
 def render_markdown(report):
     lines = ["# Stage 05 topology controls", "",
              "Synthetic structural evidence only; no performance or biological claim.", "",
-             f"Source commit: `{report['provenance']['source_commit']}`. Reproduce: `python tools/report_topology_controls.py --check`.",
+             f"Source commit: `{report['provenance']['source_commit']}`. Reproduce: `{report['provenance']['reproduction']}`.",
              "", "| Kind | Edges | Components | Hash | Retained fraction | Jaccard | Zero outdegree |",
              "|---|---:|---:|---|---:|---:|---:|"]
     for kind, arm in report["arms"].items():
