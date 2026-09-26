@@ -1,6 +1,6 @@
 # Stage 05 Charter — Topology Controls
 
-Status: active
+Status: review
 
 ## Research question
 
@@ -84,23 +84,23 @@ Raw graph masks, checkpoints, training outputs, and large artifacts are not comm
 
 ## Acceptance criteria
 
-- [ ] Stage 04 fly-like hashes, state keys, parameter order/count, and strict legacy
+- [x] Stage 04 fly-like hashes, state keys, parameter order/count, and strict legacy
   format-v1 behavior remain unchanged.
-- [ ] All arms have exact matched N/E, population/module annotations, trainable
+- [x] All arms have exact matched N/E, population/module annotations, trainable
   parameter names/order/shapes/count, and deterministic graph hashes.
-- [ ] Rewired has exact nodewise in/out degrees, component count, `10E` uniformly
+- [x] Rewired has exact nodewise in/out degrees, component count, `10E` uniformly
   proposed accepted swaps within `200E` attempts, and a different final edge set;
   overlap and Jaccard are reported descriptively.
-- [ ] Random has exact N/E, valid incoming coverage and component count, and does not
+- [x] Random has exact N/E, valid incoming coverage and component count, and does not
   duplicate both reference degree sequences.
-- [ ] Builders do not alter global RNG; paired model initialization is bitwise equal.
-- [ ] Dense/scatter use the same model path and complete finite CPU forward, backward,
+- [x] Builders do not alter global RNG; paired model initialization is bitwise equal.
+- [x] Dense/scatter use the same model path and complete finite CPU forward, backward,
   and one optimizer step for every arm without reporting relative performance.
-- [ ] Format-v1 legacy/new loads, exact graph provenance, buffer mismatch rejection,
+- [x] Format-v1 legacy/new loads, exact graph provenance, buffer mismatch rejection,
   and cross-topology resume rejection are tested.
-- [ ] The tracked JSON/Markdown report is byte-stable under `--check`; focused/full
+- [x] The tracked JSON/Markdown report is byte-stable under `--check`; focused/full
   tests, notebook/governance validators, and `git diff --check` pass.
-- [ ] Independent QA reports `PASS` or user-reviewable `CONDITIONAL PASS`; no scientific
+- [x] Independent QA reports `PASS` or user-reviewable `CONDITIONAL PASS`; no scientific
   claim or Stage 03 candidate threshold is used.
 
 ## User checkpoints
@@ -112,7 +112,7 @@ Raw graph masks, checkpoints, training outputs, and large artifacts are not comm
 | Overlap-guard revision | Before resuming implementation | GO, 2026-09-26 (DEC-019) |
 | Constraint infeasibility | Before changing a seed or rule | pending as needed |
 | Extra QA remediation follow-up | Before a second post-FAIL re-review | GO, 2026-09-26 (DEC-020) |
-| Stage result | After independent QA | pending |
+| Stage result | After independent QA | pending user decision; QA `PASS` |
 | Merge or Stage 06 | After result gate | separately pending |
 
 ## Agent plan
