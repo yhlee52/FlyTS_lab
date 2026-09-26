@@ -4,11 +4,11 @@ Updated: 2026-09-26
 
 ## Current stage
 
-Stages 00–04 are closed. Stage 04 PR #10 is merged in `origin/main` at `944f8ed`. Stage 05 topology controls is active under DEC-018 and the user-approved overlap-guard revision in DEC-019. Numerical robustness settings remain candidate.
+Stages 00–04 are closed. Stage 04 PR #10 is merged in `origin/main` at `944f8ed`. Stage 05 topology controls is `HOLD` after two independently identified provenance defects were remediated; one extra QA follow-up needs user budget approval. Numerical robustness settings remain candidate.
 
 ## Current goal
 
-Implement the revised Stage 05 uniform-rewiring contract, then obtain independent QA and a user result gate. Do not run performance comparisons, merge, or begin Stage 06.
+Obtain approval for one extra independent QA follow-up, then complete the Stage 05 result gate. Do not run performance comparisons, merge, or begin Stage 06.
 
 ## Canonical references
 
@@ -117,7 +117,8 @@ Implement the revised Stage 05 uniform-rewiring contract, then obtain independen
 - Draft PR #10 GitHub Actions `pytest` run `36106979369` passed on commit `8563df3` before the final CI evidence note.
 - Stage 05 diagnostic generation at the approved fixed fixture (`N=64`, `E=613`, base seed 7, control seed 5007) completed all 6,130 directed degree-preserving swaps but retained 168 reference edges (`0.274062`), exceeding the preregistered `0.10` guard. Implementation and Architecture found no straightforward correctness defect; the prototype was reverted and the stage entered `HOLD` before tests, report, training or QA.
 - The user approved the non-optimizing DEC-019 revision: uniform proposal, exact degree/component and `10E/200E` remain fixed; overlap and Jaccard are descriptive. Stage 05 implementation may resume without seed selection or performance work.
+- Independent QA first found invalid report source attribution; remediation now records committed source paths/hashes and a valid checkout+generation command. The allowed QA follow-up then found omitted resume/epochs/development-only CLI flags in run provenance; remediation and a focused regression test are committed. Final self-check: full pytest passes with three CUDA skips, report `--check`, governance/notebook validators and `git diff --check` pass.
 
 ## Next action
 
-Complete Stage 05 implementation, deterministic structural evidence, and independent QA under DEC-019. Request a user result decision before merge or Stage 06.
+Request one extra bounded QA follow-up. After an independent final verdict, update Stage 05 result records and request the user result decision; merge and Stage 06 remain separately gated.

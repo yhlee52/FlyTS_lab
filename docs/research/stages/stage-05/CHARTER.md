@@ -1,6 +1,6 @@
 # Stage 05 Charter — Topology Controls
 
-Status: active
+Status: hold
 
 ## Research question
 
@@ -111,6 +111,7 @@ Raw graph masks, checkpoints, training outputs, and large artifacts are not comm
 | Material scope/criteria/seed/budget change | Before affected work | HOLD if encountered |
 | Overlap-guard revision | Before resuming implementation | GO, 2026-09-26 (DEC-019) |
 | Constraint infeasibility | Before changing a seed or rule | pending as needed |
+| Extra QA remediation follow-up | Before a second post-FAIL re-review | pending user budget approval |
 | Stage result | After independent QA | pending |
 | Merge or Stage 06 | After result gate | separately pending |
 
@@ -163,6 +164,19 @@ agent_budget:
 - This revision avoids selecting a graph or proposal policy to optimize observed
   overlap. The failed `0.10` result remains recorded above and implementation resumes
   under DEC-019.
+
+## QA remediation status
+
+- Initial QA `FAIL` found that the report called base commit `944f8ed` its source
+  even though that commit lacked the control implementation. Source and report
+  commits are now separated, source paths are hash-recorded, and report reproduction
+  validates the recorded source commit.
+- The first allowed QA follow-up `FAIL` found incomplete training reproduction argv
+  for resume, epoch overrides, and development-only runs. The command builder and
+  regression test are corrected; targeted tests, the full self-check suite, report
+  check, validators, and diff check pass.
+- One additional independent QA follow-up exceeds the approved per-agent budget and
+  requires user approval before the stage can return to review.
 
 ## User approval
 
