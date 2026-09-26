@@ -1,5 +1,24 @@
 # FlyTS Decision Log
 
+## DEC-019 — Stage 05 overlap-guard revision GO
+
+- Date: 2026-09-26
+- Decision authority: user approved the Research Director's recommended revision after the preregistered fixed fixture entered `HOLD`.
+- Evidence: the approved `N=64`, `E=613` fixture completed all `6,130` uniform valid swaps but retained `168/613 = 0.274062` reference edges; Implementation and Architecture found no straightforward correctness defect.
+- Decision: retain uniformly proposed directed double-edge swaps, exact nodewise in/out degree and weak-component preservation, exactly `10E` accepted swaps and the `200E` attempt cap. Require a changed final edge set, but treat retained-edge fraction and Jaccard as descriptive statistics rather than pass/fail gates.
+- Rationale: this preserves a conventional degree-matched null and avoids adding a result-optimizing proposal policy or choosing a post-hoc threshold just above the observed value.
+- Boundary: all DEC-018 seed, provenance, CPU one-step, no-performance, agent-budget, merge, and Stage 06 restrictions remain unchanged.
+
+## DEC-018 — Stage 05 topology controls GO
+
+- Date: 2026-09-26
+- Decision authority: user approved the full Stage 05 implementation plan and Charter.
+- Decision: add exact directed in/out-degree-preserving rewiring and fixed-edge random sparse controls with matched N/E, annotations, parameters and model path; use `10E` accepted swaps, `200E` attempts, retained-edge fraction `<=0.10`, and at most 256 deterministic random candidates.
+- Seed/provenance: retain `topology_seed`, add explicit `topology_control_seed`, derive kind-namespaced control seeds, preserve checkpoint format 1, and verify regenerated config graphs against stored buffers and provenance.
+- Execution and staffing: synthetic CPU forward/backward/one-step only; Architecture, Implementation and independent QA specialists within the standard budget. No performance study or Experiment specialist.
+- Boundary: no seed selection, mini-training, test/final-held-out access, Stage 06/07 work, topology/foundation/transfer/CUDA claim, merge, or Stage 06 start.
+- Evidence target: `docs/research/stages/stage-05/CHARTER.md`; implementation, QA, result, and Draft PR follow within the approved stage.
+
 ## DEC-017 — Stage 04 result GO
 
 - Date: 2026-09-25

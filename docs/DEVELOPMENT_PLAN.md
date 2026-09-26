@@ -477,4 +477,4 @@ FlyTS-Mini v0.1에서 가능성을 확인한 뒤에만 다음을 진행한다.
 - [x] 단계 4 — topology 모듈화 구현, 독립 QA `PASS`, 사용자 결과 `GO`
 
 단계 1의 연구 규약과 단계 2의 channel masking/dropout은 각각 사용자 `GO`로 완료되었다.
-단계 3 evaluator와 candidate evidence는 사용자 `GO`로 수용되었고, independent final QA `PASS` 후 수치 threshold·guard·uncertainty를 동결하지 않은 범위에서 종료됐다. Draft PR #9 내용은 현재 `main`에 포함되어 PR이 stale 상태다. 지표는 기술적·서술적 결과만 제공하고 robustness pass/fail 또는 최종 주장을 하지 않는다. Stage 04 topology 모듈화는 independent QA `PASS`와 사용자 결과 `GO`로 종료됐고 Draft PR #10이 열렸으며, 병합과 Stage 05는 별도 결정이다.
+단계 3 evaluator와 candidate evidence는 사용자 `GO`로 수용되었고, independent final QA `PASS` 후 수치 threshold·guard·uncertainty를 동결하지 않은 범위에서 종료됐다. Draft PR #9 내용은 현재 `main`에 포함되어 PR이 stale 상태다. 지표는 기술적·서술적 결과만 제공하고 robustness pass/fail 또는 최종 주장을 하지 않는다. Stage 04 topology 모듈화는 independent QA `PASS`와 사용자 결과 `GO` 후 PR #10으로 `main`의 `944f8ed`에 병합됐다. Stage 05 topology controls는 DEC-018의 고정 구조·seed·provenance 계약으로 별도 승인되어 진행 중이다.

@@ -4,6 +4,8 @@ import json
 import math
 from pathlib import Path
 import random
+import subprocess
+import sys
 import time
 
 import numpy as np
@@ -13,6 +15,40 @@ from torch.utils.data import DataLoader
 from .corpus import WindowDataset, collate_windows, sha256, verify_corpus, verify_development_corpus
 from .foundation import EncoderConfig, FlyTSFoundation, reconstruction_loss, sample_hide
 from .masking import canonical_masking, sample_mask_plan
+from .topology import graph_statistics
+
+
+GRAPH_BUFFER_FIELDS = ("dst", "src", "pop", "edge_type", "degree")
+
+
+def graph_provenance(model):
+    graph = model.graph.artifact
+    return dict(kind=graph.kind, schema_version=graph.schema_version,
+                content_hash=graph.content_hash, reference_seed=model.config.topology_seed,
+                control_seed=model.config.topology_control_seed,
+                resolved_seed=graph.seed, parameters=dict(graph.parameters),
+                statistics=graph_statistics(graph))
+
+
+def canonical_model_config(value):
+    return asdict(EncoderConfig(**value))
+
+
+def require_resume_model_config(saved, requested):
+    if canonical_model_config(saved) != asdict(requested):
+        raise ValueError("resume requires identical model configuration")
+
+
+def execution_provenance(reproduction_argv=None):
+    commit = subprocess.run(["git", "rev-parse", "HEAD"],
+                            cwd=Path(__file__).resolve().parents[2],
+                            capture_output=True, text=True, check=False)
+    return dict(source_commit=commit.stdout.strip() if commit.returncode == 0 else "unavailable",
+                environment=dict(python=sys.version.split()[0], torch=str(torch.__version__),
+                                 device="cpu" if not torch.cuda.is_available() else "cuda_available"),
+                reproduction_argv=reproduction_argv or ["python", "-m", "flyts", "pretrain",
+                                                         "--manifest", "<manifest>", "--config", "<config>",
+                                                         "--output", "<output>"])
 
 
 def resolve_device(name):
@@ -54,12 +90,15 @@ def forward_batch(model, batch, masking, temporal_generator, channel_generator=N
     return out
 
 
-def save_checkpoint(path, model, optimizer, epoch, config, manifest_hash, history, best):
+def save_checkpoint(path, model, optimizer, epoch, config, manifest_hash, history, best,
+                    execution=None):
     state = dict(format_version=1, model_config=asdict(model.config), model=model.state_dict(),
                  optimizer=optimizer.state_dict(), epoch=epoch, training_config=config,
                  manifest_sha256=manifest_hash, history=history, best=best,
                  torch_rng=torch.get_rng_state(),
-                 cuda_rng=torch.cuda.get_rng_state_all() if torch.cuda.is_available() else [])
+                 cuda_rng=torch.cuda.get_rng_state_all() if torch.cuda.is_available() else [],
+                 graph_provenance=graph_provenance(model),
+                 execution_provenance=execution if execution is not None else execution_provenance())
     temp = Path(str(path)+".tmp")
     torch.save(state, temp)
     temp.replace(path)
@@ -72,6 +111,18 @@ def load_encoder(checkpoint, device="cpu"):
     if state.get("format_version") != 1:
         raise ValueError("unknown checkpoint version")
     model = FlyTSFoundation(EncoderConfig(**state["model_config"]))
+    expected = model.state_dict()
+    for field in GRAPH_BUFFER_FIELDS:
+        key = f"graph.{field}"
+        actual = state["model"].get(key)
+        if (not isinstance(actual, torch.Tensor) or actual.dtype != expected[key].dtype
+                or actual.shape != expected[key].shape or not torch.equal(actual, expected[key])):
+            raise ValueError(f"checkpoint graph buffer mismatch: {key}")
+    provenance = state.get("graph_provenance")
+    if provenance is None and model.config.topology != "fly_like":
+        raise ValueError("control checkpoint missing graph provenance")
+    if provenance is not None and provenance != graph_provenance(model):
+        raise ValueError("checkpoint graph provenance mismatch")
     model.load_state_dict(state["model"])
     return model.to(device).eval(), state
 
@@ -101,20 +152,20 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
     digest = sha256(manifest)
     mcfg = EncoderConfig(**config["model"])
     model = FlyTSFoundation(mcfg).to(device)
+    execution = execution_provenance(["python", "-m", "flyts", "pretrain",
+                                       "--manifest", str(manifest), "--config", str(config_path),
+                                       "--output", str(output), "--device", str(device)])
     optimizer = torch.optim.AdamW(model.parameters(), lr=config["lr"], weight_decay=1e-4)
     start, history, best = 0, [], float("inf")
     if resume:
         restored, state = load_encoder(resume, device=str(device))
-        saved_model_config = dict(state["model_config"])
-        saved_model_config.setdefault("topology", "fly_like")
-        if state["manifest_sha256"] != digest or saved_model_config != asdict(mcfg):
-            raise ValueError("resume requires identical model and corpus manifest")
+        if state["manifest_sha256"] != digest:
+            raise ValueError("resume requires identical corpus manifest")
+        require_resume_model_config(state["model_config"], mcfg)
         old = {k: v for k, v in state["training_config"].items() if k not in ("epochs", "mask_ratio", "masking")}
         new = {k: v for k, v in config.items() if k not in ("epochs", "mask_ratio", "masking")}
-        old["model"] = dict(old["model"])
-        new["model"] = dict(new["model"])
-        old["model"].setdefault("topology", "fly_like")
-        new["model"].setdefault("topology", "fly_like")
+        old["model"] = canonical_model_config(old["model"])
+        new["model"] = canonical_model_config(new["model"])
         old["masking"] = canonical_masking(state["training_config"])
         new["masking"] = masking
         if old != new:
@@ -140,7 +191,8 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
                parameters=sum(p.numel() for p in model.parameters()), manifest_sha256=digest,
                train_windows=len(train_data), val_windows=len(val_data),
                skipped_train_windows=train_data.skipped_windows, skipped_val_windows=val_data.skipped_windows,
-               train_domains=sorted({r["domain"] for r in train_data.records}))
+               train_domains=sorted({r["domain"] for r in train_data.records}),
+               graph_provenance=graph_provenance(model), execution_provenance=execution)
     (outdir / "run.json").write_text(json.dumps(run, indent=2)+"\n")
     print(json.dumps(run), flush=True)
     for epoch in range(start, config["epochs"]):
@@ -196,9 +248,9 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
         history.append(row)
         improved = val < best
         best = min(best, val)
-        save_checkpoint(outdir / "last.pt", model, optimizer, epoch+1, config, digest, history, best)
+        save_checkpoint(outdir / "last.pt", model, optimizer, epoch+1, config, digest, history, best, execution)
         if improved:
-            save_checkpoint(outdir / "best.pt", model, optimizer, epoch+1, config, digest, history, best)
+            save_checkpoint(outdir / "best.pt", model, optimizer, epoch+1, config, digest, history, best, execution)
         (outdir / "history.json").write_text(json.dumps(history, indent=2)+"\n")
         print(json.dumps(row), flush=True)
     return history

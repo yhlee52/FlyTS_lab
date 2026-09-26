@@ -1,14 +1,14 @@
 # FlyTS Current Research State
 
-Updated: 2026-09-25
+Updated: 2026-09-26
 
 ## Current stage
 
-Stages 00–04 are closed. Stage 04 topology modularization received independent QA `PASS` and user result `GO` (DEC-017); Draft PR #10 is open. Stage 03 PR #9 is stale because its changes are already in `origin/main` at `f3362b24`. Numerical robustness settings remain candidate.
+Stages 00–04 are closed. Stage 04 PR #10 is merged in `origin/main` at `944f8ed`. Stage 05 topology controls is active under DEC-018 and the user-approved overlap-guard revision in DEC-019. Numerical robustness settings remain candidate.
 
 ## Current goal
 
-Review Draft PR #10 and its CI evidence. Do not merge or begin Stage 05.
+Implement the revised Stage 05 uniform-rewiring contract, then obtain independent QA and a user result gate. Do not run performance comparisons, merge, or begin Stage 06.
 
 ## Canonical references
 
@@ -55,6 +55,8 @@ Review Draft PR #10 and its CI evidence. Do not merge or begin Stage 05.
 - DEC-015 records independent final QA `PASS` and Stage 03 closure within the no-frozen-threshold scope; formal robustness pass/fail still requires separately approved reopened calibration and freeze.
 - DEC-016 records user `GO` for bounded Stage 04 topology modularization and the stale PR #9 integration status.
 - DEC-017 records the user's Stage 04 result `GO`, closure after independent QA `PASS`, and request for a Draft PR; merge and Stage 05 remain separately gated.
+- DEC-018 records user `GO` for the fixed Stage 05 control, seed, provenance, CPU one-step, agent-budget, and no-performance contract.
+- DEC-019 retains uniform `10E/200E` degree-preserving rewiring but makes overlap/Jaccard descriptive after the fixed fixture missed the original `0.10` guard.
 
 ## Open questions
 
@@ -111,9 +113,11 @@ Review Draft PR #10 and its CI evidence. Do not merge or begin Stage 05.
 - The user subsequently approved Stage 03 closure without numerical freeze and a Draft PR after final QA. Independent final QA reported `PASS` for all eight Charter criteria in that bounded scope; `RESULT.md` is closed. Robustness pass/fail and final claims remain prohibited.
 - Draft PR #9 (`https://github.com/yhlee52/FlyTS_lab/pull/9`) was created at commit `a522f772512c005ce695f48fd71dfa231e22328e`; merge and Stage 04 are not authorized.
 - Stage 04 pre-refactor CPU evidence is under ignored `outputs/stage04/`: five seeded golden graphs, ordered state/parameters, fixed forward/backward/loss, and a runtime legacy-v1 checkpoint. Post-refactor comparison is bitwise for same-backend CPU state/order/forward/loss/gradients; strict v1 load, bitwise epoch-boundary resume and stable evaluator-row tests pass. The focused suite passes 13 tests and the full suite passes 68 tests with three CUDA hardware skips; notebook/governance validators and diff check pass. Independent QA issued final `PASS`, and the user accepted the result with `GO` (DEC-017).
-- Draft PR #10 (`https://github.com/yhlee52/FlyTS_lab/pull/10`) records the accepted Stage 04 scope, QA `PASS`, evidence and limitations. Merge and Stage 05 are not authorized.
+- PR #10 (`https://github.com/yhlee52/FlyTS_lab/pull/10`) was merged into `main` at `944f8ed`; Stage 05 begins from that exact commit.
 - Draft PR #10 GitHub Actions `pytest` run `36106979369` passed on commit `8563df3` before the final CI evidence note.
+- Stage 05 diagnostic generation at the approved fixed fixture (`N=64`, `E=613`, base seed 7, control seed 5007) completed all 6,130 directed degree-preserving swaps but retained 168 reference edges (`0.274062`), exceeding the preregistered `0.10` guard. Implementation and Architecture found no straightforward correctness defect; the prototype was reverted and the stage entered `HOLD` before tests, report, training or QA.
+- The user approved the non-optimizing DEC-019 revision: uniform proposal, exact degree/component and `10E/200E` remain fixed; overlap and Jaccard are descriptive. Stage 05 implementation may resume without seed selection or performance work.
 
 ## Next action
 
-Review Draft PR #10. Do not merge or begin Stage 05 without separate explicit approval.
+Complete Stage 05 implementation, deterministic structural evidence, and independent QA under DEC-019. Request a user result decision before merge or Stage 06.
