@@ -54,7 +54,7 @@ def test_legacy_state_and_parameter_contract():
 
 def test_graph_rejects_corruption_and_unknown_kind():
     with pytest.raises(ValueError, match="unknown topology"):
-        build_topology("random_sparse")
+        build_topology("unregistered")
     graph = build_topology("fly_like", hidden_size=8, num_modules=2,
                            num_populations=2, population=torch.arange(8) % 2, sparsity=.9)
     with pytest.raises(ValueError, match="hash"):

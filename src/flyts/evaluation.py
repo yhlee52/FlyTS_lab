@@ -174,7 +174,9 @@ class FlyTSAdapter:
         return {"reconstruction": out["reconstruction"].cpu()}
 
     def provenance(self):
-        return {"adapter": "flyts-v1", "checkpoint_sha256": self.checkpoint_hash}
+        from .training import graph_provenance
+        return {"adapter": "flyts-v1", "checkpoint_sha256": self.checkpoint_hash,
+                "graph_provenance": graph_provenance(self.model)}
 
 
 def temporal_fixture(observed, patch_size, ratio, seed):

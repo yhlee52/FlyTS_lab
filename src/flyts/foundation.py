@@ -27,6 +27,7 @@ class EncoderConfig:
     topology_seed: int = 7
     backend: str = "dense"
     topology: str = "fly_like"
+    topology_control_seed: int | None = None
 
     def __post_init__(self):
         if min(self.patch_size, self.width, self.hidden, self.slots) < 1:
@@ -39,8 +40,11 @@ class EncoderConfig:
             raise ValueError("invalid tau bounds")
         if self.backend not in ("dense", "scatter"):
             raise ValueError("backend must be dense or scatter")
-        if self.topology != "fly_like":
-            raise ValueError(f"unknown topology kind {self.topology!r}; supported: fly_like")
+        if self.topology not in ("fly_like", "degree_preserving_rewired", "random_sparse"):
+            raise ValueError(f"unknown topology kind {self.topology!r}")
+        if self.topology != "fly_like" and (isinstance(self.topology_control_seed, bool)
+                or not isinstance(self.topology_control_seed, int)):
+            raise ValueError("control topology requires explicit integer topology_control_seed")
 
 
 class PopulationGraph(nn.Module):
@@ -56,7 +60,9 @@ class PopulationGraph(nn.Module):
         graph = build_topology(cfg.topology, hidden_size=cfg.hidden,
                                num_modules=min(4, cfg.hidden),
                                num_populations=cfg.populations, population=pop,
-                               sparsity=1-cfg.density, seed=cfg.topology_seed)
+                               sparsity=1-cfg.density, seed=cfg.topology_seed,
+                               control_seed=cfg.topology_control_seed)
+        self.artifact = graph
         self.register_buffer("dst", graph.dst)
         self.register_buffer("src", graph.src)
         self.register_buffer("pop", graph.population)
