@@ -4,7 +4,7 @@ Updated: 2026-09-26
 
 ## Current stage
 
-Stages 00–04 are closed. Stage 04 PR #10 is merged in `origin/main` at `944f8ed`. Stage 05 topology controls is in result review after independent final QA `PASS`; the user result decision, merge and Stage 06 remain pending. Numerical robustness settings remain candidate.
+Stages 00–04 are closed. Stage 04 PR #10 is merged in `origin/main` at `944f8ed`. Stage 05 topology controls is in result review in Draft PR #11 after independent final QA `PASS`; the user result decision, merge and Stage 06 remain pending. Numerical robustness settings remain candidate.
 
 ## Current goal
 
@@ -120,6 +120,7 @@ Review the Stage 05 result, final QA and Draft PR, then issue `GO`, `REVISE`, `H
 - The user approved the non-optimizing DEC-019 revision: uniform proposal, exact degree/component and `10E/200E` remain fixed; overlap and Jaccard are descriptive. Stage 05 implementation may resume without seed selection or performance work.
 - Independent QA first found invalid report source attribution; remediation now records committed source paths/hashes and a valid checkout+generation command. The allowed QA follow-up then found omitted resume/epochs/development-only CLI flags in run provenance; remediation and a focused regression test are committed. Final self-check: full pytest passes with three CUDA skips, report `--check`, governance/notebook validators and `git diff --check` pass.
 - DEC-020 final independent QA issued `PASS`: focused 60 passed/two CUDA skips, full 76 passed/three CUDA skips, all 15 graph-buffer corruptions rejected, actual resume provenance verified, report/validators/diff/status clean. H-03 and all performance/transfer/CUDA claims remain `미검증`.
+- Stage 05 Draft PR #11 contains the implementation, deterministic evidence report, independent QA report and result record; it is not approved for merge.
 
 ## Next action
 

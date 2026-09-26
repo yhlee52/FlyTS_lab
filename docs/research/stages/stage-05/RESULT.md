@@ -67,7 +67,7 @@ the user approved one extra bounded QA follow-up in DEC-020.
 
 ## Pull request
 
-- Draft PR: pending creation after this result record.
+- Draft PR: #11 (`codex/stage-05-topology-controls` -> `main`).
 - Merge and Stage 06 remain separately gated.
 
 ## User stage gate
