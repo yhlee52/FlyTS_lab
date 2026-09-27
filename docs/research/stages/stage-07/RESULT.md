@@ -2,6 +2,8 @@
 
 Status: **review — independent QA PASS; PI result pending**
 
+Draft PR: [#13](https://github.com/yhlee52/FlyTS_lab/pull/13) — open, unmerged
+
 The approved engineering question is satisfied. Fly sparse, dense-leaky and GRU
 share one tokenizer, Set Router, masking, contextual head, decoder and reconstruction
 path behind a common routed-slot interface. Existing Fly format-v1 checkpoints and
