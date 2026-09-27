@@ -477,7 +477,7 @@ FlyTS-Mini v0.1에서 가능성을 확인한 뒤에만 다음을 진행한다.
 - [x] 단계 4 — topology 모듈화 구현, 독립 QA `PASS`, 사용자 결과 `GO`
 - [x] 단계 5 — topology 비교군 구현, 독립 QA `PASS`, 사용자 결과 `GO`
 - [x] 단계 6 — public corpus v1 확장, 독립 QA `PASS`, 사용자 결과 `GO`, PR #12 병합
-- [ ] 단계 7 — conventional baseline 구현 완료, 독립 QA `FAIL` remediation `HOLD`
+- [x] 단계 7 — conventional baseline 구현, 독립 QA `PASS`, 사용자 결과 `GO`
 
 단계 1의 연구 규약과 단계 2의 channel masking/dropout은 각각 사용자 `GO`로 완료되었다.
-단계 3 evaluator와 candidate evidence는 사용자 `GO`로 수용되었고, independent final QA `PASS` 후 수치 threshold·guard·uncertainty를 동결하지 않은 범위에서 종료됐다. Draft PR #9 내용은 현재 `main`에 포함되어 PR이 stale 상태다. 지표는 기술적·서술적 결과만 제공하고 robustness pass/fail 또는 최종 주장을 하지 않는다. Stage 04 topology 모듈화는 independent QA `PASS`와 사용자 결과 `GO` 후 PR #10으로 `main`의 `944f8ed`에 병합됐다. Stage 05 topology controls는 independent QA `PASS`와 사용자 결과 `GO`(DEC-021) 후 PR #11로 `main`의 `3df133c`에 병합됐다. Stage 06 public corpus v1은 independent QA `PASS`와 사용자 결과 `GO`(DEC-023) 후 PR #12로 `main`의 `81355b7`에 병합됐다. Stage 07 conventional baselines는 DEC-024로 승인되어 구현됐고, byte-level provenance remediation 뒤 independent QA `PASS`를 받았으며 PI 결과 결정을 기다린다.
+단계 3 evaluator와 candidate evidence는 사용자 `GO`로 수용되었고, independent final QA `PASS` 후 수치 threshold·guard·uncertainty를 동결하지 않은 범위에서 종료됐다. Draft PR #9 내용은 현재 `main`에 포함되어 PR이 stale 상태다. 지표는 기술적·서술적 결과만 제공하고 robustness pass/fail 또는 최종 주장을 하지 않는다. Stage 04 topology 모듈화는 independent QA `PASS`와 사용자 결과 `GO` 후 PR #10으로 `main`의 `944f8ed`에 병합됐다. Stage 05 topology controls는 independent QA `PASS`와 사용자 결과 `GO`(DEC-021) 후 PR #11로 `main`의 `3df133c`에 병합됐다. Stage 06 public corpus v1은 independent QA `PASS`와 사용자 결과 `GO`(DEC-023) 후 PR #12로 `main`의 `81355b7`에 병합됐다. Stage 07 conventional baselines는 independent QA `PASS`와 사용자 결과 `GO`(DEC-026)로 bounded engineering 범위에서 종료됐으며 Draft PR #13 병합과 Stage 08은 별도 gate다.

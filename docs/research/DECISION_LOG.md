@@ -1,5 +1,13 @@
 # FlyTS Decision Log
 
+## DEC-026 — Stage 07 result GO
+
+- Date: 2026-09-27
+- Decision authority: user issued `GO` after reviewing the Stage 07 implementation, independent QA `PASS`, parameter-match evidence, cross-platform report remediation, and passing Draft PR #13 CI.
+- Decision: accept and close the bounded conventional-backbone engineering stage. Fly sparse, dense-leaky and GRU now share the approved front end, routing, masking, reconstruction, evaluation and format-v1-compatible checkpoint paths; the frozen matched sizes and preregistered research roles are accepted as engineering evidence only.
+- Evidence: `docs/research/stages/stage-07/{RESULT,QA_REPORT}.md`; Fly 68,760 parameters, dense-leaky `H=98`/68,530, GRU `H=43`/68,853, independent focused 64 passed/2 CUDA skips, full 97 passed/3 CUDA skips, deterministic reports, and both final Draft PR #13 CI jobs passed.
+- Boundary: this does not authorize Draft PR #13 merge, Stage 08, real-data training, validation/final-held-out results, model selection, CUDA, transfer, foundation-quality, topology-benefit or backbone-superiority claims.
+
 ## DEC-025 — Stage 07 provenance-remediation budget exception
 
 - Date: 2026-09-27

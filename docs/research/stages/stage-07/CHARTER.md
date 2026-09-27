@@ -1,6 +1,6 @@
 # Stage 07 Charter — Conventional backbone engineering
 
-Status: review
+Status: closed
 
 ## Research question
 

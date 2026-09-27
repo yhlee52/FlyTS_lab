@@ -4,11 +4,11 @@ Updated: 2026-09-27
 
 ## Current stage
 
-Stages 00–06 are closed and PR #12 is merged at `81355b7`. Stage 07 implementation and provenance remediation are complete under DEC-024/025; independent QA is `PASS` and the result awaits PI review. Numerical robustness settings remain candidate.
+Stages 00–07 are closed under DEC-026; PR #12 is merged at `81355b7`, while Draft PR #13 remains open and unmerged. Numerical robustness settings remain candidate.
 
 ## Current goal
 
-Open the Stage 07 Draft PR and present the independently verified engineering result for PI `GO`, `REVISE`, `HOLD`, or `STOP`. Do not inspect final-held-out performance.
+Preserve the closed Stage 07 evidence boundary while awaiting a separate decision on Draft PR #13 merge or a separately chartered Stage 08. Do not inspect final-held-out performance.
 
 ## Canonical references
 
@@ -66,14 +66,14 @@ Open the Stage 07 Draft PR and present the independently verified engineering re
 - DEC-021 records the user's Stage 05 result `GO` after independent QA `PASS`; Stage 05 is closed while PR #11 merge and Stage 06 remain separately gated.
 - DEC-022 records the user's Stage 06 `GO`: official UCI Electricity 370 only, dataset/family identity separation, fixed roles, chronological 70/15/15 with 512-point purge, external hashed registry, full local conversion, fixture CI and forward/encode-only smoke.
 - DEC-023 records the user's Stage 06 result `GO` after independent QA `PASS`; the stage is closed while PR #12 merge, Stage 07 and all performance claims remain separately gated.
-- DEC-024 records the user's Stage 07 architecture, fairness, evidence and four-specialist budget `GO`; DEC-025 approves one extra bounded Implementation follow-up for the QA provenance blockers.
+- DEC-024 records the Stage 07 architecture/fairness `GO`; DEC-025 approves the bounded provenance follow-up; DEC-026 records the user's result `GO` and closes Stage 07 without authorizing merge or Stage 08.
 
 ## Open questions
 
 - Whether the initial agent/model assignments need adjustment after real Stage 0 use.
 - Whether a dedicated Research Ops agent is justified after pilot experiments begin.
 - When suitable CUDA hardware will be available for the still-unverified GPU path.
-- Whether the PI accepts the Stage 07 engineering result; merge and Stage 08 remain separately gated.
+- Whether and when the PI separately authorizes Draft PR #13 merge or a Stage 08 charter.
 
 ## Active risks
 
@@ -143,8 +143,8 @@ Open the Stage 07 Draft PR and present the independently verified engineering re
 - Final independent QA is `PASS`: focused 8 passed, full 84 passed/3 CUDA skips, full source/array equality, report `--check`, smoke hash/shape/finite/memory, validators and diff check all passed.
 - Both Draft PR #12 `pytest` checks passed; PR #12 was merged to `main` at `81355b7` before the separate Stage 07 approval.
 - Initial Stage 07 QA issued `FAIL` because tracked config byte hashes disagreed with the report, `--check` normalized newlines, and source binding omitted training/evaluation.
-- After DEC-025 remediation, independent QA issued final `PASS`: focused 64 passed/2 CUDA skips and full 97 passed/3 CUDA skips; Draft PR #13 is open and both Linux CI checks pass after replacing the OS-specific shared-value hash with an actual-equality transcript fingerprint.
+- After DEC-025 remediation, independent QA issued final `PASS`: focused 64 passed/2 CUDA skips and full 97 passed/3 CUDA skips; both Draft PR #13 Linux CI checks pass, and the user issued Stage 07 result `GO` under DEC-026.
 
 ## Next action
 
-Open the Stage 07 Draft PR and present the result gate to the PI. Merge, Stage 08, final-held-out access, and all performance claims remain separately gated.
+Await a separate PI decision for Draft PR #13 merge or a Stage 08 charter. Final-held-out access and all performance claims remain gated.
