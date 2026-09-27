@@ -1,0 +1,6 @@
+configs/baselines/stage07-*.json text eol=lf
+reports/baselines/stage07-baselines.* text eol=lf
+src/flyts/*.py text eol=lf
+src/flyts/backbones/*.py text eol=lf
+src/flyts/topology/*.py text eol=lf
+tools/report_stage07_baselines.py text eol=lf

@@ -1,0 +1,47 @@
+{
+  "fixture_schema": "stage07-synthetic-v1",
+  "fly_reference": {
+    "density": 0.1,
+    "graph_execution_backend": "dense",
+    "hidden": 128,
+    "populations": 16,
+    "topology": "fly_like",
+    "topology_seed": 7
+  },
+  "init_schema": "flyts-baseline-init-v1",
+  "roles": {
+    "dense_leaky": "role_diagnostic",
+    "fly_sparse": "reference",
+    "gru": "formal_candidate"
+  },
+  "sampler_seed_offsets": {
+    "channel": 30000,
+    "dropout": 40000,
+    "sample": 0,
+    "temporal": 10000,
+    "validation_channel": 50000,
+    "validation_temporal": 20000
+  },
+  "schema_version": 1,
+  "search_hidden": {
+    "dense_leaky": [
+      2,
+      512
+    ],
+    "gru": [
+      1,
+      512
+    ]
+  },
+  "shared_architecture": {
+    "decoder_output_per_patch": 8,
+    "embedding_width": 64,
+    "patch_size": 8,
+    "slots": 4,
+    "width": 64
+  },
+  "shared_reference_seed": 8559988470090249320,
+  "target_parameters": 68760,
+  "tie_break": "smaller_hidden",
+  "tolerance_fraction": 0.05
+}

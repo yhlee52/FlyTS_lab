@@ -51,6 +51,10 @@ scope or `미검증`.
 Draft PR #12 (`https://github.com/yhlee52/FlyTS_lab/pull/12`) contains the bounded
 implementation and evidence. It is not authorized for merge.
 
+Integration note: PR #12 was subsequently merged into `main` at
+`81355b76de7c709ea11a2b1e842a785371a94c3e` on 2026-09-27. Stage 07 was
+separately approved afterward; this does not alter the Stage 06 evidence boundary.
+
 ## PI result decision
 
 The PI issued `GO` on 2026-09-27 after reviewing the evidence, QA verdict and the

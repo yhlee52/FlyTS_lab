@@ -1,0 +1,891 @@
+{
+  "config_hashes": {
+    "stage07-budget.json": "b95c07df89f25c08958a6a24da0f90b813258034f8680bce637b5a224a7a9096",
+    "stage07-dense-leaky.json": "20bd2824fcf9e35cd349a5a927db47801626eb0d33f8e18638cdba47fd869765",
+    "stage07-fly-sparse.json": "8771f43a72948820ea5dabdac28c28faf4858bf783488e69105b6c2baf3abd2e",
+    "stage07-gru.json": "3b76062a453ce63759444bae5389d99185b03b6276ab24ed1a4b459ed9d66c3b"
+  },
+  "fixture": "synthetic only; no corpus accessed",
+  "init_schema": "flyts-baseline-init-v1",
+  "initialization": {
+    "backbone_namespaces": [
+      "dense_leaky",
+      "gru"
+    ],
+    "backbone_seeds": {
+      "dense_leaky": 7880789994935141860,
+      "gru": 4816460142459242271
+    },
+    "shared_namespace": "shared-reference",
+    "shared_seed": 8559988470090249320
+  },
+  "models": {
+    "dense_leaky": {
+      "absolute_deviation": 230,
+      "actual_parameters": 68530,
+      "backbone_parameters": 41322,
+      "compute": {
+        "flop_convention": "two FLOPs per MAC",
+        "graph_edges": null,
+        "limits": "recurrent core only; excludes shared front end, biases, nonlinearities and hardware effects",
+        "supported_flop_per_valid_patch": 81928,
+        "supported_formula": "H*(slots*width) + H*H + H*width",
+        "supported_mac_per_valid_patch": 40964,
+        "unsupported_operations": [
+          "activation",
+          "memory traffic"
+        ]
+      },
+      "construction_order_invariant": true,
+      "construction_rng_preserved": true,
+      "deviation": -230,
+      "deviation_percent": -0.3344968004653869,
+      "fixture": {
+        "adapter_embedding_shape": [
+          64
+        ],
+        "adapter_load_finite": true,
+        "adapter_reconstruction_shape": [
+          1,
+          19,
+          3
+        ],
+        "all_gradients_finite": true,
+        "forward_finite": true,
+        "input_shapes": {
+          "channel_mask": [
+            2,
+            3,
+            3
+          ],
+          "dropout_mask": [
+            2,
+            3,
+            3
+          ],
+          "lengths": [
+            2
+          ],
+          "observed": [
+            2,
+            19,
+            3
+          ],
+          "temporal_mask": [
+            2,
+            3,
+            3
+          ],
+          "x": [
+            2,
+            19,
+            3
+          ]
+        },
+        "padding_invariant": true,
+        "public_output_shapes": {
+          "channel": [
+            2,
+            3,
+            64
+          ],
+          "channel_target_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "dropout_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "global": [
+            2,
+            64
+          ],
+          "hidden_patch_mask": [
+            2,
+            3,
+            3
+          ],
+          "missing_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "observed_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "padding_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "patch_channel": [
+            2,
+            3,
+            3,
+            64
+          ],
+          "patch_valid": [
+            2,
+            3
+          ],
+          "prediction": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "reconstruction": [
+            2,
+            19,
+            3
+          ],
+          "target": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "target_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "temporal_target_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "time": [
+            2,
+            3,
+            64
+          ],
+          "visible_mask": [
+            2,
+            3,
+            3,
+            8
+          ]
+        },
+        "two_step_resume_bitwise": true,
+        "update_finite": true
+      },
+      "kind": "dense_leaky",
+      "parameter_schema": {
+        "backbone.bias": [
+          98
+        ],
+        "backbone.drive.bias": [
+          98
+        ],
+        "backbone.drive.weight": [
+          98,
+          256
+        ],
+        "backbone.out.bias": [
+          64
+        ],
+        "backbone.out.weight": [
+          64,
+          98
+        ],
+        "backbone.recurrent": [
+          98,
+          98
+        ],
+        "backbone.tau_logits": [
+          98
+        ],
+        "clock.bias": [
+          64
+        ],
+        "clock.weight": [
+          64,
+          4
+        ],
+        "context.0.bias": [
+          64
+        ],
+        "context.0.weight": [
+          64,
+          192
+        ],
+        "context.2.bias": [
+          64
+        ],
+        "context.2.weight": [
+          64
+        ],
+        "decoder.bias": [
+          8
+        ],
+        "decoder.weight": [
+          8,
+          64
+        ],
+        "key.weight": [
+          64,
+          64
+        ],
+        "queries": [
+          4,
+          64
+        ],
+        "stats.bias": [
+          64
+        ],
+        "stats.weight": [
+          64,
+          2
+        ],
+        "tokenizer.0.bias": [
+          64
+        ],
+        "tokenizer.0.weight": [
+          64,
+          16
+        ],
+        "tokenizer.2.bias": [
+          64
+        ],
+        "tokenizer.2.weight": [
+          64,
+          64
+        ],
+        "value.weight": [
+          64,
+          64
+        ]
+      },
+      "role": "role_diagnostic",
+      "selected_hidden": 98,
+      "shared_equality_sha256": "bd617f0dddc6be024eaef819707f646e27913903bbcae9f8cf417f913452546e",
+      "shared_initialization_equal": true,
+      "shared_parameters": 27208,
+      "target_parameters": 68760,
+      "within_tolerance": true
+    },
+    "fly_sparse": {
+      "absolute_deviation": 0,
+      "actual_parameters": 68760,
+      "backbone_parameters": 41552,
+      "compute": {
+        "flop_convention": "two FLOPs per MAC",
+        "graph_edges": 2555,
+        "limits": "recurrent core only; excludes shared front end, biases, nonlinearities and hardware effects",
+        "supported_flop_per_valid_patch": 114688,
+        "supported_formula": "H*(slots*width) + H*H + H*width",
+        "supported_mac_per_valid_patch": 57344,
+        "unsupported_operations": [
+          "edge weight assembly",
+          "activation",
+          "memory traffic"
+        ]
+      },
+      "construction_order_invariant": true,
+      "construction_rng_preserved": true,
+      "deviation": 0,
+      "deviation_percent": 0.0,
+      "fixture": {
+        "adapter_embedding_shape": [
+          64
+        ],
+        "adapter_load_finite": true,
+        "adapter_reconstruction_shape": [
+          1,
+          19,
+          3
+        ],
+        "all_gradients_finite": true,
+        "forward_finite": true,
+        "input_shapes": {
+          "channel_mask": [
+            2,
+            3,
+            3
+          ],
+          "dropout_mask": [
+            2,
+            3,
+            3
+          ],
+          "lengths": [
+            2
+          ],
+          "observed": [
+            2,
+            19,
+            3
+          ],
+          "temporal_mask": [
+            2,
+            3,
+            3
+          ],
+          "x": [
+            2,
+            19,
+            3
+          ]
+        },
+        "padding_invariant": true,
+        "public_output_shapes": {
+          "channel": [
+            2,
+            3,
+            64
+          ],
+          "channel_target_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "dropout_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "global": [
+            2,
+            64
+          ],
+          "hidden_patch_mask": [
+            2,
+            3,
+            3
+          ],
+          "missing_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "observed_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "padding_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "patch_channel": [
+            2,
+            3,
+            3,
+            64
+          ],
+          "patch_valid": [
+            2,
+            3
+          ],
+          "prediction": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "reconstruction": [
+            2,
+            19,
+            3
+          ],
+          "target": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "target_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "temporal_target_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "time": [
+            2,
+            3,
+            64
+          ],
+          "visible_mask": [
+            2,
+            3,
+            3,
+            8
+          ]
+        },
+        "two_step_resume_bitwise": true,
+        "update_finite": true
+      },
+      "kind": "fly_sparse",
+      "parameter_schema": {
+        "clock.bias": [
+          64
+        ],
+        "clock.weight": [
+          64,
+          4
+        ],
+        "context.0.bias": [
+          64
+        ],
+        "context.0.weight": [
+          64,
+          192
+        ],
+        "context.2.bias": [
+          64
+        ],
+        "context.2.weight": [
+          64
+        ],
+        "decoder.bias": [
+          8
+        ],
+        "decoder.weight": [
+          8,
+          64
+        ],
+        "graph.bias": [
+          128
+        ],
+        "graph.drive.bias": [
+          128
+        ],
+        "graph.drive.weight": [
+          128,
+          256
+        ],
+        "graph.out.bias": [
+          64
+        ],
+        "graph.out.weight": [
+          64,
+          128
+        ],
+        "graph.tau_logits": [
+          16
+        ],
+        "graph.type_weight": [
+          256
+        ],
+        "key.weight": [
+          64,
+          64
+        ],
+        "queries": [
+          4,
+          64
+        ],
+        "stats.bias": [
+          64
+        ],
+        "stats.weight": [
+          64,
+          2
+        ],
+        "tokenizer.0.bias": [
+          64
+        ],
+        "tokenizer.0.weight": [
+          64,
+          16
+        ],
+        "tokenizer.2.bias": [
+          64
+        ],
+        "tokenizer.2.weight": [
+          64,
+          64
+        ],
+        "value.weight": [
+          64,
+          64
+        ]
+      },
+      "role": "reference",
+      "selected_hidden": 128,
+      "shared_equality_sha256": "bd617f0dddc6be024eaef819707f646e27913903bbcae9f8cf417f913452546e",
+      "shared_initialization_equal": true,
+      "shared_parameters": 27208,
+      "target_parameters": 68760,
+      "within_tolerance": true
+    },
+    "gru": {
+      "absolute_deviation": 93,
+      "actual_parameters": 68853,
+      "backbone_parameters": 41645,
+      "compute": {
+        "flop_convention": "two FLOPs per MAC",
+        "graph_edges": null,
+        "limits": "recurrent core only; excludes shared front end, biases, nonlinearities and hardware effects",
+        "supported_flop_per_valid_patch": 82646,
+        "supported_formula": "3*(slots*width*H + H*H) + H*width",
+        "supported_mac_per_valid_patch": 41323,
+        "unsupported_operations": [
+          "gate activations",
+          "packing",
+          "memory traffic"
+        ]
+      },
+      "construction_order_invariant": true,
+      "construction_rng_preserved": true,
+      "deviation": 93,
+      "deviation_percent": 0.13525305410122165,
+      "fixture": {
+        "adapter_embedding_shape": [
+          64
+        ],
+        "adapter_load_finite": true,
+        "adapter_reconstruction_shape": [
+          1,
+          19,
+          3
+        ],
+        "all_gradients_finite": true,
+        "forward_finite": true,
+        "input_shapes": {
+          "channel_mask": [
+            2,
+            3,
+            3
+          ],
+          "dropout_mask": [
+            2,
+            3,
+            3
+          ],
+          "lengths": [
+            2
+          ],
+          "observed": [
+            2,
+            19,
+            3
+          ],
+          "temporal_mask": [
+            2,
+            3,
+            3
+          ],
+          "x": [
+            2,
+            19,
+            3
+          ]
+        },
+        "padding_invariant": true,
+        "public_output_shapes": {
+          "channel": [
+            2,
+            3,
+            64
+          ],
+          "channel_target_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "dropout_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "global": [
+            2,
+            64
+          ],
+          "hidden_patch_mask": [
+            2,
+            3,
+            3
+          ],
+          "missing_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "observed_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "padding_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "patch_channel": [
+            2,
+            3,
+            3,
+            64
+          ],
+          "patch_valid": [
+            2,
+            3
+          ],
+          "prediction": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "reconstruction": [
+            2,
+            19,
+            3
+          ],
+          "target": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "target_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "temporal_target_mask": [
+            2,
+            3,
+            3,
+            8
+          ],
+          "time": [
+            2,
+            3,
+            64
+          ],
+          "visible_mask": [
+            2,
+            3,
+            3,
+            8
+          ]
+        },
+        "two_step_resume_bitwise": true,
+        "update_finite": true
+      },
+      "kind": "gru",
+      "parameter_schema": {
+        "backbone.gru.bias_hh_l0": [
+          129
+        ],
+        "backbone.gru.bias_ih_l0": [
+          129
+        ],
+        "backbone.gru.weight_hh_l0": [
+          129,
+          43
+        ],
+        "backbone.gru.weight_ih_l0": [
+          129,
+          256
+        ],
+        "backbone.out.bias": [
+          64
+        ],
+        "backbone.out.weight": [
+          64,
+          43
+        ],
+        "clock.bias": [
+          64
+        ],
+        "clock.weight": [
+          64,
+          4
+        ],
+        "context.0.bias": [
+          64
+        ],
+        "context.0.weight": [
+          64,
+          192
+        ],
+        "context.2.bias": [
+          64
+        ],
+        "context.2.weight": [
+          64
+        ],
+        "decoder.bias": [
+          8
+        ],
+        "decoder.weight": [
+          8,
+          64
+        ],
+        "key.weight": [
+          64,
+          64
+        ],
+        "queries": [
+          4,
+          64
+        ],
+        "stats.bias": [
+          64
+        ],
+        "stats.weight": [
+          64,
+          2
+        ],
+        "tokenizer.0.bias": [
+          64
+        ],
+        "tokenizer.0.weight": [
+          64,
+          16
+        ],
+        "tokenizer.2.bias": [
+          64
+        ],
+        "tokenizer.2.weight": [
+          64,
+          64
+        ],
+        "value.weight": [
+          64,
+          64
+        ]
+      },
+      "role": "formal_candidate",
+      "selected_hidden": 43,
+      "shared_equality_sha256": "bd617f0dddc6be024eaef819707f646e27913903bbcae9f8cf417f913452546e",
+      "shared_initialization_equal": true,
+      "shared_parameters": 27208,
+      "target_parameters": 68760,
+      "within_tolerance": true
+    }
+  },
+  "sampler_seed_offsets": {
+    "channel": 30000,
+    "dropout": 40000,
+    "sample": 0,
+    "temporal": 10000,
+    "validation_channel": 50000,
+    "validation_temporal": 20000
+  },
+  "sampler_seeds_at_seed_7": {
+    "channel": 30007,
+    "dropout": 40007,
+    "sample": 7,
+    "temporal": 10007,
+    "validation_channel": 50007,
+    "validation_temporal": 20007
+  },
+  "schema_version": 1,
+  "source_hashes": {
+    "backbones_init": {
+      "path": "src/flyts/backbones/__init__.py",
+      "sha256": "4754be3ed2ca9b22b990d1d09b11c94f6127508c7961c5d1a77892e01e1a6372"
+    },
+    "base": {
+      "path": "src/flyts/backbones/base.py",
+      "sha256": "7620967f8d6a6415d7b8f5c8e9a57305c0ae154d849057ecdd3b5ee3c47abad2"
+    },
+    "budget": {
+      "path": "src/flyts/backbones/budget.py",
+      "sha256": "0c1f3e773fe1a5dabcc99b86f7d6f818d5f6ab94e51148b72960e14642f22a2e"
+    },
+    "dense": {
+      "path": "src/flyts/backbones/dense_leaky.py",
+      "sha256": "b3f738d833cb003660208ad363a4591b1cb7c9e5038afd3f3b2c38f3a1482a33"
+    },
+    "evaluation": {
+      "path": "src/flyts/evaluation.py",
+      "sha256": "c9bcc7b9044e3566d94a5da4d70b25ce021cb2db8439c32241b48ecbb45bc3d2"
+    },
+    "fly": {
+      "path": "src/flyts/backbones/fly_sparse.py",
+      "sha256": "332f7093d01395b305e7b69721eb95481d348d40f1e90b7aca9b76b7dba875ea"
+    },
+    "foundation": {
+      "path": "src/flyts/foundation.py",
+      "sha256": "630c1a38f18ceafcfb9745739243a493e9ddf0bf3ab57dc5e25d6bdff5dd0717"
+    },
+    "gru": {
+      "path": "src/flyts/backbones/gru.py",
+      "sha256": "7985efdf96f79296ed2b81879c75f35f53cd610a74d852dc4c0c2fa01e715d89"
+    },
+    "masking": {
+      "path": "src/flyts/masking.py",
+      "sha256": "2c4c96deabd77feeae81d4af41c6f7f9585fd03e6f5442bc2ab429678974445a"
+    },
+    "registry": {
+      "path": "src/flyts/backbones/registry.py",
+      "sha256": "da51eefd8c6b378e828d5de9301f942c9e84960d688f4a7201f2b0a0c4477dcd"
+    },
+    "report": {
+      "path": "tools/report_stage07_baselines.py",
+      "sha256": "63ede33883b8ed784896b166a2e79360c86bc7d9bf5280f005794a7c7523d8fc"
+    },
+    "seeding": {
+      "path": "src/flyts/backbones/seeding.py",
+      "sha256": "fd1c62d2426f8520f06f00bad5dee194557ea34529a8107425228069095803a1"
+    },
+    "topology_base": {
+      "path": "src/flyts/topology/base.py",
+      "sha256": "e00fbf4187c6af06b7368c456d807f3293a12b0a03242232f1ed1d793f79e80f"
+    },
+    "topology_controls": {
+      "path": "src/flyts/topology/controls.py",
+      "sha256": "0f7a9cfa65213d77c6b26869f0a911b49bfa15432829329a99a496fe7cf9f51f"
+    },
+    "topology_fly": {
+      "path": "src/flyts/topology/fly_like.py",
+      "sha256": "8ee9a75ca68293f98a5208206c1ef698e6b39c4854db9a8b16315e91122bb256"
+    },
+    "topology_init": {
+      "path": "src/flyts/topology/__init__.py",
+      "sha256": "c610c7fa99d14c816857ae2232ed912cac40cdbdf6293ee630a1de80be47b3d2"
+    },
+    "topology_stats": {
+      "path": "src/flyts/topology/stats.py",
+      "sha256": "d298367f404899f09f70dcfed70b99779254911c241ef66cdb374199b1e6ba88"
+    },
+    "topology_validation": {
+      "path": "src/flyts/topology/validation.py",
+      "sha256": "1afdab3e1f29094a8ccb03f2db889b23917185fca870d6bbecfb05e250042531"
+    },
+    "training": {
+      "path": "src/flyts/training.py",
+      "sha256": "dfe1c02820d402b69e48963db2a17ad44f1bc448963874a819cf161262fcccfe"
+    }
+  },
+  "status": "architecture-only",
+  "target_parameters": 68760,
+  "tolerance_fraction": 0.05
+}
