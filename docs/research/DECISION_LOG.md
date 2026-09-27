@@ -1,5 +1,14 @@
 # FlyTS Decision Log
 
+## DEC-022 — Stage 06 public corpus v1 GO
+
+- Date: 2026-09-27
+- Decision authority: user approved implementation of the complete Stage 06 plan after selecting each material data, role, split, registry, validation, smoke and layout option.
+- Decision: retain Appliances/Bike/Beijing; admit only official UCI ElectricityLoadDiagrams20112014 at native 370 channels/15 minutes; keep ETT and Traffic benchmark variants on `HOLD`. Separate dataset `domain_id` from semantic `domain_family`; assign Appliances/Beijing to `pretrain`, Bike to `development-held-out` and Electricity to `final-held-out`.
+- Split and interface contract: chronological 70/15/15 per entity before windowing, 512-point validation/test purge, stable entity plus split-exclusive recording IDs, schema-v1 optional identity metadata, a manifest-hashed external role registry and legacy fallback. A dedicated streaming Electricity adapter preserves the existing CLI/API boundary.
+- Validation and budget: convert and verify the full canonical corpus locally with fixture-only CI; use one frozen random-init format-v1 checkpoint for forward/encode-only shape/finite/memory smoke. Maximum three specialists, two parallel agents, one debate and one follow-up per agent.
+- Boundary: no ETT/Traffic/321-derivative admission, pretraining, optimizer step, performance metric, final-held-out performance inspection, robustness freeze, scientific claim, merge or Stage 07. Material changes return to `HOLD`.
+
 ## DEC-021 — Stage 05 result GO
 
 - Date: 2026-09-26

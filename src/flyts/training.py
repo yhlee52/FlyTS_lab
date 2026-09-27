@@ -12,7 +12,8 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-from .corpus import WindowDataset, collate_windows, sha256, verify_corpus, verify_development_corpus
+from .corpus import (WindowDataset, collate_windows, sha256, verify_corpus,
+                     verify_development_corpus, load_domain_registry)
 from .foundation import EncoderConfig, FlyTSFoundation, reconstruction_loss, sample_hide
 from .masking import canonical_masking, sample_mask_plan
 from .topology import graph_statistics
@@ -52,7 +53,7 @@ def execution_provenance(reproduction_argv=None):
 
 
 def training_reproduction_argv(manifest, config_path, output, device, *, resume=None,
-                               epochs=None, development_only=False):
+                               epochs=None, development_only=False, domain_registry=None):
     argv = ["python", "-m", "flyts", "pretrain",
             "--manifest", str(manifest), "--config", str(config_path),
             "--output", str(output), "--device", str(device)]
@@ -62,6 +63,8 @@ def training_reproduction_argv(manifest, config_path, output, device, *, resume=
         argv.extend(("--epochs", str(epochs)))
     if development_only:
         argv.append("--development-only")
+    if domain_registry is not None:
+        argv.extend(("--domain-registry", str(domain_registry)))
     return argv
 
 
@@ -142,7 +145,7 @@ def load_encoder(checkpoint, device="cpu"):
 
 
 def train(manifest, config_path, output, device="auto", resume=None, epochs=None,
-          development_only=False):
+          development_only=False, domain_registry=None):
     config = json.loads(Path(config_path).read_text())
     masking = canonical_masking(config)
     if epochs is not None:
@@ -159,16 +162,19 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
     np.random.seed(seed)
     torch.manual_seed(seed)
     if development_only:
-        verify_development_corpus(manifest, "train")
-        verify_development_corpus(manifest, "val")
+        verify_development_corpus(manifest, "train", domain_registry)
+        verify_development_corpus(manifest, "val", domain_registry)
     else:
-        verify_corpus(manifest)
+        verify_corpus(manifest, domain_registry)
+    registry = load_domain_registry(manifest, domain_registry)
+    pretrain_ids = ({key for key, role in registry["roles"].items() if role == "pretrain"}
+                    if registry else None)
     digest = sha256(manifest)
     mcfg = EncoderConfig(**config["model"])
     model = FlyTSFoundation(mcfg).to(device)
     execution = execution_provenance(training_reproduction_argv(
         manifest, config_path, output, device, resume=resume, epochs=epochs,
-        development_only=development_only))
+        development_only=development_only, domain_registry=domain_registry))
     optimizer = torch.optim.AdamW(model.parameters(), lr=config["lr"], weight_decay=1e-4)
     start, history, best = 0, [], float("inf")
     if resume:
@@ -197,12 +203,17 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
         outdir.mkdir(parents=True, exist_ok=False)
     else:
         outdir.mkdir(parents=True, exist_ok=True)
-    train_data = WindowDataset(manifest, "train", config["context"], config["stride"], 2*mcfg.patch_size)
-    val_data = WindowDataset(manifest, "val", config["context"], config["context"], 2*mcfg.patch_size)
+    train_data = WindowDataset(manifest, "train", config["context"], config["stride"],
+                               2*mcfg.patch_size, allowed_domain_ids=pretrain_ids,
+                               domain_registry=domain_registry)
+    val_data = WindowDataset(manifest, "val", config["context"], config["context"],
+                             2*mcfg.patch_size, allowed_domain_ids=pretrain_ids,
+                             domain_registry=domain_registry)
     # num_workers=0 keeps platform behavior identical and avoids unnecessary RAM copies.
     valid_loader = DataLoader(val_data, batch_size=config["batch_size"], collate_fn=collate_windows)
     run = dict(config=config, device=str(device), torch_version=str(torch.__version__),
                parameters=sum(p.numel() for p in model.parameters()), manifest_sha256=digest,
+               domain_registry_sha256=sha256(domain_registry) if domain_registry else None,
                train_windows=len(train_data), val_windows=len(val_data),
                skipped_train_windows=train_data.skipped_windows, skipped_val_windows=val_data.skipped_windows,
                train_domains=sorted({r["domain"] for r in train_data.records}),
@@ -270,12 +281,19 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
     return history
 
 
-def embed(manifest, checkpoint, output, split="test", device="auto", context=256):
+def embed(manifest, checkpoint, output, split="test", device="auto", context=256,
+          domain_registry=None):
     """Export embeddings + dataset provenance for retrieval/clustering/probes."""
-    verify_corpus(manifest)
+    verify_corpus(manifest, domain_registry)
+    registry = load_domain_registry(manifest, domain_registry)
+    if registry and split == "test":
+        raise ValueError("canonical corpus development embedding forbids test split")
     model, _ = load_encoder(checkpoint, device)
     device = next(model.parameters()).device
-    data = WindowDataset(manifest, split, context, context, 2*model.config.patch_size)
+    allowed = ({key for key, role in registry["roles"].items() if role != "final-held-out"}
+               if registry else None)
+    data = WindowDataset(manifest, split, context, context, 2*model.config.patch_size,
+                         allowed_domain_ids=allowed, domain_registry=domain_registry)
     loader = DataLoader(data, batch_size=16, collate_fn=collate_windows)
     embeddings, labels, names = [], [], []
     with torch.no_grad():
@@ -291,13 +309,16 @@ def embed(manifest, checkpoint, output, split="test", device="auto", context=256
     return len(labels)
 
 
-def probe(manifest, checkpoint, dataset, device="auto", context=128):
+def probe(manifest, checkpoint, dataset, device="auto", context=128, domain_registry=None):
     """Frozen encoder + train-standardized ridge linear classifier, no fine-tuning.
 
     Alpha selected on validation only; official test used once. Labels never
     participate in pretraining. This is a sanity check, not proof of cross-domain transfer.
     """
-    verify_corpus(manifest)
+    verify_corpus(manifest, domain_registry)
+    registry = load_domain_registry(manifest, domain_registry)
+    if registry:
+        raise ValueError("canonical corpus probe requires separately approved final-held-out access")
     model, _ = load_encoder(checkpoint, device)
     device = next(model.parameters()).device
     sets = {}

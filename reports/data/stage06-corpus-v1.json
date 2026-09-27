@@ -1,0 +1,268 @@
+{
+  "datasets": {
+    "appliances": {
+      "channels": [
+        26
+      ],
+      "domain_family": "energy",
+      "domain_id": "appliances",
+      "entities": [
+        "energydata_complete"
+      ],
+      "missingness_by_split": {
+        "test": {
+          "missing": 0,
+          "missing_rate": 0.0,
+          "nonfinite": 0,
+          "nonfinite_rate": 0.0,
+          "points": 63674
+        },
+        "train": {
+          "missing": 0,
+          "missing_rate": 0.0,
+          "nonfinite": 0,
+          "nonfinite_rate": 0.0,
+          "points": 359164
+        },
+        "val": {
+          "missing": 0,
+          "missing_rate": 0.0,
+          "nonfinite": 0,
+          "nonfinite_rate": 0.0,
+          "points": 63648
+        }
+      },
+      "purge": {
+        "points": 512,
+        "seconds": 307200.0
+      },
+      "records_by_split": {
+        "test": 1,
+        "train": 1,
+        "val": 1
+      },
+      "rows_by_split": {
+        "test": 2449,
+        "train": 13814,
+        "val": 2448
+      },
+      "sampling_seconds": [
+        600.0
+      ]
+    },
+    "beijing": {
+      "channels": [
+        11
+      ],
+      "domain_family": "environment",
+      "domain_id": "beijing",
+      "entities": [
+        "PRSA_Data_Aotizhongxin_20130301-20170228",
+        "PRSA_Data_Changping_20130301-20170228",
+        "PRSA_Data_Dingling_20130301-20170228",
+        "PRSA_Data_Dongsi_20130301-20170228",
+        "PRSA_Data_Guanyuan_20130301-20170228",
+        "PRSA_Data_Gucheng_20130301-20170228",
+        "PRSA_Data_Huairou_20130301-20170228",
+        "PRSA_Data_Nongzhanguan_20130301-20170228",
+        "PRSA_Data_Shunyi_20130301-20170228",
+        "PRSA_Data_Tiantan_20130301-20170228",
+        "PRSA_Data_Wanliu_20130301-20170228",
+        "PRSA_Data_Wanshouxigong_20130301-20170228"
+      ],
+      "missingness_by_split": {
+        "test": {
+          "missing": 7903,
+          "missing_rate": 0.012609775088713589,
+          "nonfinite": 7903,
+          "nonfinite_rate": 0.012609775088713589,
+          "points": 626736
+        },
+        "train": {
+          "missing": 55533,
+          "missing_rate": 0.017140830567737346,
+          "nonfinite": 55533,
+          "nonfinite_rate": 0.017140830567737346,
+          "points": 3239808
+        },
+        "val": {
+          "missing": 6800,
+          "missing_rate": 0.010849863419366368,
+          "nonfinite": 6800,
+          "nonfinite_rate": 0.010849863419366368,
+          "points": 626736
+        }
+      },
+      "purge": {
+        "points": 512,
+        "seconds": 1843200.0
+      },
+      "records_by_split": {
+        "test": 12,
+        "train": 12,
+        "val": 12
+      },
+      "rows_by_split": {
+        "test": 56976,
+        "train": 294528,
+        "val": 56976
+      },
+      "sampling_seconds": [
+        3600.0
+      ]
+    },
+    "bike": {
+      "channels": [
+        4
+      ],
+      "domain_family": "transport",
+      "domain_id": "bike",
+      "entities": [
+        "hour"
+      ],
+      "missingness_by_split": {
+        "test": {
+          "missing": 0,
+          "missing_rate": 0.0,
+          "nonfinite": 0,
+          "nonfinite_rate": 0.0,
+          "points": 8380
+        },
+        "train": {
+          "missing": 0,
+          "missing_rate": 0.0,
+          "nonfinite": 0,
+          "nonfinite_rate": 0.0,
+          "points": 48660
+        },
+        "val": {
+          "missing": 0,
+          "missing_rate": 0.0,
+          "nonfinite": 0,
+          "nonfinite_rate": 0.0,
+          "points": 8380
+        }
+      },
+      "purge": {
+        "points": 512,
+        "seconds": 1843200.0
+      },
+      "records_by_split": {
+        "test": 6,
+        "train": 71,
+        "val": 1
+      },
+      "rows_by_split": {
+        "test": 2095,
+        "train": 12165,
+        "val": 2095
+      },
+      "sampling_seconds": [
+        3600.0
+      ]
+    },
+    "electricity_raw": {
+      "channels": [
+        370
+      ],
+      "domain_family": "energy",
+      "domain_id": "electricity_raw",
+      "entities": [
+        "electricity-370-clients"
+      ],
+      "missingness_by_split": {
+        "test": {
+          "missing": 0,
+          "missing_rate": 0.0,
+          "nonfinite": 0,
+          "nonfinite_rate": 0.0,
+          "points": 7594990
+        },
+        "train": {
+          "missing": 0,
+          "missing_rate": 0.0,
+          "nonfinite": 0,
+          "nonfinite_rate": 0.0,
+          "points": 36326230
+        },
+        "val": {
+          "missing": 0,
+          "missing_rate": 0.0,
+          "nonfinite": 0,
+          "nonfinite_rate": 0.0,
+          "points": 7594620
+        }
+      },
+      "purge": {
+        "points": 512,
+        "seconds": 460800.0
+      },
+      "records_by_split": {
+        "test": 1,
+        "train": 1,
+        "val": 1
+      },
+      "rows_by_split": {
+        "test": 20527,
+        "train": 98179,
+        "val": 20526
+      },
+      "sampling_seconds": [
+        900.0
+      ]
+    }
+  },
+  "manifest_sha256": "44bafe48196a4afd096e387dc672cad128d390ab7e5b413ea6cbeadf5f3e7f6c",
+  "registry_sha256": "0095d4cd76ad5fdaeefeccdbb4322187892cc155bfac619ca4c8618ea50b9b20",
+  "schema_version": 1,
+  "sources": {
+    "appliances": {
+      "archive_sha256": "2fccf354445d886e7917620b0195db1f3e3e34d5a067a93b844694a4c561255a",
+      "doi": "10.24432/C5VC8G",
+      "license": "CC-BY-4.0 (UCI landing page; review bundled notices)",
+      "member_sha256": {
+        "energydata_complete.csv": "2820bf712ad0275cb18b85a05250926100d8e65ebb9f4d2d016ca91ea152a25d"
+      }
+    },
+    "beijing": {
+      "archive_sha256": "b04da438b2f331ac0ffd45aebdfec0d20d2367feb5f6948c4b1f7ce1191e33c4",
+      "doi": "10.24432/C5RK5G",
+      "license": "CC-BY-4.0 (UCI landing page; review bundled notices)",
+      "member_sha256": {
+        "2A2478DC-8517-4490-9FA7-36F9A7A542BE.JPG": "b18003e2f3612d683daea2c623e65327e7a2fab63f0ff23f7b3cbda1a704290a",
+        "PRSA_Data_20130301-20170228/PRSA_Data_Aotizhongxin_20130301-20170228.csv": "a94fbcfc71708b6ffdc033360163d91efb7f675e496f6b5860929aa96b96351b",
+        "PRSA_Data_20130301-20170228/PRSA_Data_Changping_20130301-20170228.csv": "a2e21402a6d95fb7043f87959e6e3dcbecb957aac356a6f8028a85b047c772e7",
+        "PRSA_Data_20130301-20170228/PRSA_Data_Dingling_20130301-20170228.csv": "3d8dff81f18a80d9f455876a785642bffe1e9b9924ec1e6b7ce8cca790432eeb",
+        "PRSA_Data_20130301-20170228/PRSA_Data_Dongsi_20130301-20170228.csv": "9c0020214425e5ee2a64d42f97a1f632e1d8f6b53ad50edd85a686cc7999f27e",
+        "PRSA_Data_20130301-20170228/PRSA_Data_Guanyuan_20130301-20170228.csv": "59390fee3b032597b387491f5230e7edb90a8558e30217ebd6d9befbe669fbf9",
+        "PRSA_Data_20130301-20170228/PRSA_Data_Gucheng_20130301-20170228.csv": "10ae48801ea55869fee56a48b885fb1127859c130551888d71673f34216ba951",
+        "PRSA_Data_20130301-20170228/PRSA_Data_Huairou_20130301-20170228.csv": "812dcbe848b3ba2c2d25731064797bff803c46eb0c602156a1fa044df136dc26",
+        "PRSA_Data_20130301-20170228/PRSA_Data_Nongzhanguan_20130301-20170228.csv": "572cf87b65ef543cd55d3a711b28474def224a46b0ec3fc8add8aaf13b67a487",
+        "PRSA_Data_20130301-20170228/PRSA_Data_Shunyi_20130301-20170228.csv": "520b59e4ead3b0cfe7f1ed673e30275de8441e999db6f413d5172d2277b8c15a",
+        "PRSA_Data_20130301-20170228/PRSA_Data_Tiantan_20130301-20170228.csv": "0743e34799cf1ee36195b73321b91baa5625276532e7263c588f68cdef3b4daa",
+        "PRSA_Data_20130301-20170228/PRSA_Data_Wanliu_20130301-20170228.csv": "0b1a6d754a07f0def2f55434ddfa3870dcd0063b7f766a6f66b6c11bb05a377a",
+        "PRSA_Data_20130301-20170228/PRSA_Data_Wanshouxigong_20130301-20170228.csv": "ab1d6a356d6997a45f6d657ad47de1e05a4a08d4a7015b38a329a90665ab74d0",
+        "data.csv": "cfd747b9f7308e6e5ec84944f963bbb2ca39a90e1d235c0f1e2c565afed88b3d",
+        "test.csv": "0a1478eb69615e3673601dfd028251898faae73c73f0cbb0b7653b26c8b74b9e"
+      }
+    },
+    "bike": {
+      "archive_sha256": "b70182d0d0508e9abbb79306ce5c0cec34869000f8220175ac83d11dbe845401",
+      "doi": "10.24432/C5W894",
+      "license": "CC-BY-4.0 (UCI landing page; review bundled notices)",
+      "member_sha256": {
+        "Readme.txt": "b92c8628622948bf0828c43a1b315d1517c3d7fd63654730d0dea379b8e88175",
+        "day.csv": "a6bcf826782d3c0fbfdcbeead17cd0884185a0dafe8ff10cd48a874ee7ba18be",
+        "hour.csv": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f"
+      }
+    },
+    "electricity_raw": {
+      "archive_sha256": "f6c4d0e0df12ecdb9ea008dd6eef3518adb52c559d04a9bac2e1b81dcfc8d4e1",
+      "doi": "10.24432/C58C86",
+      "license": "CC-BY-4.0 (UCI landing page; review bundled notices)",
+      "member_sha256": {
+        "LD2011_2014.txt": "d51565f2cb5a6b768d06ba1bbd3c084c6e2f3aab07f00c6f2dcb80e90175124b"
+      }
+    }
+  }
+}

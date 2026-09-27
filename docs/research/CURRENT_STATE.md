@@ -1,14 +1,14 @@
 # FlyTS Current Research State
 
-Updated: 2026-09-26
+Updated: 2026-09-27
 
 ## Current stage
 
-Stages 00–05 are closed. Stage 04 PR #10 is merged in `origin/main` at `944f8ed`. The user accepted the Stage 05 topology-controls result with `GO` after independent QA `PASS`; Draft PR #11 remains unmerged and Stage 06 is not authorized. Numerical robustness settings remain candidate.
+Stages 00–05 are closed. Stage 05 PR #11 is merged in `origin/main` at `3df133c`. Stage 06 implementation and full local evidence are complete on `codex/stage-06-public-corpus-v1`; independent remediation QA is `PASS`, and the stage is at the PI result gate. Numerical robustness settings remain candidate.
 
 ## Current goal
 
-Preserve the accepted Stage 05 handoff and wait for separate user direction on Draft PR #11 merge and/or a Stage 06 Charter. Do not infer either authorization from DEC-021.
+Present the bounded Stage 06 evidence, limitations and Draft PR for PI `GO/REVISE/HOLD/STOP`. Do not merge, inspect final-held-out performance or begin Stage 07.
 
 ## Canonical references
 
@@ -26,6 +26,7 @@ Preserve the accepted Stage 05 handoff and wait for separate user direction on D
 - `docs/research/stages/stage-03/CHARTER.md`
 - `docs/research/stages/stage-04/CHARTER.md`
 - `docs/research/stages/stage-05/CHARTER.md`
+- `docs/research/stages/stage-06/CHARTER.md`
 - `docs/TOPOLOGY_CONTROLS.md`
 
 ## Confirmed decisions
@@ -61,6 +62,7 @@ Preserve the accepted Stage 05 handoff and wait for separate user direction on D
 - DEC-019 retains uniform `10E/200E` degree-preserving rewiring but makes overlap/Jaccard descriptive after the fixed fixture missed the original `0.10` guard.
 - DEC-020 approves one extra bounded QA follow-up only; all Stage 05 scientific, scope, merge and next-stage boundaries remain unchanged.
 - DEC-021 records the user's Stage 05 result `GO` after independent QA `PASS`; Stage 05 is closed while PR #11 merge and Stage 06 remain separately gated.
+- DEC-022 records the user's Stage 06 `GO`: official UCI Electricity 370 only, dataset/family identity separation, fixed roles, chronological 70/15/15 with 512-point purge, external hashed registry, full local conversion, fixture CI and forward/encode-only smoke.
 
 ## Open questions
 
@@ -75,6 +77,8 @@ Preserve the accepted Stage 05 handoff and wait for separate user direction on D
 - The foundation-model and topology-benefit claims remain unverified.
 - Too many agents or full-lab reviews could waste tokens without improving evidence.
 - Premature final-test access, post-hoc threshold selection, or unmatched multi-factor comparisons could invalidate later claims.
+- Electricity source/schema drift, benchmark-derivative substitution, time/channel transposition, or confusing observed zeros with missing values could invalidate corpus evidence.
+- High-channel batch padding may cause excessive memory use; Stage 06 may report bounded smoke memory but may not tune data/model choices from final-held-out results.
 - Fully hidden channels cannot be distinguished without metadata; overlap and dropout require explicit target and statistic leakage checks.
 - The approved public starter manifest is present locally with exact SHA-256 `e538e9cbf761577740f43f6930ac4653834fdc00f9d0ee567b02b52e2d0d14eb`; test and final-held-out arrays remain sealed.
 
@@ -126,7 +130,12 @@ Preserve the accepted Stage 05 handoff and wait for separate user direction on D
 - Stage 05 Draft PR #11 contains the implementation, deterministic evidence report, independent QA report and result record; it is not approved for merge.
 - Both GitHub `pytest` checks on Draft PR #11 head `433f9b2` passed (3m40s and 3m34s).
 - The user issued the Stage 05 result-gate `GO` on 2026-09-26; DEC-021 closes the bounded engineering stage without authorizing merge or Stage 06.
+- PR #11 was merged to `main` at `3df133c`. The Stage 06 branch starts from that exact merge commit with no user changes discarded.
+- The user approved the complete Stage 06 Charter contract on 2026-09-27; no data-performance or scientific claim is authorized.
+- Stage 06 r2 preserves every non-purged source row across 120 records; manifest `44bafe48…e7f6c` is bound to registry `0095d4cd…b9b20`. Official Electricity is `140256×370` at 900 seconds with zero missing/nonfinite values.
+- Initial independent QA `FAIL` found 41 omitted short Bike rows and a float32 overflow guard defect. Both were remediated; contiguous source coverage and `1e100` rejection now have focused regressions.
+- Final independent QA is `PASS`: focused 8 passed, full 84 passed/3 CUDA skips, full source/array equality, report `--check`, smoke hash/shape/finite/memory, validators and diff check all passed.
 
 ## Next action
 
-Hold at the closed Stage 05 handoff until the user separately directs PR #11 merge and/or Stage 06 Charter work.
+Create the Stage 06 Draft PR, then return to the user for the result gate. Merge and Stage 07 remain separately gated.

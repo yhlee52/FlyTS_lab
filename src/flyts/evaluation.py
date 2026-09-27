@@ -14,7 +14,8 @@ from typing import Protocol
 import torch
 from torch.nn import functional as F
 
-from .corpus import WindowDataset, sha256, reject_forbidden, verify_development_corpus
+from .corpus import (WindowDataset, sha256, reject_forbidden,
+                     verify_development_corpus, load_domain_registry)
 from .masking import MaskPlan
 from .training import load_encoder, resolve_device
 
@@ -465,7 +466,7 @@ def write_reports(output, rows, stable, runtime):
 
 
 def evaluate_robustness(manifest, checkpoint, config_path, output, device="cpu", split=None,
-                        threads=2):
+                        threads=2, domain_registry=None):
     """Evaluate local development data; never fetch or read test/final domains."""
     started = time.perf_counter()
     if type(threads) is not int or threads < 1:
@@ -475,14 +476,20 @@ def evaluate_robustness(manifest, checkpoint, config_path, output, device="cpu",
     split = config["split"] if split is None else split
     if split not in ("train", "val"):
         raise ValueError("Stage 3 evaluator forbids test/final-held-out split")
-    doc = verify_development_corpus(manifest, split)
+    doc = verify_development_corpus(manifest, split, domain_registry)
+    registry = load_domain_registry(manifest, domain_registry, doc)
+    allowed = ({key for key, role in registry["roles"].items() if role != "final-held-out"}
+               if registry else None)
     model, state = load_encoder(checkpoint, str(resolve_device(device)))
     manifest_hash = sha256(manifest)
     if state["manifest_sha256"] != manifest_hash:
         raise ValueError("checkpoint/manifest hash mismatch")
     adapter = FlyTSAdapter(model, sha256(checkpoint))
-    seen = sorted({row["shape"][1] for row in doc["records"] if row["split"] == "train"})
-    data = WindowDataset(manifest, split, config["context"], config["context"], 2*adapter.patch_size)
+    seen = sorted({row["shape"][1] for row in doc["records"] if row["split"] == "train"
+                   and (allowed is None or row.get("domain_id", row["dataset"]) in allowed)})
+    data = WindowDataset(manifest, split, config["context"], config["context"],
+                         2*adapter.patch_size, allowed_domain_ids=allowed,
+                         domain_registry=domain_registry)
     rows = []
     with torch.no_grad():
         for i in range(len(data)):
@@ -502,6 +509,7 @@ def evaluate_robustness(manifest, checkpoint, config_path, output, device="cpu",
     stable = {"provenance": {"git_commit": git_commit(),
                               "evaluator_source_sha256": sha256(__file__),
                               "manifest_sha256": manifest_hash,
+                              "domain_registry_sha256": sha256(domain_registry) if domain_registry else None,
                               "config_sha256": sha256(config_path), "evaluator_config": config,
                               "fixture_version": FIXTURE_VERSION, "checkpoint_training": checkpoint_training,
                               "split": split, "domains": sorted({r["domain"] for r in rows}),

@@ -13,7 +13,8 @@
 | beijing | 12 지점 대기질·기상, 약 420K 시점 | 3600초 | 지점별 시간순 70/15/15; NA 유지; wind-direction categorical 제외 |
 | har (기본 제외) | 인체 동작, 9개 inertial waveform, 10,299 windows | 0.02초 | 권리 확인 후 사용; official test subject 유지; train subject 중 마지막 4명은 val |
 
-각 연속 recording에서 **먼저 시간 분할**하고 경계 이후 32 points를 purge한 뒤 window를 만든다.
+기존 starter manifest는 각 연속 recording에서 **먼저 시간 분할**하고 경계 이후 32 points를
+purge한다. Stage 06 public corpus v1은 아래에 정의한 별도 512-point purge 계약을 사용한다.
 정상적인 관측 0과 결측을 구분한다. interpolation으로 미래 정보를 채워 넣지 않는다.
 HAR의 50%-overlap 원본 window는 subject 단위로 분리하므로 서로 다른 split에 겹친 sample이
 섞이지 않는다. 기존 561-feature 표를 time axis로 오인하지 않는다. HAR manifest의 start/stop은
@@ -101,3 +102,58 @@ UCI Air Quality(360)는 페이지에 CC BY 표기와 별도로 research-only/com
 - synthetic은 debug corpus로 분리하며 실데이터 pretrain에 자동 혼합하지 않는다.
 - 더 큰 corpus에서는 총 sample 수뿐 아니라 domain별 validation, missing 비율, channel 수,
   sampling rate, downstream frozen probe를 함께 추적한다. 데이터 양만 늘려 성능을 주장하지 않는다.
+# Stage 06 public corpus v1
+
+The approved corpus admits Appliances (`appliances`, energy, pretrain), Beijing
+Multi-Site (`beijing`, environment, pretrain), Bike Sharing (`bike`, transport,
+development-held-out), and official UCI ElectricityLoadDiagrams20112014
+(`electricity_raw`, energy, final-held-out). The Electricity source is the
+[official UCI dataset](https://archive.ics.uci.edu/dataset/321/electricityloaddiagrams20112014),
+DOI [10.24432/C58C86](https://doi.org/10.24432/C58C86), attributed to
+Trindade (2015). Its UCI page states CC BY 4.0. This records the publisher's
+rights statement, not a legal guarantee. The converter saves bundled notices
+in `source_notices.json`.
+
+`electricity_raw` means the exact `LD2011_2014.txt` member: one timestamp and
+370 clients per row, 140,256 rows, native 900-second labels, source client
+order and observed zero values retained. The 321-client benchmark derivative
+is outside this corpus. DST periods contain source-defined structural zeros or
+aggregation; the converter retains those values and labels without resampling.
+It rejects unexpected timestamp gaps, duplicate or reversed labels, unexpected
+channel counts, nonfinite values and row-count drift. Streaming conversion
+keeps the source member out of RAM. The generic in-memory archive guard remains
+512 MiB for the other adapters.
+
+Fetch is the only network command. `sources.lock.json` records the observed
+official archive SHA-256. `configs/public_archive_hashes.json` is the tracked
+approval point; `PENDING` blocks canonical Electricity conversion. The manifest
+records every selected member SHA-256. Review source notices and observed
+hashes before replacing `PENDING`; a changed archive requires explicit review.
+
+The new manifest remains schema 1 and adds dataset, family, entity and
+split-exclusive recording identities. For canonical rows, `group` equals
+`recording_id`; `entity_id` retains the unsplit source entity. Canonical rows
+also carry optional
+`source_length`, the entity's unsplit row count, so verification can recompute
+the exact split boundaries without reopening raw archives. Legacy rows omit it.
+Each entity is split at `floor(0.70N)`
+and `floor(0.85N)` before windowing. Validation and test start 512 source
+points after their boundaries. Contexts above 512 are rejected. An entity can
+recur across chronological splits; this does not demonstrate entity transfer.
+The external canonical JSON `domain_roles_v1.json` must carry the exact manifest
+SHA-256. New-corpus verification and consumers fail without it or on mismatch.
+Legacy schema-1 corpora remain readable without a registry.
+
+The registry records a UTC freeze timestamp, UCI source URLs, stated licenses,
+eligibility, channel and label facts, and native sampling semantics. The tracked
+registry is frozen to manifest SHA-256
+`44bafe48196a4afd096e387dc672cad128d390ab7e5b413ea6cbeadf5f3e7f6c`.
+The CLI accepts `electricity` as an alias for `electricity_raw` on
+fetch and prepare; both spellings together are rejected as a duplicate.
+Fetch records an ISO UTC retrieval timestamp in `sources.lock.json` and keeps
+the original timestamp when the same locked bytes are checked again.
+
+`tools/report_stage06_corpus.py` streams bounded chunks from verified arrays
+to count missing and nonfinite values by dataset and split, including the
+final-held-out domain. It emits no model scores. `--check` recomputes and
+compares both JSON and Markdown report bytes without rewriting either file.
