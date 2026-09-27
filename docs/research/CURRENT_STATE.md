@@ -135,7 +135,8 @@ Present the bounded Stage 06 evidence, limitations and Draft PR for PI `GO/REVIS
 - Stage 06 r2 preserves every non-purged source row across 120 records; manifest `44bafe48…e7f6c` is bound to registry `0095d4cd…b9b20`. Official Electricity is `140256×370` at 900 seconds with zero missing/nonfinite values.
 - Initial independent QA `FAIL` found 41 omitted short Bike rows and a float32 overflow guard defect. Both were remediated; contiguous source coverage and `1e100` rejection now have focused regressions.
 - Final independent QA is `PASS`: focused 8 passed, full 84 passed/3 CUDA skips, full source/array equality, report `--check`, smoke hash/shape/finite/memory, validators and diff check all passed.
+- Draft PR #12 contains Stage 06 commit `01ed77a` and is awaiting the PI result gate; merge remains separately unauthorized.
 
 ## Next action
 
-Create the Stage 06 Draft PR, then return to the user for the result gate. Merge and Stage 07 remain separately gated.
+Return to the user for the Stage 06 result gate. Merge and Stage 07 remain separately gated.

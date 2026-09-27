@@ -48,5 +48,8 @@ ignored. ETT, Traffic, the Electricity-321 derivative, pretraining, robustness
 pass/fail, CUDA, transfer, foundation quality and semiconductor claims remain out of
 scope or `미검증`.
 
+Draft PR #12 (`https://github.com/yhlee52/FlyTS_lab/pull/12`) contains the bounded
+implementation and evidence. It is not authorized for merge.
+
 The requested user result gate is `GO`, `REVISE`, `HOLD`, or `STOP`. A `GO` closes
 this bounded stage only; merge and Stage 07 remain separately unauthorized.
