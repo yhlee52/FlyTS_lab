@@ -8,12 +8,12 @@ def main():
     commands = parser.add_subparsers(dest="command", required=True)
     fetch = commands.add_parser("fetch", help="ONLINE ONLY: download official public archives")
     fetch.add_argument("--raw", required=True)
-    fetch.add_argument("--datasets", nargs="+", choices=["appliances", "bike", "beijing", "har"],
+    fetch.add_argument("--datasets", nargs="+", choices=["appliances", "bike", "beijing", "electricity", "electricity_raw", "har"],
                        default=["appliances", "bike", "beijing"])
     prep = commands.add_parser("prepare", help="OFFLINE: convert locked local public archives")
     prep.add_argument("--raw", required=True)
     prep.add_argument("--output", required=True)
-    prep.add_argument("--datasets", nargs="+", choices=["appliances", "bike", "beijing", "har"],
+    prep.add_argument("--datasets", nargs="+", choices=["appliances", "bike", "beijing", "electricity", "electricity_raw", "har"],
                       default=["appliances", "bike", "beijing"])
     prep.add_argument("--approval-reference", help="required for HAR only after resolving original use restrictions")
     local = commands.add_parser("prepare-local", help="OFFLINE: explicit local CSV/NPY recording spec")
@@ -25,6 +25,7 @@ def main():
     synth.add_argument("--seed", type=int, default=7)
     verify = commands.add_parser("verify")
     verify.add_argument("--manifest", required=True)
+    verify.add_argument("--domain-registry")
     pack = commands.add_parser("pack")
     pack.add_argument("--manifest", required=True)
     pack.add_argument("--output", required=True)
@@ -41,6 +42,7 @@ def main():
     wafer.add_argument("--approval-reference", required=True)
     fit = commands.add_parser("pretrain", help="OFFLINE: same trainer on cpu/cuda")
     fit.add_argument("--manifest", required=True)
+    fit.add_argument("--domain-registry")
     fit.add_argument("--config", required=True)
     fit.add_argument("--output", required=True)
     fit.add_argument("--device", default="auto")
@@ -50,6 +52,7 @@ def main():
                      help="Stage 3: verify train/val only and never open test arrays")
     robust = commands.add_parser("evaluate-robustness", help="OFFLINE: Stage 3 development robustness evaluator")
     robust.add_argument("--manifest", required=True)
+    robust.add_argument("--domain-registry")
     robust.add_argument("--checkpoint", required=True)
     robust.add_argument("--config", required=True)
     robust.add_argument("--output", required=True)
@@ -59,6 +62,7 @@ def main():
     for command in ("embed", "probe"):
         child = commands.add_parser(command)
         child.add_argument("--manifest", required=True)
+        child.add_argument("--domain-registry")
         child.add_argument("--checkpoint", required=True)
         child.add_argument("--device", default="auto")
         child.add_argument("--context", type=int, default=128)
@@ -84,7 +88,7 @@ def main():
         print(json.dumps((embed if command == "embed" else probe)(**kwargs), indent=2))
     elif command == "verify":
         from .corpus import verify_corpus
-        doc = verify_corpus(args.manifest)
+        doc = verify_corpus(args.manifest, args.domain_registry)
         from collections import Counter
         print(json.dumps(dict(records=len(doc["records"]),
                               splits=dict(Counter(r["split"] for r in doc["records"])),

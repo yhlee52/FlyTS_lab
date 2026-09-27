@@ -185,4 +185,5 @@ agent_budget:
 - Conditions: implement the uniform-rewiring revised contract through independent QA
   and a Draft PR only; do not merge or begin Stage 06 without a separate user decision.
 - Result decision: GO on 2026-09-26 after independent QA `PASS` (DEC-021). Draft PR
-  #11 merge and Stage 06 remain separately gated.
+  #11 merge and Stage 06 remained separately gated by this decision. PR #11 was
+  later merged at `3df133c`, and Stage 06 was separately approved in DEC-022.

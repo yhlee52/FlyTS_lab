@@ -3,7 +3,8 @@
 Only fetch_public performs network I/O. No training call imports or calls it.
 """
 import csv
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+import hashlib
 import io
 import json
 from pathlib import Path
@@ -14,6 +15,7 @@ import zipfile
 import numpy as np
 
 from .corpus import CorpusWriter, sha256, verify_corpus
+from .datasets.electricity import convert_archive, CANONICAL_ROWS, DT_SECONDS
 
 
 PUBLIC = {
@@ -23,10 +25,19 @@ PUBLIC = {
                  doi="10.24432/C5W894", author="Fanaee-T, H. (2013)"),
     "beijing": dict(id=501, slug="beijing+multi+site+air+quality+data", domain="environment",
                     doi="10.24432/C5RK5G", author="Chen, S. (2017)"),
+    "electricity_raw": dict(id=321, slug="electricityloaddiagrams20112014", domain="energy",
+                            doi="10.24432/C58C86", author="Trindade, A. (2015)"),
     "har": dict(id=240, slug="human+activity+recognition+using+smartphones", domain="human_motion",
                 doi="10.24432/C54S4K", author="Reyes-Ortiz et al. (2013)",
                 archive_url="https://archive.ics.uci.edu/ml/machine-learning-databases/00240/UCI%20HAR%20Dataset.zip"),
 }
+
+
+def normalize_public_names(names):
+    normalized = ["electricity_raw" if name == "electricity" else name for name in names]
+    if len(set(normalized)) != len(normalized):
+        raise ValueError("duplicate public dataset alias")
+    return normalized
 
 
 def fetch_public(raw_dir, names):
@@ -35,10 +46,12 @@ def fetch_public(raw_dir, names):
     Existing locked bytes must match. No hidden re-download or mirror fallback.
     This checksum is transfer integrity, NOT a publisher-signed checksum.
     """
+    names = normalize_public_names(names)
     root = Path(raw_dir)
     root.mkdir(parents=True, exist_ok=True)
     lock_path = root / "sources.lock.json"
     lock = json.loads(lock_path.read_text()) if lock_path.exists() else {}
+    known = json.loads((Path(__file__).resolve().parents[2] / "configs/public_archive_hashes.json").read_text())
     for name in names:
         entry = PUBLIC[name]
         url = entry.get("archive_url", f"https://archive.ics.uci.edu/static/public/{entry['id']}/{entry['slug']}.zip")
@@ -50,9 +63,14 @@ def fetch_public(raw_dir, names):
                 shutil.copyfileobj(response, stream)
             temp.replace(path)
         digest = sha256(path)
+        expected = known.get(name)
+        if expected and expected != "PENDING" and digest != expected:
+            raise ValueError(f"official archive differs from approved observed bytes: {name}")
         if name in lock and digest != lock[name]["sha256"]:
             raise ValueError(f"raw checksum mismatch: {name}; review source version explicitly")
-        lock[name] = dict(**entry, url=url, sha256=digest,
+        acquired = lock.get(name, {}).get("retrieved_at_utc") or \
+            datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+        lock[name] = dict(**entry, url=url, sha256=digest, retrieved_at_utc=acquired,
                           license="CC-BY-4.0 (UCI landing page; review bundled notices)",
                           page=f"https://archive.ics.uci.edu/dataset/{entry['id']}/{entry['slug']}")
         if name == "har":
@@ -92,7 +110,7 @@ def numeric(rows, columns):
 
 
 def add_continuous(writer, values, times, *, dataset, domain, group, channels, dt,
-                   fractions=(0.7, 0.85), gap_points=32):
+                   fractions=(0.7, 0.85), gap_points=32, canonical=False):
     """Chronological split BEFORE windowing; purge around boundaries; split gaps.
 
     Never concatenate different recordings, missing hours, wafer runs or subjects.
@@ -101,21 +119,29 @@ def add_continuous(writer, values, times, *, dataset, domain, group, channels, d
     if len(seconds) != len(values) or (np.diff(seconds) <= 0).any():
         raise ValueError("timestamps must be strictly increasing, with no duplicates")
     n = len(values)
-    boundaries = [0, int(n*fractions[0]), int(n*fractions[1]), n]
+    boundaries = [0, 7*n//10, 17*n//20, n] if canonical else [0, int(n*fractions[0]), int(n*fractions[1]), n]
     for part, split in enumerate(("train", "val", "test")):
         left = boundaries[part] + (gap_points if part else 0)
         right = boundaries[part+1]
-        if right-left < 16:
+        if right <= left:
             continue
         discontinuities = np.where(~np.isclose(np.diff(seconds[left:right]), dt, rtol=0, atol=1e-3))[0]+left+1
         edges = [left, *discontinuities.tolist(), right]
         for a, z in zip(edges[:-1], edges[1:]):
-            if z-a >= 16:
-                writer.add(values[a:z], dataset=dataset, domain=domain, group=group,
-                           channels=channels, dt=dt, start=a, split=split)
+            # Preserve every source row in the canonical corpus. WindowDataset,
+            # not conversion, is responsible for skipping too-short windows.
+            if z > a:
+                recording_id = f"{dataset}:{group}:{split}:{a}"
+                writer.add(values[a:z], dataset=dataset, domain=domain,
+                           group=recording_id if canonical else group,
+                           channels=channels, dt=dt, start=a, split=split,
+                           **(dict(domain_id=dataset, domain_family=domain, entity_id=group,
+                                   recording_id=recording_id, source_length=n)
+                              if canonical else {}))
 
 
 def prepare_public(raw_dir, output, names, approval_reference=None):
+    names = normalize_public_names(names)
     if "har" in names and not approval_reference:
         raise ValueError("HAR original README prohibits commercial use despite UCI CC-BY label; provide approval_reference only after rights clearance")
     root = Path(raw_dir)
@@ -123,6 +149,11 @@ def prepare_public(raw_dir, output, names, approval_reference=None):
     for name in names:
         if name not in lock or sha256(root / f"{name}.zip") != lock[name]["sha256"]:
             raise ValueError(f"missing or corrupt locked source: {name}")
+        expected = json.loads((Path(__file__).resolve().parents[2] / "configs/public_archive_hashes.json").read_text()).get(name)
+        if name == "electricity_raw" and (not expected or expected == "PENDING"):
+            raise ValueError("Electricity approved observed archive SHA-256 is pending")
+        if expected and expected != "PENDING" and expected != lock[name]["sha256"]:
+            raise ValueError(f"approved archive SHA-256 mismatch: {name}")
     sources = {name: dict(lock[name]) for name in names}
     if "har" in names:
         sources["har"]["license"] = "CONFLICT: original README prohibits commercial use; review required"
@@ -131,7 +162,34 @@ def prepare_public(raw_dir, output, names, approval_reference=None):
     notices = {}
     for name in names:
         print(f"Converting {name}", flush=True)
+        if name == "electricity_raw":
+            temporary = writer.root / "electricity-stream.npy"
+            try:
+                values, channels, member_hash, first, last = convert_archive(root / f"{name}.zip", temporary)
+                sources[name]["member_sha256"] = {"LD2011_2014.txt": member_hash}
+                sources[name]["time_first"] = first.isoformat(sep=" ")
+                sources[name]["time_last"] = last.isoformat(sep=" ")
+                times = np.arange(CANONICAL_ROWS, dtype=np.float64) * DT_SECONDS
+                add_continuous(writer, values, times, dataset=name, domain="energy",
+                               group="electricity-370-clients", channels=channels, dt=DT_SECONDS,
+                               gap_points=512, canonical=True)
+                del values
+            finally:
+                temporary.unlink(missing_ok=True)
+            with zipfile.ZipFile(root / f"{name}.zip") as archive:
+                notices[name] = {}
+                for item in archive.infolist():
+                    if not item.is_dir() and any(term in item.filename.lower()
+                                                 for term in ("readme", "license", "notice")):
+                        if item.file_size > 1024 * 1024:
+                            raise ValueError("Electricity notice exceeds 1 MiB")
+                        notices[name][item.filename] = archive.read(item).decode("utf-8", errors="replace")
+            notices[name]["official_source"] = lock[name]["page"]
+            notices[name]["usage"] = "UCI landing page states CC BY 4.0; retain attribution and bundled notices"
+            continue
         files = dict(archives(root / f"{name}.zip"))
+        sources[name]["member_sha256"] = {p: hashlib.sha256(data).hexdigest()
+                                           for p, data in files.items()}
         notices[name] = {p: data.decode("utf-8", errors="replace") for p, data in files.items()
                          if any(term in p.lower() for term in ("readme", "license", ".names"))}
         if name == "har":
@@ -177,9 +235,10 @@ def prepare_public(raw_dir, output, names, approval_reference=None):
             times = [(date-datetime(1970, 1, 1)).total_seconds() for date in dates]
             add_continuous(writer, numeric(rows, channels), times, dataset=name,
                            domain=PUBLIC[name]["domain"], group=Path(file).stem,
-                           channels=channels, dt=dt)
+                           channels=channels, dt=dt, gap_points=512,
+                           canonical=name != "har")
     (writer.root / "source_notices.json").write_text(json.dumps(notices, indent=2), encoding="utf-8")
-    return writer.finish()
+    return writer.finish(requires_domain_registry="har" not in names)
 
 
 def prepare_local(spec, output):

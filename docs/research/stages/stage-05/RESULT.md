@@ -69,11 +69,12 @@ the user approved one extra bounded QA follow-up in DEC-020.
 ## Pull request
 
 - Draft PR: #11 (`codex/stage-05-topology-controls` -> `main`).
-- Merge and Stage 06 remain separately gated.
+- Integration update: PR #11 was merged to `main` at `3df133c` after Stage 05 closure.
+- Stage 06 was separately approved later in DEC-022; neither event changes this result's bounded evidence.
 
 ## User stage gate
 
 - Requested: `GO`, `REVISE`, `HOLD`, or `STOP`.
 - Decision: `GO`, 2026-09-26 (DEC-021).
 - Conditions: accept and close the bounded Stage 05 engineering result. Draft PR #11
-  merge and Stage 06 remain separately gated and are not authorized by this decision.
+  merge and Stage 06 were separately gated and were not authorized by this decision.
