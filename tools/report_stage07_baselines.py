@@ -61,6 +61,21 @@ def shared_hash(model):
     return sha.hexdigest()
 
 
+def shared_equality_fingerprint(model, reference):
+    """Hash a platform-neutral transcript of actual shared-tensor equality."""
+    model_state = model.state_dict()
+    transcript = []
+    for name, expected in reference.state_dict().items():
+        if name.split(".")[0] not in SHARED_FIELDS:
+            continue
+        actual = model_state[name]
+        transcript.append({"name": name, "shape": list(expected.shape),
+                           "dtype": str(expected.dtype),
+                           "bitwise_equal": bool(torch.equal(actual, expected))})
+    body = json.dumps(transcript, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(body).hexdigest(), all(row["bitwise_equal"] for row in transcript)
+
+
 def fixed_fixture():
     x = torch.arange(2 * 19 * 3, dtype=torch.float32).reshape(2, 19, 3) / 113
     observed = torch.ones_like(x, dtype=torch.bool)
@@ -152,10 +167,13 @@ def compute(cfg, edges):
             "limits": "recurrent core only; excludes shared front end, biases, nonlinearities and hardware effects"}
 
 
-def model_record(model, cfg, *, construction_rng_preserved, construction_order_invariant):
+def model_record(model, cfg, *, shared_reference, construction_rng_preserved,
+                 construction_order_invariant):
     total = sum(p.numel() for p in model.parameters())
     shared = sum(p.numel() for name, p in model.named_parameters()
                  if name.split(".")[0] in SHARED_FIELDS)
+    shared_equality_sha256, shared_initialization_equal = shared_equality_fingerprint(
+        model, shared_reference)
     difference = total - TARGET
     edges = int(model.graph.src.numel()) if cfg.backbone == "fly_sparse" else None
     return {"kind": cfg.backbone, "role": ROLES[cfg.backbone], "selected_hidden": cfg.hidden,
@@ -164,7 +182,8 @@ def model_record(model, cfg, *, construction_rng_preserved, construction_order_i
             "deviation_percent": 100*difference/TARGET,
             "within_tolerance": abs(difference) <= TARGET*TOLERANCE,
             "shared_parameters": shared, "backbone_parameters": total-shared,
-            "shared_sha256": shared_hash(model),
+            "shared_equality_sha256": shared_equality_sha256,
+            "shared_initialization_equal": shared_initialization_equal,
             "construction_rng_preserved": bool(construction_rng_preserved),
             "construction_order_invariant": bool(construction_order_invariant),
             "parameter_schema": {name: list(p.shape) for name, p in model.named_parameters()},
@@ -196,7 +215,7 @@ def build_outputs():
     order_check = {"fly_sparse": shared_hash(fly) == shared_hash(fly_after_baselines)}
     for kind in reverse:
         order_check[kind] = shared_hash(models[kind]) == shared_hash(reverse[kind])
-    records = {kind: model_record(models[kind], selected[kind],
+    records = {kind: model_record(models[kind], selected[kind], shared_reference=fly,
                                   construction_rng_preserved=rng_check[kind],
                                   construction_order_invariant=order_check[kind])
                for kind in ("fly_sparse", "dense_leaky", "gru")}
@@ -253,19 +272,20 @@ def build_outputs():
                                           for name, offset in SAMPLER_OFFSETS.items()},
               "source_hashes": source_hashes,
               "config_hashes": config_hashes, "models": records}
-    if len({record["shared_sha256"] for record in records.values()}) != 1:
+    if (not all(record["shared_initialization_equal"] for record in records.values()) or
+            len({record["shared_equality_sha256"] for record in records.values()}) != 1):
         raise RuntimeError("HOLD: shared initialization mismatch")
     if not all(record["within_tolerance"] for record in records.values()):
         raise RuntimeError("HOLD: parameter budget mismatch")
     rows = ["# Stage 07 architecture baseline report", "",
             "Synthetic-only checks. No loss values, runtime or performance ranking.", "",
-            "| Backbone | Role | H | Parameters | Absolute deviation | Deviation % | Within 5% | Shared hash |",
+            "| Backbone | Role | H | Parameters | Absolute deviation | Deviation % | Within 5% | Shared equality fingerprint |",
             "|---|---|---:|---:|---:|---:|---|---|"]
     for kind in ("fly_sparse", "dense_leaky", "gru"):
         rec = records[kind]
         rows.append(f"| {kind} | {rec['role']} | {rec['selected_hidden']} | {rec['actual_parameters']} | "
                     f"{rec['absolute_deviation']} | {rec['deviation_percent']:.3f}% | "
-                    f"{rec['within_tolerance']} | `{rec['shared_sha256']}` |")
+                    f"{rec['within_tolerance']} | `{rec['shared_equality_sha256']}` |")
     rows += ["", "All three arms passed the fixed-mask synthetic forward, backward, update, "
              "checkpoint resume and adapter checks. The JSON records shapes, parameter schemas, "
              "source/config hashes and bounded compute formulas. CUDA remains unverified.", ""]

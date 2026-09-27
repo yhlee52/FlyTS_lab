@@ -19,6 +19,11 @@ binding. DEC-025 remediation writes and checks exact bytes, binds 19 sources and
 rejects CRLF drift. Final QA is `PASS`: focused 64 passed/2 CUDA skips, full 97
 passed/3 CUDA skips, report/validators/diff pass.
 
+Post-QA Linux CI showed that seeded tensor value hashes vary across operating
+systems even though paired shared tensors remain bitwise equal within each run.
+The stable report therefore records the actual equality result and a hash of its
+name/shape/dtype/equality transcript, not a platform-specific tensor-value hash.
+
 CUDA, performance, transfer, robustness pass/fail, foundation quality and backbone
 or topology superiority remain `미검증`. Draft PR creation is authorized; merge and
 Stage 08 remain unauthorized. PI result decision is pending.

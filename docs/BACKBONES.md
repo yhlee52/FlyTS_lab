@@ -34,7 +34,8 @@ Dense searches `H=2..512`; GRU searches `H=1..512`. No dummy parameters are
 added. The fixed manual mask and input exercise the common reconstruction
 objective, every gradient, an optimizer update, two-step split/resume, padding,
 checkpoint loading and the generic `FoundationAdapter`. `FlyTSAdapter` remains
-an alias. The report includes shared/backbone counts, shapes, hashes and analytic
+an alias. The report includes shared/backbone counts, shapes, a platform-neutral
+shared-equality transcript fingerprint, source/config hashes, and analytic
 recurrent-core MAC/FLOP estimates with unsupported operations called out.
 The four `configs/baselines/stage07-*.json` files are generated together with
 the report. No public corpus, loss value, runtime ranking, CUDA claim or

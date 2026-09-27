@@ -90,6 +90,15 @@ def test_stage07_report_is_byte_stable():
     assert result.returncode == 0, result.stderr or result.stdout
 
 
+def test_stage07_report_uses_platform_neutral_shared_equality_fingerprint():
+    root = Path(__file__).resolve().parents[1]
+    report = json.loads((root / "reports/baselines/stage07-baselines.json").read_bytes())
+    records = report["models"].values()
+    assert all(record["shared_initialization_equal"] for record in records)
+    assert len({record["shared_equality_sha256"] for record in records}) == 1
+    assert all("shared_sha256" not in record for record in records)
+
+
 def test_stage07_config_hashes_bind_exact_bytes_and_reject_crlf(tmp_path):
     root = Path(__file__).resolve().parents[1]
     report = json.loads((root / "reports/baselines/stage07-baselines.json").read_bytes())

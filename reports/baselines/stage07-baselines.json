@@ -271,8 +271,9 @@
       },
       "role": "role_diagnostic",
       "selected_hidden": 98,
+      "shared_equality_sha256": "bd617f0dddc6be024eaef819707f646e27913903bbcae9f8cf417f913452546e",
+      "shared_initialization_equal": true,
       "shared_parameters": 27208,
-      "shared_sha256": "4b1e236fae5786370922382b6f0f85cb1e779591d8c25fa346b238eb8f9ed953",
       "target_parameters": 68760,
       "within_tolerance": true
     },
@@ -527,8 +528,9 @@
       },
       "role": "reference",
       "selected_hidden": 128,
+      "shared_equality_sha256": "bd617f0dddc6be024eaef819707f646e27913903bbcae9f8cf417f913452546e",
+      "shared_initialization_equal": true,
       "shared_parameters": 27208,
-      "shared_sha256": "4b1e236fae5786370922382b6f0f85cb1e779591d8c25fa346b238eb8f9ed953",
       "target_parameters": 68760,
       "within_tolerance": true
     },
@@ -781,8 +783,9 @@
       },
       "role": "formal_candidate",
       "selected_hidden": 43,
+      "shared_equality_sha256": "bd617f0dddc6be024eaef819707f646e27913903bbcae9f8cf417f913452546e",
+      "shared_initialization_equal": true,
       "shared_parameters": 27208,
-      "shared_sha256": "4b1e236fae5786370922382b6f0f85cb1e779591d8c25fa346b238eb8f9ed953",
       "target_parameters": 68760,
       "within_tolerance": true
     }
@@ -847,7 +850,7 @@
     },
     "report": {
       "path": "tools/report_stage07_baselines.py",
-      "sha256": "c9ecb3deec7ffc98fc25ff281f36aec3811c123912c433f172377458d908ca38"
+      "sha256": "63ede33883b8ed784896b166a2e79360c86bc7d9bf5280f005794a7c7523d8fc"
     },
     "seeding": {
       "path": "src/flyts/backbones/seeding.py",
