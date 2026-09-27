@@ -329,6 +329,7 @@ class WindowDataset(Dataset):
         return dict(x=torch.from_numpy(x), dt=row["dt"],
                     time_known=row["time_unit"] == "seconds", label=row.get("label", -1),
                     dataset=row["dataset"], domain=row["domain"],
+                    domain_id=row.get("domain_id", row["dataset"]),
                     record_id=self.record_ids[r], window_start=int(row["start"] + start))
 
     def balanced_sampler(self, count, generator):
@@ -354,5 +355,6 @@ def collate_windows(rows):
                 time_known=torch.tensor([row["time_known"] for row in rows]),
                 label=torch.tensor([row["label"] for row in rows]),
                 dataset=[row["dataset"] for row in rows], domain=[row["domain"] for row in rows],
+                domain_id=[row.get("domain_id", row["dataset"]) for row in rows],
                 record_id=[row.get("record_id") for row in rows],
                 window_start=[row.get("window_start") for row in rows])

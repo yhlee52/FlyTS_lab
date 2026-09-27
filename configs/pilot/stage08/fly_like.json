@@ -1,0 +1,9 @@
+{
+  "seed": 7, "epochs": 2, "batch_size": 8, "steps_per_epoch": 200,
+  "context": 256, "stride": 128, "threads": 4, "lr": 0.0005,
+  "masking": {"temporal_ratio": 0.4, "channel_ratio": 0.2, "channel_dropout_ratio": 0.1},
+  "val_batches": 0,
+  "model": {"backbone": "fly_sparse", "backend": "dense", "density": 0.1,
+            "hidden": 128, "patch_size": 8, "populations": 16, "slots": 4,
+            "topology": "fly_like", "topology_seed": 7, "width": 64}
+}
