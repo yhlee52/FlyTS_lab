@@ -5,7 +5,7 @@ Updated: 2026-09-28
 ## Current stage
 
 Stage 08 is closed under DEC-035 after the operational pilot, independent QA
-`PASS` and PI result `GO`; DEC-036 authorizes Draft PR preparation and CI, on
+`PASS` and PI result `GO`; Draft PR #14 is open under DEC-036, on
 `codex/stage-08-flyts-mini-pilot`, based on
 GitHub `main` merge commit `34b83c29d8a5588158d1e4abe420bfc8cbdf5e68`.
 Stages 00–08 are closed. The Stage 08 branch remains unmerged. Numerical
@@ -13,8 +13,8 @@ robustness settings remain candidate.
 
 ## Current goal
 
-Commit and push the closed Stage 08 evidence, open a Draft PR and verify CI. Do not
-merge, rerun, access final-held-out data or start Stage 09.
+Verify Draft PR #14 CI and return to the merge gate. Do not merge, rerun, access
+final-held-out data or start Stage 09.
 
 ## Canonical references
 
@@ -121,8 +121,10 @@ merge, rerun, access final-held-out data or start Stage 09.
 - DEC-035 records the PI result `GO` on 2026-09-28 and closes Stage 08 within its
   operational/descriptive claim boundary.
 - DEC-036 records option A `GO` for commit, Draft PR creation and CI only.
+- Commit `2733069` was pushed and Draft PR #14 was opened against `main`; it is
+  still a Draft and unmerged.
 
 ## Next action
 
-Create the Stage 08 Draft PR, verify CI and return to the merge gate. Stage 09 and
+Verify the final Draft PR #14 head CI and return to the merge gate. Stage 09 and
 final-held-out access remain separately unauthorized.

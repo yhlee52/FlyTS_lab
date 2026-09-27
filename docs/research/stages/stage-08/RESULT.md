@@ -4,6 +4,8 @@ Status: **closed — independent QA PASS; PI result GO**
 
 Date: 2026-09-27
 
+Draft PR: [#14](https://github.com/yhlee52/FlyTS_lab/pull/14) — open and unmerged
+
 The DEC-032 fixed-order pilot completed once without a stop condition. The four
 core arms each completed `200 + resume + 200` optimizer steps and 3,200 sample
 exposures. The dense-leaky diagnostic completed `10 + resume + 10` steps and 160
@@ -55,5 +57,8 @@ The PI issued result `GO` on 2026-09-28 and accepted this bounded operational
 evidence package. Stage 08 is closed without expanding its claim scope.
 Topology/backbone
 superiority, robustness pass/fail, foundation quality, CUDA support, transfer and
-semiconductor applicability remain `미검증`. Stage 09, final-held-out access, PR
-creation and merge remain unauthorized.
+semiconductor applicability remain `미검증`. Stage 09, final-held-out access and
+merge remain unauthorized.
+
+Under DEC-036, the reviewed Stage 08 changes were committed and Draft PR #14 was
+opened on 2026-09-28. Merge remains a separate PI gate.
