@@ -1,5 +1,21 @@
 # FlyTS Decision Log
 
+## DEC-025 — Stage 07 provenance-remediation budget exception
+
+- Date: 2026-09-27
+- Decision authority: user explicitly approved the requested bounded remediation after independent QA `FAIL`.
+- Decision: increase only the existing Stage 07 Implementation Engineer's `max_followups_per_agent` from 1 to 2 to correct byte-level generated-config hashing, byte-oriented `--check`, complete report source binding and the focused provenance regression. The existing QA Engineer retains its original single follow-up for independent re-review.
+- Boundary: no new specialist, model/config/matcher change, real-data run, performance evidence, Stage 08, PR merge or scientific claim is authorized.
+
+## DEC-024 — Stage 07 conventional-backbone engineering GO
+
+- Date: 2026-09-27
+- Decision authority: user approved implementation of the complete Stage 07 plan and Charter after resolving the dense, GRU, parameter-budget, role, checkpoint, evidence, interface, initialization, staffing and compute options.
+- Decision: retain the exact Fly sparse path; add a fully connected stabilized dense-leaky diagnostic and standard packed GRU formal candidate behind one shared routed-slot interface. Target 68,760 trainable parameters within plus or minus five percent, use synthetic engineering evidence only, preserve format-v1 checkpoints and preregister GRU/dense roles before performance.
+- Initialization and evidence: preserve legacy Fly seeded behavior; copy allowlisted shared tensors from a deterministic Fly reference; isolate backbone/data/mask RNG; record actual parameters, schemas, finite gradients/update/resume and bounded analytic operation estimates without losses, rankings or runtime claims.
+- Staffing: approve four specialists (Architecture, Experiment, one Implementation owner and independent QA), at most two parallel agents, one debate and one follow-up per specialist.
+- Boundary: no real-data training, final-held-out/test access, Stage 08, threshold freeze, performance or scientific claim, merge or automatic advancement. Material deviation or budget expansion returns to `HOLD`.
+
 ## DEC-023 — Stage 06 result GO
 
 - Date: 2026-09-27

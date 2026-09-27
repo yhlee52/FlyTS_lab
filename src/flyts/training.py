@@ -20,9 +20,25 @@ from .topology import graph_statistics
 
 
 GRAPH_BUFFER_FIELDS = ("dst", "src", "pop", "edge_type", "degree")
+GRAPH_ONLY_FIELDS = ("populations", "density", "topology_seed", "backend", "topology", "topology_control_seed")
+GRU_UNUSED_FIELDS = ("tau_min", "tau_max")
+
+
+def validate_model_config_raw(value, *, allow_legacy_placeholders=False):
+    if value.get("backbone", "fly_sparse") != "fly_sparse":
+        defaults = asdict(EncoderConfig())
+        for key in GRAPH_ONLY_FIELDS:
+            if key in value and (not allow_legacy_placeholders or value[key] != defaults[key]):
+                raise ValueError(f"{key} is graph-only for baseline backbones")
+        if value["backbone"] == "gru":
+            for key in GRU_UNUSED_FIELDS:
+                if key in value and (not allow_legacy_placeholders or value[key] != defaults[key]):
+                    raise ValueError(f"{key} is unused by GRU")
 
 
 def graph_provenance(model):
+    if model.config.backbone != "fly_sparse":
+        raise ValueError("graph provenance applies to fly_sparse only")
     graph = model.graph.artifact
     return dict(kind=graph.kind, schema_version=graph.schema_version,
                 content_hash=graph.content_hash, reference_seed=model.config.topology_seed,
@@ -32,7 +48,31 @@ def graph_provenance(model):
 
 
 def canonical_model_config(value):
+    validate_model_config_raw(value, allow_legacy_placeholders=True)
     return asdict(EncoderConfig(**value))
+
+
+def backbone_provenance(model):
+    cfg = model.config
+    result = {"kind": cfg.backbone, "schema_version": 1,
+              "config": asdict(cfg),
+              "hidden": cfg.hidden, "width": cfg.width, "slots": cfg.slots,
+              "patch_size": cfg.patch_size, "output_width": cfg.width,
+              "parameter_count": sum(p.numel() for p in model.parameters()),
+              "init_schema": "legacy-fly-v1" if cfg.backbone == "fly_sparse" else "flyts-baseline-init-v1",
+              "graph_execution_backend": cfg.backend if cfg.backbone == "fly_sparse" else None}
+    if cfg.backbone == "fly_sparse":
+        result["graph_provenance"] = graph_provenance(model)
+    else:
+        from .foundation import INIT_SCHEMA, baseline_seed
+        result["init_schema"] = INIT_SCHEMA
+        result["init_seed"] = cfg.init_seed
+        if cfg.backbone == "dense_leaky":
+            result["tau_min"] = cfg.tau_min
+            result["tau_max"] = cfg.tau_max
+        result["shared_seed"] = baseline_seed("shared-reference", cfg.init_seed)
+        result["backbone_seed"] = baseline_seed(cfg.backbone, cfg.init_seed)
+    return result
 
 
 def require_resume_model_config(saved, requested):
@@ -114,8 +154,10 @@ def save_checkpoint(path, model, optimizer, epoch, config, manifest_hash, histor
                  manifest_sha256=manifest_hash, history=history, best=best,
                  torch_rng=torch.get_rng_state(),
                  cuda_rng=torch.cuda.get_rng_state_all() if torch.cuda.is_available() else [],
-                 graph_provenance=graph_provenance(model),
+                 backbone_provenance=backbone_provenance(model),
                  execution_provenance=execution if execution is not None else execution_provenance())
+    if model.config.backbone == "fly_sparse":
+        state["graph_provenance"] = graph_provenance(model)
     temp = Path(str(path)+".tmp")
     torch.save(state, temp)
     temp.replace(path)
@@ -127,19 +169,25 @@ def load_encoder(checkpoint, device="cpu"):
     state = torch.load(checkpoint, map_location="cpu", weights_only=True)
     if state.get("format_version") != 1:
         raise ValueError("unknown checkpoint version")
+    validate_model_config_raw(state["model_config"], allow_legacy_placeholders=True)
     model = FlyTSFoundation(EncoderConfig(**state["model_config"]))
     expected = model.state_dict()
-    for field in GRAPH_BUFFER_FIELDS:
-        key = f"graph.{field}"
-        actual = state["model"].get(key)
-        if (not isinstance(actual, torch.Tensor) or actual.dtype != expected[key].dtype
-                or actual.shape != expected[key].shape or not torch.equal(actual, expected[key])):
-            raise ValueError(f"checkpoint graph buffer mismatch: {key}")
-    provenance = state.get("graph_provenance")
-    if provenance is None and model.config.topology != "fly_like":
-        raise ValueError("control checkpoint missing graph provenance")
-    if provenance is not None and provenance != graph_provenance(model):
-        raise ValueError("checkpoint graph provenance mismatch")
+    if model.config.backbone == "fly_sparse":
+        for field in GRAPH_BUFFER_FIELDS:
+            key = f"graph.{field}"
+            actual = state["model"].get(key)
+            if (not isinstance(actual, torch.Tensor) or actual.dtype != expected[key].dtype
+                    or actual.shape != expected[key].shape or not torch.equal(actual, expected[key])):
+                raise ValueError(f"checkpoint graph buffer mismatch: {key}")
+        provenance = state.get("graph_provenance")
+        if provenance is None and model.config.topology != "fly_like":
+            raise ValueError("control checkpoint missing graph provenance")
+        if provenance is not None and provenance != graph_provenance(model):
+            raise ValueError("checkpoint graph provenance mismatch")
+    if state.get("backbone_provenance") is not None and state["backbone_provenance"] != backbone_provenance(model):
+        raise ValueError("checkpoint backbone provenance mismatch")
+    if model.config.backbone != "fly_sparse" and state.get("backbone_provenance") is None:
+        raise ValueError("baseline checkpoint missing backbone provenance")
     model.load_state_dict(state["model"])
     return model.to(device).eval(), state
 
@@ -170,6 +218,7 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
     pretrain_ids = ({key for key, role in registry["roles"].items() if role == "pretrain"}
                     if registry else None)
     digest = sha256(manifest)
+    validate_model_config_raw(config["model"])
     mcfg = EncoderConfig(**config["model"])
     model = FlyTSFoundation(mcfg).to(device)
     execution = execution_provenance(training_reproduction_argv(
@@ -217,7 +266,9 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
                train_windows=len(train_data), val_windows=len(val_data),
                skipped_train_windows=train_data.skipped_windows, skipped_val_windows=val_data.skipped_windows,
                train_domains=sorted({r["domain"] for r in train_data.records}),
-               graph_provenance=graph_provenance(model), execution_provenance=execution)
+               backbone_provenance=backbone_provenance(model), execution_provenance=execution)
+    if mcfg.backbone == "fly_sparse":
+        run["graph_provenance"] = graph_provenance(model)
     (outdir / "run.json").write_text(json.dumps(run, indent=2)+"\n")
     print(json.dumps(run), flush=True)
     for epoch in range(start, config["epochs"]):
@@ -269,7 +320,8 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
         row = dict(epoch=epoch+1, train_loss=sum(losses)/len(losses), val_loss=val,
                    val_by_domain=by_domain, seconds=time.perf_counter()-tick,
                    val_visible_mean_baseline=sum(sum(v)/len(v) for v in domain_baselines.values())/len(domain_baselines),
-                   tau=model.graph.tau.detach().cpu().tolist())
+                   tau=(model.graph.tau.detach().cpu().tolist()
+                        if mcfg.backbone == "fly_sparse" else None))
         history.append(row)
         improved = val < best
         best = min(best, val)

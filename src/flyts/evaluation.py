@@ -150,7 +150,7 @@ class EvaluatorAdapter(Protocol):
 
 
 @dataclass(frozen=True)
-class FlyTSAdapter:
+class FoundationAdapter:
     model: object
     checkpoint_hash: str
 
@@ -175,9 +175,15 @@ class FlyTSAdapter:
         return {"reconstruction": out["reconstruction"].cpu()}
 
     def provenance(self):
-        from .training import graph_provenance
-        return {"adapter": "flyts-v1", "checkpoint_sha256": self.checkpoint_hash,
-                "graph_provenance": graph_provenance(self.model)}
+        from .training import backbone_provenance, graph_provenance
+        result = {"adapter": "flyts-v1", "checkpoint_sha256": self.checkpoint_hash,
+                  "backbone_provenance": backbone_provenance(self.model)}
+        if self.model.config.backbone == "fly_sparse":
+            result["graph_provenance"] = graph_provenance(self.model)
+        return result
+
+
+FlyTSAdapter = FoundationAdapter  # Stable public compatibility alias.
 
 
 def temporal_fixture(observed, patch_size, ratio, seed):

@@ -12,6 +12,8 @@ from torch.nn import functional as F
 
 from .masking import MaskPlan
 from .topology import build_topology
+from .backbones import make_baseline, recurrent_module, validate_kind
+from .backbones.seeding import SHARED_FIELDS, INIT_SCHEMA, baseline_seed
 
 
 @dataclass(frozen=True)
@@ -28,11 +30,16 @@ class EncoderConfig:
     backend: str = "dense"
     topology: str = "fly_like"
     topology_control_seed: int | None = None
+    backbone: str = "fly_sparse"
+    init_seed: int = 7
 
     def __post_init__(self):
         if min(self.patch_size, self.width, self.hidden, self.slots) < 1:
             raise ValueError("model sizes must be positive")
-        if not 1 <= self.populations <= self.hidden or self.hidden < 2:
+        validate_kind(self.backbone)
+        if isinstance(self.init_seed, bool) or not isinstance(self.init_seed, int) or self.init_seed < 0:
+            raise ValueError("init_seed must be a nonnegative integer")
+        if self.backbone == "fly_sparse" and (not 1 <= self.populations <= self.hidden or self.hidden < 2):
             raise ValueError("invalid populations/hidden")
         if not 0 < self.density <= 1:
             raise ValueError("density must be in (0, 1]")
@@ -45,6 +52,12 @@ class EncoderConfig:
         if self.topology != "fly_like" and (isinstance(self.topology_control_seed, bool)
                 or not isinstance(self.topology_control_seed, int)):
             raise ValueError("control topology requires explicit integer topology_control_seed")
+        if self.backbone != "fly_sparse" and self.topology != "fly_like":
+            raise ValueError("graph topology is Fly-only")
+        if self.backbone != "fly_sparse" and (self.populations != 16 or self.density != 0.1
+                or self.topology_seed != 7 or self.backend != "dense"
+                or self.topology_control_seed is not None):
+            raise ValueError("graph-only settings are unavailable for baseline backbones")
 
 
 class PopulationGraph(nn.Module):
@@ -114,6 +127,9 @@ class FlyTSFoundation(nn.Module):
     def __init__(self, config=EncoderConfig()):
         super().__init__()
         self.config = config
+        if config.backbone != "fly_sparse":
+            self._init_baseline(config)
+            return
         d, k = config.width, config.patch_size
         self.tokenizer = nn.Sequential(nn.Linear(2*k, d), nn.GELU(), nn.Linear(d, d))
         self.stats = nn.Linear(2, d)
@@ -124,6 +140,32 @@ class FlyTSFoundation(nn.Module):
         self.graph = PopulationGraph(config)
         self.context = nn.Sequential(nn.Linear(3*d, d), nn.GELU(), nn.LayerNorm(d))
         self.decoder = nn.Linear(d, k)
+
+    def _init_baseline(self, config):
+        # A fork isolates both initializers from training's data and mask RNG.
+        with torch.random.fork_rng(devices=[]):
+            torch.random.default_generator.manual_seed(
+                baseline_seed("shared-reference", config.init_seed))
+            from dataclasses import replace
+            reference = FlyTSFoundation(replace(config, backbone="fly_sparse",
+                                                hidden=max(128, config.populations)))
+        d, k = config.width, config.patch_size
+        with torch.random.fork_rng(devices=[]):
+            torch.random.default_generator.manual_seed(
+                baseline_seed(config.backbone, config.init_seed))
+            self.tokenizer = nn.Sequential(nn.Linear(2*k, d), nn.GELU(), nn.Linear(d, d))
+            self.stats = nn.Linear(2, d)
+            self.clock = nn.Linear(4, d)
+            self.queries = nn.Parameter(torch.empty(config.slots, d))
+            self.key = nn.Linear(d, d, bias=False)
+            self.value = nn.Linear(d, d, bias=False)
+            self.backbone = make_baseline(config)
+            self.context = nn.Sequential(nn.Linear(3*d, d), nn.GELU(), nn.LayerNorm(d))
+            self.decoder = nn.Linear(d, k)
+        with torch.no_grad():
+            self.queries.copy_(reference.queries)
+            for name in SHARED_FIELDS[1:]:
+                getattr(self, name).load_state_dict(getattr(reference, name).state_dict())
 
     def forward(self, x, observed=None, dt=1.0, hide=None, time_known=None, lengths=None,
                 mask_plan=None, channel_counts=None):
@@ -218,7 +260,7 @@ class FlyTSFoundation(nn.Module):
         time_present = F.pad(present, (0, p*k-t)).reshape(b, p, k).sum(-1)
         patch_valid = time_present > 0
         delta = time_present.to(x.dtype) * dt[:, None]
-        temporal = self.graph(slots, delta, patch_valid)
+        temporal = recurrent_module(self)(slots, delta, patch_valid)
         contextual = self.context(torch.cat([
             tokens, temporal[:, :, None].expand(-1, -1, c, -1),
             channel_context[:, None].expand(-1, p, -1, -1)
