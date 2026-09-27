@@ -143,7 +143,7 @@ Open the Stage 07 Draft PR and present the independently verified engineering re
 - Final independent QA is `PASS`: focused 8 passed, full 84 passed/3 CUDA skips, full source/array equality, report `--check`, smoke hash/shape/finite/memory, validators and diff check all passed.
 - Both Draft PR #12 `pytest` checks passed; PR #12 was merged to `main` at `81355b7` before the separate Stage 07 approval.
 - Initial Stage 07 QA issued `FAIL` because tracked config byte hashes disagreed with the report, `--check` normalized newlines, and source binding omitted training/evaluation.
-- After DEC-025 remediation, independent QA issued final `PASS`: focused 64 passed/2 CUDA skips, full 97 passed/3 CUDA skips, exact bytes and 19 source hashes verified, CRLF alteration rejected, and report/validators/diff checks passed; Draft PR #13 is open, with cross-OS equality-fingerprint CI remediation in progress.
+- After DEC-025 remediation, independent QA issued final `PASS`: focused 64 passed/2 CUDA skips and full 97 passed/3 CUDA skips; Draft PR #13 is open and both Linux CI checks pass after replacing the OS-specific shared-value hash with an actual-equality transcript fingerprint.
 
 ## Next action
 

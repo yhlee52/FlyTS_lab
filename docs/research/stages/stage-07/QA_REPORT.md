@@ -63,3 +63,13 @@ Final QA evidence:
 
 CUDA remains unavailable. The PI retains the result gate; merge and Stage 08 remain
 separately unauthorized.
+
+## Post-QA integration note
+
+This is a Director integration record, not a second specialist verdict. Draft PR
+Linux CI showed that seeded tensor-value bytes differ across operating systems even
+though paired shared tensors are bitwise equal within each run. The stable report
+now records the actual equality result plus a platform-neutral hash of the ordered
+name/shape/dtype/equality transcript. A focused regression enforces this schema;
+both Draft PR #13 Linux `pytest` checks pass. Model math, matching, checkpoints and
+the independent QA verdict are unchanged.

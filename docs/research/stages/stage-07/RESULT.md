@@ -23,6 +23,7 @@ Post-QA Linux CI showed that seeded tensor value hashes vary across operating
 systems even though paired shared tensors remain bitwise equal within each run.
 The stable report therefore records the actual equality result and a hash of its
 name/shape/dtype/equality transcript, not a platform-specific tensor-value hash.
+Both Draft PR #13 Linux `pytest` checks pass with this cross-OS contract.
 
 CUDA, performance, transfer, robustness pass/fail, foundation quality and backbone
 or topology superiority remain `미검증`. Draft PR creation is authorized; merge and
