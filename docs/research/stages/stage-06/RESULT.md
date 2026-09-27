@@ -1,6 +1,6 @@
 # Stage 06 Result — Public Corpus v1 Expansion
 
-Status: **review — independent QA PASS; PI result decision pending**
+Status: **closed — independent QA PASS; PI result GO**
 
 ## Outcome
 
@@ -51,5 +51,8 @@ scope or `미검증`.
 Draft PR #12 (`https://github.com/yhlee52/FlyTS_lab/pull/12`) contains the bounded
 implementation and evidence. It is not authorized for merge.
 
-The requested user result gate is `GO`, `REVISE`, `HOLD`, or `STOP`. A `GO` closes
-this bounded stage only; merge and Stage 07 remain separately unauthorized.
+## PI result decision
+
+The PI issued `GO` on 2026-09-27 after reviewing the evidence, QA verdict and the
+explicitly unverified performance boundaries. Stage 06 is closed within this bounded
+engineering scope. Draft PR #12 merge and Stage 07 remain separately unauthorized.

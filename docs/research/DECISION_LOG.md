@@ -1,5 +1,13 @@
 # FlyTS Decision Log
 
+## DEC-023 — Stage 06 result GO
+
+- Date: 2026-09-27
+- Decision authority: user issued `GO` after reviewing the Stage 06 evidence, independent QA `PASS`, and the fact that performance, foundation quality, transfer and final-held-out performance remain unverified.
+- Decision: accept and close the bounded public-corpus v1 engineering stage. The official UCI Electricity 370-channel admission, fixed roles, chronological split/purge contract, hash-bound registry, complete source coverage and same-checkpoint finite smoke are accepted as engineering evidence only.
+- Evidence: `docs/research/stages/stage-06/{RESULT,QA_REPORT}.md`; focused 8 passed, full 84 passed/3 CUDA skips, deterministic corpus report, full local source/array verification, and both Draft PR #12 CI jobs passed.
+- Boundary: this does not authorize performance claims, final-held-out score access, Draft PR #12 merge, Stage 07, CUDA, transfer, foundation-quality or semiconductor claims.
+
 ## DEC-022 — Stage 06 public corpus v1 GO
 
 - Date: 2026-09-27

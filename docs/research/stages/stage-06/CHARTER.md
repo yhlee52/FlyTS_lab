@@ -1,8 +1,9 @@
 # Stage 06 Charter — Public Corpus v1 Expansion
 
-Status: review
+Status: closed
 
-Implementation is complete, independent QA is `PASS`, and the PI result gate is pending.
+Implementation is complete, independent QA is `PASS`, and the PI accepted the
+bounded result with `GO` on 2026-09-27 (DEC-023).
 
 ## Research question
 
@@ -130,7 +131,7 @@ outputs and large intermediate artifacts remain ignored and uncommitted.
 | Charter, admissions, roles, split, registry, smoke and budget | Before implementation | GO, 2026-09-27 (DEC-022) |
 | Material scope/data/role/split/criteria/budget change | Before affected work | HOLD if encountered |
 | Source bytes/schema conflict or ETT/Traffic reconsideration | Before admission | HOLD if encountered |
-| Stage result | After independent QA | pending |
+| Stage result | After independent QA | GO, 2026-09-27 (DEC-023) |
 | Merge or Stage 07 | After result gate | separately pending |
 
 ## Agent plan

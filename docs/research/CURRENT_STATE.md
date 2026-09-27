@@ -4,11 +4,11 @@ Updated: 2026-09-27
 
 ## Current stage
 
-Stages 00–05 are closed. Stage 05 PR #11 is merged in `origin/main` at `3df133c`. Stage 06 implementation and full local evidence are complete on `codex/stage-06-public-corpus-v1`; independent remediation QA is `PASS`, and the stage is at the PI result gate. Numerical robustness settings remain candidate.
+Stages 00–06 are closed. Stage 06 independent remediation QA is `PASS`, and the user accepted the bounded result with `GO` in DEC-023. Draft PR #12 remains open and unmerged. Numerical robustness settings remain candidate.
 
 ## Current goal
 
-Present the bounded Stage 06 evidence, limitations and Draft PR for PI `GO/REVISE/HOLD/STOP`. Do not merge, inspect final-held-out performance or begin Stage 07.
+Preserve the closed Stage 06 evidence and wait for separate direction on Draft PR #12 merge or a future Stage 07 Charter. Do not inspect final-held-out performance.
 
 ## Canonical references
 
@@ -63,6 +63,7 @@ Present the bounded Stage 06 evidence, limitations and Draft PR for PI `GO/REVIS
 - DEC-020 approves one extra bounded QA follow-up only; all Stage 05 scientific, scope, merge and next-stage boundaries remain unchanged.
 - DEC-021 records the user's Stage 05 result `GO` after independent QA `PASS`; Stage 05 is closed while PR #11 merge and Stage 06 remain separately gated.
 - DEC-022 records the user's Stage 06 `GO`: official UCI Electricity 370 only, dataset/family identity separation, fixed roles, chronological 70/15/15 with 512-point purge, external hashed registry, full local conversion, fixture CI and forward/encode-only smoke.
+- DEC-023 records the user's Stage 06 result `GO` after independent QA `PASS`; the stage is closed while PR #12 merge, Stage 07 and all performance claims remain separately gated.
 
 ## Open questions
 
@@ -135,8 +136,8 @@ Present the bounded Stage 06 evidence, limitations and Draft PR for PI `GO/REVIS
 - Stage 06 r2 preserves every non-purged source row across 120 records; manifest `44bafe48…e7f6c` is bound to registry `0095d4cd…b9b20`. Official Electricity is `140256×370` at 900 seconds with zero missing/nonfinite values.
 - Initial independent QA `FAIL` found 41 omitted short Bike rows and a float32 overflow guard defect. Both were remediated; contiguous source coverage and `1e100` rejection now have focused regressions.
 - Final independent QA is `PASS`: focused 8 passed, full 84 passed/3 CUDA skips, full source/array equality, report `--check`, smoke hash/shape/finite/memory, validators and diff check all passed.
-- Draft PR #12 contains Stage 06 commit `01ed77a` and is awaiting the PI result gate; merge remains separately unauthorized.
+- Both Draft PR #12 `pytest` checks passed; the user accepted the Stage 06 result with `GO`, while merge remains separately unauthorized.
 
 ## Next action
 
-Return to the user for the Stage 06 result gate. Merge and Stage 07 remain separately gated.
+Await separate user direction on Draft PR #12 merge or a future Stage 07 Charter. Final-held-out access and all performance claims remain gated.
