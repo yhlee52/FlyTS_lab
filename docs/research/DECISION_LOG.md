@@ -1,13 +1,21 @@
 # FlyTS Decision Log
 
+## DEC-038 — Stage 08 Draft PR CI passed
+
+- Date: 2026-09-28
+- Authority: CI observation under DEC-036 option A `GO`.
+- Evidence: both GitHub `pytest` checks on Draft PR #14 head `c09c0b5` passed,
+  completing in 2m13s and 3m40s.
+- Boundary: CI success does not authorize merge, Stage 09 or final-held-out access.
+
 ## DEC-037 — Stage 08 Draft PR created
 
 - Date: 2026-09-28
 - Authority: execution under DEC-036 option A `GO`.
 - Outcome: commit `2733069` was pushed to
   `codex/stage-08-flyts-mini-pilot` and Draft PR #14 was opened against `main`.
-- Boundary: CI observation is in progress. The PR remains a Draft; merge, Stage 09
-  and final-held-out access remain unauthorized.
+- Boundary: the PR remains a Draft; merge, Stage 09 and final-held-out access remain
+  unauthorized.
 
 ## DEC-036 — Stage 08 Draft PR option A GO
 

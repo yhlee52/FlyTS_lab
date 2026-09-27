@@ -61,4 +61,5 @@ semiconductor applicability remain `미검증`. Stage 09, final-held-out access 
 merge remain unauthorized.
 
 Under DEC-036, the reviewed Stage 08 changes were committed and Draft PR #14 was
-opened on 2026-09-28. Merge remains a separate PI gate.
+opened on 2026-09-28. Both GitHub `pytest` checks on head `c09c0b5` passed in
+2m13s and 3m40s. Merge remains a separate PI gate.

@@ -13,8 +13,8 @@ robustness settings remain candidate.
 
 ## Current goal
 
-Verify Draft PR #14 CI and return to the merge gate. Do not merge, rerun, access
-final-held-out data or start Stage 09.
+Preserve Draft PR #14 and return to the merge gate after its CI passed. Do not
+merge, rerun, access final-held-out data or start Stage 09.
 
 ## Canonical references
 
@@ -123,8 +123,10 @@ final-held-out data or start Stage 09.
 - DEC-036 records option A `GO` for commit, Draft PR creation and CI only.
 - Commit `2733069` was pushed and Draft PR #14 was opened against `main`; it is
   still a Draft and unmerged.
+- Both GitHub `pytest` checks on Draft PR #14 head `c09c0b5` passed in 2m13s and
+  3m40s. No merge action was taken.
 
 ## Next action
 
-Verify the final Draft PR #14 head CI and return to the merge gate. Stage 09 and
-final-held-out access remain separately unauthorized.
+Obtain a separate PI merge decision for Draft PR #14. Stage 09 and final-held-out
+access remain separately unauthorized.
