@@ -1,6 +1,7 @@
 """Generate a deterministic, synthetic-only Stage 07 architecture report."""
 import argparse
 from dataclasses import replace
+import difflib
 import hashlib
 import json
 from pathlib import Path
@@ -31,6 +32,24 @@ def json_lf_bytes(value):
 
 def outputs_match(outputs):
     return all(path.exists() and path.read_bytes() == body for path, body in outputs.items())
+
+
+def output_mismatches(outputs):
+    """Return concise diagnostics for generated artifacts that differ on disk."""
+    diagnostics = []
+    for path, expected in outputs.items():
+        actual = path.read_bytes() if path.exists() else b""
+        if actual == expected:
+            continue
+        relative = path.relative_to(ROOT)
+        diagnostics.append(f"generated artifact differs: {relative}")
+        actual_lines = actual.decode("utf-8", errors="replace").splitlines()
+        expected_lines = expected.decode("utf-8", errors="replace").splitlines()
+        diagnostics.extend(list(difflib.unified_diff(
+            actual_lines, expected_lines, fromfile=f"tracked/{relative}",
+            tofile=f"generated/{relative}", lineterm="", n=2,
+        ))[:80])
+    return diagnostics
 
 
 def shared_hash(model):
@@ -263,7 +282,8 @@ def main():
     outputs = build_outputs()
     if args.check:
         if not outputs_match(outputs):
-            raise SystemExit("Stage 07 generated files differ")
+            raise SystemExit("Stage 07 generated files differ\n" +
+                             "\n".join(output_mismatches(outputs)))
     else:
         for path, body in outputs.items():
             path.parent.mkdir(parents=True, exist_ok=True)
