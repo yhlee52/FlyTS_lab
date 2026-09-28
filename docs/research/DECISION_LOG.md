@@ -1,5 +1,50 @@
 # FlyTS Decision Log
 
+## DEC-061 — PI approves the Stage 10 Research Preview Charter
+
+- Date: 2026-09-29
+- Decision authority: the user explicitly approved the proposed Stage 10 Charter
+  and requested implementation of M2 and later milestones.
+- Scope: execute release inventory, prospective reporter hardening, closeout
+  documents, deterministic manifest/bundle tooling, security/rights audit,
+  clean-room verification and independent release QA under DEC-060 and the
+  approved Charter.
+- Agent authorization: activate at most three specialists, at most two at once:
+  Program Integrator, one Implementation/Documentation owner and Independent QA.
+- Boundary: no new training/evaluation/calibration, final-held-out/HARTH access,
+  checkpoint publication, scientific claim, package-version change, PyPI upload,
+  push, Draft PR, tag or GitHub prerelease. M10A and M10B remain separate PI gates.
+
+## DEC-060 — PI selects the Stage 10 Research Preview contract
+
+- Date: 2026-09-29
+- Decision authority: the user explicitly approved implementation of the staged
+  release/closeout plan after selecting the recommended identity, checkpoint,
+  reporter, version, distribution and tag options.
+- Baseline: PR #15 is merged into GitHub `main` at
+  `af46eb6058c4abc13535c063295431a94dca640e`; merge tree
+  `077a555156384b4ec7562dcaa321c1ec9d4ed7a2` equals the reviewed Stage 09 head
+  tree.
+- Release identity: prepare `FlyTS-Mini v0.1 Research Preview`. Keep Python
+  package `flyts 0.2.0` and research artifact `v0.1` as separate version axes;
+  do not publish to PyPI or lower the package version.
+- Artifact policy: include source, wheel/sdist, supported configs, documents,
+  manifest/checksums, a synthetic fixture and offline verification instructions.
+  Exclude raw data and outputs, checkpoints, embeddings, HARTH artifacts,
+  Electricity model outputs and an unspecified dependency wheelhouse.
+- Checkpoint and claim boundary: publish no pretrained checkpoint. The preview
+  may claim a reproducible engineering MVP and public-data operational pipeline,
+  but no formal/final result, foundation quality, topology benefit, robustness,
+  transfer, CUDA or semiconductor suitability.
+- Reporter policy: prospectively remove live-config replay dependence and reject
+  numeric seed-directory aliases in future release code. Do not modify or
+  supersede Stage 09 reports, evidence hashes, `HOLD` status or QA `FAIL`.
+- Candidate publication: after independent release QA, integration, and a final
+  PI release gate, use tag `flyts-mini-v0.1-preview.1` and a GitHub prerelease.
+- Gate: M0 baseline reconciliation and an M1 proposed Charter are authorized.
+  M2 and later implementation require explicit Charter `GO`; Draft PR, tag and
+  GitHub prerelease retain their later M10 gates.
+
 ## DEC-059 — Stage 09 HOLD package opened as Draft PR #15
 
 - Date: 2026-09-28

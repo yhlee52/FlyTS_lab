@@ -2,7 +2,7 @@
 
 문서 기준일: 2026-09-24
 
-이 문서는 FlyTS의 현재 구현에서 출발하여 **FlyTS-Mini v0.1**을 완성하기 위한
+이 문서는 FlyTS의 현재 구현에서 출발하여 **FlyTS-Mini v0.1 Research Preview**를 완성하기 위한
 작업 순서, 단계별 산출물, 검토 체크포인트와 저장 위치를 정의한다.
 
 FlyTS의 장기 목표는 서로 다른 도메인, 채널 수, 채널 순서와 의미를 가진 다변량
@@ -66,7 +66,7 @@ FlyTS의 장기 목표는 서로 다른 도메인, 채널 수, 채널 순서와 
 | 7 | conventional baseline | GRU/dense 비교군 | 동일 예산 비교 가능 |
 | 8 | FlyTS-Mini pilot | 작은 예산 end-to-end 결과 | 정식 실험 위험 제거 |
 | 9 | 정식 비교 실험 | 반복 실험과 통계 보고서 | 연구 질문에 답할 근거 확보 |
-| 10 | FlyTS-Mini v0.1 확정 | 재현 가능한 release bundle | 1차 개발 주기 완료 |
+| 10 | FlyTS-Mini v0.1 Research Preview closeout | 재현 가능한 engineering release bundle | 1차 개발 주기 정리 |
 
 ---
 
@@ -412,33 +412,43 @@ outputs/pilot/
 - channel masking/dropout 결합 효과가 등록된 corruption에서 유의미한가?
 - channel permutation/count와 Electricity held-out에서 등록된 규칙을 만족하는가?
 
-### 단계 10 — 1차 최종 산출물: FlyTS-Mini v0.1
+### 단계 10 — 1차 개발 주기 closeout: FlyTS-Mini v0.1 Research Preview
 
-단계 9 결과를 바탕으로 1차 개발 주기를 확정한다.
+DEC-060은 Stage 09가 formal study 전에 `HOLD`로 종료된 현재 evidence에 맞추어
+Stage 10을 engineering/research preview closeout으로 제한한다. Stage 10 진입은 Stage 09
+성공, scientific/model completion 또는 정식 v0.1 model release를 뜻하지 않는다.
 
-최종 산출물:
+예상 산출물:
 
 ```text
-FlyTS-Mini v0.1
-├── model source
-├── selected public checkpoint
-├── exact training config
-├── dataset manifest와 source hashes
-├── model card
-├── evaluation report
-├── raw metric tables
-├── offline training/transfer instructions
+FlyTS-Mini v0.1 Research Preview
+├── model source와 flyts 0.2.0 wheel/sdist
+├── exact release-supported configs
+├── dataset source/hash references와 재준비 절차
+├── model card, evidence matrix와 closeout report
+├── release manifest와 checksums
+├── synthetic CPU smoke/offline verification bundle
 └── limitations와 next-decision document
 ```
 
-저장 위치:
+공개 pretrained checkpoint, raw public/company data, Stage 08/09 raw outputs,
+embeddings, HARTH artifacts, Electricity model outputs와 target이 지정되지 않은
+wheelhouse는 제외한다. Stage 08 pilot checkpoint는 selected/validated/optimal model로
+승격하지 않는다. Python package `flyts 0.2.0`과 research artifact `v0.1`은 별도
+version 축이며 PyPI에 게시하지 않는다.
+
+예상 저장·배포 위치:
 
 - 코드·설정·문서: GitHub `main`
-- source version: Git tag `flyts-mini-v0.1`
-- 대용량 checkpoint: GitHub Release 또는 승인된 artifact storage
-- 로컬 실험 결과: `outputs/flyts-mini-v0.1/`
-- 최종 보고서: `reports/FLYTS_MINI_V0_1.md`
-- 오프라인 전달물: `artifacts/flyts-mini-v0.1-offline.zip`
+- candidate source version: Git tag `flyts-mini-v0.1-preview.1`
+- tracked release manifest: `reports/releases/flyts-mini-v0.1-preview.1/manifest.json`
+- 최종 보고서: `reports/FLYTS_MINI_V0_1_PREVIEW.md`
+- ignored candidate artifacts: `artifacts/flyts-mini-v0.1-preview.1/`
+- GitHub delivery: final PI release `GO` 후 prerelease
+
+Stage 09 reporter의 live-config 및 numeric seed-alias 결함은 미래 release code에서만
+prospective hardening할 수 있다. Stage 09 원본 reports, hashes, `HOLD`와 QA `FAIL`은
+변경하거나 소급해 통과 처리하지 않는다.
 
 최종 체크포인트는 다음 중 어떤 결론인지 근거와 함께 결정하는 것이다.
 
@@ -451,7 +461,8 @@ FlyTS-Mini v0.1
 
 ## 5. FlyTS-Mini 이후의 장기 단계
 
-FlyTS-Mini v0.1에서 가능성을 확인한 뒤에만 다음을 진행한다.
+FlyTS-Mini v0.1 Research Preview의 engineering closeout 이후, 별도 PI gate와
+public-data scientific validation을 거쳐야만 다음을 진행한다.
 
 1. 실제 Fly connectome과 구조 통계 분석
 2. connectome 통계 기반 compressed topology
@@ -463,7 +474,7 @@ FlyTS-Mini v0.1에서 가능성을 확인한 뒤에만 다음을 진행한다.
 8. semiconductor anomaly/forecast adapter
 
 장기 최종 산출물은 반도체 생산 설비 데이터에 적응한 FlyTS이지만, 현재의 첫 완결
-목표는 단계 10의 **FlyTS-Mini v0.1**이다.
+현재 첫 closeout 목표는 단계 10의 **FlyTS-Mini v0.1 Research Preview**이다.
 
 ## 6. 현재 진행 위치
 
@@ -480,6 +491,7 @@ FlyTS-Mini v0.1에서 가능성을 확인한 뒤에만 다음을 진행한다.
 - [x] 단계 7 — conventional baseline 구현, 독립 QA `PASS`, 사용자 결과 `GO`
 - [x] 단계 8 — operational pilot 완료, 독립 QA `PASS`, 사용자 결과 `GO`
 - [x] 단계 9A — DEC-058에 따라 `HOLD` 종료; protocol v2 numerical freeze/formal/final 미실행, H-01–H-03 결과 없음, H-04 미검증
+- [ ] 단계 10 — M0 정합화 완료, Research Preview Charter 제안; M2 이후는 PI Charter `GO` 대기
 
 단계 1의 연구 규약과 단계 2의 channel masking/dropout은 각각 사용자 `GO`로 완료되었다.
-단계 3 evaluator와 candidate evidence는 사용자 `GO`로 수용되었고, independent final QA `PASS` 후 수치 threshold·guard·uncertainty를 동결하지 않은 범위에서 종료됐다. Draft PR #9 내용은 현재 `main`에 포함되어 PR이 stale 상태다. 지표는 기술적·서술적 결과만 제공하고 robustness pass/fail 또는 최종 주장을 하지 않는다. Stage 04 topology 모듈화는 independent QA `PASS`와 사용자 결과 `GO` 후 PR #10으로 `main`의 `944f8ed`에 병합됐다. Stage 05 topology controls는 independent QA `PASS`와 사용자 결과 `GO`(DEC-021) 후 PR #11로 `main`의 `3df133c`에 병합됐다. Stage 06 public corpus v1은 independent QA `PASS`와 사용자 결과 `GO`(DEC-023) 후 PR #12로 `main`의 `81355b7`에 병합됐다. Stage 07 conventional baselines는 independent QA `PASS`와 사용자 결과 `GO`(DEC-026) 후 PR #13으로 `main`의 `34b83c2`에 병합됐다. Stage 08 operational pilot은 고정 실행, independent QA `PASS`, 사용자 결과 `GO`(DEC-035) 후 operational/descriptive 범위에서 종료됐고 PR #14가 `9f41e0f`로 병합됐다. Stage 09는 DEC-058에 따라 final reporter QA `FAIL`을 보존한 채 `HOLD`로 종료됐다. Exact numerical freeze, formal training 및 final-held-out 접근은 실행되지 않았고 H-01–H-03 결과와 Stage 10 승인은 없다.
+단계 3 evaluator와 candidate evidence는 사용자 `GO`로 수용되었고, independent final QA `PASS` 후 수치 threshold·guard·uncertainty를 동결하지 않은 범위에서 종료됐다. Draft PR #9 내용은 현재 `main`에 포함되어 PR이 stale 상태다. 지표는 기술적·서술적 결과만 제공하고 robustness pass/fail 또는 최종 주장을 하지 않는다. Stage 04 topology 모듈화는 independent QA `PASS`와 사용자 결과 `GO` 후 PR #10으로 `main`의 `944f8ed`에 병합됐다. Stage 05 topology controls는 independent QA `PASS`와 사용자 결과 `GO`(DEC-021) 후 PR #11로 `main`의 `3df133c`에 병합됐다. Stage 06 public corpus v1은 independent QA `PASS`와 사용자 결과 `GO`(DEC-023) 후 PR #12로 `main`의 `81355b7`에 병합됐다. Stage 07 conventional baselines는 independent QA `PASS`와 사용자 결과 `GO`(DEC-026) 후 PR #13으로 `main`의 `34b83c2`에 병합됐다. Stage 08 operational pilot은 고정 실행, independent QA `PASS`, 사용자 결과 `GO`(DEC-035) 후 operational/descriptive 범위에서 종료됐고 PR #14가 `9f41e0f`로 병합됐다. Stage 09는 DEC-058에 따라 final reporter QA `FAIL`을 보존한 채 `HOLD`로 종료됐고 PR #15가 `af46eb6`으로 병합됐다. Exact numerical freeze, formal training 및 final-held-out 접근은 실행되지 않았으며 H-01–H-03 결과와 H-04 검증도 없다. DEC-060은 Stage 10 M0과 proposed Charter만 열며, Charter `GO` 전에는 release inventory나 hardening을 시작하지 않는다.
