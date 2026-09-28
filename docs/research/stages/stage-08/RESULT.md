@@ -4,7 +4,10 @@ Status: **closed — independent QA PASS; PI result GO**
 
 Date: 2026-09-27
 
-Draft PR: [#14](https://github.com/yhlee52/FlyTS_lab/pull/14) — open and unmerged
+Integration: [PR #14](https://github.com/yhlee52/FlyTS_lab/pull/14) was merged
+into `main` at `9f41e0fcf55a8b1a606e21bb53c1220bdc57dfc3` on 2026-09-28.
+The merge tree equals the reviewed Stage 08 head tree, so this integration note
+does not alter the evidence or QA verdict below.
 
 The DEC-032 fixed-order pilot completed once without a stop condition. The four
 core arms each completed `200 + resume + 200` optimizer steps and 3,200 sample
@@ -55,11 +58,11 @@ saved domain histories.
 
 The PI issued result `GO` on 2026-09-28 and accepted this bounded operational
 evidence package. Stage 08 is closed without expanding its claim scope.
-Topology/backbone
-superiority, robustness pass/fail, foundation quality, CUDA support, transfer and
-semiconductor applicability remain `미검증`. Stage 09, final-held-out access and
-merge remain unauthorized.
+Topology/backbone superiority, robustness pass/fail, foundation quality, CUDA
+support, transfer and semiconductor applicability remain `미검증`. The later
+Stage 09 plan does not retroactively expand this result.
 
 Under DEC-036, the reviewed Stage 08 changes were committed and Draft PR #14 was
 opened on 2026-09-28. Both GitHub `pytest` checks on head `c09c0b5` passed in
-2m13s and 3m40s. Merge remains a separate PI gate.
+2m13s and 3m40s. The user subsequently merged the PR; its merge tree matches the
+reviewed head.

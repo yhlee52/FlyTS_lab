@@ -11,7 +11,7 @@ from torch import nn
 from torch.nn import functional as F
 
 from .masking import MaskPlan
-from .topology import build_topology
+from .topology import build_topology, validate_graph
 from .backbones import make_baseline, recurrent_module, validate_kind
 from .backbones.seeding import SHARED_FIELDS, INIT_SCHEMA, baseline_seed
 
@@ -66,15 +66,25 @@ class PopulationGraph(nn.Module):
     Dense is often faster for small graphs. Scatter does not guarantee a speedup.
     State integration is a leaky discrete update, not an exact nonlinear ODE solve.
     """
-    def __init__(self, cfg):
+    def __init__(self, cfg, graph_artifact=None):
         super().__init__()
         self.cfg = cfg
         pop = torch.arange(cfg.hidden) * cfg.populations // cfg.hidden
-        graph = build_topology(cfg.topology, hidden_size=cfg.hidden,
+        graph = graph_artifact if graph_artifact is not None else build_topology(cfg.topology, hidden_size=cfg.hidden,
                                num_modules=min(4, cfg.hidden),
                                num_populations=cfg.populations, population=pop,
                                sparsity=1-cfg.density, seed=cfg.topology_seed,
                                control_seed=cfg.topology_control_seed)
+        if graph_artifact is not None:
+            validate_graph(graph)
+            if graph.kind != cfg.topology or graph.parameters["hidden_size"] != cfg.hidden or \
+                    graph.parameters["num_modules"] != min(4, cfg.hidden) or \
+                    graph.parameters["num_populations"] != cfg.populations or \
+                    graph.parameters["sparsity"] != 1-cfg.density or \
+                    (graph.seed if cfg.topology == "fly_like" else graph.parameters.get("reference_seed")) != cfg.topology_seed or \
+                    (cfg.topology != "fly_like" and
+                     graph.parameters.get("control_seed") != cfg.topology_control_seed):
+                raise ValueError("cached graph configuration mismatch")
         self.artifact = graph
         self.register_buffer("dst", graph.dst)
         self.register_buffer("src", graph.src)
@@ -124,9 +134,11 @@ class FlyTSFoundation(nn.Module):
     self-supervised corruption mask [B,P,C]. Normalization sees ONLY visible
     values: held-out targets cannot leak into input statistics.
     """
-    def __init__(self, config=EncoderConfig()):
+    def __init__(self, config=EncoderConfig(), graph_artifact=None):
         super().__init__()
         self.config = config
+        if graph_artifact is not None and config.backbone != "fly_sparse":
+            raise ValueError("cached graph is Fly-only")
         if config.backbone != "fly_sparse":
             self._init_baseline(config)
             return
@@ -137,7 +149,7 @@ class FlyTSFoundation(nn.Module):
         self.queries = nn.Parameter(torch.randn(config.slots, d) / math.sqrt(d))
         self.key = nn.Linear(d, d, bias=False)
         self.value = nn.Linear(d, d, bias=False)
-        self.graph = PopulationGraph(config)
+        self.graph = PopulationGraph(config, graph_artifact=graph_artifact)
         self.context = nn.Sequential(nn.Linear(3*d, d), nn.GELU(), nn.LayerNorm(d))
         self.decoder = nn.Linear(d, k)
 

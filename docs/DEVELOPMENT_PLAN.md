@@ -389,12 +389,12 @@ outputs/pilot/
 최소 실험 구성:
 
 - 사전 등록한 paired seed 5개
-- fly-like / rewired / random / GRU
+- protocol v2 60 runs: fly-like / rewired / random 45 runs + temporal-only 15 runs
 - 동일 parameter 및 optimizer-step budget
 - multi-domain self-supervised pretraining
-- held-out domain 평가
+- Electricity final-held-out reconstruction/robustness 평가
 - channel permutation/dropout/count 평가
-- frozen linear probe
+- H-04 frozen probe는 HARTH admission `HOLD`로 `not tested`
 - 계산 효율 측정
 - 동결된 protocol 아래 final held-out/test 1회 공개
 
@@ -409,8 +409,8 @@ outputs/pilot/
 
 - fly-like가 rewired/random보다 여러 seed에서 반복적으로 우세한가?
 - 차이가 seed 변동보다 큰가?
-- GRU 대비 성능 또는 효율 장점이 있는가?
-- channel dropout과 held-out domain에서 유의미한 장점이 있는가?
+- channel masking/dropout 결합 효과가 등록된 corruption에서 유의미한가?
+- channel permutation/count와 Electricity held-out에서 등록된 규칙을 만족하는가?
 
 ### 단계 10 — 1차 최종 산출물: FlyTS-Mini v0.1
 
@@ -479,6 +479,7 @@ FlyTS-Mini v0.1에서 가능성을 확인한 뒤에만 다음을 진행한다.
 - [x] 단계 6 — public corpus v1 확장, 독립 QA `PASS`, 사용자 결과 `GO`, PR #12 병합
 - [x] 단계 7 — conventional baseline 구현, 독립 QA `PASS`, 사용자 결과 `GO`
 - [x] 단계 8 — operational pilot 완료, 독립 QA `PASS`, 사용자 결과 `GO`
+- [x] 단계 9A — DEC-058에 따라 `HOLD` 종료; protocol v2 numerical freeze/formal/final 미실행, H-01–H-03 결과 없음, H-04 미검증
 
 단계 1의 연구 규약과 단계 2의 channel masking/dropout은 각각 사용자 `GO`로 완료되었다.
-단계 3 evaluator와 candidate evidence는 사용자 `GO`로 수용되었고, independent final QA `PASS` 후 수치 threshold·guard·uncertainty를 동결하지 않은 범위에서 종료됐다. Draft PR #9 내용은 현재 `main`에 포함되어 PR이 stale 상태다. 지표는 기술적·서술적 결과만 제공하고 robustness pass/fail 또는 최종 주장을 하지 않는다. Stage 04 topology 모듈화는 independent QA `PASS`와 사용자 결과 `GO` 후 PR #10으로 `main`의 `944f8ed`에 병합됐다. Stage 05 topology controls는 independent QA `PASS`와 사용자 결과 `GO`(DEC-021) 후 PR #11로 `main`의 `3df133c`에 병합됐다. Stage 06 public corpus v1은 independent QA `PASS`와 사용자 결과 `GO`(DEC-023) 후 PR #12로 `main`의 `81355b7`에 병합됐다. Stage 07 conventional baselines는 independent QA `PASS`와 사용자 결과 `GO`(DEC-026) 후 PR #13으로 `main`의 `34b83c2`에 병합됐다. Stage 08 operational pilot은 고정 실행, independent QA `PASS`, 사용자 결과 `GO`(DEC-035) 후 operational/descriptive 범위에서 종료됐다. Draft PR, merge, Stage 09와 final-held-out 접근은 별도 승인 대상이다.
+단계 3 evaluator와 candidate evidence는 사용자 `GO`로 수용되었고, independent final QA `PASS` 후 수치 threshold·guard·uncertainty를 동결하지 않은 범위에서 종료됐다. Draft PR #9 내용은 현재 `main`에 포함되어 PR이 stale 상태다. 지표는 기술적·서술적 결과만 제공하고 robustness pass/fail 또는 최종 주장을 하지 않는다. Stage 04 topology 모듈화는 independent QA `PASS`와 사용자 결과 `GO` 후 PR #10으로 `main`의 `944f8ed`에 병합됐다. Stage 05 topology controls는 independent QA `PASS`와 사용자 결과 `GO`(DEC-021) 후 PR #11로 `main`의 `3df133c`에 병합됐다. Stage 06 public corpus v1은 independent QA `PASS`와 사용자 결과 `GO`(DEC-023) 후 PR #12로 `main`의 `81355b7`에 병합됐다. Stage 07 conventional baselines는 independent QA `PASS`와 사용자 결과 `GO`(DEC-026) 후 PR #13으로 `main`의 `34b83c2`에 병합됐다. Stage 08 operational pilot은 고정 실행, independent QA `PASS`, 사용자 결과 `GO`(DEC-035) 후 operational/descriptive 범위에서 종료됐고 PR #14가 `9f41e0f`로 병합됐다. Stage 09는 DEC-058에 따라 final reporter QA `FAIL`을 보존한 채 `HOLD`로 종료됐다. Exact numerical freeze, formal training 및 final-held-out 접근은 실행되지 않았고 H-01–H-03 결과와 Stage 10 승인은 없다.

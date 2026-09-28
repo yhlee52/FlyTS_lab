@@ -4,6 +4,18 @@ Status: approved for Stage 01 protocol work on 2026-09-24
 
 DEC-014 Stage 03 handoff (2026-09-25): the evaluator and development candidate evidence were accepted, but numerical guards, effect/pass-fail thresholds and uncertainty configuration remain `candidate` and unfrozen. The Stage 01 freeze references below state a prerequisite for later formal claims, not an achieved Stage 03 freeze. Descriptive reporting is allowed; pass/fail use requires separately approved reopened calibration and freeze before final claims.
 
+DEC-051 Stage 09 amendment (2026-09-28): the active Stage 09 formal-study
+proposal is protocol v2 with H-01–H-03 and 60 runs. H-04 remains registered for
+the broader program but is `HOLD`/not tested after HARTH admission failed; GRU
+remains accepted Stage 07/08 engineering evidence but is not a Stage 09 v2 arm.
+No transfer or GRU-comparison claim is available from protocol v2.
+
+DEC-058 Stage 09 closure (2026-09-28): Stage 09 is closed at `HOLD` after the
+final reporter QA `FAIL`. H-01–H-03 were not formally tested, H-04 remains not
+tested, and no final-held-out evidence or scientific support claim was produced.
+A Draft PR of the preserved readiness package is authorized; merge and Stage 10
+remain separate PI gates.
+
 ## Mission and research question
 
 FlyTS is a channel-agnostic multivariate time-series foundation encoder. The first complete target is the public-data `FlyTS-Mini v0.1` evidence package; semiconductor adaptation remains deferred until after its Stage 10 gate.
@@ -24,8 +36,8 @@ The active hypotheses are H-01 through H-04 in `docs/research/HYPOTHESES.md`. Th
 - Split source records, groups, and time ranges before window creation. Preserve purge gaps and prove that train, validation, and test ranges do not overlap.
 - Fit normalization, preprocessing statistics, and any learned data transform from training-visible values only. Hidden targets, validation, development held-out, and final held-out data cannot influence those statistics.
 - Development held-out domains may be used for evaluator design and Stage 03 calibration through leave-one-domain-out analysis.
-- At the Stage 06 corpus freeze, assign final held-out domains using eligibility, rights, schema, and coverage criteria before performance inspection. Seal them until Stage 09.
-- Validation selects checkpoints and settings. Stage 09 opens the frozen final test once after models, seeds, evaluator, thresholds, probes, and protocol are frozen. Stage 10 packages the recorded evidence and does not retune from it.
+- At the Stage 06 corpus freeze, assign final held-out domains using eligibility, rights, schema, and coverage criteria before performance inspection. Keep them sealed through Stage 09A readiness and the formal-run pre-unseal review.
+- Validation selects checkpoints and settings. Stage 09 is split into readiness/freeze, formal training, and a separately authorized one-time final opening. The final test may open only after the protocol is frozen, formal runs pass pre-unseal QA, and the PI records the final-open decision. Stage 10 packages the recorded evidence and does not retune from it.
 
 ## Selection, repetition, and matched budgets
 
@@ -67,7 +79,7 @@ A negative result supports only a bounded statement such as “no evidence of be
 | 6 | Freeze the rights- and schema-audited public corpus and assign domain roles before performance inspection. |
 | 7 | Add dense recurrent and GRU baselines with the shared tokenizer/router and matched budgets. |
 | 8 | Run a small pipeline pilot to find execution defects; make no formal performance claim. |
-| 9 | Run the five-seed formal study and open final held-out/test evidence once. |
+| 9 | Prepare and freeze the formal study, run it only after the PI formal-run gate, and open final held-out/test evidence once only after the separate PI final-open gate. |
 | 10 | Package the reproducible evidence, including negative or inconclusive conclusions, for the user gate. |
 
 ## Persistent limitations

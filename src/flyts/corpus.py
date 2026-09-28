@@ -12,6 +12,7 @@ from torch.utils.data import Dataset, WeightedRandomSampler
 DOMAIN_ROLES = {"appliances": ("energy", "pretrain"), "beijing": ("environment", "pretrain"),
                 "bike": ("transport", "development-held-out"),
                 "electricity_raw": ("energy", "final-held-out")}
+HARTH_CHANNELS = ("back_x", "back_y", "back_z", "thigh_x", "thigh_y", "thigh_z")
 
 
 def load_domain_registry(manifest, registry=None, doc=None):
@@ -23,9 +24,15 @@ def load_domain_registry(manifest, registry=None, doc=None):
     raw = Path(registry).read_bytes()
     roles = json.loads(raw)
     canonical = (json.dumps(roles, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n").encode("utf-8")
-    if raw != canonical or roles.get("version") != 1 or roles.get("manifest_sha256") != sha256(manifest):
+    if raw != canonical or roles.get("version") not in (1, 2) or roles.get("manifest_sha256") != sha256(manifest):
         raise ValueError("domain registry canonical bytes or manifest SHA-256 mismatch")
-    if roles.get("roles") != {k: v[1] for k, v in DOMAIN_ROLES.items()}:
+    expected = {k: v[1] for k, v in DOMAIN_ROLES.items()}
+    if roles.get("version") == 2:
+        expected["harth"] = "encoder-excluded-probe-target"
+        if roles.get("access") != {"harth": {"train": "target-local", "val": "target-local",
+                                              "test": "sealed"}}:
+            raise ValueError("registry v2 HARTH access must explicitly seal test")
+    if roles.get("roles") != expected:
         raise ValueError("domain registry roles differ from approved roles")
     stamp = roles.get("freeze_timestamp_utc")
     try:
@@ -34,11 +41,11 @@ def load_domain_registry(manifest, registry=None, doc=None):
         raise ValueError("domain registry freeze timestamp missing or invalid") from None
     if not stamp.endswith("Z") or parsed_stamp.tzinfo != timezone.utc:
         raise ValueError("domain registry freeze timestamp must be UTC")
-    if not roles.get("freeze_date") or set(roles.get("source", {})) != set(DOMAIN_ROLES) or \
-            roles.get("eligibility") != {key: "admitted" for key in DOMAIN_ROLES} or \
-            set(roles.get("channel_and_time_facts", {})) != set(DOMAIN_ROLES):
+    if not roles.get("freeze_date") or set(roles.get("source", {})) != set(expected) or \
+            roles.get("eligibility") != {key: "admitted" for key in expected} or \
+            set(roles.get("channel_and_time_facts", {})) != set(expected):
         raise ValueError("domain registry source/eligibility/facts incomplete")
-    for domain_id in DOMAIN_ROLES:
+    for domain_id in expected:
         source = roles["source"][domain_id]
         facts = roles["channel_and_time_facts"][domain_id]
         if not isinstance(source, dict) or not isinstance(source.get("url"), str) or \
@@ -50,12 +57,26 @@ def load_domain_registry(manifest, registry=None, doc=None):
             raise ValueError("domain registry source/eligibility/facts incomplete")
     for row in doc["records"]:
         domain_id = row.get("domain_id", row["dataset"])
+        if domain_id == "harth" and roles["version"] == 2:
+            if row.get("domain_family", row["domain"]) != "human_motion" or row["shape"][1] != 6 or \
+                    tuple(row.get("channels", ())) != HARTH_CHANNELS or \
+                    "label" not in row or row.get("split") not in ("train", "val", "test") or \
+                    not row.get("entity_id"):
+                raise ValueError("HARTH signal/target metadata mismatch")
+            continue
         if domain_id not in DOMAIN_ROLES or row.get("domain_family", row["domain"]) != DOMAIN_ROLES[domain_id][0]:
             raise ValueError("domain identity/family mismatch")
         facts = roles["channel_and_time_facts"][domain_id]
         if facts.get("channels") != row["shape"][1] or facts.get("sampling_seconds") != row["dt"] or \
                 (facts.get("labels") == "none" and "label" in row):
             raise ValueError("domain channel/sampling/label facts mismatch")
+    if roles["version"] == 2:
+        subject_splits = {}
+        for row in doc["records"]:
+            if row.get("domain_id", row["dataset"]) == "harth":
+                subject = row["entity_id"]
+                if subject_splits.setdefault(subject, row["split"]) != row["split"]:
+                    raise ValueError("HARTH subject crosses train/val/test")
     return roles
 
 
@@ -140,7 +161,11 @@ def verify_corpus(manifest, domain_registry=None):
     doc = json.loads(path.read_text(encoding="utf-8"))
     if doc.get("schema_version") != 1 or not doc.get("records"):
         raise ValueError("unsupported or empty corpus")
-    load_domain_registry(manifest, domain_registry, doc)
+    registry = load_domain_registry(manifest, domain_registry, doc)
+    if registry and registry["version"] == 2 and any(
+            r.get("domain_id", r["dataset"]) == "harth" and r["split"] == "test"
+            for r in doc["records"]):
+        raise ValueError("HARTH sealed test cannot be verified before final-open gate")
     ranges = {}
     recording_splits = {}
     entity_lengths = {}
@@ -288,7 +313,16 @@ class WindowDataset(Dataset):
             raise ValueError("invalid context/stride")
         self.root = Path(manifest).parent
         doc = json.loads(Path(manifest).read_text(encoding="utf-8"))
-        load_domain_registry(manifest, domain_registry, doc)
+        registry = load_domain_registry(manifest, domain_registry, doc)
+        if registry is None and any(r.get("domain_id", r["dataset"]) == "harth"
+                                    for r in doc["records"]):
+            raise ValueError("HARTH requires registry v2 and phase-aware access")
+        if registry and registry["version"] == 2:
+            selected = [r for r in doc["records"] if r["split"] == split and
+                        (allowed_domain_ids is None or r.get("domain_id", r["dataset"]) in allowed_domain_ids)]
+            if any(r.get("domain_id", r["dataset"]) == "harth" and
+                   registry["access"]["harth"][split] == "sealed" for r in selected):
+                raise ValueError("HARTH test is sealed; Stage 9A cannot open arrays")
         if doc.get("requires_domain_registry") and context > 512:
             raise ValueError("context exceeds 512-point corpus purge contract")
         self.record_ids = [i for i, r in enumerate(doc["records"]) if r["split"] == split

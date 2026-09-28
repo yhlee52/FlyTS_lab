@@ -4,6 +4,19 @@ Version: Stage 01 approved protocol, 2026-09-24
 
 Stage 03 handoff (DEC-014, 2026-09-25): the approved evaluator and development evidence are accepted, but numerical guards, effect/pass-fail thresholds and uncertainty configuration remain `candidate` and unfrozen. References below to Stage 03 freezing describe the original Stage 01 target, not an achieved freeze. Until separately approved reopened calibration freezes these settings, report descriptive metrics only and make no robustness pass/fail or final claim. The metric identities, aggregation rules and test-access boundary below are unchanged.
 
+Stage 09 protocol-v2 amendment (DEC-051, 2026-09-28): the active formal-study
+scope is H-01–H-03 only. Its unfrozen proposal has 60 runs: 45 crossed topology
+rows and 15 paired temporal-only controls. H-04 and GRU are excluded and
+`not tested`; HARTH remains unadmitted. The generic frozen-probe contract below
+is retained for a future separately approved study, not for Stage 09 v2. Only
+Electricity may be proposed for the later one-time final-open gate. Exact rules,
+immutable freeze, formal execution and final access remain separately gated.
+
+Stage 09 closure note (DEC-058, 2026-09-28): Stage 09 ended at `HOLD` before the
+numerical freeze, formal execution or final opening. The 60-row matrix remains an
+unfrozen proposal, not completed formal evidence. H-01–H-03 have no support
+result and H-04 was not tested. A Draft PR is authorized for review only.
+
 ## 1. Protocol freeze and provenance
 
 Every reported run records the Git commit, complete config, dataset manifest and hashes, domain-role registry, seed, parameter count, optimizer steps, sample exposure, environment, device, primary and diagnostic metrics, timing, memory, and artifact paths.
@@ -16,7 +29,7 @@ Before a formal Stage 09 run, freeze and hash the model definitions, dataset/dom
 
 - `pretrain`: may contribute training and validation records.
 - `development-held-out`: excluded from the relevant pretraining fold and usable for LODO evaluator development and Stage 03 calibration.
-- `final-held-out`: selected at the Stage 06 corpus freeze before performance inspection, excluded from pretraining and evaluator calibration, and sealed until Stage 09.
+- `final-held-out`: selected at the Stage 06 corpus freeze before performance inspection, excluded from pretraining and evaluator calibration, and sealed until the separately approved Stage 09 final-open gate.
 
 The Stage 06 domain-role registry records the assignment date, eligibility, source rights, schema, sampling semantics, channel count, task/label availability, and manifest hash. A domain cannot change role after its performance is inspected without a new user-approved protocol version.
 
@@ -30,7 +43,7 @@ Stage 03 clarification approved by the user (DEC-012): the frozen, fitted prepro
 
 ### 2.3 Selection and final test
 
-Training data fits model parameters. Validation data selects checkpoints and allowed settings. Development-held-out data supports protocol development and Stage 03 calibration but cannot serve as final evidence. Stage 09 opens final-held-out/test evidence once after the protocol freeze. Stage 10 republishes the fixed evidence without retuning.
+Training data fits model parameters. Validation data selects checkpoints and allowed settings. Development-held-out data supports protocol development and approved Stage 09A calibration but cannot serve as final evidence. Stage 09A neither authorizes formal training nor final access. After immutable freeze, formal training, and pre-unseal QA each pass their applicable PI gate, one further PI decision may authorize a single orchestrated opening of all registered final-held-out/test evidence. Stage 10 republishes the fixed evidence without retuning.
 
 ## 3. Primary model selection
 
@@ -183,7 +196,9 @@ Do not add seeds, domains, metrics, thresholds, or reruns after viewing results 
 - Stage 03 implemented the common evaluator and accepted development-only candidate evidence without final-test access. DEC-014 closes this bounded scope without a numerical freeze after final QA; pass/fail use requires separately approved reopened calibration and freeze before formal claims.
 - Stages 04–07 implement factor interfaces and comparison arms under this protocol.
 - Stage 08 is an operational pilot, not formal performance evidence.
-- Stage 09 performs the five-seed formal study and first final-test opening.
+- Stage 09 protocol v2 separates H-01–H-03 readiness and numerical freeze, the
+  PI-authorized five-seed 60-run proposal, fresh v2 pre-freeze QA, and a separately
+  PI-authorized first and only Electricity final opening. H-04/GRU are not tested.
 - Stage 10 packages the fixed evidence and limitations.
 
 Until recorded evidence exists, do not claim foundation-model quality, transfer, topology superiority, corpus-scale generalization, CUDA support, or semiconductor suitability.
