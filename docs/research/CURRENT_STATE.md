@@ -13,17 +13,19 @@ tree. No numerical freeze, formal training, final-held-out opening or formal
 analysis occurred. Stage 10 M0 is recorded, and DEC-061 gives Charter `GO` for
 M2 through independent release QA. DEC-063 resolves the M7 decision gate by
 selecting MIT and preserving but archive-excluding two historical personal-path
-files. M7 remediation and M8/M9 verification are active; M10A/M10B remain closed.
+files. M7 and M8 pass for the pre-integration candidate at `14f95c9`; independent
+M9 QA is next. M10A/M10B remain closed.
 
 ## Current goal
 
-Complete the DEC-063 archive/license remediation, then run M7 re-audit, M8
-clean-room verification and M9 independent QA. Do not push, open a Draft PR,
-tag or prerelease before the applicable M10 decision.
+Run independent M9 QA against the commit-bound candidate, its tracked manifest
+snapshot and M7/M8 evidence. Do not push, open a Draft PR, tag or prerelease
+before the applicable M10 decision.
 
 ## Canonical references
 
 - `docs/research/stages/stage-10/CHARTER.md`
+- `docs/research/stages/stage-10/M8_REPRODUCIBILITY.md`
 - `docs/research/stages/stage-09/RESULT.md`
 - `docs/research/stages/stage-09/QA_REPORT.md`
 - `docs/DEVELOPMENT_PLAN.md`
@@ -104,19 +106,20 @@ tag or prerelease before the applicable M10 decision.
   400 CPU steps/3,200 exposures with independent QA `PASS`.
 - The current package version is `0.2.0`; its version history moved from `0.1.0`
   when the foundation encoder MVP was introduced.
-- M7 found no secret-token/private-key pattern, tracked raw checkpoint/array binary,
-  tracked symlink or tracked file above 1 MiB, but found personal absolute paths in
-  the historical Stage 08 pilot JSON and no top-level project license.
-- The PI approved MIT and dual archive exclusion under DEC-063; re-audit is pending.
-- M3/M5 focused release, reporter and offline pipeline checks pass (`32 passed`,
-  one symlink skip); the full CPU suite passes (`160 passed`, four environment
-  skips in 207.04 s). A package pre-build produced the expected wheel/sdist names.
-- M7 pre-candidate scans found no secret signature, forbidden candidate binary,
-  symlink, file above 1 MiB or broken local Markdown link. Official dataset,
-  PyTorch and CC BY links sampled for the release were reachable.
+- DEC-063 adds MIT and dual archive exclusion. M7 re-audit passes: the commit-bound
+  source, wheel, sdist and offline bundle contain no detected private path/name,
+  secret, raw/checkpoint/embedding or traversal member; both historical files
+  remain byte-identical in Git and absent from release archives.
+- Candidate `14f95c9906bb771783686072d7cd0553094cc491` / tree
+  `f2a50014f3d9870a9e88ed2554e1d8f40d84fd4c` is byte-stable across two builds.
+  The external manifest SHA-256 is `bce6a87c…1cc5ecf`.
+- M8 passes: final full suite `160 passed, 4 skipped` in 210.72 s; wheel/sdist
+  no-index installs and `pip check` pass; installed-wheel CPU smoke, exact model
+  resume, embedding export, prospective replay and bundle verification pass.
+  Three skips report unavailable CUDA hardware and one reports Windows symlink
+  creation unavailable; no CUDA support claim is made.
 
 ## Next action
 
-Commit the reviewed implementation candidate, build commit-bound artifacts, then
-complete M7/M8 verification and independent M9 QA. Preserve Stage 09 bytes and
-stop before M10A.
+Obtain an independent M9 `PASS`, `CONDITIONAL PASS` or `FAIL`, record the report
+and revalidate the notebook. Preserve Stage 09 bytes and stop before M10A.

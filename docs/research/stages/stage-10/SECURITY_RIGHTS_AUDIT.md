@@ -1,6 +1,6 @@
 # Stage 10 Security, Rights and Hygiene Audit
 
-Status: **remediation approved — re-audit pending (DEC-063)**
+Status: **PASS — pre-integration candidate; independent M9 QA pending**
 
 Date: 2026-09-29
 
@@ -73,5 +73,14 @@ secret/path scans, rights notices and checksum verification all pass.
   CC BY 4.0 page were reachable on 2026-09-29. Dynamic URL templates and example
   domains in tests are not release instructions.
 
-The final M7 verdict remains pending until the commit-bound Git archive, curated
-archives, wheel/sdist and offline bundle are regenerated and scanned.
+## Final candidate re-audit
+
+Commit `14f95c9906bb771783686072d7cd0553094cc491` and its candidate assets passed
+the Git/curated export exclusions, member traversal, symlink, size, forbidden
+suffix, secret signature, personal path/name, MIT notice and checksum scans.
+Wheel and sdist contain the MIT license; source and offline assets omit both
+historical personal-path files. `SHA256SUMS` binds all four binary archives and
+the external manifest, while the offline checksum binds its internal manifest.
+
+M7 therefore passes for this pre-integration candidate. The files remain local
+and unpublished. Any changed integration/merge tree requires the same audit again.

@@ -29,7 +29,7 @@ release-supported.
 | Company data, metadata, checkpoints or paths | excluded for rights/security | Not tested | outside public project evidence | prohibit from repository and archives |
 | CUDA execution and device artifacts | unverified | Not tested | CUDA tests skipped in CPU environment | record skips; do not publish a CUDA support/validation claim |
 | Dependency wheelhouse | unverified and excluded | Not tested | no target OS/Python/PyTorch/device contract | exclude; handle only in a later target-specific approval |
-| Wheel/sdist, source archive, offline bundle and release manifest | release-supported only after M8/M9 | Verified engineering pending | Stage 10 QA pending | build in ignored staging, bind hashes, and publish only after M10B `GO` |
+| Wheel/sdist, source archive, offline bundle and release manifest | release-supported after M8; M9 pending | Verified engineering | M8 `PASS`; Stage 10 QA pending | byte-stable ignored candidates are hash-bound; publish only after post-merge rebuild and M10B `GO` |
 
 ## Hypothesis and requirement evidence
 
@@ -40,7 +40,7 @@ release-supported.
 | H-03 / R-05 | topology controls, matching tools and unfrozen formal proposal | `HOLD`; no formal result | topology can be swapped and controlled structurally; topology benefit is unproven |
 | H-04 | HARTH admission failure and no target test | `not tested` | no public-domain transfer or foundation-representation claim |
 | R-06 | CPU runs and tests; CUDA skipped | CPU engineering evidence only; CUDA `not tested` | CPU path is exercised; CUDA validation is pending |
-| R-07 | no-network design, corpus bundle and seal/verify tool | engineering MVP; Stage 10 QA pending | offline workflow exists within the recorded dependency and bundle limits |
+| R-07 | no-network design, corpus bundle and seal/verify tool | M8 engineering `PASS`; Stage 10 QA pending | offline workflow passed within the recorded dependency and bundle limits |
 | R-08 | semiconductor work deliberately deferred | `not tested` | no semiconductor suitability or transfer statement |
 
 ## Claim boundary

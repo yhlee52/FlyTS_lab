@@ -104,9 +104,8 @@ backbone hypothesis from an unexecuted formal study.
 
 ## Remaining release gates
 
-1. Generate and verify the commit-bound M5/M6 manifest and candidate artifacts.
-2. Complete security/rights/hygiene and clean-room QA.
-3. Obtain independent Stage 10 QA.
-4. Obtain M10A PI approval before push/Draft PR.
-5. After user merge and tree verification, obtain M10B PI approval before tag or
+1. Obtain independent Stage 10 QA.
+2. Obtain M10A PI approval before push/Draft PR.
+3. After user merge and tree verification, regenerate and re-audit every asset,
+   then obtain M10B PI approval before tag or
    GitHub prerelease creation.

@@ -148,21 +148,21 @@ not be collapsed into a single field or interpreted as one another.
 
 - [x] M0 records PR #15 at `af46eb6…` and exact tree equality without changing
   the Stage 09 scientific result or QA verdict.
-- [ ] Every release candidate is classified, hashed and covered by an explicit
+- [x] Every release candidate is classified, hashed and covered by an explicit
   include/exclude decision.
-- [ ] Prospective report replay succeeds without the live config and rejects
+- [x] Prospective report replay succeeds without the live config and rejects
   missing, changed or extra preserved inputs and `runs/07`-style aliases.
-- [ ] Recorded Stage 09 original/v2 hashes remain `1bb8c7f9…e5b520` and
+- [x] Recorded Stage 09 original/v2 hashes remain `1bb8c7f9…e5b520` and
   `8ab632b5…60db3`; Stage 09 remains `HOLD` with QA `FAIL`.
-- [ ] Wheel and sdist build and install in clean CPU environments; `pip check`,
+- [x] Wheel and sdist build and install in clean CPU environments; `pip check`,
   CLI help and documented commands agree.
-- [ ] Full tests, synthetic CPU pretrain, checkpoint save/load/resume, embedding
+- [x] Full tests, synthetic CPU pretrain, checkpoint save/load/resume, embedding
   export, prospective replay, no-network execution and bundle seal/verify pass.
-- [ ] CUDA skips and the absence of CUDA hardware are reported, never converted
+- [x] CUDA skips and the absence of CUDA hardware are reported, never converted
   to a CUDA `PASS`.
-- [ ] Release archives contain no raw data/output, checkpoint, embedding, secret,
+- [x] Release archives contain no raw data/output, checkpoint, embedding, secret,
   absolute path, user/company information or unclear-rights artifact.
-- [ ] Model card, report, README and release notes contain no prohibited scientific,
+- [x] Model card, report, README and release notes contain no prohibited scientific,
   final-held-out, CUDA, production or semiconductor claim.
 - [ ] Independent QA reports a verdict and the notebook validates before M10A.
 
