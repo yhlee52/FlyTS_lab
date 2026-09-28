@@ -4,7 +4,9 @@ import json
 
 
 def main():
-    parser = argparse.ArgumentParser(description="FlyTS foundation encoder MVP")
+    parser = argparse.ArgumentParser(
+        description="FlyTS variable-channel time-series encoder engineering MVP"
+    )
     commands = parser.add_subparsers(dest="command", required=True)
     fetch = commands.add_parser("fetch", help="ONLINE ONLY: download official public archives")
     fetch.add_argument("--raw", required=True)

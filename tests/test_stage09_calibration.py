@@ -41,6 +41,7 @@ def _v2_fixture(tmp_path):
                     evidence={"development_runs": evidence, "synthetic_h01": {"fixture": True}},
                     options=["review only"])
     (output / "REPORT.json").write_bytes(canonical_bytes(original))
+    calibration.preserve_calibration_report_inputs(output)
     return output, calibration.sha256(output / "REPORT.json")
 
 
@@ -69,10 +70,10 @@ def test_v2_report_is_descriptive_and_byte_replays_from_raw_rows(tmp_path):
 @pytest.mark.parametrize("change,match", [
     ("small", "small denominator"), ("nonfinite", "baseline"),
     ("identity", "identity mismatch"), ("extra", "extra seed-arm"),
-    ("hash", "hash drift")])
+    ("hash", "hash or path drift")])
 def test_v2_rejects_invalid_or_drifted_source(tmp_path, change, match):
     output, original_hash = _v2_fixture(tmp_path)
-    raw = output / "runs/7/temporal_only/bike_evaluation/records.jsonl"
+    raw = output / "preserved-inputs/runs/7/temporal_only/bike_evaluation/records.jsonl"
     if change in ("small", "nonfinite", "identity"):
         rows = [json.loads(line) for line in raw.read_text().splitlines()]
         if change == "small":
@@ -88,29 +89,60 @@ def test_v2_rejects_invalid_or_drifted_source(tmp_path, change, match):
         fact = json.loads(fact_path.read_text())
         fact["evaluation_records_sha256"] = calibration.sha256(raw)
         fact_path.write_bytes(canonical_bytes(fact))
-        original_path = output / "REPORT.json"
+        original_path = output / "preserved-inputs/REPORT.json"
         original = json.loads(original_path.read_text())
         next(row for row in original["evidence"]["development_runs"]
              if row["seed"] == 7 and row["arm"] == "temporal_only")["facts_sha256"] = calibration.digest(fact)
         original_path.write_bytes(canonical_bytes(original))
         original_hash = calibration.sha256(original_path)
+        files = json.loads((output / "preserved-inputs.json").read_text())
+        for item in files["files"]:
+            item["sha256"] = calibration.sha256(output / "preserved-inputs" / item["path"])
+        (output / "preserved-inputs.json").write_bytes(canonical_bytes(files))
     elif change == "extra":
-        (output / "runs/7/gru").mkdir()
+        (output / "preserved-inputs/runs/7/gru").mkdir()
     else:
-        (output / "REPORT.json").write_bytes(b"{}")
+        (output / "preserved-inputs/REPORT.json").write_bytes(b"{}")
     with pytest.raises(ValueError, match=match):
         calibration.calibration_report_v2(output, original_hash)
 
 
 def test_v2_rejects_missing_run_and_raw_hash_drift(tmp_path):
     output, original_hash = _v2_fixture(tmp_path)
-    raw = output / "runs/7/fly_like/bike_evaluation/records.jsonl"
+    raw = output / "preserved-inputs/runs/7/fly_like/bike_evaluation/records.jsonl"
     raw.write_bytes(raw.read_bytes() + b"\n")
-    with pytest.raises(ValueError, match="raw record hash drift"):
+    with pytest.raises(ValueError, match="hash or path drift"):
         calibration.calibration_report_v2(output, original_hash)
     output, original_hash = _v2_fixture(tmp_path / "other")
-    (output / "runs/29/temporal_only").rename(output / "runs/29/temporal_only_missing")
-    with pytest.raises(ValueError, match="missing or extra seed-arm"):
+    (output / "preserved-inputs/runs/29/temporal_only").rename(output / "preserved-inputs/runs/29/temporal_only_missing")
+    with pytest.raises(ValueError, match="missing or extra preserved input"):
+        calibration.calibration_report_v2(output, original_hash)
+
+
+@pytest.mark.parametrize("alias", ["07", "31", "-7", "notes"])
+def test_v2_rejects_unregistered_or_noncanonical_seed_directory(tmp_path, alias):
+    output, original_hash = _v2_fixture(tmp_path)
+    (output / "preserved-inputs/runs" / alias).mkdir()
+    with pytest.raises(ValueError, match="seed-arm"):
+        calibration.calibration_report_v2(output, original_hash)
+
+
+def test_v2_requires_only_exact_canonical_preserved_inputs(tmp_path, monkeypatch):
+    output, original_hash = _v2_fixture(tmp_path)
+    monkeypatch.setattr(calibration, "EVAL_PATH", tmp_path / "nonexistent.json")
+    assert calibration.calibration_report_v2(output, original_hash)["status"] == "HOLD"
+    (output / "preserved-inputs/evaluation_config.json").unlink()
+    with pytest.raises(ValueError, match="missing or extra preserved input"):
+        calibration.calibration_report_v2(output, original_hash)
+    output, original_hash = _v2_fixture(tmp_path / "other")
+    (output / "preserved-inputs/extra.json").write_text("{}")
+    with pytest.raises(ValueError, match="missing or extra preserved input"):
+        calibration.calibration_report_v2(output, original_hash)
+    output, original_hash = _v2_fixture(tmp_path / "third")
+    manifest = json.loads((output / "preserved-inputs.json").read_text())
+    manifest["files"][0]["path"] = "../REPORT.json"
+    (output / "preserved-inputs.json").write_bytes(canonical_bytes(manifest))
+    with pytest.raises(ValueError, match="allowlist"):
         calibration.calibration_report_v2(output, original_hash)
 
 

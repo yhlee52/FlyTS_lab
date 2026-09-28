@@ -1,5 +1,44 @@
 # FlyTS Decision Log
 
+## DEC-063 — PI approves MIT and immutable-evidence archive exclusions
+
+- Date: 2026-09-29
+- Decision authority: PI explicit approval of the DEC-062 remediation.
+- License: FlyTS source and distributions use the MIT License, with a tracked
+  top-level `LICENSE` included in package metadata and release candidates.
+- Privacy treatment: preserve the bytes and interpretation of historical
+  `reports/PILOT_RESULTS.json` and `docs/BASELINE_VALIDATION.md`; do not rewrite
+  history or evidence. Exclude both from new Git-generated and curated release
+  archives using `export-ignore` plus an independent builder exclusion.
+- Residual risk: the excluded files remain available in existing Git history;
+  archive exclusion prevents their redistribution in Stage 10 assets but is not
+  presented as erasure.
+- Authorization: lift the DEC-062 implementation `HOLD` and resume M7 remediation,
+  M8 clean-room verification and M9 independent QA. M10A/M10B remain closed.
+
+## DEC-062 — Stage 10 M7 audit enters HOLD on personal paths and project license
+
+- Date: 2026-09-29
+- Decision authority: Research Director applying the approved Charter stop rule;
+  PI disposition pending.
+- Finding: tracked historical `reports/PILOT_RESULTS.json` contains a user name and
+  absolute local `.venv`, `data` and `outputs` paths. Its Stage 08 evidence bytes
+  cannot be silently redacted, while a full tagged source archive would otherwise
+  distribute those strings.
+- Rights finding: the repository has dataset attributions and rights notes but no
+  top-level project source license/notice. Public source/wheel redistribution terms
+  are therefore not explicit.
+- Other audit evidence: no tracked secret-token/private-key pattern, tracked raw
+  checkpoint/array/archive binary, tracked symlink or tracked file above 1 MiB was
+  found. `reports/data/` contains tracked JSON/Markdown metadata reports, not raw
+  dataset arrays.
+- Recommended remediation: keep Stage 08 evidence bytes and verdict immutable;
+  add `export-ignore` plus the curated-builder exclusion for the historical pilot
+  JSON, verify generated archives omit it, record its continued historical Git
+  presence, and add a PI-selected project code license before public packaging.
+- Boundary: Stage 10 is `HOLD`. Do not resume release building, M8/M9, push/PR,
+  tag or prerelease before the PI decides both the archive treatment and license.
+
 ## DEC-061 — PI approves the Stage 10 Research Preview Charter
 
 - Date: 2026-09-29

@@ -174,6 +174,7 @@ not be collapsed into a single field or interpreted as one another.
 | Stage 10 Charter | M2 inventory or any later implementation | `GO`, 2026-09-29 (DEC-061) |
 | Material scope/interface/data/metric/budget change | affected work | `HOLD` until explicit PI decision |
 | M3 historical-evidence impact | any change touching Stage 09 evidence semantics or hashes | prohibited; immediate `HOLD` |
+| M7 personal-path and project-license disposition | any public source/archive candidate | approved: MIT plus immutable-file archive exclusions (DEC-063) |
 | M10A integration | push or Draft PR | pending after independent QA |
 | User merge | integration into `main` | performed by user only |
 | M10B release | tag or GitHub prerelease | pending after merged-tree and final-asset verification |

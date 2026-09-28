@@ -1,5 +1,23 @@
 # 일반망·폐쇄망 공용 운영 절차
 
+> Release-candidate verification: run
+> `python tools/stage10_release.py verify --destination artifacts/flyts-mini-v0.1-preview.1`
+> from the repository root. The sealed offline ZIP includes the exact wheel,
+> sdist, curated source archive, source inventory and checksums; it intentionally
+> contains no dependency wheelhouse.
+
+## Research Preview release bundle 범위
+
+`FlyTS-Mini v0.1 Research Preview`의 공개 offline bundle은 이 문서의 일반적인
+target-specific wheelhouse 예시와 구분된다. Preview bundle에는 FlyTS source,
+`flyts 0.2.0` wheel/sdist, exact supported configs, 문서, release manifest/checksum,
+small synthetic fixture와 CPU verify 절차만 포함한다. Raw dataset, checkpoint,
+embedding, Stage 08/09 outputs, 회사 자료와 dependency wheelhouse는 포함하지 않는다.
+
+따라서 preview bundle만으로 빈 OS에 NumPy/PyTorch까지 설치할 수 있다는 뜻이 아니다.
+목표 OS, Python, PyTorch와 CPU/CUDA 조합에 맞는 dependency wheelhouse는 별도 승인·검증
+대상이다. 공개 preview는 CPU에서만 검증하며 CUDA는 `not tested`로 기록한다.
+
 ## 원칙
 
 네트워크 작업은 `flyts fetch`로만 실행한다. prepare, verify, pack/unpack, pretrain, resume,

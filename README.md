@@ -1,12 +1,19 @@
-# FlyTS Lab — foundation encoder MVP
+# FlyTS Lab — foundation encoder engineering MVP
 
-CPU / CUDA 공용, **다채널 시계열 자기지도 표현학습**을 위한 실행 가능한 연구 MVP.
+CPU에서 검증된 **다채널 시계열 자기지도 표현학습**용 실행 가능한 연구 MVP입니다.
+CUDA 코드 경로는 존재하지만 실제 CUDA hardware 검증은 완료되지 않았습니다.
 이미 학습된 foundation model이나 검증된 범용 성능을 제공하는 릴리스는 아닙니다.
 현재 topology는 **fly-inspired 합성 graph**이며 실제 FlyWire connectome이 아닙니다.
 
+현재 공개 closeout 후보는 **FlyTS-Mini v0.1 Research Preview**입니다. 이 preview는
+source, 재현 도구와 public-data operational pipeline을 정리하지만 pretrained checkpoint를
+제공하지 않습니다. Formal comparison, Electricity final-held-out 평가, transfer 검증과
+scientific/model completion은 수행되지 않았습니다. Stage 09는 `HOLD`, 최종 QA는 `FAIL`로
+보존됩니다.
+
 단계별 연구·구현 순서, 산출물과 검토 기준은
-[FlyTS 단계별 개발 계획](docs/DEVELOPMENT_PLAN.md)에 정리되어 있습니다. 현재 첫 완결 목표는
-공개 데이터 기반의 재현 가능한 **FlyTS-Mini v0.1**입니다.
+[FlyTS 단계별 개발 계획](docs/DEVELOPMENT_PLAN.md)에 정리되어 있습니다. 현재 첫 closeout 목표는
+공개 데이터 기반의 재현 가능한 **FlyTS-Mini v0.1 Research Preview**입니다.
 
 Codex 작업은 [AI 연구팀 헌장](docs/research/TEAM_CHARTER.md)과
 [공용 연구노트](docs/research/CURRENT_STATE.md)를 기준으로 진행합니다. 메인 Codex가 Research Director를 맡고,
@@ -19,7 +26,7 @@ Codex 작업은 [AI 연구팀 헌장](docs/research/TEAM_CHARTER.md)과
 - 공유 patch tokenizer → learned slot channel mixer → population graph → embedding
 - population별 τ와 type-pair별 recurrent weight 공유, dense/scatter 동등 구현
 - 결측·padding·학습 masking 구분, visible-only 정규화로 정답 누출 방지
-- masked reconstruction 사전학습, CPU/CUDA 선택, gradient clipping
+- masked reconstruction 사전학습, CPU 검증과 미검증 CUDA 선택 경로, gradient clipping
 - 출처/해시/분할을 기록한 로컬 corpus, domain/dataset 균형 sampling
 - best/last checkpoint, epoch 경계 resume, embedding export, frozen linear probe
 - 다운로드와 학습 완전 분리: **pretrain은 네트워크를 사용하지 않음**
@@ -131,3 +138,9 @@ UCR Wafer는 승인 후 로컬 TSV importer를 사용할 수 있습니다. SECOM
 
 회사 데이터·회사 학습 checkpoint·민감한 metadata는 **public GitHub에 올리지 마세요**.
 원래 PoC `FlyRNN`과 `examples/train_synthetic.py`는 비교·호환용으로 유지했습니다.
+
+## License
+
+FlyTS source and Python distributions are provided under the MIT License. See
+[`LICENSE`](LICENSE). Dataset licenses, notices and usage conditions remain
+separate and must be reviewed before downloading or preparing public data.

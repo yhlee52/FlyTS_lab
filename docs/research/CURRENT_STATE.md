@@ -11,13 +11,15 @@ PI-authorized PR #15 was merged into GitHub `main` at
 `077a555156384b4ec7562dcaa321c1ec9d4ed7a2` equals the reviewed Stage 09 head
 tree. No numerical freeze, formal training, final-held-out opening or formal
 analysis occurred. Stage 10 M0 is recorded, and DEC-061 gives Charter `GO` for
-M2 through independent release QA. M10A/M10B remain separately gated.
+M2 through independent release QA. DEC-063 resolves the M7 decision gate by
+selecting MIT and preserving but archive-excluding two historical personal-path
+files. M7 remediation and M8/M9 verification are active; M10A/M10B remain closed.
 
 ## Current goal
 
-Implement M2 through M9 under the approved Research Preview Charter. Preserve
-Stage 09 evidence and stop before push/Draft PR, tag or GitHub prerelease pending
-the separate M10A and M10B decisions.
+Complete the DEC-063 archive/license remediation, then run M7 re-audit, M8
+clean-room verification and M9 independent QA. Do not push, open a Draft PR,
+tag or prerelease before the applicable M10 decision.
 
 ## Canonical references
 
@@ -59,6 +61,9 @@ the separate M10A and M10B decisions.
   approval. The Research Director works alone through the Charter gate.
 - DEC-061 approves the Stage 10 Charter and M2 through independent release QA.
   M10A push/Draft PR and M10B tag/prerelease remain pending.
+- DEC-063 selects MIT and immutable historical-file treatment: the affected
+  Stage 0/8 files stay byte-identical in Git but are excluded from new release
+  archives by both `export-ignore` and the curated builder.
 
 ## Open questions
 
@@ -81,6 +86,8 @@ the separate M10A and M10B decisions.
 - CUDA hardware remains unavailable; CPU evidence cannot create a CUDA claim.
 - Existing Stage 09 risks concerning pseudo-replication, graph-cache drift,
   incomplete sufficient statistics and mutable replay inputs remain historical.
+- Historical personal-path files remain in Git history. DEC-063 controls new
+  archive redistribution but does not erase already-published history.
 
 ## Latest evidence
 
@@ -97,9 +104,19 @@ the separate M10A and M10B decisions.
   400 CPU steps/3,200 exposures with independent QA `PASS`.
 - The current package version is `0.2.0`; its version history moved from `0.1.0`
   when the foundation encoder MVP was introduced.
+- M7 found no secret-token/private-key pattern, tracked raw checkpoint/array binary,
+  tracked symlink or tracked file above 1 MiB, but found personal absolute paths in
+  the historical Stage 08 pilot JSON and no top-level project license.
+- The PI approved MIT and dual archive exclusion under DEC-063; re-audit is pending.
+- M3/M5 focused release, reporter and offline pipeline checks pass (`32 passed`,
+  one symlink skip); the full CPU suite passes (`160 passed`, four environment
+  skips in 207.04 s). A package pre-build produced the expected wheel/sdist names.
+- M7 pre-candidate scans found no secret signature, forbidden candidate binary,
+  symlink, file above 1 MiB or broken local Markdown link. Official dataset,
+  PyTorch and CC BY links sampled for the release were reachable.
 
 ## Next action
 
-Execute M2 through M9 with bounded specialist ownership, update the notebook with
-recorded evidence, and present the M10A integration gate. Do not push, open a
-Draft PR, tag or create a prerelease before the applicable PI decision.
+Commit the reviewed implementation candidate, build commit-bound artifacts, then
+complete M7/M8 verification and independent M9 QA. Preserve Stage 09 bytes and
+stop before M10A.

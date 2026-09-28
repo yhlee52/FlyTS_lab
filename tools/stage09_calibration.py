@@ -4,6 +4,7 @@ import json
 import math
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -413,9 +414,35 @@ def _clean_pairs(masked, temporal, floor):
 
 
 def calibration_report_v2(output, expected_original_sha256=ORIGINAL_REPORT_SHA256):
-    """Recompute a descriptive v2 report from immutable report/facts/record text only."""
+    """Recompute a prospective v2 report from declared preserved inputs only."""
     output = Path(output)
-    original_path = output / "REPORT.json"
+    preserved = output / "preserved-inputs"
+    manifest_path = output / "preserved-inputs.json"
+    if not manifest_path.is_file() or manifest_path.is_symlink() or not preserved.is_dir() or preserved.is_symlink():
+        raise ValueError("calibration v2 preserved input manifest missing")
+    manifest = json.loads(manifest_path.read_text())
+    expected_paths = {"REPORT.json", "evaluation_config.json"} | {
+        f"runs/{seed}/{arm}/{name}" for seed in SEEDS for arm in ARMS
+        for name in ("facts.json", "bike_evaluation/records.jsonl")}
+    entries = manifest.get("files")
+    if manifest.get("schema_version") != 1 or not isinstance(entries, list) or \
+            {item.get("path") for item in entries if isinstance(item, dict)} != expected_paths or \
+            len(entries) != len(expected_paths) or \
+            [item["path"] for item in entries] != sorted(expected_paths):
+        raise ValueError("calibration v2 preserved input allowlist mismatch")
+    if manifest_path.read_bytes() != canonical_bytes(manifest):
+        raise ValueError("calibration v2 preserved input manifest noncanonical")
+    actual = {p.relative_to(preserved).as_posix() for p in preserved.rglob("*") if p.is_file() or p.is_symlink()}
+    if actual != expected_paths:
+        raise ValueError("calibration v2 missing or extra preserved input")
+    for item in entries:
+        name = item["path"]
+        path = preserved / name
+        if set(item) != {"path", "sha256"} or not re.fullmatch(r"[0-9a-f]{64}", item["sha256"]) or \
+                not path.is_file() or path.is_symlink() or \
+                not path.resolve().is_relative_to(preserved.resolve()) or sha256(path) != item["sha256"]:
+            raise ValueError("calibration v2 preserved input hash or path drift")
+    original_path = preserved / "REPORT.json"
     if sha256(original_path) != expected_original_sha256:
         raise ValueError("calibration v2 original report hash drift")
     original = json.loads(original_path.read_text())
@@ -425,13 +452,14 @@ def calibration_report_v2(output, expected_original_sha256=ORIGINAL_REPORT_SHA25
     if len(identities) != 6 or set(identities) != expected or \
             original.get("status") != "HOLD" or original.get("exact_rules", False) is not None:
         raise ValueError("calibration v2 original report completeness or HOLD mismatch")
-    runs = output / "runs"
-    if {int(p.name) for p in runs.iterdir() if p.is_dir() and p.name.isdecimal()} != set(SEEDS) or \
+    runs = preserved / "runs"
+    if {p.name for p in runs.iterdir() if p.is_dir()} != {str(seed) for seed in SEEDS} or \
+            any(not re.fullmatch(r"0|[1-9][0-9]*", p.name) for p in runs.iterdir()) or \
             any({p.name for p in (runs / str(seed)).iterdir() if p.is_dir()} != set(ARMS)
                 for seed in SEEDS) or \
-            any(p.is_dir() and not p.name.isdecimal() for p in runs.iterdir()):
+            any(not p.is_dir() or p.is_symlink() for p in runs.iterdir()):
         raise ValueError("calibration v2 missing or extra seed-arm run")
-    floor = json.loads(EVAL_PATH.read_text())["relative_floor"]
+    floor = json.loads((preserved / "evaluation_config.json").read_text())["relative_floor"]
     if type(floor) not in (int, float) or not math.isfinite(floor) or floor <= 0:
         raise ValueError("calibration v2 invalid existing relative floor")
     records_hashes = []
@@ -449,7 +477,7 @@ def calibration_report_v2(output, expected_original_sha256=ORIGINAL_REPORT_SHA25
                     digest(fact) != entry.get("facts_sha256") or \
                     fact.get("record_count") != entry.get("record_count") or \
                     fact.get("evaluation_results") != entry.get("evaluation_results") or \
-                    fact.get("evaluation_config_sha256") != sha256(EVAL_PATH) or \
+                    fact.get("evaluation_config_sha256") != sha256(preserved / "evaluation_config.json") or \
                     fact.get("evaluation_records_sha256") != sha256(row_path):
                 raise ValueError("calibration v2 original fact or raw record hash drift")
             rows = validate_record_rows(row_path)
@@ -473,6 +501,40 @@ def calibration_report_v2(output, expected_original_sha256=ORIGINAL_REPORT_SHA25
         if sha256(path) != item["sha256"]:
             raise ValueError("calibration v2 raw record changed during replay")
     return report
+
+
+def preserve_calibration_report_inputs(output, evaluation_config=EVAL_PATH):
+    """Seal a new snapshot; the caller must retain the original Stage 09 evidence."""
+    output = Path(output)
+    preserved = output / "preserved-inputs"
+    manifest_path = output / "preserved-inputs.json"
+    if preserved.exists() or manifest_path.exists():
+        raise ValueError("calibration v2 preserved inputs exist")
+    runs = output / "runs"
+    if not runs.is_dir() or {p.name for p in runs.iterdir()} != {str(seed) for seed in SEEDS} or \
+            any(not p.is_dir() or p.is_symlink() or
+                {child.name for child in p.iterdir()} != set(ARMS) or
+                any(not child.is_dir() or child.is_symlink() for child in p.iterdir())
+                for p in runs.iterdir()):
+        raise ValueError("calibration v2 missing or extra seed-arm run")
+    sources = {"REPORT.json": output / "REPORT.json",
+               "evaluation_config.json": Path(evaluation_config)}
+    for seed in SEEDS:
+        for arm in ARMS:
+            for name in ("facts.json", "bike_evaluation/records.jsonl"):
+                relative = f"runs/{seed}/{arm}/{name}"
+                sources[relative] = output / relative
+    if any(not p.is_file() or p.is_symlink() for p in sources.values()):
+        raise ValueError("calibration v2 source input missing")
+    preserved.mkdir()
+    entries = []
+    for name, source in sorted(sources.items()):
+        target = preserved / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, target)
+        entries.append({"path": name, "sha256": sha256(target)})
+    manifest_path.write_bytes(canonical_bytes({"schema_version": 1, "files": entries}))
+    return manifest_path
 
 
 def write_calibration_report_v2(output, expected_original_sha256=ORIGINAL_REPORT_SHA256):
@@ -499,16 +561,37 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--check", action="store_true", help="read-only byte replay of an existing run")
-    mode.add_argument("--remediate-report-v2", action="store_true", help="create a new descriptive REPORT-v2.json")
-    mode.add_argument("--check-report-v2", action="store_true", help="read-only v2 byte replay from raw rows")
+    mode.add_argument("--preserve-report-v2-inputs", action="store_true",
+                      help="seal the exact prospective v2 reporter inputs")
+    mode.add_argument("--remediate-report-v2", action="store_true",
+                      help="create a prospective REPORT-v2.json from preserved inputs")
+    mode.add_argument("--check-report-v2", action="store_true",
+                      help="read-only prospective v2 replay from preserved inputs")
+    parser.add_argument("--evaluation-config", type=Path,
+                        help="config copied only while sealing v2 inputs")
+    parser.add_argument("--expected-original-sha256", default=ORIGINAL_REPORT_SHA256,
+                        help="externally retained REPORT.json SHA-256")
     args = parser.parse_args()
-    if args.remediate_report_v2 or args.check_report_v2:
+    if args.preserve_report_v2_inputs:
         if args.manifest or args.domain_registry:
-            parser.error("v2 reporter must not receive manifest or domain registry")
-        report = (verify_calibration_report_v2(args.output) if args.check_report_v2 else
-                  write_calibration_report_v2(args.output))
+            parser.error("v2 preservation must not receive manifest or domain registry")
+        path = preserve_calibration_report_inputs(
+            args.output, args.evaluation_config or EVAL_PATH
+        )
+        print(json.dumps({"status": "preserved", "manifest": str(path)}))
+        return
+    if args.remediate_report_v2 or args.check_report_v2:
+        if args.manifest or args.domain_registry or args.evaluation_config:
+            parser.error("v2 reporter must not receive live manifest, registry or config")
+        report = (verify_calibration_report_v2(
+            args.output, args.expected_original_sha256
+        ) if args.check_report_v2 else write_calibration_report_v2(
+            args.output, args.expected_original_sha256
+        ))
         print(json.dumps({"status": report["status"], "runs": 6, "output": str(args.output)}))
         return
+    if args.evaluation_config or args.expected_original_sha256 != ORIGINAL_REPORT_SHA256:
+        parser.error("v2-only options require a v2 reporter mode")
     if args.manifest is None or args.domain_registry is None:
         parser.error("--manifest and --domain-registry are required for training or original check")
     if args.check:
