@@ -13,14 +13,16 @@ tree. No numerical freeze, formal training, final-held-out opening or formal
 analysis occurred. Stage 10 M0 is recorded, and DEC-061 gives Charter `GO` for
 M2 through independent release QA. DEC-063 resolves the M7 decision gate by
 selecting MIT and preserving but archive-excluding two historical personal-path
-files. M7 and M8 pass for the pre-integration candidate at `14f95c9`; independent
-M9 QA is next. M10A/M10B remain closed.
+files. M7 and M8 passed for the pre-integration candidate at `14f95c9`. The first
+M9 review of `d6e44f7` is `FAIL` under DEC-064 because of three release-contract
+defects plus one stale status statement. Bounded remediation and one independent
+delta recheck are in progress. M10A/M10B remain closed.
 
 ## Current goal
 
-Run independent M9 QA against the commit-bound candidate, its tracked manifest
-snapshot and M7/M8 evidence. Do not push, open a Draft PR, tag or prerelease
-before the applicable M10 decision.
+Remediate DEC-064, rebuild a commit-bound candidate and obtain the independent
+M9 delta recheck. Do not push, open a Draft PR, tag or prerelease before the
+applicable M10 decision.
 
 ## Canonical references
 
@@ -66,6 +68,9 @@ before the applicable M10 decision.
 - DEC-063 selects MIT and immutable historical-file treatment: the affected
   Stage 0/8 files stay byte-identical in Git but are excluded from new release
   archives by both `export-ignore` and the curated builder.
+- DEC-064 preserves the first M9 `FAIL` and authorizes only the Charter-defined
+  fixes for archive path validation, the generated fixture, QA manifest binding
+  and stale M8 wording, followed by one independent recheck.
 
 ## Open questions
 
@@ -90,6 +95,9 @@ before the applicable M10 decision.
   incomplete sufficient statistics and mutable replay inputs remain historical.
 - Historical personal-path files remain in Git history. DEC-063 controls new
   archive redistribution but does not erase already-published history.
+- The first M9 review found that malformed external package input could use a
+  Windows drive-absolute member, the promised corpus fixture was absent, and the
+  manifest could not bind a final QA verdict. M10A stays `HOLD` through recheck.
 
 ## Latest evidence
 
@@ -118,8 +126,12 @@ before the applicable M10 decision.
   resume, embedding export, prospective replay and bundle verification pass.
   Three skips report unavailable CUDA hardware and one reports Windows symlink
   creation unavailable; no CUDA support claim is made.
+- First M9 verdict is `FAIL` on `d6e44f7`. The reviewed candidate itself was
+  byte-stable and contained no detected unsafe member or private content, but the
+  prospective input validator and bundle/manifest contract were incomplete.
 
 ## Next action
 
-Obtain an independent M9 `PASS`, `CONDITIONAL PASS` or `FAIL`, record the report
-and revalidate the notebook. Preserve Stage 09 bytes and stop before M10A.
+Finish DEC-064 remediation, rebuild/reseal the candidate, obtain the single
+independent delta recheck and revalidate this notebook. Preserve Stage 09 bytes
+and stop before M10A.

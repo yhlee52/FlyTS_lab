@@ -1,6 +1,6 @@
 # FlyTS-Mini v0.1 Research Preview — Closeout Report
 
-Status: Stage 10 release candidate; M8/M9 evidence pending
+Status: Stage 10 release candidate; M8 `PASS`, M9 remediation/recheck pending
 
 ## Conclusion
 
@@ -29,8 +29,9 @@ Recorded engineering capabilities include:
 - offline corpus pack/unpack and transfer-bundle integrity verification;
 - stage-specific tests, provenance and independent engineering QA through Stage 08.
 
-Stage 10 still requires clean-room and independent release QA before these paths
-are accepted as release-supported for the exact candidate bytes.
+Stage 10 clean-room QA passed for the recorded pre-integration candidate. The
+first independent M9 review failed on release-hardening defects; its remediation
+and independent recheck remain required before M10A.
 
 ## Scientific/model completion
 

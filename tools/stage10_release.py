@@ -6,7 +6,7 @@ import hashlib
 import io
 import json
 import os
-from pathlib import Path, PurePosixPath
+from pathlib import Path, PurePosixPath, PureWindowsPath
 import re
 import subprocess
 import tarfile
@@ -18,6 +18,7 @@ PACKAGE = "flyts"
 VERSION = "0.2.0"
 WHEEL = "flyts-0.2.0-py3-none-any.whl"
 SDIST = "flyts-0.2.0.tar.gz"
+QA_REPORT = "docs/research/stages/stage-10/QA_REPORT.md"
 INCLUDE = ("src/flyts/", "configs/", "docs/", "reports/", "tools/", "tests/",
            "examples/", "schemas/")
 TOP_LEVEL = {".gitattributes", "AGENTS.md", "LICENSE", "README.md",
@@ -176,6 +177,20 @@ def inventory(root, source_commit, source_tree, tracked_paths=None):
             "qa_status": "not applicable",
             "reason": "immutable historical file contains personal absolute paths",
         })
+    qa = {"verdict": "pending", "report_path": QA_REPORT, "sha256": None}
+    if QA_REPORT in tracked:
+        qa_bytes = _source_bytes(root, source_commit, QA_REPORT, committed)
+        match = re.search(
+            rb"(?m)^Verdict: (?:\*\*)?(PASS|CONDITIONAL PASS|FAIL)(?:\*\*)?\s*$",
+            qa_bytes,
+        )
+        if not match:
+            raise ValueError("Stage 10 QA report has no canonical verdict")
+        qa = {
+            "verdict": match.group(1).decode("ascii"),
+            "report_path": QA_REPORT,
+            "sha256": hashlib.sha256(qa_bytes).hexdigest(),
+        }
     return {
         "schema_version": 1,
         "release": RELEASE,
@@ -191,9 +206,10 @@ def inventory(root, source_commit, source_tree, tracked_paths=None):
                                       "configs/full_pretrain.json"],
         "synthetic_fixture": {
             "generator": "flyts.prepare.prepare_synthetic",
-            "samples": 60,
+            "samples": 12,
             "seed": 7,
-            "command": "python -m flyts synthetic --output data/release-smoke --samples 60 --seed 7",
+            "bundle_path": "synthetic-fixture/manifest.json",
+            "verify_command": "python -m flyts verify --manifest synthetic-fixture/manifest.json",
         },
         "verification_commands": [
             "python -m pytest",
@@ -207,8 +223,8 @@ def inventory(root, source_commit, source_tree, tracked_paths=None):
         "excluded_artifact_classes": EXCLUDED_CLASSES,
         "limitations": ["Research Preview; no pretrained checkpoint", "Stage 09 HOLD/QA FAIL",
                         "no formal or final-held-out result", "CUDA unverified"],
-        "independent_qa": "not tested",
-        "stage10_qa": "pending",
+        "independent_qa": qa,
+        "stage10_qa": qa["verdict"],
     }
 
 
@@ -243,7 +259,82 @@ def _zip_bytes(root, rows, source_commit, extras=None):
 
 def _safe_member(name):
     path = PurePosixPath(name.replace("\\", "/"))
-    return bool(name) and not path.is_absolute() and ".." not in path.parts
+    windows = PureWindowsPath(name)
+    return bool(name) and "\0" not in name and not path.is_absolute() and \
+        not windows.drive and not windows.root and ".." not in path.parts
+
+
+def _fixture_bytes(path):
+    """Validate and inventory one generated, deterministic offline corpus fixture."""
+    supplied = Path(path)
+    if supplied.is_symlink():
+        raise ValueError("synthetic fixture must be a regular directory")
+    root = supplied.resolve()
+    if not root.is_dir():
+        raise ValueError("synthetic fixture must be a regular directory")
+    files = {}
+    for directory, names, filenames in os.walk(root, followlinks=False):
+        folder = Path(directory)
+        for name in names:
+            if (folder / name).is_symlink():
+                raise ValueError("synthetic fixture symlink forbidden")
+        for name in filenames:
+            candidate = folder / name
+            relative = candidate.relative_to(root).as_posix()
+            if candidate.is_symlink() or not candidate.is_file() or not _safe_member(relative):
+                raise ValueError("unsafe synthetic fixture member")
+            if relative not in {"manifest.json", "manifest.sha256"} and not \
+                    re.fullmatch(r"arrays/[0-9]{6}\.npy", relative):
+                raise ValueError(f"unexpected synthetic fixture member: {relative}")
+            data = candidate.read_bytes()
+            if ABSOLUTE_PATH.search(data):
+                raise ValueError("personal absolute path forbidden in synthetic fixture")
+            files[relative] = data
+    _validate_fixture_files(files)
+    entries = {f"synthetic-fixture/{name}": data for name, data in files.items()}
+    rows = [{
+        "path": name,
+        "size": len(data),
+        "sha256": hashlib.sha256(data).hexdigest(),
+        "release_class": "release-supported",
+        "evidence_tier": "Generated synthetic fixture",
+        "qa_status": "not tested",
+    } for name, data in sorted(entries.items())]
+    return entries, rows
+
+
+def _validate_fixture_files(files):
+    """Validate fixture identity and all declared bytes without loading arrays."""
+    if not {"manifest.json", "manifest.sha256"}.issubset(files):
+        raise ValueError("synthetic fixture manifest missing")
+    manifest_hash = hashlib.sha256(files["manifest.json"]).hexdigest()
+    if files["manifest.sha256"].decode("ascii").strip() != manifest_hash:
+        raise ValueError("synthetic fixture manifest checksum mismatch")
+    try:
+        document = json.loads(files["manifest.json"].decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise ValueError("invalid synthetic fixture manifest") from error
+    source = document.get("sources", {}).get("synthetic", {})
+    records = document.get("records")
+    if document.get("schema_version") != 1 or source.get("license") != "generated" or \
+            source.get("seed") != 7 or not isinstance(records, list) or len(records) != 12:
+        raise ValueError("synthetic fixture identity mismatch")
+    declared = []
+    for record in records:
+        relative = record.get("path") if isinstance(record, dict) else None
+        if not isinstance(relative, str) or not re.fullmatch(r"arrays/[0-9]{6}\.npy", relative):
+            raise ValueError("invalid synthetic fixture record path")
+        if relative in declared or relative not in files or \
+                record.get("sha256") != hashlib.sha256(files[relative]).hexdigest() or \
+                not str(record.get("dataset", "")).startswith("synthetic-") or \
+                record.get("domain") != record.get("dataset") or \
+                record.get("split") not in {"train", "val", "test"}:
+            raise ValueError("synthetic fixture record mismatch")
+        declared.append(relative)
+    if set(files) != {"manifest.json", "manifest.sha256", *declared} or \
+            {record["split"] for record in records} != {"train", "val", "test"}:
+        raise ValueError("synthetic fixture file/split mismatch")
+    return document
 
 
 def _normalize_sdist(data):
@@ -271,8 +362,11 @@ def _normalize_sdist(data):
 
 
 def _package_bytes(path, expected):
-    path = Path(path).resolve()
-    if path.name != expected or path.is_symlink() or not path.is_file():
+    supplied = Path(path)
+    if supplied.is_symlink():
+        raise ValueError(f"package artifact must be a regular {expected}")
+    path = supplied.resolve()
+    if path.name != expected or not path.is_file():
         raise ValueError(f"package artifact must be a regular {expected}")
     data = path.read_bytes()
     try:
@@ -283,6 +377,8 @@ def _package_bytes(path, expected):
                        ((info.external_attr >> 16) & 0o170000) == 0o120000
                        for info in infos):
                     raise ValueError(f"unsafe package archive member: {expected}")
+                if len({info.filename for info in infos}) != len(infos):
+                    raise ValueError(f"duplicate package archive member: {expected}")
                 members = [(info.filename, archive.read(info)) for info in infos
                            if not info.is_dir()]
         else:
@@ -309,7 +405,8 @@ def _artifact_row(name, data):
             "qa_status": "not tested"}
 
 
-def build_candidates(root, destination, source_commit, source_tree, wheel, sdist):
+def build_candidates(root, destination, source_commit, source_tree, wheel, sdist,
+                     synthetic_fixture):
     """Write a sealed candidate inside a new ignored ``artifacts/`` directory."""
     root = Path(root).resolve()
     destination = Path(destination).resolve()
@@ -317,6 +414,8 @@ def build_candidates(root, destination, source_commit, source_tree, wheel, sdist
         raise ValueError("candidate destination must be new and inside artifacts/")
     _require_clean(root)
     manifest = inventory(root, source_commit, source_tree)
+    fixture_entries, fixture_rows = _fixture_bytes(synthetic_fixture)
+    manifest["synthetic_fixture"] = manifest["synthetic_fixture"] | {"files": fixture_rows}
     source_name = f"{RELEASE}-source.tar.gz"
     offline_name = f"{RELEASE}-offline.zip"
     source = _tar_bytes(root, manifest["files"], source_commit)
@@ -336,7 +435,7 @@ def build_candidates(root, destination, source_commit, source_tree, wheel, sdist
         f"{row['sha256']}  {row['path']}"
         for row in sorted(bundle_checksum_rows, key=lambda row: row["path"])
     ) + "\n"
-    offline = _zip_bytes(root, manifest["files"], source_commit, {
+    offline = _zip_bytes(root, manifest["files"], source_commit, fixture_entries | {
         f"packages/{WHEEL}": wheel_data,
         f"packages/{SDIST}": sdist_data,
         f"{RELEASE}-source.tar.gz": source,
@@ -368,10 +467,20 @@ def build_candidates(root, destination, source_commit, source_tree, wheel, sdist
 def _archive_entries(data, kind):
     if kind == "zip":
         with zipfile.ZipFile(io.BytesIO(data)) as archive:
-            return [(name, archive.read(name)) for name in archive.namelist()]
+            infos = archive.infolist()
+            if any(not _safe_member(info.filename) or
+                   ((info.external_attr >> 16) & 0o170000) == 0o120000
+                   for info in infos) or len({info.filename for info in infos}) != len(infos):
+                raise ValueError("unsafe or duplicate release ZIP member")
+            return [(info.filename, archive.read(info)) for info in infos]
     with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as archive:
+        members = archive.getmembers()
+        if any(not _safe_member(member.name) or member.issym() or member.islnk() or
+               not (member.isfile() or member.isdir()) for member in members) or \
+                len({member.name for member in members}) != len(members):
+            raise ValueError("unsafe or duplicate release tar member")
         return [(member.name, archive.extractfile(member).read())
-                for member in archive.getmembers() if member.isfile()]
+                for member in members if member.isfile()]
 
 
 def verify_candidates(root, destination):
@@ -380,8 +489,12 @@ def verify_candidates(root, destination):
     manifest_path = destination / f"{RELEASE}-manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     baseline = inventory(root, manifest["source_commit"], manifest["source_tree"])
+    fixture = manifest.get("synthetic_fixture", {})
+    expected_fixture = baseline["synthetic_fixture"] | {"files": fixture.get("files")}
+    expected_baseline = baseline | {"synthetic_fixture": expected_fixture}
     if manifest_path.read_bytes() != canonical(manifest) or \
-            manifest != baseline | {"artifacts": manifest["artifacts"]}:
+            fixture != expected_fixture or not isinstance(fixture.get("files"), list) or \
+            manifest != expected_baseline | {"artifacts": manifest["artifacts"]}:
         raise ValueError("release manifest drift")
     expected = {f"{RELEASE}-manifest.json", "SHA256SUMS"} | \
                {item["path"] for item in manifest["artifacts"]}
@@ -409,12 +522,33 @@ def verify_candidates(root, destination):
         raise ValueError("release source archive member drift")
     offline_entries = dict(_archive_entries(
         (destination / f"{RELEASE}-offline.zip").read_bytes(), "zip"))
-    expected_offline = {row["path"] for row in rows} | {
+    fixture_rows = fixture["files"]
+    fixture_paths = [row.get("path") for row in fixture_rows if isinstance(row, dict)]
+    expected_offline = {row["path"] for row in rows} | \
+        set(fixture_paths) | {
         f"packages/{WHEEL}", f"packages/{SDIST}", f"{RELEASE}-source.tar.gz",
         f"{RELEASE}-manifest.json", "SHA256SUMS",
     }
     if set(offline_entries) != expected_offline:
         raise ValueError("offline bundle member drift")
+    if any(not isinstance(row, dict) or
+           set(row) != {"path", "size", "sha256", "release_class", "evidence_tier",
+                        "qa_status"} or
+           not row["path"].startswith("synthetic-fixture/") or
+           row["release_class"] != "release-supported" or
+           row["evidence_tier"] != "Generated synthetic fixture" or
+           row["qa_status"] != "not tested" or
+           row["path"] not in offline_entries or
+           len(offline_entries[row["path"]]) != row["size"] or
+           hashlib.sha256(offline_entries[row["path"]]).hexdigest() != row["sha256"]
+           for row in fixture_rows):
+        raise ValueError("offline synthetic fixture drift")
+    if len(fixture_paths) != len(fixture_rows) or len(set(fixture_paths)) != len(fixture_paths):
+        raise ValueError("duplicate offline synthetic fixture member")
+    _validate_fixture_files({
+        name.removeprefix("synthetic-fixture/"): offline_entries[name]
+        for name in fixture_paths
+    })
     if offline_entries[f"packages/{WHEEL}"] != (destination / WHEEL).read_bytes() or \
             offline_entries[f"packages/{SDIST}"] != (destination / SDIST).read_bytes() or \
             offline_entries[f"{RELEASE}-source.tar.gz"] != \
@@ -424,7 +558,7 @@ def verify_candidates(root, destination):
         [by_name[WHEEL], by_name[SDIST], by_name[f"{RELEASE}-source.tar.gz"]],
         key=lambda row: row["path"],
     )
-    bundle_manifest = baseline | {"bundle_contents": bundle_rows}
+    bundle_manifest = expected_baseline | {"bundle_contents": bundle_rows}
     bundle_manifest_bytes = canonical(bundle_manifest)
     if offline_entries[f"{RELEASE}-manifest.json"] != bundle_manifest_bytes:
         raise ValueError("offline manifest drift")
@@ -460,10 +594,11 @@ def main(argv=None):
     build.add_argument("--source-tree", required=True)
     build.add_argument("--wheel", type=Path, required=True)
     build.add_argument("--sdist", type=Path, required=True)
+    build.add_argument("--synthetic-fixture", type=Path, required=True)
     args = parser.parse_args(argv)
     if args.action == "build":
         build_candidates(args.root, args.destination, args.source_commit, args.source_tree,
-                         args.wheel, args.sdist)
+                         args.wheel, args.sdist, args.synthetic_fixture)
     else:
         verify_candidates(args.root, args.destination)
 

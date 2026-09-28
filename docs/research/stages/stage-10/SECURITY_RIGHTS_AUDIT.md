@@ -1,8 +1,13 @@
 # Stage 10 Security, Rights and Hygiene Audit
 
-Status: **PASS — pre-integration candidate; independent M9 QA pending**
+Status: **REMEDIATION — first M9 QA found a prospective archive-path defect**
 
 Date: 2026-09-29
+
+Update: the first independent M9 review found that package-input validation
+accepted a Windows drive-absolute member such as `C:/private.txt`. The reviewed
+candidate contained no such member, but this prospective fail-closed defect makes
+the earlier M7 conclusion insufficient until DEC-064 remediation and recheck.
 
 ## Scope
 

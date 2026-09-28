@@ -1,5 +1,21 @@
 # FlyTS Decision Log
 
+## DEC-064 — First Stage 10 M9 review fails and enters bounded remediation
+
+- Date: 2026-09-29
+- Decision authority: independent QA verdict under the PI-approved Charter;
+  remediation is limited to the already-approved release-hardening contract.
+- Verdict: `FAIL` on reviewed commit `d6e44f7`; M10A remains `HOLD`.
+- Findings: reject Windows drive-absolute package members; include an actual
+  generated synthetic corpus fixture; bind the final QA verdict/report hash in
+  the manifest; correct the closeout report's stale M8 wording.
+- Remediation: harden portable archive member validation, add a validated 12-record
+  seed-7 fixture to the offline bundle, derive QA identity from the committed
+  canonical QA report, add adversarial tests and rebuild/reseal the candidate.
+- Integrity boundary: retain the first `FAIL` and its findings in the Stage 10 QA
+  report. Stage 09 evidence/status stays immutable. One independent delta recheck
+  is required before M10A; M10B remains closed.
+
 ## DEC-063 — PI approves MIT and immutable-evidence archive exclusions
 
 - Date: 2026-09-29

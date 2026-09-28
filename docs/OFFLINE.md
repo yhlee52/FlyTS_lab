@@ -6,6 +6,17 @@
 > sdist, curated source archive, source inventory and checksums; it intentionally
 > contains no dependency wheelhouse.
 
+After extracting the offline ZIP at its root, verify the bundled generated corpus
+before the CPU smoke path:
+
+```bash
+python -m flyts verify --manifest synthetic-fixture/manifest.json
+```
+
+The fixture is exactly 12 deterministic records generated with seed 7. Its
+manifest, checksum and every array are independently listed in the release
+manifest; it is pipeline-test data, not public, company or scientific evidence.
+
 ## Research Preview release bundle 범위
 
 `FlyTS-Mini v0.1 Research Preview`의 공개 offline bundle은 이 문서의 일반적인
