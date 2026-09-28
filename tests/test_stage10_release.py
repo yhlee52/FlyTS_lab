@@ -99,6 +99,8 @@ def test_candidate_bytes_are_stable_and_archives_are_checkpoint_free(tmp_path):
     assert {p.name: p.read_bytes() for p in first.iterdir()} == \
            {p.name: p.read_bytes() for p in second.iterdir()}
     assert json.loads((first / f"{RELEASE}-manifest.json").read_text()) == manifest
+    sums = (first / "SHA256SUMS").read_text()
+    assert f"  {RELEASE}-manifest.json\n" in sums
     with tarfile.open(first / f"{RELEASE}-source.tar.gz", "r:gz") as archive:
         assert archive.getnames() == [row["path"] for row in manifest["files"]]
         assert not {"reports/PILOT_RESULTS.json", "docs/BASELINE_VALIDATION.md"} & \
@@ -107,6 +109,7 @@ def test_candidate_bytes_are_stable_and_archives_are_checkpoint_free(tmp_path):
         names = set(archive.namelist())
         assert {f"packages/{WHEEL}", f"packages/{SDIST}", "SHA256SUMS",
                 f"{RELEASE}-manifest.json"}.issubset(names)
+        assert f"  {RELEASE}-manifest.json\n" in archive.read("SHA256SUMS").decode()
         assert not {"reports/PILOT_RESULTS.json", "docs/BASELINE_VALIDATION.md"} & names
     with pytest.raises(ValueError, match="new"):
         build_candidates(tmp_path, first, commit, tree, wheel, sdist)

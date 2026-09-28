@@ -322,16 +322,25 @@ def build_candidates(root, destination, source_commit, source_tree, wheel, sdist
     source = _tar_bytes(root, manifest["files"], source_commit)
     wheel_data = _package_bytes(wheel, WHEEL)
     sdist_data = _package_bytes(sdist, SDIST)
-    bundle_rows = [_artifact_row(source_name, source), _artifact_row(WHEEL, wheel_data),
-                   _artifact_row(SDIST, sdist_data)]
-    bundle_sums = "\n".join(f"{row['sha256']}  {row['path']}" for row in bundle_rows) + "\n"
+    bundle_rows = sorted(
+        [_artifact_row(source_name, source), _artifact_row(WHEEL, wheel_data),
+         _artifact_row(SDIST, sdist_data)], key=lambda row: row["path"]
+    )
     bundle_manifest = dict(manifest)
     bundle_manifest["bundle_contents"] = bundle_rows
+    bundle_manifest_bytes = canonical(bundle_manifest)
+    bundle_checksum_rows = bundle_rows + [
+        _artifact_row(f"{RELEASE}-manifest.json", bundle_manifest_bytes)
+    ]
+    bundle_sums = "\n".join(
+        f"{row['sha256']}  {row['path']}"
+        for row in sorted(bundle_checksum_rows, key=lambda row: row["path"])
+    ) + "\n"
     offline = _zip_bytes(root, manifest["files"], source_commit, {
         f"packages/{WHEEL}": wheel_data,
         f"packages/{SDIST}": sdist_data,
         f"{RELEASE}-source.tar.gz": source,
-        f"{RELEASE}-manifest.json": canonical(bundle_manifest),
+        f"{RELEASE}-manifest.json": bundle_manifest_bytes,
         "SHA256SUMS": bundle_sums.encode(),
     })
     artifacts = {
@@ -345,8 +354,13 @@ def build_candidates(root, destination, source_commit, source_tree, wheel, sdist
     destination.mkdir(parents=True)
     for name, data in artifacts.items():
         (destination / name).write_bytes(data)
-    (destination / f"{RELEASE}-manifest.json").write_bytes(canonical(manifest))
-    sums = [f"{row['sha256']}  {row['path']}" for row in manifest["artifacts"]]
+    manifest_bytes = canonical(manifest)
+    (destination / f"{RELEASE}-manifest.json").write_bytes(manifest_bytes)
+    checksum_rows = manifest["artifacts"] + [
+        _artifact_row(f"{RELEASE}-manifest.json", manifest_bytes)
+    ]
+    sums = [f"{row['sha256']}  {row['path']}"
+            for row in sorted(checksum_rows, key=lambda row: row["path"])]
     (destination / "SHA256SUMS").write_text("\n".join(sums) + "\n", encoding="utf-8")
     return manifest
 
@@ -406,10 +420,30 @@ def verify_candidates(root, destination):
             offline_entries[f"{RELEASE}-source.tar.gz"] != \
             (destination / f"{RELEASE}-source.tar.gz").read_bytes():
         raise ValueError("offline package/source drift")
+    bundle_rows = sorted(
+        [by_name[WHEEL], by_name[SDIST], by_name[f"{RELEASE}-source.tar.gz"]],
+        key=lambda row: row["path"],
+    )
+    bundle_manifest = baseline | {"bundle_contents": bundle_rows}
+    bundle_manifest_bytes = canonical(bundle_manifest)
+    if offline_entries[f"{RELEASE}-manifest.json"] != bundle_manifest_bytes:
+        raise ValueError("offline manifest drift")
+    bundle_checksum_rows = bundle_rows + [
+        _artifact_row(f"{RELEASE}-manifest.json", bundle_manifest_bytes)
+    ]
+    expected_bundle_sums = "\n".join(
+        f"{row['sha256']}  {row['path']}"
+        for row in sorted(bundle_checksum_rows, key=lambda row: row["path"])
+    ) + "\n"
+    if offline_entries["SHA256SUMS"].decode("utf-8") != expected_bundle_sums:
+        raise ValueError("offline checksum inventory drift")
     if any(ABSOLUTE_PATH.search(data) for data in offline_entries.values()):
         raise ValueError("personal absolute path forbidden in offline bundle")
+    checksums.append(
+        f"{hashlib.sha256(manifest_path.read_bytes()).hexdigest()}  {manifest_path.name}"
+    )
     if (destination / "SHA256SUMS").read_text(encoding="utf-8") != \
-            "\n".join(checksums) + "\n":
+            "\n".join(sorted(checksums, key=lambda line: line.split('  ', 1)[1])) + "\n":
         raise ValueError("release checksum inventory drift")
     return manifest
 
