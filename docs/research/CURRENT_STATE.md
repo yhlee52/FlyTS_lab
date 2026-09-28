@@ -17,8 +17,8 @@ closure at `HOLD` and authorized a Draft PR of the preserved package.
 
 ## Current goal
 
-Open and review the Stage 09 `HOLD` package as a Draft PR. Do not start another
-repair, rerun, threshold-selection, merge or Stage 10 cycle without a new PI gate.
+Review Draft PR #15 and its checks. Do not start another repair, rerun,
+threshold-selection, merge or Stage 10 cycle without a new PI gate.
 
 ## Canonical references
 
@@ -139,11 +139,10 @@ repair, rerun, threshold-selection, merge or Stage 10 cycle without a new PI gat
 - DEC-054–057 preserve original SHA `1bb8c7f9…e5b520` and v2 SHA
   `8ab632b5…60db3`. Arithmetic matches, but live-config and `07` alias defects
   produce final QA `FAIL`; no training/evaluation rerun or final access occurred.
-- DEC-058 closes Stage 09 at `HOLD`: H-01–H-03 have no formal support result,
-  H-04 remains not tested, and only a Draft PR of the bounded package is approved.
+- DEC-058 closes Stage 09 at `HOLD`; DEC-059 records Draft PR #15 at head
+  `4f9cd75`. H-01–H-03 have no result and H-04 remains not tested.
 
 ## Next action
 
-Create the authorized Draft PR, record its review provenance and wait for the next
-PI gate. Do not remediate, freeze rules, begin M5/M6, open final data, merge the
-PR, start Stage 10 or expand any claim.
+Review Draft PR #15 and wait for the next PI gate. Do not remediate, freeze rules,
+begin M5/M6, open final data, merge the PR, start Stage 10 or expand any claim.

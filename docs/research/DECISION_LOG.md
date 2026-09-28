@@ -1,5 +1,13 @@
 # FlyTS Decision Log
 
+## DEC-059 — Stage 09 HOLD package opened as Draft PR #15
+
+- Date: 2026-09-28
+- Decision authority: execution of the PI-authorized DEC-058 Draft PR action.
+- Integration: commit `4f9cd75` was pushed to `codex/stage-09-formal-study` and [Draft PR #15](https://github.com/yhlee52/FlyTS_lab/pull/15) was opened against `main`.
+- PR boundary: the title and body disclose Stage 09 `HOLD`, DEC-057 QA `FAIL`, the two unresolved reporter defects, ignored-artifact boundaries and the absence of formal/final inference.
+- Boundary: the PR remains a Draft. Merge, Stage 10, later research gates and claim expansion require a separate PI decision.
+
 ## DEC-058 — PI accepts Stage 09 HOLD closure and authorizes a Draft PR
 
 - Date: 2026-09-28

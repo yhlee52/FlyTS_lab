@@ -2,6 +2,9 @@
 
 Status: **HOLD — PI accepted closure under DEC-058; Draft PR authorized**
 
+Integration: [Draft PR #15](https://github.com/yhlee52/FlyTS_lab/pull/15) opened
+from head `4f9cd75` under DEC-059; merge is not authorized.
+
 ## Outcome
 
 M0 is complete. M1 produced an official HARTH byte/schema audit but not dataset
