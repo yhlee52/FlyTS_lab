@@ -2,6 +2,8 @@
 
 Status: active
 
+Progress: M9 complete; M10A PI gate pending.
+
 Baseline: GitHub `main` merge commit
 `af46eb6058c4abc13535c063295431a94dca640e`, tree
 `077a555156384b4ec7562dcaa321c1ec9d4ed7a2`.
@@ -164,7 +166,7 @@ not be collapsed into a single field or interpreted as one another.
   absolute path, user/company information or unclear-rights artifact.
 - [x] Model card, report, README and release notes contain no prohibited scientific,
   final-held-out, CUDA, production or semiconductor claim.
-- [ ] Independent QA reports a verdict and the notebook validates before M10A.
+- [x] Independent QA reports a verdict and the notebook validates before M10A.
 
 ## User checkpoints
 

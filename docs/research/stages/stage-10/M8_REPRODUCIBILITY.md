@@ -81,3 +81,26 @@ manifest and every asset from the user-merged `main` commit before tagging.
 
 This is engineering reproducibility evidence only. It is not a formal study,
 final-held-out evaluation, transfer result, CUDA validation or model-quality claim.
+
+## DEC-064 remediation verification
+
+The release-only remediation was rebuilt from commit
+`d4407e800eb3ff54f205726626cee51aeed1e467`, tree
+`0c18e766e6d9a5666d6b28444b52d14e79f1b168`. The full suite exited successfully
+with 166 collected tests (162 passed and four environment skips); release tests
+reported eight passed and one Windows symlink skip.
+
+Two independently sealed remediation candidates verified and were byte-identical.
+Their asset SHA-256 values were:
+
+| Asset | SHA-256 |
+|---|---|
+| `flyts-0.2.0-py3-none-any.whl` | `831830228e661820fb72c8749c15a620d6507f2289274321af3c84833d5f916b` |
+| `flyts-0.2.0.tar.gz` | `435a3ffb895b27e15df65214c8e516189525d5359ba056445356364dd46acee3` |
+| `flyts-mini-v0.1-preview.1-manifest.json` | `c7bfa52cc3ba0083f9b9bd6abe449f2ee8975fd8867e18cfe332d34ec2e90c66` |
+| `flyts-mini-v0.1-preview.1-offline.zip` | `525e704b67006db9d5d6ff08d5c6326ef476d9364641d8f336f02323d570551d` |
+| `flyts-mini-v0.1-preview.1-source.tar.gz` | `ed64854a48faccfbc9335b3c0bb42a7630c4f00380d34b3b588aa99ae581f4cc` |
+
+The ZIP has 12 generated seed-7 arrays plus its corpus manifest/checksum. Both
+local and installed `flyts verify` reported 12 records with 8/2/2 train/val/test
+splits. Independent M9 delta QA repeated package/install/bundle checks and passed.

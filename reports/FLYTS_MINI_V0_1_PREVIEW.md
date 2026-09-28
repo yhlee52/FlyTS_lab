@@ -1,6 +1,6 @@
 # FlyTS-Mini v0.1 Research Preview — Closeout Report
 
-Status: Stage 10 release candidate; M8 `PASS`, M9 remediation/recheck pending
+Status: Stage 10 release candidate; M8 and independent M9 `PASS`; M10A pending
 
 ## Conclusion
 
@@ -30,8 +30,9 @@ Recorded engineering capabilities include:
 - stage-specific tests, provenance and independent engineering QA through Stage 08.
 
 Stage 10 clean-room QA passed for the recorded pre-integration candidate. The
-first independent M9 review failed on release-hardening defects; its remediation
-and independent recheck remain required before M10A.
+first independent M9 review failed on release-hardening defects; the preserved
+findings were remediated and the independent delta recheck passed. M10A/M10B are
+still separate PI gates.
 
 ## Scientific/model completion
 

@@ -13,16 +13,16 @@ tree. No numerical freeze, formal training, final-held-out opening or formal
 analysis occurred. Stage 10 M0 is recorded, and DEC-061 gives Charter `GO` for
 M2 through independent release QA. DEC-063 resolves the M7 decision gate by
 selecting MIT and preserving but archive-excluding two historical personal-path
-files. M7 and M8 passed for the pre-integration candidate at `14f95c9`. The first
-M9 review of `d6e44f7` is `FAIL` under DEC-064 because of three release-contract
-defects plus one stale status statement. Bounded remediation and one independent
-delta recheck are in progress. M10A/M10B remain closed.
+files. M7 and M8 passed for the pre-integration candidate. The first M9 review of
+`d6e44f7` failed under DEC-064; remediation commit `d4407e8` fixed all four
+findings and DEC-065 records the independent delta `PASS`. M2–M9 are complete.
+M10A/M10B remain closed.
 
 ## Current goal
 
-Remediate DEC-064, rebuild a commit-bound candidate and obtain the independent
-M9 delta recheck. Do not push, open a Draft PR, tag or prerelease before the
-applicable M10 decision.
+Present the completed engineering scope, incomplete science, asset policy,
+candidate identity and M9 `PASS` for the PI's M10A integration decision. Do not
+push, open a Draft PR, tag or prerelease before the applicable M10 decision.
 
 ## Canonical references
 
@@ -71,10 +71,12 @@ applicable M10 decision.
 - DEC-064 preserves the first M9 `FAIL` and authorizes only the Charter-defined
   fixes for archive path validation, the generated fixture, QA manifest binding
   and stale M8 wording, followed by one independent recheck.
+- DEC-065 records independent remediation `PASS`; it completes M9 evidence but
+  does not authorize push, Draft PR, merge, tag or prerelease.
 
 ## Open questions
 
-- Whether M2 through M9 satisfy the Charter and justify an M10A integration gate.
+- Whether the PI grants M10A integration `GO` for push and a Draft PR.
 
 ## Active risks
 
@@ -97,7 +99,8 @@ applicable M10 decision.
   archive redistribution but does not erase already-published history.
 - The first M9 review found that malformed external package input could use a
   Windows drive-absolute member, the promised corpus fixture was absent, and the
-  manifest could not bind a final QA verdict. M10A stays `HOLD` through recheck.
+  manifest could not bind a final QA verdict. DEC-065 controls those defects;
+  future changed trees still require the same audit and M10A remains gated.
 
 ## Latest evidence
 
@@ -129,9 +132,14 @@ applicable M10 decision.
 - First M9 verdict is `FAIL` on `d6e44f7`. The reviewed candidate itself was
   byte-stable and contained no detected unsafe member or private content, but the
   prospective input validator and bundle/manifest contract were incomplete.
+- Remediation `d4407e800eb3ff54f205726626cee51aeed1e467` / tree
+  `0c18e766e6d9a5666d6b28444b52d14e79f1b168` rejects portable absolute/traversal
+  members, includes and verifies a 12-record generated fixture, and binds the QA
+  report/verdict. Two candidates were byte-identical; full/focused tests, package
+  installs, archive checks and Stage 09 immutability passed independent recheck.
 
 ## Next action
 
-Finish DEC-064 remediation, rebuild/reseal the candidate, obtain the single
-independent delta recheck and revalidate this notebook. Preserve Stage 09 bytes
-and stop before M10A.
+Rebuild and independently verify the documentation-only final-head candidate,
+then present M10A to the PI. Preserve Stage 09 bytes and do not push or open a
+Draft PR without M10A `GO`.

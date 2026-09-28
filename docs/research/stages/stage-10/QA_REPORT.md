@@ -1,14 +1,14 @@
 # Stage 10 Independent QA Report
 
-Verdict: **FAIL**
+Verdict: **PASS**
 
 Date: 2026-09-29
 
 Reviewed source commit: `d6e44f711d84b25274ff45527c5d900357665bca`
 
-This is the preserved first M9 verdict. M10A remains `HOLD` until the defects
-below are remediated and the independently reviewed remediation result is added
-to this report. A later recheck does not erase this finding.
+The first M9 verdict was `FAIL`. Its evidence and blockers are preserved below;
+the top-level verdict reflects the independently verified remediation recheck.
+This `PASS` does not authorize M10A or M10B.
 
 ## Scope checked
 
@@ -61,4 +61,15 @@ to this report. A later recheck does not erase this finding.
 
 ## Recheck
 
-Pending.
+Date: 2026-09-29. Reviewed remediation commit
+`d4407e800eb3ff54f205726626cee51aeed1e467`, tree
+`0c18e766e6d9a5666d6b28444b52d14e79f1b168`.
+
+Recheck verdict: **PASS** for the four defects in the preserved first M9 `FAIL`.
+Windows drive/root/traversal archive names are rejected; the offline ZIP contains
+a hash-verified 12-record synthetic corpus and passes installed `flyts verify`;
+the manifest derives the QA verdict and report SHA-256 from its source commit;
+M8 wording is current. Full pytest, focused tests, candidate verification, byte
+replay, no-index wheel/sdist installs, `pip check`, archive/privacy checks and
+Stage 09 immutability checks passed. CUDA remains untested. M10A/M10B remain
+pending PI gates.

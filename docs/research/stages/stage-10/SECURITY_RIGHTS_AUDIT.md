@@ -1,13 +1,14 @@
 # Stage 10 Security, Rights and Hygiene Audit
 
-Status: **REMEDIATION — first M9 QA found a prospective archive-path defect**
+Status: **PASS — DEC-064 remediation independently rechecked**
 
 Date: 2026-09-29
 
 Update: the first independent M9 review found that package-input validation
 accepted a Windows drive-absolute member such as `C:/private.txt`. The reviewed
-candidate contained no such member, but this prospective fail-closed defect makes
-the earlier M7 conclusion insufficient until DEC-064 remediation and recheck.
+candidate contained no such member. DEC-064 now rejects Windows drive/root,
+POSIX-root, UNC and traversal members, with adversarial tests; the independent
+M9 delta review passed the remediation.
 
 ## Scope
 
@@ -88,4 +89,15 @@ historical personal-path files. `SHA256SUMS` binds all four binary archives and
 the external manifest, while the offline checksum binds its internal manifest.
 
 M7 therefore passes for this pre-integration candidate. The files remain local
-and unpublished. Any changed integration/merge tree requires the same audit again.
+and unpublished; M10B must rerun the audit against the user-merged commit and
+final assets.
+
+## DEC-064 delta re-audit
+
+Remediation commit `d4407e800eb3ff54f205726626cee51aeed1e467` rejects
+platform-specific absolute, root, UNC, traversal, symlink and duplicate package
+members. Its two sealed candidates were byte-identical and contained the explicit
+hash-bound generated fixture. Independent QA repeated candidate verification,
+package installs, archive/privacy/exclusion scans and Stage 09 identity checks and
+reported `PASS`. The first M9 `FAIL` remains preserved in `QA_REPORT.md`. Any
+changed integration/merge tree requires the same audit again.

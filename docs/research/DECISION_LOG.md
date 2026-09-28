@@ -1,5 +1,18 @@
 # FlyTS Decision Log
 
+## DEC-065 — Stage 10 M9 remediation recheck passes
+
+- Date: 2026-09-29
+- Decision authority: independent QA delta review under DEC-064.
+- Verdict: `PASS` on remediation commit `d4407e8`, tree `0c18e76`, after the
+  initial M9 `FAIL`; the initial defects and evidence remain in `QA_REPORT.md`.
+- Evidence: full and focused tests, two byte-identical sealed candidates, actual
+  12-record fixture verification, no-index wheel/sdist install and `pip check`,
+  archive/privacy checks, QA provenance binding and Stage 09 immutability passed.
+- Boundary: M2–M9 are ready to present at M10A. This decision does not authorize
+  push, Draft PR, merge, tag or GitHub prerelease. CUDA remains `not tested` and
+  scientific/model completion remains absent.
+
 ## DEC-064 — First Stage 10 M9 review fails and enters bounded remediation
 
 - Date: 2026-09-29
