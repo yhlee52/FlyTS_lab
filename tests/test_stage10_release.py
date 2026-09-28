@@ -92,6 +92,9 @@ def test_candidate_bytes_are_stable_and_archives_are_checkpoint_free(tmp_path):
     second = tmp_path / "artifacts/second"
     manifest = build_candidates(tmp_path, first, commit, tree, wheel, sdist)
     assert verify_candidates(tmp_path, first) == manifest
+    raw_sdist = bytearray(sdist.read_bytes())
+    raw_sdist[4:8] = (123).to_bytes(4, "little")
+    sdist.write_bytes(raw_sdist)
     build_candidates(tmp_path, second, commit, tree, wheel, sdist)
     assert {p.name: p.read_bytes() for p in first.iterdir()} == \
            {p.name: p.read_bytes() for p in second.iterdir()}

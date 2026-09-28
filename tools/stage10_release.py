@@ -246,6 +246,30 @@ def _safe_member(name):
     return bool(name) and not path.is_absolute() and ".." not in path.parts
 
 
+def _normalize_sdist(data):
+    """Remove build-host tar/gzip metadata while preserving sdist contents."""
+    entries = []
+    with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as archive:
+        for member in archive.getmembers():
+            if not _safe_member(member.name) or member.issym() or member.islnk() or \
+                    not (member.isfile() or member.isdir()):
+                raise ValueError("unsafe sdist archive member")
+            contents = archive.extractfile(member).read() if member.isfile() else b""
+            entries.append((member.name, member.isdir(), member.mode, contents))
+    buffer = io.BytesIO()
+    with gzip.GzipFile(fileobj=buffer, mode="wb", filename="", mtime=0) as gz:
+        with tarfile.open(fileobj=gz, mode="w", format=tarfile.PAX_FORMAT) as archive:
+            for name, is_directory, mode, contents in sorted(entries):
+                entry = tarfile.TarInfo(name)
+                entry.type = tarfile.DIRTYPE if is_directory else tarfile.REGTYPE
+                entry.size = 0 if is_directory else len(contents)
+                entry.mtime = entry.uid = entry.gid = 0
+                entry.uname = entry.gname = ""
+                entry.mode = mode
+                archive.addfile(entry, None if is_directory else io.BytesIO(contents))
+    return buffer.getvalue()
+
+
 def _package_bytes(path, expected):
     path = Path(path).resolve()
     if path.name != expected or path.is_symlink() or not path.is_file():
@@ -274,7 +298,7 @@ def _package_bytes(path, expected):
         raise ValueError(f"unsafe package archive member: {expected}")
     if any(ABSOLUTE_PATH.search(contents) for _, contents in members):
         raise ValueError(f"personal absolute path forbidden in package: {expected}")
-    return data
+    return data if expected.endswith(".whl") else _normalize_sdist(data)
 
 
 def _artifact_row(name, data):
