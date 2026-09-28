@@ -1,5 +1,151 @@
 # FlyTS Decision Log
 
+## DEC-038 — Stage 08 Draft PR CI passed
+
+- Date: 2026-09-28
+- Authority: CI observation under DEC-036 option A `GO`.
+- Evidence: both GitHub `pytest` checks on Draft PR #14 head `c09c0b5` passed,
+  completing in 2m13s and 3m40s.
+- Boundary: CI success does not authorize merge, Stage 09 or final-held-out access.
+
+## DEC-037 — Stage 08 Draft PR created
+
+- Date: 2026-09-28
+- Authority: execution under DEC-036 option A `GO`.
+- Outcome: commit `2733069` was pushed to
+  `codex/stage-08-flyts-mini-pilot` and Draft PR #14 was opened against `main`.
+- Boundary: the PR remains a Draft; merge, Stage 09 and final-held-out access remain
+  unauthorized.
+
+## DEC-036 — Stage 08 Draft PR option A GO
+
+- Date: 2026-09-28
+- Decision authority: user selected option A and explicitly approved it.
+- Decision: commit the reviewed Stage 08 changes, push the focused branch, create a
+  Draft PR and observe its CI before returning to the user.
+- Boundary: this decision does not authorize merge, Stage 09, pilot reruns,
+  final-held-out access or any broader scientific claim.
+
+## DEC-035 — Stage 08 result GO and closure
+
+- Date: 2026-09-28
+- Decision authority: user explicitly issued `GO` at the Stage 08 PI result gate.
+- Decision: accept the bounded operational pilot evidence and independent QA
+  `PASS`, and close Stage 08 without changing its protocol or claim scope.
+- Evidence: all acceptance criteria are satisfied; the fixed single pilot completed,
+  strict reports replay byte-for-byte, tests and validators pass, and independent
+  post-pilot QA found no blocker.
+- Boundary: topology/backbone superiority, robustness pass/fail, foundation quality,
+  CUDA, transfer and semiconductor claims remain unverified. This decision does not
+  authorize a Draft PR, merge, Stage 09 or final-held-out access.
+
+## DEC-034 — Stage 08 independent post-pilot QA PASS
+
+- Date: 2026-09-27
+- Decision authority: independent QA Engineer under the approved Stage 08 plan.
+- Decision: accept the completed evidence package for presentation at the PI result
+  gate with QA status `PASS` and no blocker.
+- Evidence: all 15 checkpoint/snapshot hashes and fixed execution facts match;
+  histories are finite; earliest pretrain-only selection, Bike-only scope, exact
+  provenance replay, focused/full tests, compilation and Git hygiene pass.
+- Boundary: QA did not rerun the pilot, inspect Electricity arrays or validate CUDA.
+  Resource values remain single-run CPU observations. Stage 09, PR and merge remain
+  separately unauthorized.
+
+## DEC-033 — Stage 08 fixed pilot evidence recorded
+
+- Date: 2026-09-27
+- Decision authority: execution under the user's DEC-032 pilot `GO`; no new
+  research choice was made after observing results.
+- Decision: accept the single completed fixed-order run as the sole Stage 08 pilot
+  evidence pending independent QA. Generate and byte-check the tracked schema-v2
+  reports without modifying the frozen protocol.
+- Evidence: all four core arms completed 400 steps/3,200 samples; dense completed
+  20 steps/160 samples; every run preserved its resume input and completed Bike-only
+  evaluation. Full tests and required validators pass.
+- Boundary: individual values and resource timings are descriptive only. No rerun,
+  winner, threshold, Stage 09 budget, final-held-out access, PR or merge is approved.
+
+## DEC-032 — Stage 08 real-pilot run GO
+
+- Date: 2026-09-27
+- Decision authority: user explicitly issued `GO` after reviewing the passing
+  DEC-031 schema-v2 common-preflight evidence.
+- Decision: run the four core arms in the frozen order for `200 + resume + 200`
+  steps each, followed by the dense-leaky `10 + resume + 10` diagnostic, using
+  the unchanged approved corpus, registry, configs, seeds and CPU environment.
+- Boundary: no result-driven rerun, setting/metric/seed/domain change,
+  final-held-out access, Stage 09, PR or merge is authorized. Results remain
+  descriptive operational evidence and require independent QA and a PI result gate.
+
+## DEC-031 — Stage 08 schema-v2 common-preflight GO
+
+- Date: 2026-09-27
+- Decision authority: user selected the recommended option after final DEC-030
+  code QA `PASS`.
+- Decision: run one new common schema-v2 `1 + resume + 1` preflight for the four
+  core arms in the fixed order, using the unchanged approved corpus, registry,
+  configs, seeds and CPU path. Preserve all earlier schema-v1 evidence.
+- Boundary: no dense diagnostic, 400-step core pilot, result-driven rerun,
+  final-held-out access, PR or merge is authorized. The real pilot still requires
+  a separate PI `GO` after preflight evidence and independent verification.
+
+## DEC-030 — Stage 08 history-independent archival-test exception
+
+- Date: 2026-09-27
+- Decision authority: user explicitly approved the final bounded exception after
+  DEC-029 QA found one shallow-CI/offline compatibility blocker.
+- Decision: permit the existing Implementation Engineer one final follow-up to
+  replace `git show`-based Stage 07 archival validation with self-contained exact
+  byte hashes, without changing the archived reports. Permit the existing QA
+  Engineer one final independent re-review.
+- Boundary: no research-setting or evidence change, new specialist, public
+  preflight, pilot, final-held-out access, PR or merge is authorized.
+
+## DEC-029 — Stage 08 execution-fact and archival-test remediation exception
+
+- Date: 2026-09-27
+- Decision authority: user explicitly approved a second bounded exception after
+  the DEC-028 independent re-review remained `FAIL`.
+- Decision: permit the existing Implementation Engineer one further follow-up to
+  cross-check optimizer steps, exposure and parameter facts against bound evidence,
+  and to make the Stage 07 test archival-aware without modifying frozen Stage 07
+  evidence. Permit the existing QA Engineer one further independent re-review.
+- Boundary: no specialist addition, research-setting change, schema-v2 preflight,
+  pilot, final-held-out access, PR or merge is authorized. The preflight-evidence
+  interpretation returns to the PI only after these two blockers pass.
+
+## DEC-028 — Stage 08 QA-remediation budget exception
+
+- Date: 2026-09-27
+- Decision authority: user explicitly approved the requested bounded exception
+  after the first independent Stage 08 QA verdict was `FAIL`.
+- Decision: permit the existing Implementation Engineer one additional follow-up
+  to bind all Stage 08 orchestration/config sources, strengthen report hash
+  revalidation and separate setup, validation, checkpoint and evaluation cost
+  evidence. Permit the existing QA Engineer one independent re-review.
+- Boundary: no new specialist, data/arm/seed/metric/budget change, additional
+  preflight rerun, 400-step/20-step pilot, final-held-out access, PR or merge is
+  authorized. The separate pilot-run gate remains pending.
+
+## DEC-027 — Stage 08 operational-pilot Charter GO
+
+- Date: 2026-09-27
+- Decision authority: user selected the recommended arm, step, evaluator,
+  checkpoint, device, resume, training-profile, measurement and Stage 09 cost
+  options, then explicitly requested implementation of the complete plan.
+- Decision: run four matched core arms for one 400-step seed through a common
+  multi-domain CPU path, with dense-leaky limited to a 20-step diagnostic. Use
+  Stage 07 model sizes and runtime profile plus Stage 02 channel masking; select
+  only `best.pt` by pretrain-domain `L_select`; split every run at its midpoint
+  for resume; evaluate Bike descriptively; record single-pass wall/RSS evidence.
+- Seeds and data: base/topology seed 7, topology-control seed 5007; Appliances and
+  Beijing only for pretraining, Bike only for development evaluation, Electricity
+  sealed. Stage 09 cost is scenario extrapolation, not a selected budget.
+- Boundary: Charter GO authorizes M0-M4 implementation and common preflight. The
+  400-step/20-step pilot requires a separate post-preflight PI `GO`. No final-held-out
+  access, extra seed, threshold freeze, formal claim, merge or Stage 09 is authorized.
+
 ## DEC-026 — Stage 07 result GO
 
 - Date: 2026-09-27

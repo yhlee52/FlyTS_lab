@@ -2,6 +2,7 @@
 from dataclasses import asdict
 import json
 import math
+import os
 from pathlib import Path
 import random
 import subprocess
@@ -192,8 +193,55 @@ def load_encoder(checkpoint, device="cpu"):
     return model.to(device).eval(), state
 
 
+def validation_losses(rows, record_ids):
+    """Aggregate target sums over windows, then records and dataset domains."""
+    records = {}
+    for domain_id, record_id, loss_sum, target_count in rows:
+        if target_count < 1:
+            continue
+        key = (domain_id, record_id)
+        total, count = records.get(key, (0.0, 0))
+        records[key] = (total + loss_sum, count + target_count)
+    missing = set(record_ids) - set(records)
+    if missing:
+        raise ValueError(f"validation records have no masked targets: {sorted(missing)}")
+    domains = {}
+    for (domain_id, _), (total, count) in records.items():
+        domains.setdefault(domain_id, []).append(total / count)
+    by_domain = {key: sum(values) / len(values) for key, values in sorted(domains.items())}
+    if not by_domain:
+        raise ValueError("empty validation domains")
+    return sum(by_domain.values()) / len(by_domain), by_domain
+
+
+def peak_rss_bytes():
+    """Peak process resident set, using the native OS process counter."""
+    if os.name == "nt":
+        import ctypes
+        from ctypes import wintypes
+        class Counters(ctypes.Structure):
+            _fields_ = [("cb", wintypes.DWORD), ("PageFaultCount", wintypes.DWORD),
+                        ("PeakWorkingSetSize", ctypes.c_size_t), ("WorkingSetSize", ctypes.c_size_t),
+                        ("QuotaPeakPagedPoolUsage", ctypes.c_size_t), ("QuotaPagedPoolUsage", ctypes.c_size_t),
+                        ("QuotaPeakNonPagedPoolUsage", ctypes.c_size_t), ("QuotaNonPagedPoolUsage", ctypes.c_size_t),
+                        ("PagefileUsage", ctypes.c_size_t), ("PeakPagefileUsage", ctypes.c_size_t)]
+        counters = Counters()
+        counters.cb = ctypes.sizeof(counters)
+        get_process = ctypes.windll.kernel32.GetCurrentProcess
+        get_process.restype = wintypes.HANDLE
+        get_memory = ctypes.windll.psapi.GetProcessMemoryInfo
+        get_memory.argtypes = (wintypes.HANDLE, ctypes.c_void_p, wintypes.DWORD)
+        if not get_memory(get_process(), ctypes.byref(counters), counters.cb):
+            raise OSError("GetProcessMemoryInfo failed")
+        return int(counters.PeakWorkingSetSize)
+    import resource
+    peak = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+    return int(peak * (1 if sys.platform == "darwin" else 1024))
+
+
 def train(manifest, config_path, output, device="auto", resume=None, epochs=None,
           development_only=False, domain_registry=None):
+    process_started = time.perf_counter()
     config = json.loads(Path(config_path).read_text())
     masking = canonical_masking(config)
     if epochs is not None:
@@ -271,8 +319,14 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
         run["graph_provenance"] = graph_provenance(model)
     (outdir / "run.json").write_text(json.dumps(run, indent=2)+"\n")
     print(json.dumps(run), flush=True)
+    step_seconds = []
+    setup_seconds = time.perf_counter() - process_started
+    training_step_seconds = 0.0
+    validation_seconds = 0.0
+    checkpoint_seconds = 0.0
     for epoch in range(start, config["epochs"]):
         tick = time.perf_counter()
+        setup_started = tick
         # Epoch-indexed sampling/corruption enables exact CPU epoch-boundary resume.
         sample_rng = torch.Generator().manual_seed(seed+epoch)
         mask_rng = torch.Generator(device=device).manual_seed(seed+10000+epoch)
@@ -280,9 +334,14 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
         dropout_rng = torch.Generator(device=device).manual_seed(seed+40000+epoch)
         sampler = train_data.balanced_sampler(config["steps_per_epoch"]*config["batch_size"], sample_rng)
         loader = DataLoader(train_data, batch_size=config["batch_size"], sampler=sampler, collate_fn=collate_windows)
+        setup_seconds += time.perf_counter() - setup_started
+        training_started = time.perf_counter()
         model.train()
         losses = []
-        for batch in loader:
+        iterator = iter(loader)
+        for _ in range(config["steps_per_epoch"]):
+            step_started = time.perf_counter()
+            batch = next(iterator)
             batch = move(batch, device)
             optimizer.zero_grad(set_to_none=True)
             result = forward_batch(model, batch, masking, mask_rng, channel_rng, dropout_rng)
@@ -293,33 +352,46 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0, error_if_nonfinite=True)
             optimizer.step()
             losses.append(loss.item())
+            step_seconds.append(time.perf_counter() - step_started)
+        training_step_seconds += time.perf_counter() - training_started
+        validation_started = time.perf_counter()
         model.eval()
         val_rng = torch.Generator(device=device).manual_seed(seed+20000)
         val_channel_rng = torch.Generator(device=device).manual_seed(seed+50000)
-        domain_losses = {}
-        domain_baselines = {}
+        validation_rows = []
+        baseline_rows = []
+        selected_records = set()
         with torch.no_grad():
             for j, batch in enumerate(valid_loader):
                 if config.get("val_batches", 0) and j >= config["val_batches"]:
                     break
                 result = forward_batch(model, move(batch, device), masking, val_rng,
                                        val_channel_rng, validation=True)
-                for i, domain in enumerate(batch["domain"]):
+                for i, (domain_id, record_id) in enumerate(zip(batch["domain_id"], batch["record_id"])):
+                    selected_records.add((domain_id, record_id))
                     mask = result["target_mask"][i]
                     if mask.any():
+                        count = int(mask.sum().item())
                         value = torch.nn.functional.smooth_l1_loss(
-                            result["prediction"][i][mask], result["target"][i][mask], beta=1.0).item()
-                        domain_losses.setdefault(domain, []).append(value)
+                            result["prediction"][i][mask], result["target"][i][mask], beta=1.0,
+                            reduction="sum").item()
+                        validation_rows.append((domain_id, record_id, value, count))
                         baseline = torch.nn.functional.smooth_l1_loss(
-                            torch.zeros_like(result["target"][i][mask]), result["target"][i][mask], beta=1.0).item()
-                        domain_baselines.setdefault(domain, []).append(baseline)
-        by_domain = {key: sum(vals)/len(vals) for key, vals in domain_losses.items()}
-        val = sum(by_domain.values())/len(by_domain) if by_domain else float("nan")
+                            torch.zeros_like(result["target"][i][mask]), result["target"][i][mask], beta=1.0,
+                            reduction="sum").item()
+                        baseline_rows.append((domain_id, record_id, baseline, count))
+        required_records = (selected_records if config.get("val_batches", 0) else
+                            {(r.get("domain_id", r["dataset"]), rid)
+                             for rid, r in zip(val_data.record_ids, val_data.records)})
+        val, by_domain = validation_losses(validation_rows, required_records)
+        baseline_val, _ = validation_losses(baseline_rows, required_records)
         if not math.isfinite(val):
             raise FloatingPointError("non-finite or empty validation")
+        validation_seconds += time.perf_counter() - validation_started
+        checkpoint_started = time.perf_counter()
         row = dict(epoch=epoch+1, train_loss=sum(losses)/len(losses), val_loss=val,
                    val_by_domain=by_domain, seconds=time.perf_counter()-tick,
-                   val_visible_mean_baseline=sum(sum(v)/len(v) for v in domain_baselines.values())/len(domain_baselines),
+                   val_visible_mean_baseline=baseline_val,
                    tau=(model.graph.tau.detach().cpu().tolist()
                         if mcfg.backbone == "fly_sparse" else None))
         history.append(row)
@@ -330,6 +402,17 @@ def train(manifest, config_path, output, device="auto", resume=None, epochs=None
             save_checkpoint(outdir / "best.pt", model, optimizer, epoch+1, config, digest, history, best, execution)
         (outdir / "history.json").write_text(json.dumps(history, indent=2)+"\n")
         print(json.dumps(row), flush=True)
+        checkpoint_seconds += time.perf_counter() - checkpoint_started
+    resource = dict(wall_seconds=time.perf_counter() - process_started,
+                    setup_seconds=setup_seconds,
+                    training_step_seconds=training_step_seconds,
+                    validation_seconds=validation_seconds,
+                    checkpoint_seconds=checkpoint_seconds,
+                    steady_step_seconds=(sum(step_seconds[1:]) / len(step_seconds[1:])
+                                         if len(step_seconds) > 1 else None),
+                    measured_steps=len(step_seconds), peak_rss_bytes=peak_rss_bytes(),
+                    threads=torch.get_num_threads(), dtype="float32", device=str(device))
+    (outdir / "resource.json").write_text(json.dumps(resource, indent=2) + "\n", encoding="utf-8")
     return history
 
 

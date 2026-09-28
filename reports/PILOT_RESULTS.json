@@ -1,0 +1,2011 @@
+{
+  "cost_scenario_limitations": "Linear extrapolation from one CPU run per arm. Keeps measured two-segment setup, validation and checkpoint costs, plus one Bike evaluation, fixed per seed; scales steady training-step time only. Serialization and process overhead outside measured phases may make the sum differ from wall time. Not measured five-seed cost or a Stage 09 budget decision.",
+  "interpretation": "descriptive operational evidence only",
+  "runs": [
+    {
+      "approved_reference_config_sha256": {
+        "configs/baselines/stage07-budget.json": "b95c07df89f25c08958a6a24da0f90b813258034f8680bce637b5a224a7a9096",
+        "configs/topology/stage05-controls.json": "dc43710cd415f6e33ecda13437fb2d454fd1c1a2d0615d57bf817933b6d15097"
+      },
+      "arm": "fly_like",
+      "best_checkpoint_sha256": "7813d7fb26410284a7c6c4042eef768c8b4b4f1935d19cee06822e630ed529a2",
+      "best_epoch": 2,
+      "bike_evaluator_results": [
+        {
+          "arm": "0%",
+          "domain_macro": 0.0,
+          "domains": {
+            "transport": 0.0
+          },
+          "metric": "dropout",
+          "micro": 0.0,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.0
+        },
+        {
+          "arm": "10%",
+          "domain_macro": -0.00016292571280308995,
+          "domains": {
+            "transport": -0.00016292571280308995
+          },
+          "metric": "dropout",
+          "micro": -0.00016292571280308995,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": -0.00016292571280308995
+        },
+        {
+          "arm": "30%",
+          "domain_macro": 0.0007464816491341813,
+          "domains": {
+            "transport": 0.0007464816491341813
+          },
+          "metric": "dropout",
+          "micro": 0.0007464816491341813,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.0007464816491341813
+        },
+        {
+          "arm": "50%",
+          "domain_macro": 6.587174838828603e-05,
+          "domains": {
+            "transport": 6.587174838828603e-05
+          },
+          "metric": "dropout",
+          "micro": 6.587174838828603e-05,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 6.587174838828603e-05
+        },
+        {
+          "arm": "identity",
+          "domain_macro": 0.0,
+          "domains": {
+            "transport": 0.0
+          },
+          "metric": "permutation",
+          "micro": 0.0,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.0
+        },
+        {
+          "arm": "perm_0",
+          "domain_macro": 8.156265635106408e-09,
+          "domains": {
+            "transport": 8.156265635106408e-09
+          },
+          "metric": "permutation",
+          "micro": 8.156265635106408e-09,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 8.156265635106408e-09
+        },
+        {
+          "arm": "perm_1",
+          "domain_macro": 1.0722195596668538e-08,
+          "domains": {
+            "transport": 1.0722195596668538e-08
+          },
+          "metric": "permutation",
+          "micro": 1.0722195596668538e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 1.0722195596668538e-08
+        },
+        {
+          "arm": "perm_2",
+          "domain_macro": 1.5012656770507782e-08,
+          "domains": {
+            "transport": 1.5012656770507782e-08
+          },
+          "metric": "permutation",
+          "micro": 1.5012656770507782e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 1.5012656770507782e-08
+        },
+        {
+          "arm": "perm_3",
+          "domain_macro": 1.294329575463049e-08,
+          "domains": {
+            "transport": 1.294329575463049e-08
+          },
+          "metric": "permutation",
+          "micro": 1.294329575463049e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 1.294329575463049e-08
+        },
+        {
+          "arm": "perm_4",
+          "domain_macro": 1.4569982678680482e-08,
+          "domains": {
+            "transport": 1.4569982678680482e-08
+          },
+          "metric": "permutation",
+          "micro": 1.4569982678680482e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 1.4569982678680482e-08
+        },
+        {
+          "arm": "perm_5",
+          "domain_macro": 5.1660286812249545e-09,
+          "domains": {
+            "transport": 5.1660286812249545e-09
+          },
+          "metric": "permutation",
+          "micro": 5.1660286812249545e-09,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 5.1660286812249545e-09
+        },
+        {
+          "arm": "perm_6",
+          "domain_macro": 7.676480395790719e-09,
+          "domains": {
+            "transport": 7.676480395790719e-09
+          },
+          "metric": "permutation",
+          "micro": 7.676480395790719e-09,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 7.676480395790719e-09
+        },
+        {
+          "arm": "perm_7",
+          "domain_macro": 1.548257039934997e-08,
+          "domains": {
+            "transport": 1.548257039934997e-08
+          },
+          "metric": "permutation",
+          "micro": 1.548257039934997e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 1.548257039934997e-08
+        },
+        {
+          "arm": "baseline",
+          "domain_macro": 0.5090016983449459,
+          "domains": {
+            "transport": 0.5090016983449459
+          },
+          "metric": "reconstruction",
+          "micro": 0.5090016983449459,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.5090016983449459
+        }
+      ],
+      "bike_evaluator_runtime": {
+        "device": "cpu",
+        "evaluation_seconds": 4.307018400053494,
+        "peak_rss_bytes": 218099712,
+        "python": "3.12.14",
+        "seconds": 4.429868699982762,
+        "setup_seconds": 0.0674794000806287,
+        "threads": 4,
+        "torch": "2.14.0+cpu"
+      },
+      "config_source_sha256": "ea3e9ee3dbc02c2e559aa81429bc29c70dd5291cc9571ab89bd7d540047c38c8",
+      "domain_registry_sha256": "0095d4cd76ad5fdaeefeccdbb4322187892cc155bfac619ca4c8618ea50b9b20",
+      "evaluation_config_sha256": "8495082014eb539e64c7671cc9227509b3769c4709a954f5dade71ced09e1211",
+      "evaluation_fixture_sha256": "3370e2f3b6c6a8695024100cef607db5d582e059e5f271cffd59e666e6539bfa",
+      "evaluation_records_sha256": "0bba66d67a9800cd936c1f47a814950363038a4287fef81e5830aa4c74bb696a",
+      "evaluation_summary_sha256": "8b0f278abdd22e945e7ff8676a14f1237531e1813f0909fbdb4dea2eb9951ef0",
+      "input_paths": {
+        "domain_registry": "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\configs\\domain_roles_v1.json",
+        "manifest": "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\data\\stage06-public-v1-r2\\manifest.json"
+      },
+      "last_checkpoint_sha256": "178ced519d81e2efb7b67d1da013d466aa785215902958b8c0cbdab650da042e",
+      "manifest_sha256": "44bafe48196a4afd096e387dc672cad128d390ab7e5b413ea6cbeadf5f3e7f6c",
+      "mode": "pilot",
+      "optimizer_steps": 400,
+      "parameter_count": 68760,
+      "pilot_config_sha256": {
+        "configs/pilot/stage08/degree_preserving_rewired.json": "7a5beeda26039cd84c937e9677303b30ae6ae321cc19fcc78c43dceae6c640b3",
+        "configs/pilot/stage08/dense_leaky.json": "4f3ab9f4d1986621fbb97ca7f997d1171e57c79a358a41f1759e3e665c704ac6",
+        "configs/pilot/stage08/fly_like.json": "ea3e9ee3dbc02c2e559aa81429bc29c70dd5291cc9571ab89bd7d540047c38c8",
+        "configs/pilot/stage08/gru.json": "dfcbf736bc83410a74c9f18636d2176ad7135ddd854c5d1521d224e768525aea",
+        "configs/pilot/stage08/random_sparse.json": "1957c23e2c0f66a0f2efea1354f93d556f94216212a8da56b0d92258f1a80a31"
+      },
+      "pilot_manifest_sha256": "08acbd5efda5dced9ca7aa71c6b338afabc6ade89388a6005ea13805ee1c6c8e",
+      "pre_resume_checkpoint_sha256": "4fd6eda200e46547adeb66e8e2ab741c74a2166bd453bc10b850cf5fa36877d2",
+      "role": "core",
+      "run_config_sha256": "ea3e9ee3dbc02c2e559aa81429bc29c70dd5291cc9571ab89bd7d540047c38c8",
+      "sample_exposure": 3200,
+      "schema_version": 2,
+      "segment_resource_sha256": [
+        "e3c3d9f05efa9e3513b92bd9450c7fe0bc2114b05a4f002f299365e3ca0c71f0",
+        "0f7c39876ded404c3a2cf4caa4ef81dcfe13697749b2811f6f34fea824f17e0e"
+      ],
+      "segments": [
+        {
+          "argv": [
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\.venv\\Scripts\\python.exe",
+            "-m",
+            "flyts",
+            "pretrain",
+            "--manifest",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\data\\stage06-public-v1-r2\\manifest.json",
+            "--domain-registry",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\configs\\domain_roles_v1.json",
+            "--config",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\fly_like.run_config.json",
+            "--output",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\fly_like",
+            "--device",
+            "cpu",
+            "--development-only",
+            "--epochs",
+            "1"
+          ],
+          "resource": {
+            "checkpoint_seconds": 0.029592699953354895,
+            "device": "cpu",
+            "dtype": "float32",
+            "measured_steps": 200,
+            "peak_rss_bytes": 347836416,
+            "setup_seconds": 1.615887499996461,
+            "steady_step_seconds": 0.028124938694989523,
+            "threads": 4,
+            "training_step_seconds": 5.641038000001572,
+            "validation_seconds": 0.30027000000700355,
+            "wall_seconds": 7.58679359999951
+          }
+        },
+        {
+          "argv": [
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\.venv\\Scripts\\python.exe",
+            "-m",
+            "flyts",
+            "pretrain",
+            "--manifest",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\data\\stage06-public-v1-r2\\manifest.json",
+            "--domain-registry",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\configs\\domain_roles_v1.json",
+            "--config",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\fly_like.run_config.json",
+            "--output",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\fly_like",
+            "--device",
+            "cpu",
+            "--development-only",
+            "--resume",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\fly_like\\pre_resume_last.pt",
+            "--epochs",
+            "2"
+          ],
+          "resource": {
+            "checkpoint_seconds": 0.02570760005619377,
+            "device": "cpu",
+            "dtype": "float32",
+            "measured_steps": 200,
+            "peak_rss_bytes": 344961024,
+            "setup_seconds": 1.6420983999269083,
+            "steady_step_seconds": 0.031177686432601145,
+            "threads": 4,
+            "training_step_seconds": 6.246894099982455,
+            "validation_seconds": 0.5447358000092208,
+            "wall_seconds": 8.459444100037217
+          }
+        }
+      ],
+      "selection_history": [
+        {
+          "epoch": 1,
+          "seconds": 5.9422748000361025,
+          "tau": [
+            0.11691557615995407,
+            0.17248962819576263,
+            0.2984541356563568,
+            0.6343539953231812,
+            1.7283951044082642,
+            6.178107738494873,
+            28.51873207092285,
+            158.64794921875,
+            1004.8407592773438,
+            5406.41650390625,
+            23275.458984375,
+            87375.6328125,
+            236932.875,
+            497180.21875,
+            869526.5,
+            1279222.375
+          ],
+          "train_loss": 0.9211537790298462,
+          "val_by_domain": {
+            "appliances": 1.3140184347473978,
+            "beijing": 0.6373566245316996
+          },
+          "val_loss": 0.9756875296395486,
+          "val_visible_mean_baseline": 0.9890735556972676
+        },
+        {
+          "epoch": 2,
+          "seconds": 6.793385399971157,
+          "tau": [
+            0.11692007631063461,
+            0.17249912023544312,
+            0.29847702383995056,
+            0.6343869566917419,
+            1.7285126447677612,
+            6.178364276885986,
+            28.52012062072754,
+            158.6502227783203,
+            1171.5645751953125,
+            7821.99609375,
+            22028.3984375,
+            88499.390625,
+            224464.78125,
+            464939.5,
+            822008.4375,
+            1231201.875
+          ],
+          "train_loss": 0.7391791372001171,
+          "val_by_domain": {
+            "appliances": 1.3118482308973853,
+            "beijing": 0.6308766952942811
+          },
+          "val_loss": 0.9713624630958333,
+          "val_visible_mean_baseline": 0.9890735556972676
+        }
+      ],
+      "source_sha256": {
+        "src/flyts/__init__.py": "5c0e10fa69d36f9cf1bfa2523c2fa967548c0e5aeb3a5d695257c27839a100cc",
+        "src/flyts/__main__.py": "5857dfa81351de0008a8863355a152098f5c48668ab165e9c919f6704b6838fb",
+        "src/flyts/backbones/__init__.py": "4754be3ed2ca9b22b990d1d09b11c94f6127508c7961c5d1a77892e01e1a6372",
+        "src/flyts/backbones/base.py": "7620967f8d6a6415d7b8f5c8e9a57305c0ae154d849057ecdd3b5ee3c47abad2",
+        "src/flyts/backbones/budget.py": "0c1f3e773fe1a5dabcc99b86f7d6f818d5f6ab94e51148b72960e14642f22a2e",
+        "src/flyts/backbones/dense_leaky.py": "b3f738d833cb003660208ad363a4591b1cb7c9e5038afd3f3b2c38f3a1482a33",
+        "src/flyts/backbones/fly_sparse.py": "332f7093d01395b305e7b69721eb95481d348d40f1e90b7aca9b76b7dba875ea",
+        "src/flyts/backbones/gru.py": "7985efdf96f79296ed2b81879c75f35f53cd610a74d852dc4c0c2fa01e715d89",
+        "src/flyts/backbones/registry.py": "da51eefd8c6b378e828d5de9301f942c9e84960d688f4a7201f2b0a0c4477dcd",
+        "src/flyts/backbones/seeding.py": "fd1c62d2426f8520f06f00bad5dee194557ea34529a8107425228069095803a1",
+        "src/flyts/corpus.py": "def9fca5c9aae40bedd83f40eff043ce9cfaff0616bb9447602ce89d27ec4564",
+        "src/flyts/data.py": "465e5a14a86e4f8814d3dd3abb2a3ed6b41420f6feaceacba36421331a576145",
+        "src/flyts/datasets/__init__.py": "2168b76d52d5ecba2c039c5e6dde7dedbdf6db4305c198e7e6318f9e15b06946",
+        "src/flyts/datasets/electricity.py": "79f911c65c6d0154e03da77b1b48bfe7175f212f41c96a02ebff6697da634745",
+        "src/flyts/evaluation.py": "8642b6a08b9e93d72df386027ba8841505eee1184e8014d9a171827feeb4cca3",
+        "src/flyts/foundation.py": "630c1a38f18ceafcfb9745739243a493e9ddf0bf3ab57dc5e25d6bdff5dd0717",
+        "src/flyts/masking.py": "2c4c96deabd77feeae81d4af41c6f7f9585fd03e6f5442bc2ab429678974445a",
+        "src/flyts/model.py": "05d43c822cf9d8bb1e308490175659fab188ea34d7c7685a5edb47f3082b5f69",
+        "src/flyts/prepare.py": "38017b34fbf8f2381830b4fcac7714523f61a87c0603d96c4dc5d6656a95172f",
+        "src/flyts/topology/__init__.py": "c610c7fa99d14c816857ae2232ed912cac40cdbdf6293ee630a1de80be47b3d2",
+        "src/flyts/topology/base.py": "e00fbf4187c6af06b7368c456d807f3293a12b0a03242232f1ed1d793f79e80f",
+        "src/flyts/topology/controls.py": "0f7a9cfa65213d77c6b26869f0a911b49bfa15432829329a99a496fe7cf9f51f",
+        "src/flyts/topology/fly_like.py": "8ee9a75ca68293f98a5208206c1ef698e6b39c4854db9a8b16315e91122bb256",
+        "src/flyts/topology/stats.py": "d298367f404899f09f70dcfed70b99779254911c241ef66cdb374199b1e6ba88",
+        "src/flyts/topology/validation.py": "1afdab3e1f29094a8ccb03f2db889b23917185fca870d6bbecfb05e250042531",
+        "src/flyts/training.py": "c29e91b2377a05d6b892ca4f18e36d2ec512d8465d539b812b2764285d9341f4"
+      },
+      "steps_per_segment": 200,
+      "tool_sha256": {
+        "tools/report_stage08_pilot.py": "0c3910ca6e88421edf9a80141714f151d203f955fa5fd15382e1c7d1ed128ec9",
+        "tools/run_stage08_pilot.py": "8112b157d88c3829244479ff15ef4a67261f3086ae52d1b2d875290d4e3fa307"
+      }
+    },
+    {
+      "approved_reference_config_sha256": {
+        "configs/baselines/stage07-budget.json": "b95c07df89f25c08958a6a24da0f90b813258034f8680bce637b5a224a7a9096",
+        "configs/topology/stage05-controls.json": "dc43710cd415f6e33ecda13437fb2d454fd1c1a2d0615d57bf817933b6d15097"
+      },
+      "arm": "degree_preserving_rewired",
+      "best_checkpoint_sha256": "487982452fc2001bc57ac6c0f6bd1e6553066d7936e038165687ed70e9017ac5",
+      "best_epoch": 2,
+      "bike_evaluator_results": [
+        {
+          "arm": "0%",
+          "domain_macro": 0.0,
+          "domains": {
+            "transport": 0.0
+          },
+          "metric": "dropout",
+          "micro": 0.0,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.0
+        },
+        {
+          "arm": "10%",
+          "domain_macro": -0.00016089109140524725,
+          "domains": {
+            "transport": -0.00016089109140524725
+          },
+          "metric": "dropout",
+          "micro": -0.00016089109140524725,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": -0.00016089109140524725
+        },
+        {
+          "arm": "30%",
+          "domain_macro": 0.0007803972882726875,
+          "domains": {
+            "transport": 0.0007803972882726875
+          },
+          "metric": "dropout",
+          "micro": 0.0007803972882726875,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.0007803972882726875
+        },
+        {
+          "arm": "50%",
+          "domain_macro": 8.98042431073205e-05,
+          "domains": {
+            "transport": 8.98042431073205e-05
+          },
+          "metric": "dropout",
+          "micro": 8.98042431073205e-05,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 8.98042431073205e-05
+        },
+        {
+          "arm": "identity",
+          "domain_macro": 0.0,
+          "domains": {
+            "transport": 0.0
+          },
+          "metric": "permutation",
+          "micro": 0.0,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.0
+        },
+        {
+          "arm": "perm_0",
+          "domain_macro": 2.1115790817261004e-08,
+          "domains": {
+            "transport": 2.1115790817261004e-08
+          },
+          "metric": "permutation",
+          "micro": 2.1115790817261004e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 2.1115790817261004e-08
+        },
+        {
+          "arm": "perm_1",
+          "domain_macro": 1.7506528705857338e-08,
+          "domains": {
+            "transport": 1.7506528705857338e-08
+          },
+          "metric": "permutation",
+          "micro": 1.7506528705857338e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 1.7506528705857338e-08
+        },
+        {
+          "arm": "perm_2",
+          "domain_macro": 1.8769765491866153e-08,
+          "domains": {
+            "transport": 1.8769765491866153e-08
+          },
+          "metric": "permutation",
+          "micro": 1.8769765491866153e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 1.8769765491866153e-08
+        },
+        {
+          "arm": "perm_3",
+          "domain_macro": 1.5620706714236654e-08,
+          "domains": {
+            "transport": 1.5620706714236654e-08
+          },
+          "metric": "permutation",
+          "micro": 1.5620706714236654e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 1.5620706714236654e-08
+        },
+        {
+          "arm": "perm_4",
+          "domain_macro": 2.289597521992759e-08,
+          "domains": {
+            "transport": 2.289597521992759e-08
+          },
+          "metric": "permutation",
+          "micro": 2.289597521992759e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 2.289597521992759e-08
+        },
+        {
+          "arm": "perm_5",
+          "domain_macro": 2.2479815127429692e-08,
+          "domains": {
+            "transport": 2.2479815127429692e-08
+          },
+          "metric": "permutation",
+          "micro": 2.2479815127429692e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 2.2479815127429692e-08
+        },
+        {
+          "arm": "perm_6",
+          "domain_macro": 2.4184583828634754e-08,
+          "domains": {
+            "transport": 2.4184583828634754e-08
+          },
+          "metric": "permutation",
+          "micro": 2.4184583828634754e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 2.4184583828634754e-08
+        },
+        {
+          "arm": "perm_7",
+          "domain_macro": 1.2721672514037774e-08,
+          "domains": {
+            "transport": 1.2721672514037774e-08
+          },
+          "metric": "permutation",
+          "micro": 1.2721672514037774e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 1.2721672514037774e-08
+        },
+        {
+          "arm": "baseline",
+          "domain_macro": 0.5090281944721937,
+          "domains": {
+            "transport": 0.5090281944721937
+          },
+          "metric": "reconstruction",
+          "micro": 0.5090281944721937,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.5090281944721937
+        }
+      ],
+      "bike_evaluator_runtime": {
+        "device": "cpu",
+        "evaluation_seconds": 3.2454375000670552,
+        "peak_rss_bytes": 553189376,
+        "python": "3.12.14",
+        "seconds": 271.81422559998464,
+        "setup_seconds": 268.5162627999671,
+        "threads": 4,
+        "torch": "2.14.0+cpu"
+      },
+      "config_source_sha256": "7a5beeda26039cd84c937e9677303b30ae6ae321cc19fcc78c43dceae6c640b3",
+      "domain_registry_sha256": "0095d4cd76ad5fdaeefeccdbb4322187892cc155bfac619ca4c8618ea50b9b20",
+      "evaluation_config_sha256": "8495082014eb539e64c7671cc9227509b3769c4709a954f5dade71ced09e1211",
+      "evaluation_fixture_sha256": "3370e2f3b6c6a8695024100cef607db5d582e059e5f271cffd59e666e6539bfa",
+      "evaluation_records_sha256": "c7a99a0161a41fb12657540c8186b4a6a980515d7d6a0efbf303d3a81e9cdadb",
+      "evaluation_summary_sha256": "e78e089d8b869a338cc53763ea2829dd6a2895f6a009bb15fe4099ec39ba3013",
+      "input_paths": {
+        "domain_registry": "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\configs\\domain_roles_v1.json",
+        "manifest": "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\data\\stage06-public-v1-r2\\manifest.json"
+      },
+      "last_checkpoint_sha256": "ecd48764d040f7f1b1aca60ef924df2324be564cca7b3a9a7273e843c029e998",
+      "manifest_sha256": "44bafe48196a4afd096e387dc672cad128d390ab7e5b413ea6cbeadf5f3e7f6c",
+      "mode": "pilot",
+      "optimizer_steps": 400,
+      "parameter_count": 68760,
+      "pilot_config_sha256": {
+        "configs/pilot/stage08/degree_preserving_rewired.json": "7a5beeda26039cd84c937e9677303b30ae6ae321cc19fcc78c43dceae6c640b3",
+        "configs/pilot/stage08/dense_leaky.json": "4f3ab9f4d1986621fbb97ca7f997d1171e57c79a358a41f1759e3e665c704ac6",
+        "configs/pilot/stage08/fly_like.json": "ea3e9ee3dbc02c2e559aa81429bc29c70dd5291cc9571ab89bd7d540047c38c8",
+        "configs/pilot/stage08/gru.json": "dfcbf736bc83410a74c9f18636d2176ad7135ddd854c5d1521d224e768525aea",
+        "configs/pilot/stage08/random_sparse.json": "1957c23e2c0f66a0f2efea1354f93d556f94216212a8da56b0d92258f1a80a31"
+      },
+      "pilot_manifest_sha256": "08acbd5efda5dced9ca7aa71c6b338afabc6ade89388a6005ea13805ee1c6c8e",
+      "pre_resume_checkpoint_sha256": "7fa830488b04bc4a5f7e381e1e02870834d7e570dca0b8f7e7f2f25e70db12ca",
+      "role": "core",
+      "run_config_sha256": "7a5beeda26039cd84c937e9677303b30ae6ae321cc19fcc78c43dceae6c640b3",
+      "sample_exposure": 3200,
+      "schema_version": 2,
+      "segment_resource_sha256": [
+        "c85e078590a97a004e84c27481616dbd0c72e179fb1af0e9f16d2c21074e3da2",
+        "3597834431b1cb7135299e6519d95e90091bc44bfef0fa772e71f700fe3a0a7d"
+      ],
+      "segments": [
+        {
+          "argv": [
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\.venv\\Scripts\\python.exe",
+            "-m",
+            "flyts",
+            "pretrain",
+            "--manifest",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\data\\stage06-public-v1-r2\\manifest.json",
+            "--domain-registry",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\configs\\domain_roles_v1.json",
+            "--config",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\degree_preserving_rewired.run_config.json",
+            "--output",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\degree_preserving_rewired",
+            "--device",
+            "cpu",
+            "--development-only",
+            "--epochs",
+            "1"
+          ],
+          "resource": {
+            "checkpoint_seconds": 0.03526059992145747,
+            "device": "cpu",
+            "dtype": "float32",
+            "measured_steps": 200,
+            "peak_rss_bytes": 594993152,
+            "setup_seconds": 272.91773660003673,
+            "steady_step_seconds": 0.03611639598103699,
+            "threads": 4,
+            "training_step_seconds": 7.244207600015216,
+            "validation_seconds": 0.4055580999702215,
+            "wall_seconds": 280.6027713000076
+          }
+        },
+        {
+          "argv": [
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\.venv\\Scripts\\python.exe",
+            "-m",
+            "flyts",
+            "pretrain",
+            "--manifest",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\data\\stage06-public-v1-r2\\manifest.json",
+            "--domain-registry",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\configs\\domain_roles_v1.json",
+            "--config",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\degree_preserving_rewired.run_config.json",
+            "--output",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\degree_preserving_rewired",
+            "--device",
+            "cpu",
+            "--development-only",
+            "--resume",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\degree_preserving_rewired\\pre_resume_last.pt",
+            "--epochs",
+            "2"
+          ],
+          "resource": {
+            "checkpoint_seconds": 0.020667199976742268,
+            "device": "cpu",
+            "dtype": "float32",
+            "measured_steps": 200,
+            "peak_rss_bytes": 678592512,
+            "setup_seconds": 644.2060532000614,
+            "steady_step_seconds": 0.0292594557787156,
+            "threads": 4,
+            "training_step_seconds": 5.871647399966605,
+            "validation_seconds": 0.4175120999570936,
+            "wall_seconds": 650.5158862000098
+          }
+        }
+      ],
+      "selection_history": [
+        {
+          "epoch": 1,
+          "seconds": 7.650801600073464,
+          "tau": [
+            0.11691557615995407,
+            0.17248962819576263,
+            0.2984541356563568,
+            0.6343539953231812,
+            1.7283951044082642,
+            6.178107738494873,
+            28.51873207092285,
+            158.64794921875,
+            1000.1484375,
+            5416.8623046875,
+            23302.845703125,
+            87316.0703125,
+            236676.546875,
+            497015.25,
+            870621.6875,
+            1279180.875
+          ],
+          "train_loss": 0.9211498562991619,
+          "val_by_domain": {
+            "appliances": 1.313995247485364,
+            "beijing": 0.6372956272171822
+          },
+          "val_loss": 0.9756454373512731,
+          "val_visible_mean_baseline": 0.9890735556972676
+        },
+        {
+          "epoch": 2,
+          "seconds": 6.2902029999531806,
+          "tau": [
+            0.11692007631063461,
+            0.17249912023544312,
+            0.29847702383995056,
+            0.6343869566917419,
+            1.7285126447677612,
+            6.178364276885986,
+            28.52012062072754,
+            158.6502227783203,
+            1177.107177734375,
+            8014.5712890625,
+            22552.357421875,
+            88220.8046875,
+            223674.359375,
+            463559.96875,
+            822657.75,
+            1229606.125
+          ],
+          "train_loss": 0.7391455911099911,
+          "val_by_domain": {
+            "appliances": 1.311898088238127,
+            "beijing": 0.6301471722078279
+          },
+          "val_loss": 0.9710226302229774,
+          "val_visible_mean_baseline": 0.9890735556972676
+        }
+      ],
+      "source_sha256": {
+        "src/flyts/__init__.py": "5c0e10fa69d36f9cf1bfa2523c2fa967548c0e5aeb3a5d695257c27839a100cc",
+        "src/flyts/__main__.py": "5857dfa81351de0008a8863355a152098f5c48668ab165e9c919f6704b6838fb",
+        "src/flyts/backbones/__init__.py": "4754be3ed2ca9b22b990d1d09b11c94f6127508c7961c5d1a77892e01e1a6372",
+        "src/flyts/backbones/base.py": "7620967f8d6a6415d7b8f5c8e9a57305c0ae154d849057ecdd3b5ee3c47abad2",
+        "src/flyts/backbones/budget.py": "0c1f3e773fe1a5dabcc99b86f7d6f818d5f6ab94e51148b72960e14642f22a2e",
+        "src/flyts/backbones/dense_leaky.py": "b3f738d833cb003660208ad363a4591b1cb7c9e5038afd3f3b2c38f3a1482a33",
+        "src/flyts/backbones/fly_sparse.py": "332f7093d01395b305e7b69721eb95481d348d40f1e90b7aca9b76b7dba875ea",
+        "src/flyts/backbones/gru.py": "7985efdf96f79296ed2b81879c75f35f53cd610a74d852dc4c0c2fa01e715d89",
+        "src/flyts/backbones/registry.py": "da51eefd8c6b378e828d5de9301f942c9e84960d688f4a7201f2b0a0c4477dcd",
+        "src/flyts/backbones/seeding.py": "fd1c62d2426f8520f06f00bad5dee194557ea34529a8107425228069095803a1",
+        "src/flyts/corpus.py": "def9fca5c9aae40bedd83f40eff043ce9cfaff0616bb9447602ce89d27ec4564",
+        "src/flyts/data.py": "465e5a14a86e4f8814d3dd3abb2a3ed6b41420f6feaceacba36421331a576145",
+        "src/flyts/datasets/__init__.py": "2168b76d52d5ecba2c039c5e6dde7dedbdf6db4305c198e7e6318f9e15b06946",
+        "src/flyts/datasets/electricity.py": "79f911c65c6d0154e03da77b1b48bfe7175f212f41c96a02ebff6697da634745",
+        "src/flyts/evaluation.py": "8642b6a08b9e93d72df386027ba8841505eee1184e8014d9a171827feeb4cca3",
+        "src/flyts/foundation.py": "630c1a38f18ceafcfb9745739243a493e9ddf0bf3ab57dc5e25d6bdff5dd0717",
+        "src/flyts/masking.py": "2c4c96deabd77feeae81d4af41c6f7f9585fd03e6f5442bc2ab429678974445a",
+        "src/flyts/model.py": "05d43c822cf9d8bb1e308490175659fab188ea34d7c7685a5edb47f3082b5f69",
+        "src/flyts/prepare.py": "38017b34fbf8f2381830b4fcac7714523f61a87c0603d96c4dc5d6656a95172f",
+        "src/flyts/topology/__init__.py": "c610c7fa99d14c816857ae2232ed912cac40cdbdf6293ee630a1de80be47b3d2",
+        "src/flyts/topology/base.py": "e00fbf4187c6af06b7368c456d807f3293a12b0a03242232f1ed1d793f79e80f",
+        "src/flyts/topology/controls.py": "0f7a9cfa65213d77c6b26869f0a911b49bfa15432829329a99a496fe7cf9f51f",
+        "src/flyts/topology/fly_like.py": "8ee9a75ca68293f98a5208206c1ef698e6b39c4854db9a8b16315e91122bb256",
+        "src/flyts/topology/stats.py": "d298367f404899f09f70dcfed70b99779254911c241ef66cdb374199b1e6ba88",
+        "src/flyts/topology/validation.py": "1afdab3e1f29094a8ccb03f2db889b23917185fca870d6bbecfb05e250042531",
+        "src/flyts/training.py": "c29e91b2377a05d6b892ca4f18e36d2ec512d8465d539b812b2764285d9341f4"
+      },
+      "steps_per_segment": 200,
+      "tool_sha256": {
+        "tools/report_stage08_pilot.py": "0c3910ca6e88421edf9a80141714f151d203f955fa5fd15382e1c7d1ed128ec9",
+        "tools/run_stage08_pilot.py": "8112b157d88c3829244479ff15ef4a67261f3086ae52d1b2d875290d4e3fa307"
+      }
+    },
+    {
+      "approved_reference_config_sha256": {
+        "configs/baselines/stage07-budget.json": "b95c07df89f25c08958a6a24da0f90b813258034f8680bce637b5a224a7a9096",
+        "configs/topology/stage05-controls.json": "dc43710cd415f6e33ecda13437fb2d454fd1c1a2d0615d57bf817933b6d15097"
+      },
+      "arm": "random_sparse",
+      "best_checkpoint_sha256": "373e9d98297e29b45082963ab5fe8f208699ebd07654d29603848a054540e9e7",
+      "best_epoch": 2,
+      "bike_evaluator_results": [
+        {
+          "arm": "0%",
+          "domain_macro": 0.0,
+          "domains": {
+            "transport": 0.0
+          },
+          "metric": "dropout",
+          "micro": 0.0,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.0
+        },
+        {
+          "arm": "10%",
+          "domain_macro": -0.00016451071680645185,
+          "domains": {
+            "transport": -0.00016451071680645185
+          },
+          "metric": "dropout",
+          "micro": -0.00016451071680645185,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": -0.00016451071680645185
+        },
+        {
+          "arm": "30%",
+          "domain_macro": 0.0009085578682964712,
+          "domains": {
+            "transport": 0.0009085578682964712
+          },
+          "metric": "dropout",
+          "micro": 0.0009085578682964712,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.0009085578682964712
+        },
+        {
+          "arm": "50%",
+          "domain_macro": 0.00024212593402158657,
+          "domains": {
+            "transport": 0.00024212593402158657
+          },
+          "metric": "dropout",
+          "micro": 0.00024212593402158657,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.00024212593402158657
+        },
+        {
+          "arm": "identity",
+          "domain_macro": 0.0,
+          "domains": {
+            "transport": 0.0
+          },
+          "metric": "permutation",
+          "micro": 0.0,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.0
+        },
+        {
+          "arm": "perm_0",
+          "domain_macro": 9.02695122123598e-09,
+          "domains": {
+            "transport": 9.02695122123598e-09
+          },
+          "metric": "permutation",
+          "micro": 9.02695122123598e-09,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 9.02695122123598e-09
+        },
+        {
+          "arm": "perm_1",
+          "domain_macro": 1.9545723387026648e-08,
+          "domains": {
+            "transport": 1.9545723387026648e-08
+          },
+          "metric": "permutation",
+          "micro": 1.9545723387026648e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 1.9545723387026648e-08
+        },
+        {
+          "arm": "perm_2",
+          "domain_macro": 1.4326765149230702e-08,
+          "domains": {
+            "transport": 1.4326765149230702e-08
+          },
+          "metric": "permutation",
+          "micro": 1.4326765149230702e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 1.4326765149230702e-08
+        },
+        {
+          "arm": "perm_3",
+          "domain_macro": 1.2492515299999951e-08,
+          "domains": {
+            "transport": 1.2492515299999951e-08
+          },
+          "metric": "permutation",
+          "micro": 1.2492515299999951e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 1.2492515299999951e-08
+        },
+        {
+          "arm": "perm_4",
+          "domain_macro": 1.6434051126890115e-08,
+          "domains": {
+            "transport": 1.6434051126890115e-08
+          },
+          "metric": "permutation",
+          "micro": 1.6434051126890115e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 1.6434051126890115e-08
+        },
+        {
+          "arm": "perm_5",
+          "domain_macro": 1.2931036789953776e-08,
+          "domains": {
+            "transport": 1.2931036789953776e-08
+          },
+          "metric": "permutation",
+          "micro": 1.2931036789953776e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 1.2931036789953776e-08
+        },
+        {
+          "arm": "perm_6",
+          "domain_macro": 2.1918210163507368e-08,
+          "domains": {
+            "transport": 2.1918210163507368e-08
+          },
+          "metric": "permutation",
+          "micro": 2.1918210163507368e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 2.1918210163507368e-08
+        },
+        {
+          "arm": "perm_7",
+          "domain_macro": 2.009594957108618e-08,
+          "domains": {
+            "transport": 2.009594957108618e-08
+          },
+          "metric": "permutation",
+          "micro": 2.009594957108618e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 2.009594957108618e-08
+        },
+        {
+          "arm": "baseline",
+          "domain_macro": 0.5090343616902828,
+          "domains": {
+            "transport": 0.5090343616902828
+          },
+          "metric": "reconstruction",
+          "micro": 0.5090343616902828,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.5090343616902828
+        }
+      ],
+      "bike_evaluator_runtime": {
+        "device": "cpu",
+        "evaluation_seconds": 3.2452403999632224,
+        "peak_rss_bytes": 554147840,
+        "python": "3.12.14",
+        "seconds": 3.330417999997735,
+        "setup_seconds": 0.04537589999381453,
+        "threads": 4,
+        "torch": "2.14.0+cpu"
+      },
+      "config_source_sha256": "1957c23e2c0f66a0f2efea1354f93d556f94216212a8da56b0d92258f1a80a31",
+      "domain_registry_sha256": "0095d4cd76ad5fdaeefeccdbb4322187892cc155bfac619ca4c8618ea50b9b20",
+      "evaluation_config_sha256": "8495082014eb539e64c7671cc9227509b3769c4709a954f5dade71ced09e1211",
+      "evaluation_fixture_sha256": "3370e2f3b6c6a8695024100cef607db5d582e059e5f271cffd59e666e6539bfa",
+      "evaluation_records_sha256": "92363eac0ad9c7e10c15e86c23db0637c6f1b540e3263d48ac9621d616bf891e",
+      "evaluation_summary_sha256": "fe27a3756442feb09a7c6382c88d006a4b4679be7c06c07a7e1fd414f69d8a71",
+      "input_paths": {
+        "domain_registry": "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\configs\\domain_roles_v1.json",
+        "manifest": "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\data\\stage06-public-v1-r2\\manifest.json"
+      },
+      "last_checkpoint_sha256": "b7fd9858ee3aee9a51d94a099fcfddce9b3c7c78194c0814903a4412c2ceefe7",
+      "manifest_sha256": "44bafe48196a4afd096e387dc672cad128d390ab7e5b413ea6cbeadf5f3e7f6c",
+      "mode": "pilot",
+      "optimizer_steps": 400,
+      "parameter_count": 68760,
+      "pilot_config_sha256": {
+        "configs/pilot/stage08/degree_preserving_rewired.json": "7a5beeda26039cd84c937e9677303b30ae6ae321cc19fcc78c43dceae6c640b3",
+        "configs/pilot/stage08/dense_leaky.json": "4f3ab9f4d1986621fbb97ca7f997d1171e57c79a358a41f1759e3e665c704ac6",
+        "configs/pilot/stage08/fly_like.json": "ea3e9ee3dbc02c2e559aa81429bc29c70dd5291cc9571ab89bd7d540047c38c8",
+        "configs/pilot/stage08/gru.json": "dfcbf736bc83410a74c9f18636d2176ad7135ddd854c5d1521d224e768525aea",
+        "configs/pilot/stage08/random_sparse.json": "1957c23e2c0f66a0f2efea1354f93d556f94216212a8da56b0d92258f1a80a31"
+      },
+      "pilot_manifest_sha256": "08acbd5efda5dced9ca7aa71c6b338afabc6ade89388a6005ea13805ee1c6c8e",
+      "pre_resume_checkpoint_sha256": "baedfd87d71a3199821ab28a47ffba0f460211af4e39b1803963aa88074a9a40",
+      "role": "core",
+      "run_config_sha256": "1957c23e2c0f66a0f2efea1354f93d556f94216212a8da56b0d92258f1a80a31",
+      "sample_exposure": 3200,
+      "schema_version": 2,
+      "segment_resource_sha256": [
+        "37e67c4416c6b715d4439c144c53c708af5c144515498147f9b73fb6967c7e82",
+        "fdbce74711df35ce58f0cde253a1cd39ab6697c61bc229a18c676b6950b6c1b4"
+      ],
+      "segments": [
+        {
+          "argv": [
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\.venv\\Scripts\\python.exe",
+            "-m",
+            "flyts",
+            "pretrain",
+            "--manifest",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\data\\stage06-public-v1-r2\\manifest.json",
+            "--domain-registry",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\configs\\domain_roles_v1.json",
+            "--config",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\random_sparse.run_config.json",
+            "--output",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\random_sparse",
+            "--device",
+            "cpu",
+            "--development-only",
+            "--epochs",
+            "1"
+          ],
+          "resource": {
+            "checkpoint_seconds": 0.023356799967586994,
+            "device": "cpu",
+            "dtype": "float32",
+            "measured_steps": 200,
+            "peak_rss_bytes": 342028288,
+            "setup_seconds": 2.1119659000542015,
+            "steady_step_seconds": 0.029722785928763974,
+            "threads": 4,
+            "training_step_seconds": 5.963476200005971,
+            "validation_seconds": 0.31041409994941205,
+            "wall_seconds": 8.409223400056362
+          }
+        },
+        {
+          "argv": [
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\.venv\\Scripts\\python.exe",
+            "-m",
+            "flyts",
+            "pretrain",
+            "--manifest",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\data\\stage06-public-v1-r2\\manifest.json",
+            "--domain-registry",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\configs\\domain_roles_v1.json",
+            "--config",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\random_sparse.run_config.json",
+            "--output",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\random_sparse",
+            "--device",
+            "cpu",
+            "--development-only",
+            "--resume",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\random_sparse\\pre_resume_last.pt",
+            "--epochs",
+            "2"
+          ],
+          "resource": {
+            "checkpoint_seconds": 0.025613599922508,
+            "device": "cpu",
+            "dtype": "float32",
+            "measured_steps": 200,
+            "peak_rss_bytes": 344268800,
+            "setup_seconds": 1.8588112000143155,
+            "steady_step_seconds": 0.03152758693357639,
+            "threads": 4,
+            "training_step_seconds": 6.312135799904354,
+            "validation_seconds": 0.34431030007544905,
+            "wall_seconds": 8.540877199964598
+          }
+        }
+      ],
+      "selection_history": [
+        {
+          "epoch": 1,
+          "seconds": 6.275658400030807,
+          "tau": [
+            0.11691557615995407,
+            0.17248962819576263,
+            0.2984541356563568,
+            0.6343539953231812,
+            1.7283951044082642,
+            6.178107738494873,
+            28.51873207092285,
+            158.64794921875,
+            1007.7870483398438,
+            5438.94482421875,
+            23402.595703125,
+            87525.9140625,
+            237037.984375,
+            497282.65625,
+            870912.4375,
+            1278634.375
+          ],
+          "train_loss": 0.9211569795012474,
+          "val_by_domain": {
+            "appliances": 1.313936616533865,
+            "beijing": 0.6374396711644902
+          },
+          "val_loss": 0.9756881438491776,
+          "val_visible_mean_baseline": 0.9890735556972676
+        },
+        {
+          "epoch": 2,
+          "seconds": 6.657806999981403,
+          "tau": [
+            0.11692007631063461,
+            0.17249912023544312,
+            0.29847702383995056,
+            0.6343869566917419,
+            1.7285126447677612,
+            6.178364276885986,
+            28.52012062072754,
+            158.6502227783203,
+            1137.833740234375,
+            8114.6455078125,
+            21611.625,
+            88019.1953125,
+            224036.859375,
+            463765.09375,
+            823276.1875,
+            1229146.5
+          ],
+          "train_loss": 0.7390920133888721,
+          "val_by_domain": {
+            "appliances": 1.3117153609588885,
+            "beijing": 0.6293764319648426
+          },
+          "val_loss": 0.9705458964618656,
+          "val_visible_mean_baseline": 0.9890735556972676
+        }
+      ],
+      "source_sha256": {
+        "src/flyts/__init__.py": "5c0e10fa69d36f9cf1bfa2523c2fa967548c0e5aeb3a5d695257c27839a100cc",
+        "src/flyts/__main__.py": "5857dfa81351de0008a8863355a152098f5c48668ab165e9c919f6704b6838fb",
+        "src/flyts/backbones/__init__.py": "4754be3ed2ca9b22b990d1d09b11c94f6127508c7961c5d1a77892e01e1a6372",
+        "src/flyts/backbones/base.py": "7620967f8d6a6415d7b8f5c8e9a57305c0ae154d849057ecdd3b5ee3c47abad2",
+        "src/flyts/backbones/budget.py": "0c1f3e773fe1a5dabcc99b86f7d6f818d5f6ab94e51148b72960e14642f22a2e",
+        "src/flyts/backbones/dense_leaky.py": "b3f738d833cb003660208ad363a4591b1cb7c9e5038afd3f3b2c38f3a1482a33",
+        "src/flyts/backbones/fly_sparse.py": "332f7093d01395b305e7b69721eb95481d348d40f1e90b7aca9b76b7dba875ea",
+        "src/flyts/backbones/gru.py": "7985efdf96f79296ed2b81879c75f35f53cd610a74d852dc4c0c2fa01e715d89",
+        "src/flyts/backbones/registry.py": "da51eefd8c6b378e828d5de9301f942c9e84960d688f4a7201f2b0a0c4477dcd",
+        "src/flyts/backbones/seeding.py": "fd1c62d2426f8520f06f00bad5dee194557ea34529a8107425228069095803a1",
+        "src/flyts/corpus.py": "def9fca5c9aae40bedd83f40eff043ce9cfaff0616bb9447602ce89d27ec4564",
+        "src/flyts/data.py": "465e5a14a86e4f8814d3dd3abb2a3ed6b41420f6feaceacba36421331a576145",
+        "src/flyts/datasets/__init__.py": "2168b76d52d5ecba2c039c5e6dde7dedbdf6db4305c198e7e6318f9e15b06946",
+        "src/flyts/datasets/electricity.py": "79f911c65c6d0154e03da77b1b48bfe7175f212f41c96a02ebff6697da634745",
+        "src/flyts/evaluation.py": "8642b6a08b9e93d72df386027ba8841505eee1184e8014d9a171827feeb4cca3",
+        "src/flyts/foundation.py": "630c1a38f18ceafcfb9745739243a493e9ddf0bf3ab57dc5e25d6bdff5dd0717",
+        "src/flyts/masking.py": "2c4c96deabd77feeae81d4af41c6f7f9585fd03e6f5442bc2ab429678974445a",
+        "src/flyts/model.py": "05d43c822cf9d8bb1e308490175659fab188ea34d7c7685a5edb47f3082b5f69",
+        "src/flyts/prepare.py": "38017b34fbf8f2381830b4fcac7714523f61a87c0603d96c4dc5d6656a95172f",
+        "src/flyts/topology/__init__.py": "c610c7fa99d14c816857ae2232ed912cac40cdbdf6293ee630a1de80be47b3d2",
+        "src/flyts/topology/base.py": "e00fbf4187c6af06b7368c456d807f3293a12b0a03242232f1ed1d793f79e80f",
+        "src/flyts/topology/controls.py": "0f7a9cfa65213d77c6b26869f0a911b49bfa15432829329a99a496fe7cf9f51f",
+        "src/flyts/topology/fly_like.py": "8ee9a75ca68293f98a5208206c1ef698e6b39c4854db9a8b16315e91122bb256",
+        "src/flyts/topology/stats.py": "d298367f404899f09f70dcfed70b99779254911c241ef66cdb374199b1e6ba88",
+        "src/flyts/topology/validation.py": "1afdab3e1f29094a8ccb03f2db889b23917185fca870d6bbecfb05e250042531",
+        "src/flyts/training.py": "c29e91b2377a05d6b892ca4f18e36d2ec512d8465d539b812b2764285d9341f4"
+      },
+      "steps_per_segment": 200,
+      "tool_sha256": {
+        "tools/report_stage08_pilot.py": "0c3910ca6e88421edf9a80141714f151d203f955fa5fd15382e1c7d1ed128ec9",
+        "tools/run_stage08_pilot.py": "8112b157d88c3829244479ff15ef4a67261f3086ae52d1b2d875290d4e3fa307"
+      }
+    },
+    {
+      "approved_reference_config_sha256": {
+        "configs/baselines/stage07-budget.json": "b95c07df89f25c08958a6a24da0f90b813258034f8680bce637b5a224a7a9096",
+        "configs/topology/stage05-controls.json": "dc43710cd415f6e33ecda13437fb2d454fd1c1a2d0615d57bf817933b6d15097"
+      },
+      "arm": "gru",
+      "best_checkpoint_sha256": "41bdc03207afd9e068e4455db1f30113a155d397f2a1957878024b6d7e65a523",
+      "best_epoch": 2,
+      "bike_evaluator_results": [
+        {
+          "arm": "0%",
+          "domain_macro": 0.0,
+          "domains": {
+            "transport": 0.0
+          },
+          "metric": "dropout",
+          "micro": 0.0,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.0
+        },
+        {
+          "arm": "10%",
+          "domain_macro": -0.0010419704887694922,
+          "domains": {
+            "transport": -0.0010419704887694922
+          },
+          "metric": "dropout",
+          "micro": -0.0010419704887694922,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": -0.0010419704887694922
+        },
+        {
+          "arm": "30%",
+          "domain_macro": 0.00177192618664761,
+          "domains": {
+            "transport": 0.00177192618664761
+          },
+          "metric": "dropout",
+          "micro": 0.00177192618664761,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.00177192618664761
+        },
+        {
+          "arm": "50%",
+          "domain_macro": 0.0026836249076244404,
+          "domains": {
+            "transport": 0.0026836249076244404
+          },
+          "metric": "dropout",
+          "micro": 0.0026836249076244404,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.0026836249076244404
+        },
+        {
+          "arm": "identity",
+          "domain_macro": 0.0,
+          "domains": {
+            "transport": 0.0
+          },
+          "metric": "permutation",
+          "micro": 0.0,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.0
+        },
+        {
+          "arm": "perm_0",
+          "domain_macro": 3.298034945836692e-08,
+          "domains": {
+            "transport": 3.298034945836692e-08
+          },
+          "metric": "permutation",
+          "micro": 3.298034945836692e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 3.298034945836692e-08
+        },
+        {
+          "arm": "perm_1",
+          "domain_macro": 3.123285608613857e-08,
+          "domains": {
+            "transport": 3.123285608613857e-08
+          },
+          "metric": "permutation",
+          "micro": 3.123285608613857e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 3.123285608613857e-08
+        },
+        {
+          "arm": "perm_2",
+          "domain_macro": 3.2173485736697316e-08,
+          "domains": {
+            "transport": 3.2173485736697316e-08
+          },
+          "metric": "permutation",
+          "micro": 3.2173485736697316e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 3.2173485736697316e-08
+        },
+        {
+          "arm": "perm_3",
+          "domain_macro": 2.5387889006356357e-08,
+          "domains": {
+            "transport": 2.5387889006356357e-08
+          },
+          "metric": "permutation",
+          "micro": 2.5387889006356357e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 2.5387889006356357e-08
+        },
+        {
+          "arm": "perm_4",
+          "domain_macro": 2.869978939223916e-08,
+          "domains": {
+            "transport": 2.869978939223916e-08
+          },
+          "metric": "permutation",
+          "micro": 2.869978939223916e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 2.869978939223916e-08
+        },
+        {
+          "arm": "perm_5",
+          "domain_macro": 2.97270835586394e-08,
+          "domains": {
+            "transport": 2.97270835586394e-08
+          },
+          "metric": "permutation",
+          "micro": 2.97270835586394e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 2.97270835586394e-08
+        },
+        {
+          "arm": "perm_6",
+          "domain_macro": 3.6376148683514575e-08,
+          "domains": {
+            "transport": 3.6376148683514575e-08
+          },
+          "metric": "permutation",
+          "micro": 3.6376148683514575e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 3.6376148683514575e-08
+        },
+        {
+          "arm": "perm_7",
+          "domain_macro": 2.984950905199346e-08,
+          "domains": {
+            "transport": 2.984950905199346e-08
+          },
+          "metric": "permutation",
+          "micro": 2.984950905199346e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 2.984950905199346e-08
+        },
+        {
+          "arm": "baseline",
+          "domain_macro": 0.5145261231809855,
+          "domains": {
+            "transport": 0.5145261231809855
+          },
+          "metric": "reconstruction",
+          "micro": 0.5145261231809855,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.5145261231809855
+        }
+      ],
+      "bike_evaluator_runtime": {
+        "device": "cpu",
+        "evaluation_seconds": 2.96193560003303,
+        "peak_rss_bytes": 554422272,
+        "python": "3.12.14",
+        "seconds": 3.057226200005971,
+        "setup_seconds": 0.05204870004672557,
+        "threads": 4,
+        "torch": "2.14.0+cpu"
+      },
+      "config_source_sha256": "dfcbf736bc83410a74c9f18636d2176ad7135ddd854c5d1521d224e768525aea",
+      "domain_registry_sha256": "0095d4cd76ad5fdaeefeccdbb4322187892cc155bfac619ca4c8618ea50b9b20",
+      "evaluation_config_sha256": "8495082014eb539e64c7671cc9227509b3769c4709a954f5dade71ced09e1211",
+      "evaluation_fixture_sha256": "3370e2f3b6c6a8695024100cef607db5d582e059e5f271cffd59e666e6539bfa",
+      "evaluation_records_sha256": "c595184bb55611228cf63296d4fa8146fb5dfb3819d0d6184577c2792d29c82e",
+      "evaluation_summary_sha256": "854f57d90872ff6c86c8155915aa2a8a0c00436d97923751d43de495d45e3fef",
+      "input_paths": {
+        "domain_registry": "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\configs\\domain_roles_v1.json",
+        "manifest": "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\data\\stage06-public-v1-r2\\manifest.json"
+      },
+      "last_checkpoint_sha256": "18bdad89dada89137e809e5cd0bd6fd61cb649403a2a7ef25ea84710bb6ca119",
+      "manifest_sha256": "44bafe48196a4afd096e387dc672cad128d390ab7e5b413ea6cbeadf5f3e7f6c",
+      "mode": "pilot",
+      "optimizer_steps": 400,
+      "parameter_count": 68853,
+      "pilot_config_sha256": {
+        "configs/pilot/stage08/degree_preserving_rewired.json": "7a5beeda26039cd84c937e9677303b30ae6ae321cc19fcc78c43dceae6c640b3",
+        "configs/pilot/stage08/dense_leaky.json": "4f3ab9f4d1986621fbb97ca7f997d1171e57c79a358a41f1759e3e665c704ac6",
+        "configs/pilot/stage08/fly_like.json": "ea3e9ee3dbc02c2e559aa81429bc29c70dd5291cc9571ab89bd7d540047c38c8",
+        "configs/pilot/stage08/gru.json": "dfcbf736bc83410a74c9f18636d2176ad7135ddd854c5d1521d224e768525aea",
+        "configs/pilot/stage08/random_sparse.json": "1957c23e2c0f66a0f2efea1354f93d556f94216212a8da56b0d92258f1a80a31"
+      },
+      "pilot_manifest_sha256": "08acbd5efda5dced9ca7aa71c6b338afabc6ade89388a6005ea13805ee1c6c8e",
+      "pre_resume_checkpoint_sha256": "4ba4acbb7c3fa66d56f7f54e35ad2990c70c967a074fe12482da17d827b29f46",
+      "role": "core",
+      "run_config_sha256": "dfcbf736bc83410a74c9f18636d2176ad7135ddd854c5d1521d224e768525aea",
+      "sample_exposure": 3200,
+      "schema_version": 2,
+      "segment_resource_sha256": [
+        "eb37779335f6b496da5b8fa1f37c2037c3d3839a028d3d0c956158a1ce09a2d6",
+        "c60e1d194cb4d921ce5aaee1c441f44e1420d92163103fb149bbd1666239c78c"
+      ],
+      "segments": [
+        {
+          "argv": [
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\.venv\\Scripts\\python.exe",
+            "-m",
+            "flyts",
+            "pretrain",
+            "--manifest",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\data\\stage06-public-v1-r2\\manifest.json",
+            "--domain-registry",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\configs\\domain_roles_v1.json",
+            "--config",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\gru.run_config.json",
+            "--output",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\gru",
+            "--device",
+            "cpu",
+            "--development-only",
+            "--epochs",
+            "1"
+          ],
+          "resource": {
+            "checkpoint_seconds": 0.01797039993107319,
+            "device": "cpu",
+            "dtype": "float32",
+            "measured_steps": 200,
+            "peak_rss_bytes": 347893760,
+            "setup_seconds": 1.7586542000062764,
+            "steady_step_seconds": 0.029139009547120325,
+            "threads": 4,
+            "training_step_seconds": 5.849321700050496,
+            "validation_seconds": 0.3114099999656901,
+            "wall_seconds": 7.937362900003791
+          }
+        },
+        {
+          "argv": [
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\.venv\\Scripts\\python.exe",
+            "-m",
+            "flyts",
+            "pretrain",
+            "--manifest",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\data\\stage06-public-v1-r2\\manifest.json",
+            "--domain-registry",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\configs\\domain_roles_v1.json",
+            "--config",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\gru.run_config.json",
+            "--output",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\gru",
+            "--device",
+            "cpu",
+            "--development-only",
+            "--resume",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\gru\\pre_resume_last.pt",
+            "--epochs",
+            "2"
+          ],
+          "resource": {
+            "checkpoint_seconds": 0.01042449998203665,
+            "device": "cpu",
+            "dtype": "float32",
+            "measured_steps": 200,
+            "peak_rss_bytes": 343453696,
+            "setup_seconds": 1.7466835000086576,
+            "steady_step_seconds": 0.03231692311573942,
+            "threads": 4,
+            "training_step_seconds": 6.48348920000717,
+            "validation_seconds": 0.3377471000421792,
+            "wall_seconds": 8.57835129997693
+          }
+        }
+      ],
+      "selection_history": [
+        {
+          "epoch": 1,
+          "seconds": 6.162149599986151,
+          "tau": null,
+          "train_loss": 0.9214154566824436,
+          "val_by_domain": {
+            "appliances": 1.3123683360229554,
+            "beijing": 0.6355269272033254
+          },
+          "val_loss": 0.9739476316131404,
+          "val_visible_mean_baseline": 0.9890735556972676
+        },
+        {
+          "epoch": 2,
+          "seconds": 6.822279800078832,
+          "tau": null,
+          "train_loss": 0.7287539821118116,
+          "val_by_domain": {
+            "appliances": 1.3008542482938559,
+            "beijing": 0.6195351108541546
+          },
+          "val_loss": 0.9601946795740053,
+          "val_visible_mean_baseline": 0.9890735556972676
+        }
+      ],
+      "source_sha256": {
+        "src/flyts/__init__.py": "5c0e10fa69d36f9cf1bfa2523c2fa967548c0e5aeb3a5d695257c27839a100cc",
+        "src/flyts/__main__.py": "5857dfa81351de0008a8863355a152098f5c48668ab165e9c919f6704b6838fb",
+        "src/flyts/backbones/__init__.py": "4754be3ed2ca9b22b990d1d09b11c94f6127508c7961c5d1a77892e01e1a6372",
+        "src/flyts/backbones/base.py": "7620967f8d6a6415d7b8f5c8e9a57305c0ae154d849057ecdd3b5ee3c47abad2",
+        "src/flyts/backbones/budget.py": "0c1f3e773fe1a5dabcc99b86f7d6f818d5f6ab94e51148b72960e14642f22a2e",
+        "src/flyts/backbones/dense_leaky.py": "b3f738d833cb003660208ad363a4591b1cb7c9e5038afd3f3b2c38f3a1482a33",
+        "src/flyts/backbones/fly_sparse.py": "332f7093d01395b305e7b69721eb95481d348d40f1e90b7aca9b76b7dba875ea",
+        "src/flyts/backbones/gru.py": "7985efdf96f79296ed2b81879c75f35f53cd610a74d852dc4c0c2fa01e715d89",
+        "src/flyts/backbones/registry.py": "da51eefd8c6b378e828d5de9301f942c9e84960d688f4a7201f2b0a0c4477dcd",
+        "src/flyts/backbones/seeding.py": "fd1c62d2426f8520f06f00bad5dee194557ea34529a8107425228069095803a1",
+        "src/flyts/corpus.py": "def9fca5c9aae40bedd83f40eff043ce9cfaff0616bb9447602ce89d27ec4564",
+        "src/flyts/data.py": "465e5a14a86e4f8814d3dd3abb2a3ed6b41420f6feaceacba36421331a576145",
+        "src/flyts/datasets/__init__.py": "2168b76d52d5ecba2c039c5e6dde7dedbdf6db4305c198e7e6318f9e15b06946",
+        "src/flyts/datasets/electricity.py": "79f911c65c6d0154e03da77b1b48bfe7175f212f41c96a02ebff6697da634745",
+        "src/flyts/evaluation.py": "8642b6a08b9e93d72df386027ba8841505eee1184e8014d9a171827feeb4cca3",
+        "src/flyts/foundation.py": "630c1a38f18ceafcfb9745739243a493e9ddf0bf3ab57dc5e25d6bdff5dd0717",
+        "src/flyts/masking.py": "2c4c96deabd77feeae81d4af41c6f7f9585fd03e6f5442bc2ab429678974445a",
+        "src/flyts/model.py": "05d43c822cf9d8bb1e308490175659fab188ea34d7c7685a5edb47f3082b5f69",
+        "src/flyts/prepare.py": "38017b34fbf8f2381830b4fcac7714523f61a87c0603d96c4dc5d6656a95172f",
+        "src/flyts/topology/__init__.py": "c610c7fa99d14c816857ae2232ed912cac40cdbdf6293ee630a1de80be47b3d2",
+        "src/flyts/topology/base.py": "e00fbf4187c6af06b7368c456d807f3293a12b0a03242232f1ed1d793f79e80f",
+        "src/flyts/topology/controls.py": "0f7a9cfa65213d77c6b26869f0a911b49bfa15432829329a99a496fe7cf9f51f",
+        "src/flyts/topology/fly_like.py": "8ee9a75ca68293f98a5208206c1ef698e6b39c4854db9a8b16315e91122bb256",
+        "src/flyts/topology/stats.py": "d298367f404899f09f70dcfed70b99779254911c241ef66cdb374199b1e6ba88",
+        "src/flyts/topology/validation.py": "1afdab3e1f29094a8ccb03f2db889b23917185fca870d6bbecfb05e250042531",
+        "src/flyts/training.py": "c29e91b2377a05d6b892ca4f18e36d2ec512d8465d539b812b2764285d9341f4"
+      },
+      "steps_per_segment": 200,
+      "tool_sha256": {
+        "tools/report_stage08_pilot.py": "0c3910ca6e88421edf9a80141714f151d203f955fa5fd15382e1c7d1ed128ec9",
+        "tools/run_stage08_pilot.py": "8112b157d88c3829244479ff15ef4a67261f3086ae52d1b2d875290d4e3fa307"
+      }
+    },
+    {
+      "approved_reference_config_sha256": {
+        "configs/baselines/stage07-budget.json": "b95c07df89f25c08958a6a24da0f90b813258034f8680bce637b5a224a7a9096",
+        "configs/topology/stage05-controls.json": "dc43710cd415f6e33ecda13437fb2d454fd1c1a2d0615d57bf817933b6d15097"
+      },
+      "arm": "dense_leaky",
+      "best_checkpoint_sha256": "f8444c1eb9ea20203437199ef13e5962cd7b620e57cb8aaeae82efe3bf561676",
+      "best_epoch": 2,
+      "bike_evaluator_results": [
+        {
+          "arm": "0%",
+          "domain_macro": 0.0,
+          "domains": {
+            "transport": 0.0
+          },
+          "metric": "dropout",
+          "micro": 0.0,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.0
+        },
+        {
+          "arm": "10%",
+          "domain_macro": -4.531947761498802e-06,
+          "domains": {
+            "transport": -4.531947761498802e-06
+          },
+          "metric": "dropout",
+          "micro": -4.531947761498802e-06,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": -4.531947761498802e-06
+        },
+        {
+          "arm": "30%",
+          "domain_macro": 1.7202359770299112e-05,
+          "domains": {
+            "transport": 1.7202359770299112e-05
+          },
+          "metric": "dropout",
+          "micro": 1.7202359770299112e-05,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 1.7202359770299112e-05
+        },
+        {
+          "arm": "50%",
+          "domain_macro": 3.109391142997355e-06,
+          "domains": {
+            "transport": 3.109391142997355e-06
+          },
+          "metric": "dropout",
+          "micro": 3.109391142997355e-06,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 3.109391142997355e-06
+        },
+        {
+          "arm": "identity",
+          "domain_macro": 0.0,
+          "domains": {
+            "transport": 0.0
+          },
+          "metric": "permutation",
+          "micro": 0.0,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.0
+        },
+        {
+          "arm": "perm_0",
+          "domain_macro": 2.997977903429483e-08,
+          "domains": {
+            "transport": 2.997977903429483e-08
+          },
+          "metric": "permutation",
+          "micro": 2.997977903429483e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 2.997977903429483e-08
+        },
+        {
+          "arm": "perm_1",
+          "domain_macro": 2.917739887198234e-08,
+          "domains": {
+            "transport": 2.917739887198234e-08
+          },
+          "metric": "permutation",
+          "micro": 2.917739887198234e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 2.917739887198234e-08
+        },
+        {
+          "arm": "perm_2",
+          "domain_macro": 3.6338943985858574e-08,
+          "domains": {
+            "transport": 3.6338943985858574e-08
+          },
+          "metric": "permutation",
+          "micro": 3.6338943985858574e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 3.6338943985858574e-08
+        },
+        {
+          "arm": "perm_3",
+          "domain_macro": 3.664294878635843e-08,
+          "domains": {
+            "transport": 3.664294878635843e-08
+          },
+          "metric": "permutation",
+          "micro": 3.664294878635843e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 3.664294878635843e-08
+        },
+        {
+          "arm": "perm_4",
+          "domain_macro": 2.7625509553541594e-08,
+          "domains": {
+            "transport": 2.7625509553541594e-08
+          },
+          "metric": "permutation",
+          "micro": 2.7625509553541594e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 2.7625509553541594e-08
+        },
+        {
+          "arm": "perm_5",
+          "domain_macro": 3.9041513008597484e-08,
+          "domains": {
+            "transport": 3.9041513008597484e-08
+          },
+          "metric": "permutation",
+          "micro": 3.9041513008597484e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 3.9041513008597484e-08
+        },
+        {
+          "arm": "perm_6",
+          "domain_macro": 2.5327679890885246e-08,
+          "domains": {
+            "transport": 2.5327679890885246e-08
+          },
+          "metric": "permutation",
+          "micro": 2.5327679890885246e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 2.5327679890885246e-08
+        },
+        {
+          "arm": "perm_7",
+          "domain_macro": 4.307343630383098e-08,
+          "domains": {
+            "transport": 4.307343630383098e-08
+          },
+          "metric": "permutation",
+          "micro": 4.307343630383098e-08,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 4.307343630383098e-08
+        },
+        {
+          "arm": "baseline",
+          "domain_macro": 0.5103947389870882,
+          "domains": {
+            "transport": 0.5103947389870882
+          },
+          "metric": "reconstruction",
+          "micro": 0.5103947389870882,
+          "records": 1,
+          "status": "defined",
+          "worst_domain": 0.5103947389870882
+        }
+      ],
+      "bike_evaluator_runtime": {
+        "device": "cpu",
+        "evaluation_seconds": 3.3842438999563456,
+        "peak_rss_bytes": 554831872,
+        "python": "3.12.14",
+        "seconds": 3.487715799943544,
+        "setup_seconds": 0.06413369998335838,
+        "threads": 4,
+        "torch": "2.14.0+cpu"
+      },
+      "config_source_sha256": "4f3ab9f4d1986621fbb97ca7f997d1171e57c79a358a41f1759e3e665c704ac6",
+      "domain_registry_sha256": "0095d4cd76ad5fdaeefeccdbb4322187892cc155bfac619ca4c8618ea50b9b20",
+      "evaluation_config_sha256": "8495082014eb539e64c7671cc9227509b3769c4709a954f5dade71ced09e1211",
+      "evaluation_fixture_sha256": "3370e2f3b6c6a8695024100cef607db5d582e059e5f271cffd59e666e6539bfa",
+      "evaluation_records_sha256": "50b4d512dd54cadf929189fd99d0579c48d64a463d5db0adee33949367e6b296",
+      "evaluation_summary_sha256": "0cfb5e5b85cc2701f571cbd302bcfb74f571ead6aa9c8f5a372ee813c2ae0e76",
+      "input_paths": {
+        "domain_registry": "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\configs\\domain_roles_v1.json",
+        "manifest": "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\data\\stage06-public-v1-r2\\manifest.json"
+      },
+      "last_checkpoint_sha256": "fe8cdde873c893aadb7c57a0ede6f392c6def9b9f95eb9d01412b22f2118e1a2",
+      "manifest_sha256": "44bafe48196a4afd096e387dc672cad128d390ab7e5b413ea6cbeadf5f3e7f6c",
+      "mode": "pilot",
+      "optimizer_steps": 20,
+      "parameter_count": 68530,
+      "pilot_config_sha256": {
+        "configs/pilot/stage08/degree_preserving_rewired.json": "7a5beeda26039cd84c937e9677303b30ae6ae321cc19fcc78c43dceae6c640b3",
+        "configs/pilot/stage08/dense_leaky.json": "4f3ab9f4d1986621fbb97ca7f997d1171e57c79a358a41f1759e3e665c704ac6",
+        "configs/pilot/stage08/fly_like.json": "ea3e9ee3dbc02c2e559aa81429bc29c70dd5291cc9571ab89bd7d540047c38c8",
+        "configs/pilot/stage08/gru.json": "dfcbf736bc83410a74c9f18636d2176ad7135ddd854c5d1521d224e768525aea",
+        "configs/pilot/stage08/random_sparse.json": "1957c23e2c0f66a0f2efea1354f93d556f94216212a8da56b0d92258f1a80a31"
+      },
+      "pilot_manifest_sha256": "08acbd5efda5dced9ca7aa71c6b338afabc6ade89388a6005ea13805ee1c6c8e",
+      "pre_resume_checkpoint_sha256": "f8cc0ea75a2cedf97c12cb524d9aa4b62ce6442ee1fa067362a0ddcf03d78eae",
+      "role": "diagnostic",
+      "run_config_sha256": "4f3ab9f4d1986621fbb97ca7f997d1171e57c79a358a41f1759e3e665c704ac6",
+      "sample_exposure": 160,
+      "schema_version": 2,
+      "segment_resource_sha256": [
+        "08452126b00e311dbc54f1b018856e89f49a713426ea22512292cd2aaec3926e",
+        "d0a75246a83720d0400d264108023094bdacc515404a490ff7de36f5eceb0448"
+      ],
+      "segments": [
+        {
+          "argv": [
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\.venv\\Scripts\\python.exe",
+            "-m",
+            "flyts",
+            "pretrain",
+            "--manifest",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\data\\stage06-public-v1-r2\\manifest.json",
+            "--domain-registry",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\configs\\domain_roles_v1.json",
+            "--config",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\dense_leaky.run_config.json",
+            "--output",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\dense_leaky",
+            "--device",
+            "cpu",
+            "--development-only",
+            "--epochs",
+            "1"
+          ],
+          "resource": {
+            "checkpoint_seconds": 0.016997799975797534,
+            "device": "cpu",
+            "dtype": "float32",
+            "measured_steps": 10,
+            "peak_rss_bytes": 333979648,
+            "setup_seconds": 1.8256409999448806,
+            "steady_step_seconds": 0.037532866660815976,
+            "threads": 4,
+            "training_step_seconds": 0.3804309000261128,
+            "validation_seconds": 0.3769272000063211,
+            "wall_seconds": 2.6000039000064135
+          }
+        },
+        {
+          "argv": [
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\.venv\\Scripts\\python.exe",
+            "-m",
+            "flyts",
+            "pretrain",
+            "--manifest",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\data\\stage06-public-v1-r2\\manifest.json",
+            "--domain-registry",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\configs\\domain_roles_v1.json",
+            "--config",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\dense_leaky.run_config.json",
+            "--output",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\dense_leaky",
+            "--device",
+            "cpu",
+            "--development-only",
+            "--resume",
+            "C:\\Users\\Yonghoon Lee\\Desktop\\git_space\\FlyTS_lab\\20260924\\step_0_dev\\outputs\\stage08-pilot\\pilot-20260927-v1\\dense_leaky\\pre_resume_last.pt",
+            "--epochs",
+            "2"
+          ],
+          "resource": {
+            "checkpoint_seconds": 0.012740699923597276,
+            "device": "cpu",
+            "dtype": "float32",
+            "measured_steps": 10,
+            "peak_rss_bytes": 333012992,
+            "setup_seconds": 1.9246908000204712,
+            "steady_step_seconds": 0.04296538889563332,
+            "threads": 4,
+            "training_step_seconds": 0.43348949996288866,
+            "validation_seconds": 0.4160751000745222,
+            "wall_seconds": 2.7870028000324965
+          }
+        }
+      ],
+      "selection_history": [
+        {
+          "epoch": 1,
+          "seconds": 0.7583451999817044,
+          "tau": null,
+          "train_loss": 0.7486232280731201,
+          "val_by_domain": {
+            "appliances": 1.321963138995173,
+            "beijing": 0.6579632865235997
+          },
+          "val_loss": 0.9899632127593863,
+          "val_visible_mean_baseline": 0.9890735556972676
+        },
+        {
+          "epoch": 2,
+          "seconds": 0.8505865999031812,
+          "tau": null,
+          "train_loss": 0.6275204360485077,
+          "val_by_domain": {
+            "appliances": 1.3180901310814108,
+            "beijing": 0.652006452147123
+          },
+          "val_loss": 0.9850482916142669,
+          "val_visible_mean_baseline": 0.9890735556972676
+        }
+      ],
+      "source_sha256": {
+        "src/flyts/__init__.py": "5c0e10fa69d36f9cf1bfa2523c2fa967548c0e5aeb3a5d695257c27839a100cc",
+        "src/flyts/__main__.py": "5857dfa81351de0008a8863355a152098f5c48668ab165e9c919f6704b6838fb",
+        "src/flyts/backbones/__init__.py": "4754be3ed2ca9b22b990d1d09b11c94f6127508c7961c5d1a77892e01e1a6372",
+        "src/flyts/backbones/base.py": "7620967f8d6a6415d7b8f5c8e9a57305c0ae154d849057ecdd3b5ee3c47abad2",
+        "src/flyts/backbones/budget.py": "0c1f3e773fe1a5dabcc99b86f7d6f818d5f6ab94e51148b72960e14642f22a2e",
+        "src/flyts/backbones/dense_leaky.py": "b3f738d833cb003660208ad363a4591b1cb7c9e5038afd3f3b2c38f3a1482a33",
+        "src/flyts/backbones/fly_sparse.py": "332f7093d01395b305e7b69721eb95481d348d40f1e90b7aca9b76b7dba875ea",
+        "src/flyts/backbones/gru.py": "7985efdf96f79296ed2b81879c75f35f53cd610a74d852dc4c0c2fa01e715d89",
+        "src/flyts/backbones/registry.py": "da51eefd8c6b378e828d5de9301f942c9e84960d688f4a7201f2b0a0c4477dcd",
+        "src/flyts/backbones/seeding.py": "fd1c62d2426f8520f06f00bad5dee194557ea34529a8107425228069095803a1",
+        "src/flyts/corpus.py": "def9fca5c9aae40bedd83f40eff043ce9cfaff0616bb9447602ce89d27ec4564",
+        "src/flyts/data.py": "465e5a14a86e4f8814d3dd3abb2a3ed6b41420f6feaceacba36421331a576145",
+        "src/flyts/datasets/__init__.py": "2168b76d52d5ecba2c039c5e6dde7dedbdf6db4305c198e7e6318f9e15b06946",
+        "src/flyts/datasets/electricity.py": "79f911c65c6d0154e03da77b1b48bfe7175f212f41c96a02ebff6697da634745",
+        "src/flyts/evaluation.py": "8642b6a08b9e93d72df386027ba8841505eee1184e8014d9a171827feeb4cca3",
+        "src/flyts/foundation.py": "630c1a38f18ceafcfb9745739243a493e9ddf0bf3ab57dc5e25d6bdff5dd0717",
+        "src/flyts/masking.py": "2c4c96deabd77feeae81d4af41c6f7f9585fd03e6f5442bc2ab429678974445a",
+        "src/flyts/model.py": "05d43c822cf9d8bb1e308490175659fab188ea34d7c7685a5edb47f3082b5f69",
+        "src/flyts/prepare.py": "38017b34fbf8f2381830b4fcac7714523f61a87c0603d96c4dc5d6656a95172f",
+        "src/flyts/topology/__init__.py": "c610c7fa99d14c816857ae2232ed912cac40cdbdf6293ee630a1de80be47b3d2",
+        "src/flyts/topology/base.py": "e00fbf4187c6af06b7368c456d807f3293a12b0a03242232f1ed1d793f79e80f",
+        "src/flyts/topology/controls.py": "0f7a9cfa65213d77c6b26869f0a911b49bfa15432829329a99a496fe7cf9f51f",
+        "src/flyts/topology/fly_like.py": "8ee9a75ca68293f98a5208206c1ef698e6b39c4854db9a8b16315e91122bb256",
+        "src/flyts/topology/stats.py": "d298367f404899f09f70dcfed70b99779254911c241ef66cdb374199b1e6ba88",
+        "src/flyts/topology/validation.py": "1afdab3e1f29094a8ccb03f2db889b23917185fca870d6bbecfb05e250042531",
+        "src/flyts/training.py": "c29e91b2377a05d6b892ca4f18e36d2ec512d8465d539b812b2764285d9341f4"
+      },
+      "steps_per_segment": 10,
+      "tool_sha256": {
+        "tools/report_stage08_pilot.py": "0c3910ca6e88421edf9a80141714f151d203f955fa5fd15382e1c7d1ed128ec9",
+        "tools/run_stage08_pilot.py": "8112b157d88c3829244479ff15ef4a67261f3086ae52d1b2d875290d4e3fa307"
+      }
+    }
+  ],
+  "schema_version": 1,
+  "stage09_cost_scenarios": {
+    "degree_preserving_rewired": {
+      "2000": {
+        "estimated_five_seed_seconds": 6275.701699298552,
+        "per_seed": {
+          "checkpoint_seconds": 0.05592779989819974,
+          "evaluation_seconds": 3.2454375000670552,
+          "setup_seconds": 1185.6400526000652,
+          "training_step_seconds": 65.37585175975259,
+          "validation_seconds": 0.8230701999273151
+        },
+        "steady_step_seconds": 0.032687925879876296
+      },
+      "400": {
+        "estimated_five_seed_seconds": 6014.198292259542,
+        "per_seed": {
+          "checkpoint_seconds": 0.05592779989819974,
+          "evaluation_seconds": 3.2454375000670552,
+          "setup_seconds": 1185.6400526000652,
+          "training_step_seconds": 13.075170351950518,
+          "validation_seconds": 0.8230701999273151
+        },
+        "steady_step_seconds": 0.032687925879876296
+      },
+      "50000": {
+        "estimated_five_seed_seconds": 14120.803910468861,
+        "per_seed": {
+          "checkpoint_seconds": 0.05592779989819974,
+          "evaluation_seconds": 3.2454375000670552,
+          "setup_seconds": 1185.6400526000652,
+          "training_step_seconds": 1634.3962939938149,
+          "validation_seconds": 0.8230701999273151
+        },
+        "steady_step_seconds": 0.032687925879876296
+      }
+    },
+    "fly_like": {
+      "2000": {
+        "estimated_five_seed_seconds": 339.1770746383696,
+        "per_seed": {
+          "checkpoint_seconds": 0.055300300009548664,
+          "evaluation_seconds": 4.307018400053494,
+          "setup_seconds": 3.325465300003998,
+          "training_step_seconds": 59.302625127590666,
+          "validation_seconds": 0.8450058000162244
+        },
+        "steady_step_seconds": 0.029651312563795332
+      },
+      "400": {
+        "estimated_five_seed_seconds": 101.96657412800698,
+        "per_seed": {
+          "checkpoint_seconds": 0.055300300009548664,
+          "evaluation_seconds": 4.307018400053494,
+          "setup_seconds": 3.325465300003998,
+          "training_step_seconds": 11.860525025518132,
+          "validation_seconds": 0.8450058000162244
+        },
+        "steady_step_seconds": 0.029651312563795332
+      },
+      "50000": {
+        "estimated_five_seed_seconds": 7455.492089949249,
+        "per_seed": {
+          "checkpoint_seconds": 0.055300300009548664,
+          "evaluation_seconds": 4.307018400053494,
+          "setup_seconds": 3.325465300003998,
+          "training_step_seconds": 1482.5656281897666,
+          "validation_seconds": 0.8450058000162244
+        },
+        "steady_step_seconds": 0.029651312563795332
+      }
+    },
+    "gru": {
+      "2000": {
+        "estimated_five_seed_seconds": 343.264033314377,
+        "per_seed": {
+          "checkpoint_seconds": 0.02839489991310984,
+          "evaluation_seconds": 2.96193560003303,
+          "setup_seconds": 3.5573864000616595,
+          "training_step_seconds": 61.455932662859745,
+          "validation_seconds": 0.6491571000078693
+        },
+        "steady_step_seconds": 0.030727966331429872
+      },
+      "400": {
+        "estimated_five_seed_seconds": 97.44030266293808,
+        "per_seed": {
+          "checkpoint_seconds": 0.02839489991310984,
+          "evaluation_seconds": 2.96193560003303,
+          "setup_seconds": 3.5573864000616595,
+          "training_step_seconds": 12.291186532571949,
+          "validation_seconds": 0.6491571000078693
+        },
+        "steady_step_seconds": 0.030727966331429872
+      },
+      "50000": {
+        "estimated_five_seed_seconds": 7717.975952857546,
+        "per_seed": {
+          "checkpoint_seconds": 0.02839489991310984,
+          "evaluation_seconds": 2.96193560003303,
+          "setup_seconds": 3.5573864000616595,
+          "training_step_seconds": 1536.3983165714935,
+          "validation_seconds": 0.6491571000078693
+        },
+        "steady_step_seconds": 0.030727966331429872
+      }
+    },
+    "random_sparse": {
+      "2000": {
+        "estimated_five_seed_seconds": 346.0773053114043,
+        "per_seed": {
+          "checkpoint_seconds": 0.048970399890094995,
+          "evaluation_seconds": 3.2452403999632224,
+          "setup_seconds": 4.016153000062332,
+          "training_step_seconds": 61.25037286234036,
+          "validation_seconds": 0.6547244000248611
+        },
+        "steady_step_seconds": 0.03062518643117018
+      },
+      "400": {
+        "estimated_five_seed_seconds": 101.0758138620429,
+        "per_seed": {
+          "checkpoint_seconds": 0.048970399890094995,
+          "evaluation_seconds": 3.2452403999632224,
+          "setup_seconds": 4.016153000062332,
+          "training_step_seconds": 12.250074572468073,
+          "validation_seconds": 0.6547244000248611
+        },
+        "steady_step_seconds": 0.03062518643117018
+      },
+      "50000": {
+        "estimated_five_seed_seconds": 7696.122048792248,
+        "per_seed": {
+          "checkpoint_seconds": 0.048970399890094995,
+          "evaluation_seconds": 3.2452403999632224,
+          "setup_seconds": 4.016153000062332,
+          "training_step_seconds": 1531.259321558509,
+          "validation_seconds": 0.6547244000248611
+        },
+        "steady_step_seconds": 0.03062518643117018
+      }
+    }
+  }
+}

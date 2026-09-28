@@ -17,7 +17,7 @@ from torch.nn import functional as F
 from .corpus import (WindowDataset, sha256, reject_forbidden,
                      verify_development_corpus, load_domain_registry)
 from .masking import MaskPlan
-from .training import load_encoder, resolve_device
+from .training import load_encoder, resolve_device, peak_rss_bytes
 
 
 FIXTURE_VERSION = "stage03-fixture-v1"
@@ -236,7 +236,9 @@ def _row(metric, arm, domain, record_id, window_start, value, **extra):
 
 
 @torch.no_grad()
-def evaluate_window(adapter, sample, config, manifest_hash, seen_counts):
+def evaluate_window(adapter, sample, config, manifest_hash, seen_counts, metric_allowlist=None):
+    metrics = set(metric_allowlist) if metric_allowlist is not None else {
+        "reconstruction", "permutation", "dropout", "channel_count", "padding", "missing"}
     x = sample["x"]
     device = x.device
     observed = torch.isfinite(x)
@@ -250,16 +252,18 @@ def evaluate_window(adapter, sample, config, manifest_hash, seen_counts):
     target_positions = target.nonzero().tolist()
     mean, scale = reference_stats(torch.nan_to_num(x), observed, target)
     baseline = _loss(adapter, x, observed, dt, known, make_plan(temporal), target, mean, scale)
-    rows = [_row("reconstruction", "baseline", domain, rid, start, baseline,
-                 target_count=int(target.sum()),
-                 fixture_id=fixture("reconstruction", target_positions))]
+    rows = ([_row("reconstruction", "baseline", domain, rid, start, baseline,
+                  target_count=int(target.sum()),
+                  fixture_id=fixture("reconstruction", target_positions))]
+            if "reconstruction" in metrics else [])
     base_z = adapter.encode(x, observed, dt, known, len(x), x.shape[1])
     ident = representation_distance(base_z, base_z, config["norm_floor"])
     channels = list(range(x.shape[1]))
-    rows.append(_row("permutation", "identity", domain, rid, start, ident["primary"],
-                     relative_l2=ident["relative_l2"], status=ident["status"],
-                     fixture_id=fixture("permutation", "identity", channels)))
-    if len(channels) > 1:
+    if "permutation" in metrics:
+        rows.append(_row("permutation", "identity", domain, rid, start, ident["primary"],
+                         relative_l2=ident["relative_l2"], status=ident["status"],
+                         fixture_id=fixture("permutation", "identity", channels)))
+    if len(channels) > 1 and "permutation" in metrics:
         permutations = []
         for repeat in range(config["permutation_repeats"] * 4):
             perm = order(channels, seed("permutation", repeat))
@@ -274,7 +278,7 @@ def evaluate_window(adapter, sample, config, manifest_hash, seen_counts):
                              relative_l2=dist["relative_l2"], status=dist["status"],
                              fixture_id=fixture("permutation", repeat, perm)))
     eligible = [j for j in channels if observed[:, j].any()]
-    for repeat in range(config["dropout_repeats"]):
+    for repeat in range(config["dropout_repeats"] if "dropout" in metrics else 0):
         ranked = order(eligible, seed("dropout", repeat))
         for rate in config["dropout_rates"]:
             n = rounded_count(len(ranked), rate, seed("dropout-round", repeat)) if len(ranked) > 1 else 0
@@ -299,7 +303,7 @@ def evaluate_window(adapter, sample, config, manifest_hash, seen_counts):
                              **delta))
     # A count view is eligible only if both nested views exist on this source record.
     ranked = order(channels, seed("count-order"))
-    for count, kind in count_candidates(seen_counts, len(channels)):
+    for count, kind in (count_candidates(seen_counts, len(channels)) if "channel_count" in metrics else ()):
         near = nearest_seen(count, seen_counts)
         if near > len(channels):
             continue
@@ -331,7 +335,7 @@ def evaluate_window(adapter, sample, config, manifest_hash, seen_counts):
                          fixture_id=fixture("channel_count", count, near, ranked[:count],
                                             ranked[:near], target[:, common].nonzero().tolist()), **delta))
     # Added padding may not change the original representation or shared loss.
-    for kind in ("time", "channel", "both"):
+    for kind in (("time", "channel", "both") if "padding" in metrics else ()):
         xt, ot = x, observed
         if kind in ("time", "both"):
             pad = torch.full((adapter.patch_size, xt.shape[1]), float("nan"), device=device)
@@ -356,7 +360,7 @@ def evaluate_window(adapter, sample, config, manifest_hash, seen_counts):
                          shared_loss_change=padded_loss-baseline, status=dist["status"],
                          fixture_id=fixture("padding", kind, len(xt), xt.shape[1], target_positions)))
     context = (observed & ~target).nonzero().tolist()
-    for pattern in config["missing_patterns"]:
+    for pattern in (config["missing_patterns"] if "missing" in metrics else ()):
         for repeat in range(config["missing_repeats"]):
             ranked_context = order(list(range(len(context))), seed(f"missing-{pattern}", repeat))
             for rate in config["missing_rates"]:
@@ -471,14 +475,36 @@ def write_reports(output, rows, stable, runtime):
     return result
 
 
+def seen_channel_counts(doc, registry=None, allowed_domain_ids=None):
+    """Count only training channels of pretrain roles for registered corpora."""
+    counts = set()
+    for row in doc["records"]:
+        domain_id = row.get("domain_id", row["dataset"])
+        if row["split"] != "train":
+            continue
+        eligible = (registry["roles"].get(domain_id) == "pretrain" if registry
+                    else allowed_domain_ids is None or domain_id in allowed_domain_ids)
+        if eligible:
+            counts.add(row["shape"][1])
+    if not counts:
+        raise ValueError("training manifest has no pretrain channel counts")
+    return sorted(counts)
+
+
 def evaluate_robustness(manifest, checkpoint, config_path, output, device="cpu", split=None,
-                        threads=2, domain_registry=None):
+                        threads=2, domain_registry=None, allowed_domain_ids=None,
+                        metric_allowlist=None):
     """Evaluate local development data; never fetch or read test/final domains."""
     started = time.perf_counter()
     if type(threads) is not int or threads < 1:
         raise ValueError("threads must be positive")
     torch.set_num_threads(threads)
     config = validate_config(json.loads(Path(config_path).read_text(encoding="utf-8")))
+    if metric_allowlist is not None:
+        valid_metrics = {"reconstruction", "permutation", "dropout", "channel_count", "padding", "missing"}
+        if not isinstance(metric_allowlist, (list, tuple, set, frozenset)) or not metric_allowlist or \
+                set(metric_allowlist) - valid_metrics:
+            raise ValueError("invalid evaluator metric allowlist")
     split = config["split"] if split is None else split
     if split not in ("train", "val"):
         raise ValueError("Stage 3 evaluator forbids test/final-held-out split")
@@ -486,24 +512,35 @@ def evaluate_robustness(manifest, checkpoint, config_path, output, device="cpu",
     registry = load_domain_registry(manifest, domain_registry, doc)
     allowed = ({key for key, role in registry["roles"].items() if role != "final-held-out"}
                if registry else None)
+    if allowed_domain_ids is not None:
+        requested = set(allowed_domain_ids)
+        if not registry or not requested or any(registry["roles"].get(key) != "development-held-out"
+                                                  for key in requested):
+            raise ValueError("evaluator domain filter requires registered development-held-out domains")
+        allowed = requested
     model, state = load_encoder(checkpoint, str(resolve_device(device)))
     manifest_hash = sha256(manifest)
     if state["manifest_sha256"] != manifest_hash:
         raise ValueError("checkpoint/manifest hash mismatch")
     adapter = FlyTSAdapter(model, sha256(checkpoint))
-    seen = sorted({row["shape"][1] for row in doc["records"] if row["split"] == "train"
-                   and (allowed is None or row.get("domain_id", row["dataset"]) in allowed)})
+    seen = seen_channel_counts(doc, registry, allowed)
     data = WindowDataset(manifest, split, config["context"], config["context"],
                          2*adapter.patch_size, allowed_domain_ids=allowed,
                          domain_registry=domain_registry)
+    setup_seconds = time.perf_counter() - started
+    evaluation_started = time.perf_counter()
     rows = []
     with torch.no_grad():
         for i in range(len(data)):
-            rows.extend(evaluate_window(adapter, data[i], config, manifest_hash, seen))
+            rows.extend(evaluate_window(adapter, data[i], config, manifest_hash, seen,
+                                        metric_allowlist=metric_allowlist))
     results = aggregate(rows, config["relative_floor"])
+    evaluation_seconds = time.perf_counter() - evaluation_started
     fixture_spec = {"fixture_version": FIXTURE_VERSION, "schema_version": 1,
                     "config": config, "manifest_sha256": manifest_hash,
                     "sampled_fixture_ids": sorted(row["fixture_id"] for row in rows)}
+    if metric_allowlist is not None:
+        fixture_spec["metric_allowlist"] = sorted(set(metric_allowlist))
     training_config = state.get("training_config", {})
     steps = training_config.get("steps_per_epoch")
     epoch = state.get("epoch")
@@ -529,7 +566,13 @@ def evaluate_robustness(manifest, checkpoint, config_path, output, device="cpu",
                               "across_domains": "equal_domain_mean",
                               "paired_degradation": "relative_difference_of_aggregated_arm_losses"},
               "results": results}
+    if metric_allowlist is not None:
+        stable["provenance"]["metric_allowlist"] = sorted(set(metric_allowlist))
+        stable["aggregation"]["position_metrics"] = sorted(
+            {"reconstruction", "dropout", "channel_count", "missing"} & set(metric_allowlist))
     runtime = {"device": str(next(model.parameters()).device), "threads": threads,
                "torch": torch.__version__,
-               "python": platform.python_version(), "seconds": time.perf_counter()-started}
+               "python": platform.python_version(), "seconds": time.perf_counter()-started,
+               "setup_seconds": setup_seconds, "evaluation_seconds": evaluation_seconds,
+               "peak_rss_bytes": peak_rss_bytes()}
     return write_reports(output, rows, stable, runtime)

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "manifest_sha256": "44bafe48196a4afd096e387dc672cad128d390ab7e5b413ea6cbeadf5f3e7f6c",
+  "domain_registry_sha256": "0095d4cd76ad5fdaeefeccdbb4322187892cc155bfac619ca4c8618ea50b9b20",
+  "core_order": ["fly_like", "degree_preserving_rewired", "random_sparse", "gru"],
+  "diagnostic_order": ["dense_leaky"],
+  "core_steps_per_segment": 200,
+  "diagnostic_steps_per_segment": 10,
+  "preflight_steps_per_segment": 1,
+  "expected_parameters": {"fly_like": 68760, "degree_preserving_rewired": 68760, "random_sparse": 68760, "gru": 68853, "dense_leaky": 68530},
+  "parameter_target": 68760,
+  "parameter_tolerance_fraction": 0.05,
+  "evaluation_config": "configs/evaluation/robustness-v1.json"
+}

@@ -2,7 +2,11 @@
 
 Status: **closed — independent QA PASS; PI result GO**
 
-Draft PR: [#13](https://github.com/yhlee52/FlyTS_lab/pull/13) — open, unmerged
+PR: [#13](https://github.com/yhlee52/FlyTS_lab/pull/13) — merged into `main`
+
+Integration note: PR #13 was subsequently merged into `main` at
+`34b83c29d8a5588158d1e4abe420bfc8cbdf5e68` on 2026-09-27. This does not
+alter the Stage 07 evidence, independent QA verdict or bounded claim policy.
 
 The approved engineering question is satisfied. Fly sparse, dense-leaky and GRU
 share one tokenizer, Set Router, masking, contextual head, decoder and reconstruction

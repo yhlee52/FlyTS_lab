@@ -1,150 +1,132 @@
 # FlyTS Current Research State
 
-Updated: 2026-09-27
+Updated: 2026-09-28
 
 ## Current stage
 
-Stages 00–07 are closed under DEC-026; PR #12 is merged at `81355b7`, while Draft PR #13 remains open and unmerged. Numerical robustness settings remain candidate.
+Stage 08 is closed under DEC-035 after the operational pilot, independent QA
+`PASS` and PI result `GO`; Draft PR #14 is open under DEC-036, on
+`codex/stage-08-flyts-mini-pilot`, based on
+GitHub `main` merge commit `34b83c29d8a5588158d1e4abe420bfc8cbdf5e68`.
+Stages 00–08 are closed. The Stage 08 branch remains unmerged. Numerical
+robustness settings remain candidate.
 
 ## Current goal
 
-Preserve the closed Stage 07 evidence boundary while awaiting a separate decision on Draft PR #13 merge or a separately chartered Stage 08. Do not inspect final-held-out performance.
+Preserve Draft PR #14 and return to the merge gate after its CI passed. Do not
+merge, rerun, access final-held-out data or start Stage 09.
 
 ## Canonical references
 
 - `docs/DEVELOPMENT_PLAN.md`
-- `docs/ARCHITECTURE.md`
-- `docs/DATASETS.md`
-- `docs/VALIDATION.md`
-- `docs/OFFLINE.md`
-- `docs/research/TEAM_CHARTER.md`
-- `docs/research/TOKEN_BUDGET_POLICY.md`
-- `docs/research/stages/stage-02/CHARTER.md`
-- `docs/MASKING.md`
 - `docs/EXPERIMENT_PROTOCOL.md`
-- `docs/EVALUATION.md`
-- `docs/research/stages/stage-03/CHARTER.md`
-- `docs/research/stages/stage-04/CHARTER.md`
-- `docs/research/stages/stage-05/CHARTER.md`
-- `docs/research/stages/stage-06/CHARTER.md`
-- `docs/research/stages/stage-07/CHARTER.md`
+- `docs/PROJECT_CONSENSUS.md`
+- `docs/DATASETS.md`
 - `docs/BACKBONES.md`
 - `docs/TOPOLOGY_CONTROLS.md`
+- `docs/research/TEAM_CHARTER.md`
+- `docs/research/TOKEN_BUDGET_POLICY.md`
+- `docs/research/stages/stage-08/CHARTER.md`
 
 ## Confirmed decisions
 
-- The first complete target is public-data `FlyTS-Mini v0.1`.
-- The user is the final stage-gate authority.
-- The default workflow is single-agent; specialists are activated selectively.
-- Only the Research Director delegates; recursive delegation is prohibited.
-- The primary Codex agent is the Research Director; it directly delegates to specialist subagents.
-- `CURRENT_STATE.md` is the concise shared context, not a conversation transcript.
-- Implementation and independent QA remain separate.
-- Material ambiguity is `HOLD`: ask the user with options, recommendation, and impacts before continuing.
-- User confirmation is required for changes to research direction, architecture, data/splits, metrics/acceptance, scope, budget, or confirmed decisions.
-- Explicit "you decide" delegation is itself a user decision and must be recorded.
-- QA independently re-runs relevant checks and writes only temporary or Git-ignored artifacts.
-- The user approved the Stage 00 charter and execution plan with `GO` on 2026-09-24.
-- The user approved the Stage 00 result with `GO` on 2026-09-24 after QA `PASS`; this closes Stage 00 and authorizes PR #6 merge, but does not begin Stage 01.
-- The user approved the Stage 01 Charter and decision bundle with `GO` on 2026-09-24. Stage 02 remains separately gated.
-- Stage 01 uses two-tier domain isolation, domain-macro masked Huber selection, 1/3/5 repetitions, ±5% parameter tolerance, optimizer-step compute matching, and Stage 03 numerical-threshold calibration.
-- Stage 01 also fixes interpolation/extrapolation channel-count evaluation, target-local frozen probes, one diagnostic rerun, and single-factor attribution for topology, tokenizer, router, and backbone.
-- The user approved paired unseen/seen count degradation, task-specific controlled frozen probes, paired masked-Huber topology endpoints, and Smooth L1 `beta=1.0` to resolve the Stage 01 QA hold.
-- The user accepted the Stage 01 result and independent QA `PASS` with `GO` on 2026-09-24, closing Stage 01 and authorizing PR #7 merge without authorizing Stage 02.
-- The user separately approved Stage 02's architecture and acceptance contract with `GO` on 2026-09-24; DEC-009 records the implementation boundary.
-- The user accepted the Stage 02 result and final QA `PASS` with `GO` on 2026-09-25; DEC-010 closes Stage 02, leaves PR #8 for user-managed merge, and does not authorize Stage 03.
-- PR #8 was merged into `main` at `461f1fc`; the user separately approved Stage 03 evaluator scope, deterministic fixtures, three 400-step development seeds, hierarchical bootstrap candidate, and the candidate-only threshold gate with `GO` (DEC-011).
-- DEC-012 records the user's option A: train-only fitted preprocessing is retained; paired scoring uses a record-local common visible context reference frame. One extra bounded Implementation follow-up was approved for QA fixes and exact-hash public candidate evidence.
-- DEC-013 records user `GO — defer freeze`: candidate evidence milestone accepted, numerical settings remain candidate, and additional evidence scope is a separate approval gate.
-- DEC-014 records the user's closure path without numerical freeze: evaluator/candidate evidence accepted, final QA before closure, Draft PR creation authorized afterward, Stage 04 and merge separately gated.
-- DEC-015 records independent final QA `PASS` and Stage 03 closure within the no-frozen-threshold scope; formal robustness pass/fail still requires separately approved reopened calibration and freeze.
-- DEC-016 records user `GO` for bounded Stage 04 topology modularization and the stale PR #9 integration status.
-- DEC-017 records the user's Stage 04 result `GO`, closure after independent QA `PASS`, and request for a Draft PR; merge and Stage 05 remain separately gated.
-- DEC-018 records user `GO` for the fixed Stage 05 control, seed, provenance, CPU one-step, agent-budget, and no-performance contract.
-- DEC-019 retains uniform `10E/200E` degree-preserving rewiring but makes overlap/Jaccard descriptive after the fixed fixture missed the original `0.10` guard.
-- DEC-020 approves one extra bounded QA follow-up only; all Stage 05 scientific, scope, merge and next-stage boundaries remain unchanged.
-- DEC-021 records the user's Stage 05 result `GO` after independent QA `PASS`; Stage 05 is closed while PR #11 merge and Stage 06 remain separately gated.
-- DEC-022 records the user's Stage 06 `GO`: official UCI Electricity 370 only, dataset/family identity separation, fixed roles, chronological 70/15/15 with 512-point purge, external hashed registry, full local conversion, fixture CI and forward/encode-only smoke.
-- DEC-023 records the user's Stage 06 result `GO` after independent QA `PASS`; the stage is closed while PR #12 merge, Stage 07 and all performance claims remain separately gated.
-- DEC-024 records the Stage 07 architecture/fairness `GO`; DEC-025 approves the bounded provenance follow-up; DEC-026 records the user's result `GO` and closes Stage 07 without authorizing merge or Stage 08.
+- The user remains the final `GO`, `REVISE`, `HOLD` or `STOP` authority.
+- PR #13 is merged into `main` at `34b83c2`; Stage 07 evidence and QA remain unchanged.
+- Stage 08 is an operational pilot and cannot support topology/backbone superiority,
+  robustness pass/fail, foundation, transfer, CUDA or semiconductor claims.
+- Core arms are fly-like, degree-preserving rewired, random sparse and GRU; dense
+  leaky is a short diagnostic only.
+- Core budget is one seed and 400 steps split `200 + resume + 200`; dense is
+  `10 + resume + 10`.
+- Use Stage 07 sizes/profile with temporal/channel/dropout masking `0.4/0.2/0.1`,
+  AdamW `5e-4`, batch 8, context 256, stride 128, four CPU threads and float32.
+- Base/topology seed is 7 and topology-control seed is 5007.
+- Appliances and Beijing are pretrain-only; Bike is development evaluation-only;
+  Electricity is sealed until the separately frozen Stage 09 protocol.
+- `best.pt` is selected only by exact pretrain validation `L_select`; Bike never
+  selects checkpoints or settings.
+- Resource evidence is a single descriptive CPU measurement. Stage 09 costs are
+  400/2,000/50,000-step five-seed scenarios, not a budget choice.
+- The PI accepted the bounded Stage 08 operational result under DEC-035; this does
+  not authorize a Draft PR, merge, Stage 09 or final-held-out access.
+- DEC-036 authorizes the Stage 08 commit, branch push, Draft PR and CI observation;
+  merge remains a separate gate.
+- Experiment, one implementation owner and independent QA are the only planned
+  specialists; Data requires a separate budget/substitution gate.
 
 ## Open questions
 
-- Whether the initial agent/model assignments need adjustment after real Stage 0 use.
-- Whether a dedicated Research Ops agent is justified after pilot experiments begin.
-- When suitable CUDA hardware will be available for the still-unverified GPU path.
-- Whether and when the PI separately authorizes Draft PR #13 merge or a Stage 08 charter.
+- Whether to merge the Stage 08 Draft PR after CI passes.
+- Stage 09 requires its own charter, frozen budget and explicit `GO`.
+- When suitable CUDA hardware becomes available; CUDA remains unverified.
 
 ## Active risks
 
-- Dependency minimums are not fully pinned, so a future fresh install may resolve versions different from this run.
-- The current environment has a CPU-only PyTorch build and no CUDA device; GPU behavior remains unverified.
-- The foundation-model and topology-benefit claims remain unverified.
-- Too many agents or full-lab reviews could waste tokens without improving evidence.
-- Premature final-test access, post-hoc threshold selection, or unmatched multi-factor comparisons could invalidate later claims.
-- Electricity source/schema drift, benchmark-derivative substitution, time/channel transposition, or confusing observed zeros with missing values could invalidate corpus evidence.
-- High-channel batch padding may cause excessive memory use; Stage 06 may report bounded smoke memory but may not tune data/model choices from final-held-out results.
-- Fully hidden channels cannot be distinguished without metadata; overlap and dropout require explicit target and statistic leakage checks.
-- The approved public starter manifest is present locally with exact SHA-256 `e538e9cbf761577740f43f6930ac4653834fdc00f9d0ee567b02b52e2d0d14eb`; test and final-held-out arrays remain sealed.
-- Stage 07 byte provenance is controlled by exact-byte hashing/checking and a CRLF-alteration regression; future generator changes must preserve this invariant.
+- Final-held-out/test access or Bike-driven selection would invalidate later evidence.
+- High-channel padding and full evaluator paths may exceed memory; OOM is `HOLD`.
+- In-place resume can overwrite its input; Stage 08 preserves and hashes a snapshot.
+- Candidate numerical settings can be mistaken for frozen robustness thresholds.
+- Single-run CPU timing cannot establish comparative efficiency or guaranteed cost.
+- The report CLI requires a resolved absolute runs path to match bound execution paths.
 
 ## Latest evidence
 
-- Initial PoC and foundation MVP PRs are merged.
-- Development plan PR #3 is merged.
-- Research-team governance PR #4 and human-alignment PR #5 are merged in `main` commit `9a6f3d8`.
-- The user selected decision-gate checkpoints, mandatory clarification on ambiguity, and independent QA re-execution.
-- The local research-governance validator passes for six specialist agents, two skills, the Stage 00 charter, and the shared notebook.
-- The Stage 00 branch was created only after local `HEAD`, `origin/main`, and fetched remote `main` were confirmed equal at `9a6f3d8`.
-- The project-local Python 3.12 environment contains PyTorch 2.14.0+cpu and pytest 9.1.1; the full suite passed with 24 tests and one CUDA hardware skip.
-- The CPU smoke run completed two finite-loss epochs with 17,936 parameters; epoch-boundary resume reproduced all 29 model tensors bitwise and embedding export produced finite `[9, 32]` vectors.
-- Independent QA reproduced the corpus split and hash, exact smoke losses, bitwise resume, embedding schema, full tests, and CUDA-unavailable classification. After the notebook refresh and validator rerun, QA issued `PASS`.
-- PR #6 contains only the five Stage 00 evidence and governance documents, and its GitHub Actions test workflow passed before the result gate.
-- The Stage 01 branch was created only after local `HEAD`, `origin/main`, and fetched remote `main` matched at `ad9655f`.
-- The Stage 01 Charter records the approved scope, acceptance criteria, decisions, agent budget, user gates, and stop conditions without changing code, data, configuration, or model behavior.
-- Program Integrator and Experiment Scientist completed non-overlapping read-only reviews with no material disagreement or request to change an approved decision.
-- `PROJECT_CONSENSUS.md` and `EXPERIMENT_PROTOCOL.md` now map the approved domain, selection, budget, evaluator, attribution, and negative-result rules into Stage 2–10 handoffs.
-- H-01–H-04, R-01–R-08, DEC-007, RK-08–RK-12, and the development checklist are aligned to the Stage 01 protocol; all scientific hypotheses remain `미검증`.
-- Independent QA issued `FAIL` because unseen channel-count and frozen-probe evaluations lack complete primary metric/control contracts, H-03 lacks a prespecified topology claim endpoint, and the Huber transition parameter is not fixed.
-- The approved remediation now specifies all four missing contracts in DEC-007, project consensus, experiment protocol, hypotheses, and requirements traceability; scientific results remain `미검증` until later stages.
-- Independent QA revalidated the approved remediation and issued final `PASS`; notebook, governance, and diff validation also pass.
-- Draft PR #7 (`https://github.com/yhlee52/FlyTS_lab/pull/7`) records the documentation-only scope, QA `PASS`, remaining limitations, and the approved integration path.
-- Draft PR #7 GitHub Actions `tests` run #33 passed on commit `cbe483e` before the result gate.
-- The user issued the Stage 01 result-gate `GO` after reviewing all acceptance results, QA, limitations, artifacts, and the Stage 02 boundary.
-- Stage 02 implementation adds independent cause masks, nested configuration, visible-only pooled fallback, and focused tests; the result was accepted with user `GO`.
-- The Stage 02 full CPU suite passes with two CUDA skips; the synthetic CPU smoke completed two finite-loss epochs with 17,936 parameters. Bitwise legacy and nested-config epoch resume, notebook/governance validators, and diff check pass.
-- Initial Stage 02 independent QA issued `FAIL` for forced minimum channel targets, target-free single-channel handling, manual-plan validation, missing/padding distinction, charter completeness, records, and reproductions. The implementation follow-up removes the forced minimum, adds plan and padding checks, and preserves the initial QA verdict until re-review.
-- After remediation, independent QA reproduced the corrected low-ratio sampling, invalid-plan rejection, missing/padding separation, target-free error, finite two-epoch CPU smoke, and 29-tensor bitwise resume, then issued final `PASS`.
-- The full suite passes with 36 tests and two CUDA hardware skips; notebook/governance validators and diff check pass.
-- PR #8 (`https://github.com/yhlee52/FlyTS_lab/pull/8`) was merged into `main` at `461f1fc`; its Stage 02 QA `PASS` remains the handoff basis.
-- Draft PR #8 GitHub Actions `tests` run #40 passed on commit `3a25b46` after PR evidence links were added.
-- The user issued the Stage 02 result-gate `GO` after reviewing implementation, compatibility, QA, risks, and unverified claims.
-- Stage 03 is on `codex/stage-03-robustness-evaluator`. Public development calibration is complete; candidate QA issued a pre-remediation `CONDITIONAL PASS`, followed by remediation QA `PASS` for user-reviewable candidate evidence. The Charter `GO` covers evaluator and candidate generation only.
-- The exact-hash public starter corpus passed development-only train/val verification without opening test arrays. Three 400-step CPU runs at seeds `7/17/29` used uniformly trained `last.pt`; each full evaluator run covered 522 validation windows, 38,634 raw rows and 31 metric arms with identical fixture/source hashes.
-- `reports/robustness/calibration-candidate-v1.{json,csv,md}` records candidate-only control evidence and 10,000 paired hierarchical bootstrap intervals. Energy and transport each have one validation record; effect threshold freeze is not supported by independent controls.
-- Experiment Scientist judged the candidate's reproducibility and aggregation structure suitable but numerical freeze unsupported. Independent QA issued a pre-remediation `CONDITIONAL PASS`; portable provenance, algebraic-reference wording, floor labels, and sparse count-arm coverage were corrected. Post-remediation implementation self-check passed, and independent remediation QA issued `PASS` for candidate review only. Threshold, guard and uncertainty freeze evidence remains insufficient.
-- The user accepted the candidate evidence milestone with `GO — defer freeze`; this did not authorize additional evidence work or Stage 03 closure.
-- The user subsequently approved Stage 03 closure without numerical freeze and a Draft PR after final QA. Independent final QA reported `PASS` for all eight Charter criteria in that bounded scope; `RESULT.md` is closed. Robustness pass/fail and final claims remain prohibited.
-- Draft PR #9 (`https://github.com/yhlee52/FlyTS_lab/pull/9`) was created at commit `a522f772512c005ce695f48fd71dfa231e22328e`; merge and Stage 04 are not authorized.
-- Stage 04 pre-refactor CPU evidence is under ignored `outputs/stage04/`: five seeded golden graphs, ordered state/parameters, fixed forward/backward/loss, and a runtime legacy-v1 checkpoint. Post-refactor comparison is bitwise for same-backend CPU state/order/forward/loss/gradients; strict v1 load, bitwise epoch-boundary resume and stable evaluator-row tests pass. The focused suite passes 13 tests and the full suite passes 68 tests with three CUDA hardware skips; notebook/governance validators and diff check pass. Independent QA issued final `PASS`, and the user accepted the result with `GO` (DEC-017).
-- PR #10 (`https://github.com/yhlee52/FlyTS_lab/pull/10`) was merged into `main` at `944f8ed`; Stage 05 begins from that exact commit.
-- Draft PR #10 GitHub Actions `pytest` run `36106979369` passed on commit `8563df3` before the final CI evidence note.
-- Stage 05 diagnostic generation at the approved fixed fixture (`N=64`, `E=613`, base seed 7, control seed 5007) completed all 6,130 directed degree-preserving swaps but retained 168 reference edges (`0.274062`), exceeding the preregistered `0.10` guard. Implementation and Architecture found no straightforward correctness defect; the prototype was reverted and the stage entered `HOLD` before tests, report, training or QA.
-- The user approved the non-optimizing DEC-019 revision: uniform proposal, exact degree/component and `10E/200E` remain fixed; overlap and Jaccard are descriptive. Stage 05 implementation may resume without seed selection or performance work.
-- Independent QA first found invalid report source attribution; remediation now records committed source paths/hashes and a valid checkout+generation command. The allowed QA follow-up then found omitted resume/epochs/development-only CLI flags in run provenance; remediation and a focused regression test are committed. Final self-check: full pytest passes with three CUDA skips, report `--check`, governance/notebook validators and `git diff --check` pass.
-- DEC-020 final independent QA issued `PASS`: focused 60 passed/two CUDA skips, full 76 passed/three CUDA skips, all 15 graph-buffer corruptions rejected, actual resume provenance verified, report/validators/diff/status clean. H-03 and all performance/transfer/CUDA claims remain `미검증`.
-- Stage 05 Draft PR #11 contains the implementation, deterministic evidence report, independent QA report and result record; it is not approved for merge.
-- Both GitHub `pytest` checks on Draft PR #11 head `433f9b2` passed (3m40s and 3m34s).
-- The user issued the Stage 05 result-gate `GO` on 2026-09-26; DEC-021 closes the bounded engineering stage without authorizing merge or Stage 06.
-- PR #11 was merged to `main` at `3df133c`. The Stage 06 branch starts from that exact merge commit with no user changes discarded.
-- The user approved the complete Stage 06 Charter contract on 2026-09-27; no data-performance or scientific claim is authorized.
-- Stage 06 r2 preserves every non-purged source row across 120 records; manifest `44bafe48…e7f6c` is bound to registry `0095d4cd…b9b20`. Official Electricity is `140256×370` at 900 seconds with zero missing/nonfinite values.
-- Initial independent QA `FAIL` found 41 omitted short Bike rows and a float32 overflow guard defect. Both were remediated; contiguous source coverage and `1e100` rejection now have focused regressions.
-- Final independent QA is `PASS`: focused 8 passed, full 84 passed/3 CUDA skips, full source/array equality, report `--check`, smoke hash/shape/finite/memory, validators and diff check all passed.
-- Both Draft PR #12 `pytest` checks passed; PR #12 was merged to `main` at `81355b7` before the separate Stage 07 approval.
-- Initial Stage 07 QA issued `FAIL` because tracked config byte hashes disagreed with the report, `--check` normalized newlines, and source binding omitted training/evaluation.
-- After DEC-025 remediation, independent QA issued final `PASS`: focused 64 passed/2 CUDA skips and full 97 passed/3 CUDA skips; both Draft PR #13 Linux CI checks pass, and the user issued Stage 07 result `GO` under DEC-026.
+- Stage 07 final QA is `PASS`; core matched sizes are Fly 68,760, dense 68,530 and
+  GRU 68,853 parameters with shared front-end/head count 27,208.
+- GitHub PR #13 merged at `34b83c2`; its tree matches the reviewed Stage 07 head.
+- Stage 06 canonical manifest/registry hashes remain `44bafe48…e7f6c` and
+  `0095d4cd…b9b20`; final-held-out model performance has not been inspected.
+- The current environment is Python 3.12.14, PyTorch 2.14.0+cpu with no CUDA device.
+- The first preflight attempt exposed a runner epoch-boundary defect and is preserved.
+- Its one allowed same-config diagnostic rerun completed all four core arms with two
+  finite optimizer steps, 16 samples, approved parameter counts, preserved resume
+  hashes, a common Bike-only fixture and no observed final-held-out access.
+- Before DEC-028, focused/full tests, compile and validators passed; CUDA was skipped.
+- DEC-028 authorizes one existing-Implementation follow-up and one independent QA
+  re-review only; it does not authorize another preflight or the real pilot.
+- DEC-028 remediation binds the missing bytes and separates all required timing
+  phases; focused tests and validators pass, and schema-v1 evidence is rejected.
+- DEC-029 authorizes one further existing-Implementation follow-up and one further
+  independent QA re-review only; it does not authorize any execution.
+- DEC-029 closes execution-fact validation; 19 focused tests and the full local
+  suite pass, with three CUDA skips.
+- DEC-030 authorizes one final history-independent archival-test fix and QA
+  re-review only; no public execution is authorized.
+- Final DEC-030 independent code QA is `PASS`: exact archival hashes, schema-v2
+  execution facts, focused/full suites, compile, validators and Git hygiene pass.
+- DEC-031 authorizes exactly one new schema-v2 common preflight for the four core
+  arms; dense and the real pilot remain unauthorized.
+- The DEC-031 preflight passed for all four arms: schema 2, two steps, 16 samples,
+  approved parameters, finite histories, preserved resume input and one Bike fixture.
+- Strict report generation and `--check` matched; report hashes are recorded in
+  `docs/research/stages/stage-08/PREFLIGHT_RESULT.md`.
+- DEC-032 authorizes one fixed-order real pilot plus dense diagnostic; reruns,
+  final-held-out access and Stage 09 remain unauthorized.
+- The DEC-032 pilot completed once at
+  `outputs/stage08-pilot/pilot-20260927-v1/`: every core arm recorded 400 steps and
+  3,200 samples, and dense recorded 20 steps and 160 samples, with finite histories,
+  approved parameter counts, preserved resume inputs and Bike-only evaluation.
+- Strict schema-v2 report generation and byte-stable `--check` pass. The tracked
+  reports are `reports/PILOT_RESULTS.json` and `reports/PILOT_RESULTS.md`.
+- Individual core `L_select` values are 0.971362 (fly-like), 0.971023 (rewired),
+  0.970546 (random sparse) and 0.960195 (GRU); dense diagnostic is 0.985048. These
+  are descriptive single-seed observations only.
+- Rewired setup dominated its measured CPU path; this is a cost-risk observation,
+  not topology performance evidence. Stage 09 scenarios remain linear estimates.
+- The complete local suite passes with three CUDA skips; compile, report replay,
+  notebook/governance, diff and ignored-artifact checks pass.
+- Independent post-pilot QA is `PASS` with no blockers. QA independently matched
+  all 15 checkpoint/snapshot hashes, execution facts, selection, Bike-only scope,
+  provenance replay, focused/full tests, compilation and artifact hygiene.
+- DEC-035 records the PI result `GO` on 2026-09-28 and closes Stage 08 within its
+  operational/descriptive claim boundary.
+- DEC-036 records option A `GO` for commit, Draft PR creation and CI only.
+- Commit `2733069` was pushed and Draft PR #14 was opened against `main`; it is
+  still a Draft and unmerged.
+- Both GitHub `pytest` checks on Draft PR #14 head `c09c0b5` passed in 2m13s and
+  3m40s. No merge action was taken.
 
 ## Next action
 
-Await a separate PI decision for Draft PR #13 merge or a Stage 08 charter. Final-held-out access and all performance claims remain gated.
+Obtain a separate PI merge decision for Draft PR #14. Stage 09 and final-held-out
+access remain separately unauthorized.
