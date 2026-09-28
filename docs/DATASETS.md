@@ -153,6 +153,53 @@ fetch and prepare; both spellings together are rejected as a duplicate.
 Fetch records an ISO UTC retrieval timestamp in `sources.lock.json` and keeps
 the original timestamp when the same locked bytes are checked again.
 
+## Stage 09A HARTH proposal (unfrozen)
+
+HARTH is an encoder-excluded, target-local classification proposal. Its official
+source archive, rights notices, observed hash, 22 subject identities, exact
+eight-column CSV order, 50 Hz time semantics, six signal columns and 12-class
+coverage require an admission audit before use. The label is target metadata;
+the encoder input contains only `back_x/y/z` and `thigh_x/y/z`. Subject identity
+comes from each `S###.csv` filename, not a signal column. The audit scans raw
+CSV scalars and notice hashes and proposes a namespace-hashed 14/4/4 subject
+assignment using a caller-supplied, still-unfrozen split seed. It does not
+materialize test arrays. A filename, timestamp, column-order, rights or coverage
+mismatch is a hold for explicit review, never an automatic alias or repair.
+The 2026-09-28 Stage 09A archive inventory found 22 subject CSVs and no bundled
+notice member. Its first inspected `S006.csv` labels are 10 ms apart, while the
+UCI page describes 50 Hz. Admission remains `HOLD` until the cadence and rights
+evidence are reconciled through the research gate. The audit reports observed
+cadence and missing notices rather than converting or resampling automatically.
+
+DEC-046 fixed one audit-only candidate before checking coverage: namespace
+`flyts-stage09-harth-candidate-v1`, seed `1`, SHA-256 ranking and a 14/4/4 slice.
+Train and validation contain all official label codes, but test lacks code `14`;
+no alternative namespace or seed was searched. Subject-local review found 10 ms
+cadence only in `S006`; the other subjects are predominantly 20 ms. DEC-047 QA
+also found that the current scanner hides this subject-local mismatch and checks
+only a 12-label count rather than the exact official code set. The candidate and
+scanner therefore remain invalid for admission, and no registry-v2 freeze,
+conversion, windowing or probe is permitted.
+
+DEC-048 corrected only those scanner defects with the same candidate. Subject-
+local evidence now records `S006` at 10 ms with 38 gaps and 461 segments, and
+coverage requires the exact official code set in every split. DEC-049 QA replayed
+the corrected artifact byte-for-byte and reports scanner `PASS`. Dataset admission
+nevertheless remains `HOLD`: test still lacks code `14`, the `S006` sampling
+interpretation is unresolved, and no bundled notice exists.
+
+DEC-050 records the PI's acceptance of this `HOLD`. HARTH is not admitted to
+registry v2 and cannot be converted, windowed or probed under the current Stage 09
+protocol. The preserved candidate must not be repaired by another seed or a
+post-coverage metric change.
+
+Registry v2 adds only the `harth` role `encoder-excluded-probe-target` and
+explicit `train`/`val` target-local, `test` sealed access states. The original
+four domain roles and registry v1 semantics stay fixed. Stage 09A's dataset
+reader refuses a HARTH test array before loading it, and refuses any HARTH
+manifest without its v2 registry. Sealed test use requires the separate future
+PI final-open gate; no Stage 09A command opens it.
+
 `tools/report_stage06_corpus.py` streams bounded chunks from verified arrays
 to count missing and nonfinite values by dataset and split, including the
 final-held-out domain. It emits no model scores. `--check` recomputes and

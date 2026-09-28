@@ -1,5 +1,186 @@
 # FlyTS Decision Log
 
+## DEC-058 — PI accepts Stage 09 HOLD closure and authorizes a Draft PR
+
+- Date: 2026-09-28
+- Decision authority: the user explicitly accepted Stage 09 closure at `HOLD` and requested that the preserved package be opened as a PR.
+- Decision: close Stage 09 at `HOLD` without another remediation, numerical freeze, formal run or final opening. Package the bounded readiness tooling, development-only calibration, HARTH non-admission evidence and DEC-057 QA `FAIL` in a Draft PR for review.
+- Scientific outcome: H-01–H-03 were not formally tested and receive no support/no-support result; H-04 remains excluded and `not tested`. No final-held-out result, foundation-quality claim, topology claim, robustness claim, CUDA claim or semiconductor claim is created.
+- Boundary: PR creation is authorized, but merge, Stage 10, checkpoint/release publication, M2/M5/M6, Electricity access and any revised study scope remain separately gated.
+
+## DEC-057 — Final Stage 09 remediation QA FAIL; HOLD closure recommended
+
+- Date: 2026-09-28
+- Decision authority: independent QA under the PI-approved DEC-056 final-cycle exception; PI closure disposition pending.
+- QA outcome: `FAIL`. Original and v2 hashes, current arithmetic, pairing and byte replay match, but v2 depends on the live evaluation config rather than only approved preserved inputs, and exact directory validation fails to reject a `runs/07` seed alias.
+- Scientific outcome: independently of the reporter defects, one Bike record, synthetic-only count views and sign-changing H-02 contrasts do not justify exact effect/uncertainty rules. H-01–H-03 receive no support result because formal inference was not run.
+- Stop rule: honor the user's request to stop extending Stage 09. No further remediation is proposed automatically. Recommend closing Stage 09 at `HOLD`; no M2 freeze, M5/M6, final access, claims, PR or Stage 10 is authorized.
+
+## DEC-056 — PI authorizes final reporter-only remediation and independent QA
+
+- Date: 2026-09-28
+- Decision authority: user explicitly approved the recommended reporter-only option and stated that Stage 09 is taking too long.
+- Scope: preserve the original DEC-054 `REPORT.json`; derive a versioned `REPORT-v2.json` only from the six existing raw Bike rows/artifacts, adding the prespecified cross-arm clean reconstruction harm summary and its provenance. No training or evaluation rerun, new metric, threshold, seed, data access or performance claim.
+- Agent-budget exception: one final bounded Implementation Engineer turn and one independent QA turn are authorized for this remediation only.
+- Stop rule: this is the last Stage 09 remediation cycle. After QA, the Director must present a direct stage-gate disposition. No further repair/calibration cycle is proposed automatically; unresolved statistical insufficiency remains `HOLD`.
+- Boundary: no M2 freeze, M5/M6, Electricity/final access, PR, claims or Stage 10.
+
+## DEC-055 — DEC-054 calibration completes; locked report remains HOLD
+
+- Date: 2026-09-28
+- Decision authority: executed under PI-approved DEC-054; independent QA pending.
+- Execution: all six registered development runs completed at 400 steps, 3,200 exposures and 68,760 parameters on CPU. Training used Appliances/Beijing and evaluation used Bike validation only. Locked report replay passed; report SHA-256 is `1bb8c7f9d1811ee0caceaaabbb65f146ee892e2f0e84bb88433fb5b844e5b520`.
+- Evidence: all permutation outputs are finite; H-02 descriptive paired effects change sign across seeds at 30% and 50%; synthetic 4/18/370 fixtures are non-empirical. One Bike record cannot justify the intended uncertainty/effect rules.
+- Defect: the locked report leaves 0% at its within-arm identity value and omits the prespecified cross-arm clean reconstruction harm summary, although paired absolute baselines and target counts are preserved in raw rows. This is a reporting omission, not authorization for post-result rule selection.
+- Gate: package status remains `HOLD` with `exact_rules=null`. Reporter remediation and independent QA require a separately authorized bounded agent-budget exception; no rerun, M2 freeze or later gate is authorized.
+
+## DEC-054 — PI approves the bounded Stage 09 M1 calibration package
+
+- Date: 2026-09-28
+- Decision authority: user explicitly approved option A after DEC-053 presented the evidence gap and three alternatives.
+- Approved execution: six development calibration runs, crossing training seeds `7/17/29` with Fly-like masked and temporal-only; 400 optimizer steps, batch 8 and 3,200 exposures per run on CPU float32/four threads. Train only on Appliances/Beijing and evaluate only Bike validation.
+- H-01 count basis: add prespecified synthetic null/sensitivity fixtures for registered views `4/18/370`; synthetic results calibrate tooling/numerical behavior only and cannot become empirical performance evidence.
+- Fixed boundaries: no Electricity/HARTH/H-04/GRU access, no dataset-role change, no formal arm/seed/budget selection from Bike, and no M2 threshold freeze. Calibration artifacts remain ignored; tracked configs/reports/tests may be added with provenance and independent QA.
+- Gate: completion and QA of this package may produce an unfrozen M2 candidate packet or `HOLD`; it does not authorize M2 freeze, M5/M6, final opening, claims, PR or Stage 10.
+
+## DEC-053 — Stage 09 M1 evidence audit reaches HOLD pending a calibration-budget decision
+
+- Date: 2026-09-28
+- Decision authority: Research Director evidence audit with read-only Experiment Scientist and Program Integrator review; PI disposition pending.
+- Finding: preserved Stage 08 Bike evidence has one Fly-like seed, one record, no temporal-only checkpoint and no channel-count rows. Bike has four channels, so it cannot empirically exercise registered views 18/370. Existing Stage 03 candidates cannot be pooled across manifests or treated as frozen rules.
+- Verification: preserved Fly-like checkpoint/summary/records hashes match the tracked Stage 08 report; eight H-03 statistical fixtures pass. Current-tree Stage 08 replay rejects changed source bytes as designed. No new training or final access occurred.
+- Gate: M1 is `HOLD` until the PI either registers a bounded calibration budget and synthetic count-view basis, accepts insufficient calibration and stops before M2, or approves a new dataset/protocol scope. No later gate is authorized.
+
+## DEC-052 — Independent QA passes Stage 09 protocol-v2 proposal consistency
+
+- Date: 2026-09-28
+- Decision authority: independent QA under the PI-approved DEC-051 H-01–H-03 scope revision.
+- QA outcome: `PASS` for the unfrozen protocol-v2 package. Independent parsing found 60 unique rows, 15 each for Fly-like, degree-preserving rewired, random sparse and temporal-only; matrix SHA-256 is `f2a9019f093072e44e68b4f6dd8bab9abfe1655dd4b6ed94719ae54246786cf7`.
+- Verification: focused matrix/rehearsal/resume tests report 4 passed, the full Stage 09 file reports 28 passed, and governance, notebook and diff checks pass. Active validators reject GRU and H-04 while preserving Stage 08 GRU and HARTH audit evidence.
+- Gate boundary: this verdict accepts proposal consistency only. Development-only calibration and exact M2 numerical rules remain unresolved; no M2 freeze, M5/M6, final access, claims, PR or Stage 10 is authorized.
+
+## DEC-051 — PI approves Stage 09 protocol v2: H-01–H-03 and 60 formal runs
+
+- Date: 2026-09-28
+- Decision authority: user explicitly chose the H-01–H-03 scope revision and option A after accepting HARTH admission `HOLD`.
+- Decision: Stage 09 protocol v2 tests H-01, H-02 and H-03 only. The formal proposal is 45 topology rows plus 15 temporal-only rows, for exactly 60 runs. Remove the five GRU rows from Stage 09 formal scope; preserve GRU implementation and Stage 07/08 evidence as historical engineering/pilot evidence.
+- Exclusions: H-04 is `not tested` under protocol v2, HARTH remains unadmitted, and GRU is not a formal or rescue comparator. No transfer or foundation-representation claim is available from this study.
+- Gate boundary: the 60-row proposal is unfrozen. Development-only calibration, exact numerical rules and fresh v2 pre-freeze QA remain required before M5/M6. This decision does not authorize formal training, final opening, claims, PR or Stage 10.
+
+## DEC-050 — PI accepts HARTH admission HOLD under the existing protocol
+
+- Date: 2026-09-28
+- Decision authority: user explicitly accepted the recommended `HOLD` disposition after DEC-049 scanner QA `PASS`.
+- Decision: do not admit HARTH under the current Stage 09 protocol. Preserve the sole namespace/seed/split and both audit artifacts; do not search another split or revise the class metric to rescue coverage.
+- Consequence: H-04 cannot proceed with HARTH and remains `not tested`/`HOLD` unless the PI separately approves a new protocol version, target dataset or Stage 09 scope. This acceptance does not resolve the other M1/M2 calibration and numerical-freeze requirements.
+- Boundary: no registry-v2 admission, arrays, windows, probes, training, M2/M5/M6, final access, claim expansion, PR or Stage 10 is authorized.
+
+## DEC-049 — HARTH scanner micro-remediation QA PASS; admission remains HOLD
+
+- Date: 2026-09-28
+- Decision authority: independent QA under the PI-approved DEC-048 rerun.
+- QA outcome: `PASS` for the bounded scanner evidence. Exact official class codes are required independently in each split, subject-local cadence drives gap/segment evidence, any subject mismatch produces `HOLD`, and metadata-only replay is byte-stable.
+- Evidence: new ignored artifact `outputs/stage09/harth-admission-candidate-dec048.json` has SHA-256 `493cd08c3366cc311c9a1ef297e26c79415cb466f591795dd063af136fa56fe0`; the prior failed artifact is preserved at `23ab3d6bb87d1275ba2040873ab81d7d7769a13f2e5b339ff8be97543bd99294`. Focused HARTH tests report 13 passed and the full Stage 09 file reports 28 passed.
+- Scientific outcome: unchanged `HOLD`. The sole test split still lacks official class `14`; `S006` has a 10 ms local cadence against the declared 50 Hz/20 ms semantics; the archive has no bundled notice. No alternate split was searched.
+- Boundary: scanner QA `PASS` is not dataset admission and does not authorize arrays, windows, probes, training, M2/M5/M6, final access, claims or PR work.
+
+## DEC-048 — PI authorizes HARTH scanner-only micro-remediation and QA rerun
+
+- Date: 2026-09-28
+- Decision authority: user explicitly approved the scanner-only repair after separately approving the independent QA rerun.
+- Decision: correct only subject-local cadence/gap/segment accounting and exact official HARTH label-code validation, regenerate evidence with the same namespace `flyts-stage09-harth-candidate-v1` and seed `1`, and run one independent QA review.
+- Budget exception: one additional bounded Implementation turn and one QA turn for these two defects only.
+- Boundary: preserve the failed artifact and split; do not search another namespace/seed, change the class metric, admit HARTH, create arrays/windows, train a probe, or open any later gate.
+
+## DEC-047 — HARTH one-shot candidate fails admission and M1 QA
+
+- Date: 2026-09-28
+- Decision authority: the Stage 09 Charter stop conditions and independent QA under DEC-046; PI disposition pending.
+- Data outcome: the sole candidate using namespace `flyts-stage09-harth-candidate-v1`, seed `1`, and the registered SHA-256 ranking produced a disjoint 14/4/4 split, but its test subjects lack official label code `14` (11/12 classes). No alternative seed or namespace was tried. HARTH admission therefore remains `HOLD`.
+- QA outcome: `FAIL`. The candidate artifact is byte-replayable, but the scanner's archive-wide 20 ms mode hides `S006`'s subject-local 10 ms cadence and corrupts its gap/segment counts. It also validates only a shared count of 12 labels instead of the official code set.
+- Evidence: ignored `outputs/stage09/harth-admission-candidate.json` has SHA-256 `23ab3d6bb87d1275ba2040873ab81d7d7769a13f2e5b339ff8be97543bd99294`; `docs/research/stages/stage-09/QA_REPORT.md` records the independent verdict.
+- Boundary: no dataset admission, registry freeze, array/window creation, probe, alternate split search, M2 freeze, M5/M6, final access, claim or PR is authorized. Further tracked-code remediation or a changed split/class policy requires a new PI decision.
+
+## DEC-046 — PI authorizes bounded HARTH M1 admission remediation
+
+- Date: 2026-09-28
+- Decision authority: user approved recommended option A.
+- Decision: authorize one bounded metadata-only pass to reconcile rights provenance, timestamp cadence and the three extra-column variants, then generate exactly one namespace-hashed 14/4/4 candidate and return it for PI admission review.
+- Controls: inspect subject/header/timestamp/label metadata only; do not create arrays or windows, train a probe, search another seed after coverage failure, or mark the dataset admitted. HARTH test remains sealed for model evaluation.
+- Boundary: this does not authorize HARTH admission, an M2 numerical freeze, M5/M6, final access, claims or PR work.
+
+## DEC-045 — PI accepts bounded Stage 09A M4 tooling result
+
+- Date: 2026-09-28
+- Decision authority: user explicitly issued `GO` for the presented bounded M4 tooling result.
+- Decision: accept the DEC-044 tooling package and independent QA `PASS` as readiness evidence for the bounded M4 scope.
+- Boundary: this is not Stage 09A closure, HARTH admission, an M2 numerical/uncertainty freeze, an immutable M5 manifest, formal M6 execution, final-held-out access, claim expansion or PR authorization. Stage 09A remains `HOLD` on M1/M2, and every later PI gate remains closed.
+- Evidence: `docs/research/stages/stage-09/QA_REPORT.md` and `RESULT.md`.
+
+## DEC-039 — Stage 09A formal-study readiness GO
+
+- Date: 2026-09-28
+- Decision authority: the user approved implementation of the complete Stage 09
+  plan after selecting the two-phase gate, H-01–H-04 expanded scope, development
+  calibration, 10,000-step CPU budget, 3-by-5 graph/training seed design, HARTH,
+  graph caching, conjunctive IUT, masking/probe scope and expanded agent budget.
+- Decision: open Stage 09 for M0–M4 only. Admit HARTH only through a source/schema/
+  label gate; build blind formal tooling and seek independent pre-freeze QA.
+- Boundary: exact numerical rules remain pending. M5 immutable freeze, M6 formal
+  training, Electricity/HARTH-test access, final claims, PR and Stage 10 each retain
+  later PI gates. Calibration failure is `HOLD`, not permission to reuse candidates.
+
+## DEC-040 — Stage 09A M4 QA failure and automatic HOLD
+
+- Date: 2026-09-28
+- Decision authority: Stage 09 Charter stop conditions and independent QA; PI disposition pending
+- Outcome: independent QA reported `FAIL — REVISE` after one remediation round. Original sealed-access, subject-overlap, cache-load and ledger defects were corrected, but QA reproduced a nonfinite H-03 cell yielding support and found the M3 cache-consuming runner/locked artifact reporter incomplete.
+- Data outcome: HARTH admission remains `HOLD` because official bytes have no bundled notice, observed 10 ms cadence conflicts with the 50 Hz metadata statement, and three CSVs contain extra index columns. No split was approved.
+- Boundary: M5 freeze, M6 formal training, Electricity/HARTH-test access, claims, PR and Stage 10 remain unauthorized. The approved Implementation follow-up budget is exhausted; further tracked-code remediation requires a new user decision.
+- Evidence: `docs/research/stages/stage-09/QA_REPORT.md`, `READINESS.md`, and `RESULT.md`.
+
+## DEC-041 — Stage 09A option A remediation authorization
+
+- Date: 2026-09-28
+- Decision authority: user selected option A after reviewing DEC-040 and the M4 QA failure.
+- Decision: authorize one additional bounded Implementation remediation and one independent QA rerun for only (1) fail-closed rejection of nonfinite H-03 inputs and (2) a cache-consuming one-run orchestration/locked-report blind rehearsal.
+- Budget exception: one extra follow-up turn each for the existing Implementation Engineer and QA Engineer is approved. No new specialist role or second full-lab review is authorized.
+- Boundary: HARTH admission stays `HOLD`; dataset interpretation, numerical freeze, M5/M6, final access, claims, PR and Stage 10 remain unauthorized.
+- Evidence target: updated Stage 09 tests/tooling and a replacement M4 QA verdict.
+
+## DEC-042 — DEC-041 replacement M4 QA remains FAIL
+
+- Date: 2026-09-28
+- Decision authority: independent QA under the user-approved DEC-041 rerun; PI disposition pending.
+- Outcome: cache-backed one-row rehearsal and input-level H-03 guards passed, but QA reproduced finite `1e308` cell losses overflowing to `-inf` derived bounds and `iut_support=true`.
+- Boundary: automatic `HOLD` remains. DEC-041 follow-ups are consumed; another tracked-code change requires a new user decision. HARTH, numerical freeze, M5/M6, final access, claims and PR remain unauthorized.
+- Evidence: `docs/research/stages/stage-09/QA_REPORT.md`, `RESULT.md`, and ignored `outputs/stage09/dec041-rehearsal/`.
+
+## DEC-043 — H-03 derived-finiteness micro-remediation authorization
+
+- Date: 2026-09-28
+- Decision authority: user explicitly approved the recommended additional micro-remediation.
+- Decision: authorize one minimal Implementation patch and one independent QA rerun limited to rejecting nonfinite H-03 paired differences, hierarchical aggregates, resamples and bounds, with the exact finite-`1e308` overflow regression.
+- Budget exception: one further micro follow-up turn each for the existing Implementation Engineer and QA Engineer. No other code, role, experiment or scientific decision is authorized.
+- Boundary: HARTH admission, sufficient-statistic expansion, numerical freeze, M5/M6, final access, claims and PR remain unchanged and unauthorized.
+
+## DEC-044 — Stage 09A bounded M4 tooling QA PASS
+
+- Date: 2026-09-28
+- Decision authority: independent QA under DEC-043; PI acceptance of the broader stage remains pending.
+- Outcome: QA reports `PASS` for the bounded Stage 09A tooling package. The exact finite-`1e308` and opposite-sign overflow cases now fail closed, safe finite and paired-IUT fixtures remain correct, and the cache-backed rehearsal/replay remains valid.
+- Boundary: this is not HARTH admission or a numerical freeze. Stage 09A remains `HOLD`; M5/M6, final access, claims and PR are unauthorized until their separate PI gates.
+- Evidence: `docs/research/stages/stage-09/QA_REPORT.md`, `RESULT.md`, and ignored `outputs/stage09/dec041-rehearsal/`.
+
+## DEC-038A — Stage 08 PR #14 merged
+
+- Date: 2026-09-28
+- Authority: user performed the separately gated merge.
+- Evidence: GitHub `main` and merge commit are
+  `9f41e0fcf55a8b1a606e21bb53c1220bdc57dfc3`; its tree matches reviewed PR head
+  `3369ae99503123b487e97a6bba59d88355e36340`.
+- Boundary: integration does not change Stage 08 evidence or authorize final access.
+
 ## DEC-038 — Stage 08 Draft PR CI passed
 
 - Date: 2026-09-28
