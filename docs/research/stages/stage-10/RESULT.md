@@ -1,6 +1,6 @@
 # Stage 10 Result — FlyTS-Mini v0.1 Research Preview
 
-Status: **M9 PASS; M10A PI integration gate pending**
+Status: **M9 PASS; M10A GO; Draft PR delivery authorized**
 
 Date: 2026-09-29
 
@@ -29,7 +29,7 @@ transfer, pretrained-checkpoint, CUDA or semiconductor result is claimed.
 | M7 security/rights | `PASS`; MIT, exclusions, portable-path and archive controls |
 | M8 clean room | `PASS`; CPU install/smoke/resume/embed/replay/no-network evidence |
 | M9 independent QA | initial `FAIL` preserved; DEC-064 remediation recheck `PASS` |
-| M10A/M10B | pending separate PI decisions |
+| M10A/M10B | M10A `GO` (DEC-066); user merge and M10B pending |
 
 ## Independent QA history
 
@@ -55,8 +55,8 @@ source/offline archives.
 
 ## Gate boundary
 
-M10A `GO` would authorize only push and creation of a Draft PR. The user performs
-the merge. Any changed PR or merge tree returns to M9/M10 verification. After the
-merge, M10B requires a fresh head-bound build and explicit PI release `GO` before
-creating tag `flyts-mini-v0.1-preview.1` and a GitHub prerelease. No PyPI upload is
-authorized.
+DEC-066 M10A `GO` authorizes only push and creation of a Draft PR. The user
+performs the merge. Any changed PR or merge tree returns to M9/M10 verification.
+After the merge, M10B requires a fresh head-bound build and explicit PI release
+`GO` before creating tag `flyts-mini-v0.1-preview.1` and a GitHub prerelease. No
+PyPI upload is authorized.

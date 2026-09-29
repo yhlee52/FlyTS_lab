@@ -1,5 +1,18 @@
 # FlyTS Decision Log
 
+## DEC-066 — PI grants Stage 10 M10A integration GO
+
+- Date: 2026-09-29
+- Decision authority: explicit PI `GO` after the M2–M9 evidence summary and final
+  independent QA `PASS` on commit `3a4a2a5` / tree `510ec38`.
+- Authorization: push `codex/stage-10-research-preview` and open a Draft PR with
+  engineering scope, evidence, limitations and QA history.
+- Boundary: the PI/user performs and separately approves merge. This decision
+  does not authorize merge, tag, GitHub Release/prerelease, PyPI publication,
+  checkpoint publication, M10B or the next research cycle.
+- Post-merge requirement: verify the reviewed tree against merged `main`, rebuild
+  all assets, repeat M9/M10 checks and obtain explicit M10B release `GO`.
+
 ## DEC-065 — Stage 10 M9 remediation recheck passes
 
 - Date: 2026-09-29

@@ -16,13 +16,13 @@ selecting MIT and preserving but archive-excluding two historical personal-path
 files. M7 and M8 passed for the pre-integration candidate. The first M9 review of
 `d6e44f7` failed under DEC-064; remediation commit `d4407e8` fixed all four
 findings and DEC-065 records the independent delta `PASS`. M2–M9 are complete.
-M10A/M10B remain closed.
+DEC-066 records PI M10A `GO`; M10B remains closed.
 
 ## Current goal
 
-Present the completed engineering scope, incomplete science, asset policy,
-candidate identity and M9 `PASS` for the PI's M10A integration decision. Do not
-push, open a Draft PR, tag or prerelease before the applicable M10 decision.
+Deliver the reviewed Stage 10 branch through push and a Draft PR under M10A,
+then await user review/merge. Do not merge, tag or create a prerelease; M10B is
+a separate post-merge PI decision.
 
 ## Canonical references
 
@@ -73,10 +73,12 @@ push, open a Draft PR, tag or prerelease before the applicable M10 decision.
   and stale M8 wording, followed by one independent recheck.
 - DEC-065 records independent remediation `PASS`; it completes M9 evidence but
   does not authorize push, Draft PR, merge, tag or prerelease.
+- DEC-066 grants M10A `GO` for branch push and Draft PR only. Merge, tag,
+  prerelease, PyPI/checkpoint publication and future research remain unauthorized.
 
 ## Open questions
 
-- Whether the PI grants M10A integration `GO` for push and a Draft PR.
+- Whether the user merges the Draft PR after review; M10B remains separate.
 
 ## Active risks
 
@@ -140,6 +142,6 @@ push, open a Draft PR, tag or prerelease before the applicable M10 decision.
 
 ## Next action
 
-Rebuild and independently verify the documentation-only final-head candidate,
-then present M10A to the PI. Preserve Stage 09 bytes and do not push or open a
-Draft PR without M10A `GO`.
+Push the M10A-authorized branch, open a Draft PR and stop for user review/merge.
+After merge, reverify the exact merged tree and final assets before presenting
+the separate M10B release gate.

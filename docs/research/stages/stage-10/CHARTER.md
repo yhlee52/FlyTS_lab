@@ -2,7 +2,7 @@
 
 Status: active
 
-Progress: M9 complete; M10A PI gate pending.
+Progress: M9 complete; M10A PI `GO`; Draft PR delivery authorized.
 
 Baseline: GitHub `main` merge commit
 `af46eb6058c4abc13535c063295431a94dca640e`, tree
@@ -177,7 +177,7 @@ not be collapsed into a single field or interpreted as one another.
 | Material scope/interface/data/metric/budget change | affected work | `HOLD` until explicit PI decision |
 | M3 historical-evidence impact | any change touching Stage 09 evidence semantics or hashes | prohibited; immediate `HOLD` |
 | M7 personal-path and project-license disposition | any public source/archive candidate | approved: MIT plus immutable-file archive exclusions (DEC-063) |
-| M10A integration | push or Draft PR | pending after independent QA |
+| M10A integration | push or Draft PR | `GO`, 2026-09-29 (DEC-066) |
 | User merge | integration into `main` | performed by user only |
 | M10B release | tag or GitHub prerelease | pending after merged-tree and final-asset verification |
 | Next research cycle | any formal/CUDA/semiconductor work | pending separate Charter and PI decision |
@@ -226,3 +226,6 @@ agent_budget:
 - Date: 2026-09-29
 - Conditions: implement M2 through independent release QA under this Charter.
   M10A push/Draft PR and M10B tag/GitHub prerelease retain separate PI gates.
+- M10A decision: `GO`, 2026-09-29 (DEC-066); push and Draft PR only.
+- Remaining gate: user merge followed by merged-tree verification and explicit
+  M10B `GO` before tag or GitHub prerelease.
