@@ -1,6 +1,6 @@
 # FlyTS-Mini v0.1 Research Preview — Closeout Report
 
-Status: PR #16 merged; post-merge closeout QA remediation; M10B pending
+Status: post-merge closeout QA PASS; documentation PR merge and M10B pending
 
 ## Conclusion
 
@@ -106,7 +106,6 @@ backbone hypothesis from an unexecuted formal study.
 
 ## Remaining release gates
 
-1. Complete the approved documentation-only post-merge closeout QA.
-2. Merge the closeout documentation and regenerate/re-audit every asset from the
-   resulting exact `main` commit.
-3. Obtain M10B PI approval before tag or GitHub prerelease creation.
+1. Merge the independently approved closeout documentation and regenerate/re-audit
+   every asset from the resulting exact `main` commit.
+2. Obtain M10B PI approval before tag or GitHub prerelease creation.

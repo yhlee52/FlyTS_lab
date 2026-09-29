@@ -19,7 +19,7 @@ findings and DEC-065 records the independent delta `PASS`. M2–M9 are complete.
 DEC-066 M10A delivery merged through PR #16 at `b193d91`; its tree exactly equals
 the reviewed head. DEC-067 authorizes a documentation-only closeout and one
 additional independent QA cycle. Its first review failed on stale M10A wording
-under DEC-068; remediation is active and M10B remains closed.
+under DEC-068; DEC-069 records the remediation recheck `PASS`. M10B remains closed.
 
 ## Current goal
 
@@ -82,6 +82,7 @@ is a separate decision after final merged-tree assets verify.
   independent QA cycle. It does not authorize M10B release actions.
 - DEC-068 preserves the added QA `FAIL` for stale M10A wording and limits
   remediation to documentation accuracy and build-environment disclosure.
+- DEC-069 records remediation QA `PASS`; only the documentation PR is authorized.
 
 ## Open questions
 
@@ -138,12 +139,12 @@ is a separate decision after final merged-tree assets verify.
 - PR #16 merged as `b193d91198adf8f7c5e5b1d7e177783252b7d932`; merge tree
   `1f590601b977b5fb9d6cc9d219a0e8478ec4a4d5` exactly equals reviewed head
   `cb1a4b67be266438ae9565f5f10240cbc7397519`, so integration added no drift.
-- Post-merge QA failed `703e4a1` only for stale M10A wording; all functional,
-  package, archive and Stage 09 checks passed. Python 3.12 replay was byte-stable;
-  Python 3.14 gzip bytes differed although decompressed tar payloads matched.
+- Post-merge QA failed `703e4a1` only for stale M10A wording; remediation
+  `c9f71d4` / tree `94f78ec` passed all rechecks. CPython 3.12 was byte-stable;
+  CPython 3.14 gzip differed although decompressed tar payloads matched.
 
 ## Next action
 
-Complete DEC-068 remediation QA, open the closeout PR and stop for user merge.
+Open the documentation closeout PR with DEC-069 QA `PASS` and stop for user merge.
 After that merge, build and verify final assets from exact `main` before presenting
 the separate M10B release gate.

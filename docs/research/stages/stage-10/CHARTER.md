@@ -2,7 +2,7 @@
 
 Status: active
 
-Progress: PR #16 merged; DEC-068 documentation QA remediation active.
+Progress: PR #16 merged; DEC-069 post-merge closeout QA `PASS`; documentation PR pending.
 
 Baseline: GitHub `main` merge commit
 `af46eb6058c4abc13535c063295431a94dca640e`, tree

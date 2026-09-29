@@ -1,6 +1,6 @@
 # Stage 10 Result — FlyTS-Mini v0.1 Research Preview
 
-Status: **PR #16 merged; DEC-068 closeout QA remediation; M10B pending**
+Status: **post-merge closeout QA PASS; documentation PR merge and M10B pending**
 
 Date: 2026-09-29
 
@@ -29,7 +29,7 @@ transfer, pretrained-checkpoint, CUDA or semiconductor result is claimed.
 | M7 security/rights | `PASS`; MIT, exclusions, portable-path and archive controls |
 | M8 clean room | `PASS`; CPU install/smoke/resume/embed/replay/no-network evidence |
 | M9 independent QA | initial `FAIL` preserved; DEC-064 remediation recheck `PASS` |
-| M10A/M10B | PR #16 merged without tree drift; closeout QA and M10B pending |
+| M10A/M10B | PR #16 merged without tree drift; closeout QA `PASS`; documentation PR merge and M10B pending |
 
 ## Independent QA history
 

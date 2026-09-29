@@ -1,5 +1,20 @@
 # FlyTS Decision Log
 
+## DEC-069 — Post-merge documentation remediation QA passes
+
+- Date: 2026-09-29
+- Decision authority: DEC-067 additional independent QA cycle.
+- Verdict: `PASS` on remediation commit
+  `c9f71d4acd9ecc0e62c45a973f30a6b24347f229`, tree
+  `94f78ecaeea3ad3438292f12e236cca4eac92fd8`.
+- Evidence: the PR #16/M10A wording is current; the change is documentation-only;
+  governance/notebook checks, focused tests, candidate verification, CPython
+  3.12 byte replay, fixture/archive/privacy checks and Stage 09 immutability pass.
+  Earlier full-suite and no-index install evidence remains applicable.
+- Boundary: cross-Python gzip byte identity is not claimed. This decision
+  authorizes only delivery of the documentation closeout PR; tag, prerelease,
+  PyPI/checkpoint publication and M10B remain unauthorized.
+
 ## DEC-068 — First post-merge closeout QA fails on stale gate wording
 
 - Date: 2026-09-29

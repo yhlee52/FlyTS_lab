@@ -1,6 +1,6 @@
 # Stage 10 Independent QA Report
 
-Verdict: **FAIL**
+Verdict: **PASS**
 
 Date: 2026-09-29
 
@@ -8,7 +8,7 @@ Reviewed source commit: `d6e44f711d84b25274ff45527c5d900357665bca`
 
 The first M9 verdict was `FAIL`. Its evidence and blockers are preserved below;
 the top-level verdict reflects the independently verified remediation recheck.
-This `PASS` does not authorize M10A or M10B.
+That first M9 `PASS` did not authorize M10A or M10B.
 
 ## Scope checked
 
@@ -71,8 +71,8 @@ a hash-verified 12-record synthetic corpus and passes installed `flyts verify`;
 the manifest derives the QA verdict and report SHA-256 from its source commit;
 M8 wording is current. Full pytest, focused tests, candidate verification, byte
 replay, no-index wheel/sdist installs, `pip check`, archive/privacy checks and
-Stage 09 immutability checks passed. CUDA remains untested. M10A/M10B remain
-pending PI gates.
+Stage 09 immutability checks passed. CUDA remains untested. At that recheck,
+M10A/M10B remained pending PI gates.
 
 ## Post-merge closeout recheck
 
@@ -96,4 +96,17 @@ equal tar payloads; replay identity is evidenced on Python 3.12.
 
 ### Remediation recheck
 
-Pending.
+Date: 2026-09-29. Reviewed documentation remediation commit
+`c9f71d4acd9ecc0e62c45a973f30a6b24347f229`, tree
+`94f78ecaeea3ad3438292f12e236cca4eac92fd8`. Verdict: **PASS** for the stale
+M10A gate wording in the preserved post-merge `FAIL`. The release report and
+Development Plan now state that PR #16 merged and that documentation closeout
+and M10B remain pending. The change is documentation-only. Governance/notebook
+validation, focused release/reporter tests, head-bound candidate seal/verify, a
+byte-identical CPython 3.12 replay of all six assets, the 12-record offline
+fixture, and archive/privacy checks passed. The prior full suite and no-index
+package-install evidence remain applicable because no source, config, or tests
+changed. Stage 09 report hashes and `HOLD`/QA `FAIL` remain preserved; CUDA is
+not tested. Cross-Python gzip byte identity is explicitly unclaimed. This
+recheck does not authorize a tag, prerelease, PyPI upload, checkpoint
+publication, or M10B.
