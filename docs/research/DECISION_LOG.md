@@ -1,5 +1,20 @@
 # FlyTS Decision Log
 
+## DEC-068 — First post-merge closeout QA fails on stale gate wording
+
+- Date: 2026-09-29
+- Decision authority: DEC-067 independent QA cycle.
+- Verdict: `FAIL` on `703e4a1` / tree `973a858`; M10B remains closed.
+- Finding: the release report still called M10A pending and instructed obtaining
+  it, while the Development Plan still said push/PR were gated, contradicting
+  merged PR #16 and DEC-067.
+- Other evidence: functional, packaging, install, fixture, security, Stage 09
+  immutability and Python 3.12 byte-replay checks passed. Python 3.14 produced
+  different gzip bytes for equal tar payloads; cross-version bitwise identity is
+  not claimed.
+- Remediation: correct only stale gate statements, disclose the recorded build-
+  environment replay boundary, rebind the candidate and independently recheck.
+
 ## DEC-067 — PI approves post-merge closeout and one additional QA cycle
 
 - Date: 2026-09-29

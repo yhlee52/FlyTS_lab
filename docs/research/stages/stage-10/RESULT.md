@@ -1,6 +1,6 @@
 # Stage 10 Result — FlyTS-Mini v0.1 Research Preview
 
-Status: **PR #16 merged; post-merge closeout QA active; M10B pending**
+Status: **PR #16 merged; DEC-068 closeout QA remediation; M10B pending**
 
 Date: 2026-09-29
 

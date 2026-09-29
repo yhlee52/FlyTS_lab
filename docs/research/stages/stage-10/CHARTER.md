@@ -2,7 +2,7 @@
 
 Status: active
 
-Progress: PR #16 merged without tree drift; DEC-067 post-merge closeout QA active.
+Progress: PR #16 merged; DEC-068 documentation QA remediation active.
 
 Baseline: GitHub `main` merge commit
 `af46eb6058c4abc13535c063295431a94dca640e`, tree

@@ -18,7 +18,8 @@ files. M7 and M8 passed for the pre-integration candidate. The first M9 review o
 findings and DEC-065 records the independent delta `PASS`. M2–M9 are complete.
 DEC-066 M10A delivery merged through PR #16 at `b193d91`; its tree exactly equals
 the reviewed head. DEC-067 authorizes a documentation-only closeout and one
-additional independent QA cycle. M10B remains closed.
+additional independent QA cycle. Its first review failed on stale M10A wording
+under DEC-068; remediation is active and M10B remains closed.
 
 ## Current goal
 
@@ -79,6 +80,8 @@ is a separate decision after final merged-tree assets verify.
   The authorized PR #16 is merged at `b193d91`.
 - DEC-067 authorizes one documentation-only closeout PR and one additional
   independent QA cycle. It does not authorize M10B release actions.
+- DEC-068 preserves the added QA `FAIL` for stale M10A wording and limits
+  remediation to documentation accuracy and build-environment disclosure.
 
 ## Open questions
 
@@ -110,17 +113,11 @@ is a separate decision after final merged-tree assets verify.
 
 ## Latest evidence
 
-- GitHub PR #15 is merged at `af46eb6058c4abc13535c063295431a94dca640e`;
-  its tree `077a5551…9d4ed7a2` equals reviewed Stage 09 head `a02a9935`.
 - Stage 09 final reporter QA remains `FAIL`: `REPORT-v2` reads a live evaluation
   config and accepts a numeric directory alias such as `runs/07`.
 - Stage 09 preserved original/v2 report hashes remain
   `1bb8c7f9…e5b520` and `8ab632b5…60db3`.
-- The protocol-v2 matrix remains an unfrozen 60-row proposal with SHA-256
-  `f2a9019f…786cf7`; no formal run used it.
 - Electricity final-held-out evidence remains unopened and HARTH remains unadmitted.
-- The current package version is `0.2.0`; its version history moved from `0.1.0`
-  when the foundation encoder MVP was introduced.
 - DEC-063 adds MIT and dual archive exclusion. M7 re-audit passes: the commit-bound
   source, wheel, sdist and offline bundle contain no detected private path/name,
   secret, raw/checkpoint/embedding or traversal member; both historical files
@@ -141,9 +138,12 @@ is a separate decision after final merged-tree assets verify.
 - PR #16 merged as `b193d91198adf8f7c5e5b1d7e177783252b7d932`; merge tree
   `1f590601b977b5fb9d6cc9d219a0e8478ec4a4d5` exactly equals reviewed head
   `cb1a4b67be266438ae9565f5f10240cbc7397519`, so integration added no drift.
+- Post-merge QA failed `703e4a1` only for stale M10A wording; all functional,
+  package, archive and Stage 09 checks passed. Python 3.12 replay was byte-stable;
+  Python 3.14 gzip bytes differed although decompressed tar payloads matched.
 
 ## Next action
 
-Complete DEC-067 documentation QA, open the closeout PR and stop for user merge.
+Complete DEC-068 remediation QA, open the closeout PR and stop for user merge.
 After that merge, build and verify final assets from exact `main` before presenting
 the separate M10B release gate.

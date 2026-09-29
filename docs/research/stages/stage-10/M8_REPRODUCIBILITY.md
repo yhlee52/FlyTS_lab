@@ -104,3 +104,9 @@ Their asset SHA-256 values were:
 The ZIP has 12 generated seed-7 arrays plus its corpus manifest/checksum. Both
 local and installed `flyts verify` reported 12 records with 8/2/2 train/val/test
 splits. Independent M9 delta QA repeated package/install/bundle checks and passed.
+
+Artifact byte replay is evidenced in the recorded CPython 3.12.14 build
+environment. A diagnostic CPython 3.14 build produced equal decompressed tar
+payloads but different gzip bytes. The package runtime remains Python 3.10 or
+newer; that support range is not a claim that different Python/zlib build
+environments reproduce identical compressed artifact bytes.

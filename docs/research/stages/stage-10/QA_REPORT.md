@@ -1,6 +1,6 @@
 # Stage 10 Independent QA Report
 
-Verdict: **PASS**
+Verdict: **FAIL**
 
 Date: 2026-09-29
 
@@ -73,3 +73,27 @@ M8 wording is current. Full pytest, focused tests, candidate verification, byte
 replay, no-index wheel/sdist installs, `pip check`, archive/privacy checks and
 Stage 09 immutability checks passed. CUDA remains untested. M10A/M10B remain
 pending PI gates.
+
+## Post-merge closeout recheck
+
+Date: 2026-09-29. Reviewed
+`703e4a1dd0aff3edf8525f3fbe2869e3db1d26f9`, tree
+`973a858e28b472f4a636ee6b28490fdf8c9149b5`, and its head-bound candidate.
+Verdict: **FAIL** for documentation accuracy. PR #16 merge
+`b193d91198adf8f7c5e5b1d7e177783252b7d932` has tree
+`1f590601b977b5fb9d6cc9d219a0e8478ec4a4d5`, equal to reviewed head
+`cb1a4b67be266438ae9565f5f10240cbc7397519`. The closeout diff is
+documentation-only. The release report still calls M10A pending and instructs
+obtaining its already completed push/PR gate; the Development Plan still says
+push/PR remain gated. Correct those present-tense statements and rebind/reverify
+the candidate before closeout.
+
+Governance validation, full and focused pytest, release seal/verify, Python 3.12
+byte replay, no-index wheel/sdist installs, `pip check`/CLI, 12-record offline
+fixture, archive exclusion/privacy scan, and Stage 09 preserved report hashes
+passed. CUDA remains not tested. Python 3.14 yields different gzip bytes despite
+equal tar payloads; replay identity is evidenced on Python 3.12.
+
+### Remediation recheck
+
+Pending.
