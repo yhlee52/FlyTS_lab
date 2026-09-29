@@ -1,5 +1,19 @@
 # FlyTS Decision Log
 
+## DEC-067 — PI approves post-merge closeout and one additional QA cycle
+
+- Date: 2026-09-29
+- Decision authority: explicit PI approval after PR #16 merge.
+- Merge identity: PR #16 merged as
+  `b193d91198adf8f7c5e5b1d7e177783252b7d932`; its tree
+  `1f590601b977b5fb9d6cc9d219a0e8478ec4a4d5` exactly equals reviewed PR head
+  `cb1a4b67be266438ae9565f5f10240cbc7397519`.
+- Authorization: prepare one documentation-only closeout PR and expand the Stage
+  10 budget by one independent QA cycle for that exact tree and its sealed
+  candidate. No new research, data access, training or package behavior change.
+- Boundary: this is M10B preparation, not release `GO`. Tag, GitHub prerelease,
+  PyPI/checkpoint publication and the next research cycle remain unauthorized.
+
 ## DEC-066 — PI grants Stage 10 M10A integration GO
 
 - Date: 2026-09-29

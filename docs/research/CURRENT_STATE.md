@@ -16,12 +16,15 @@ selecting MIT and preserving but archive-excluding two historical personal-path
 files. M7 and M8 passed for the pre-integration candidate. The first M9 review of
 `d6e44f7` failed under DEC-064; remediation commit `d4407e8` fixed all four
 findings and DEC-065 records the independent delta `PASS`. M2–M9 are complete.
-DEC-066 records PI M10A `GO`; Draft PR #16 is open and M10B remains closed.
+DEC-066 M10A delivery merged through PR #16 at `b193d91`; its tree exactly equals
+the reviewed head. DEC-067 authorizes a documentation-only closeout and one
+additional independent QA cycle. M10B remains closed.
 
 ## Current goal
 
-Await user review and merge of Draft PR #16. Do not merge, tag or create a
-prerelease; M10B is a separate post-merge PI decision.
+Complete the post-merge documentation closeout and added independent QA, then
+deliver the closeout PR for user merge. Do not tag or create a prerelease; M10B
+is a separate decision after final merged-tree assets verify.
 
 ## Canonical references
 
@@ -62,8 +65,7 @@ prerelease; M10B is a separate post-merge PI decision.
   changes in Stage 10.
 - Stage 10 uses at most three specialists, at most two concurrently, after Charter
   approval. The Research Director works alone through the Charter gate.
-- DEC-061 approves the Stage 10 Charter and M2 through independent release QA.
-  M10A push/Draft PR and M10B tag/prerelease remain pending.
+- DEC-061 approved the Stage 10 Charter and M2 through independent release QA.
 - DEC-063 selects MIT and immutable historical-file treatment: the affected
   Stage 0/8 files stay byte-identical in Git but are excluded from new release
   archives by both `export-ignore` and the curated builder.
@@ -74,11 +76,13 @@ prerelease; M10B is a separate post-merge PI decision.
   does not authorize push, Draft PR, merge, tag or prerelease.
 - DEC-066 grants M10A `GO` for branch push and Draft PR only. Merge, tag,
   prerelease, PyPI/checkpoint publication and future research remain unauthorized.
-  The authorized delivery is Draft PR #16.
+  The authorized PR #16 is merged at `b193d91`.
+- DEC-067 authorizes one documentation-only closeout PR and one additional
+  independent QA cycle. It does not authorize M10B release actions.
 
 ## Open questions
 
-- Whether the user merges the Draft PR after review; M10B remains separate.
+- Whether the user merges the documentation closeout PR and later grants M10B.
 
 ## Active risks
 
@@ -102,7 +106,7 @@ prerelease; M10B is a separate post-merge PI decision.
 - The first M9 review found that malformed external package input could use a
   Windows drive-absolute member, the promised corpus fixture was absent, and the
   manifest could not bind a final QA verdict. DEC-065 controls those defects;
-  future changed trees still require the same audit and M10A remains gated.
+  the documentation closeout tree still requires the DEC-067 QA/audit cycle.
 
 ## Latest evidence
 
@@ -115,17 +119,12 @@ prerelease; M10B is a separate post-merge PI decision.
 - The protocol-v2 matrix remains an unfrozen 60-row proposal with SHA-256
   `f2a9019f…786cf7`; no formal run used it.
 - Electricity final-held-out evidence remains unopened and HARTH remains unadmitted.
-- Stage 08 provides one-seed operational evidence only: four core arms completed
-  400 CPU steps/3,200 exposures with independent QA `PASS`.
 - The current package version is `0.2.0`; its version history moved from `0.1.0`
   when the foundation encoder MVP was introduced.
 - DEC-063 adds MIT and dual archive exclusion. M7 re-audit passes: the commit-bound
   source, wheel, sdist and offline bundle contain no detected private path/name,
   secret, raw/checkpoint/embedding or traversal member; both historical files
   remain byte-identical in Git and absent from release archives.
-- Candidate `14f95c9906bb771783686072d7cd0553094cc491` / tree
-  `f2a50014f3d9870a9e88ed2554e1d8f40d84fd4c` is byte-stable across two builds.
-  The external manifest SHA-256 is `bce6a87c…1cc5ecf`.
 - M8 passes: final full suite `160 passed, 4 skipped` in 210.72 s; wheel/sdist
   no-index installs and `pip check` pass; installed-wheel CPU smoke, exact model
   resume, embedding export, prospective replay and bundle verification pass.
@@ -139,9 +138,12 @@ prerelease; M10B is a separate post-merge PI decision.
   members, includes and verifies a 12-record generated fixture, and binds the QA
   report/verdict. Two candidates were byte-identical; full/focused tests, package
   installs, archive checks and Stage 09 immutability passed independent recheck.
+- PR #16 merged as `b193d91198adf8f7c5e5b1d7e177783252b7d932`; merge tree
+  `1f590601b977b5fb9d6cc9d219a0e8478ec4a4d5` exactly equals reviewed head
+  `cb1a4b67be266438ae9565f5f10240cbc7397519`, so integration added no drift.
 
 ## Next action
 
-Wait for the user to review and merge Draft PR #16. After merge, reverify the
-exact merged tree and final assets before presenting the separate M10B release
-gate.
+Complete DEC-067 documentation QA, open the closeout PR and stop for user merge.
+After that merge, build and verify final assets from exact `main` before presenting
+the separate M10B release gate.
