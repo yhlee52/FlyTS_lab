@@ -4,3 +4,7 @@ src/flyts/*.py text eol=lf
 src/flyts/backbones/*.py text eol=lf
 src/flyts/topology/*.py text eol=lf
 tools/report_stage07_baselines.py text eol=lf
+reports/PILOT_RESULTS.json export-ignore
+docs/BASELINE_VALIDATION.md export-ignore
+reports/releases/**/*.json text eol=lf
+reports/releases/**/SHA256SUMS text eol=lf

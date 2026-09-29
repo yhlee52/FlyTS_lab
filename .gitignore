@@ -6,6 +6,7 @@ __pycache__/
 build/
 dist/
 outputs/
+/artifacts/
 /data/
 private_data/
 wheelhouse/

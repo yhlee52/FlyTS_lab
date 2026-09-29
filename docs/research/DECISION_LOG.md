@@ -1,5 +1,133 @@
 # FlyTS Decision Log
 
+## DEC-066 — PI grants Stage 10 M10A integration GO
+
+- Date: 2026-09-29
+- Decision authority: explicit PI `GO` after the M2–M9 evidence summary and final
+  independent QA `PASS` on commit `3a4a2a5` / tree `510ec38`.
+- Authorization: push `codex/stage-10-research-preview` and open a Draft PR with
+  engineering scope, evidence, limitations and QA history.
+- Boundary: the PI/user performs and separately approves merge. This decision
+  does not authorize merge, tag, GitHub Release/prerelease, PyPI publication,
+  checkpoint publication, M10B or the next research cycle.
+- Post-merge requirement: verify the reviewed tree against merged `main`, rebuild
+  all assets, repeat M9/M10 checks and obtain explicit M10B release `GO`.
+- Delivery: branch `codex/stage-10-research-preview` was pushed and Draft PR #16
+  was opened under this authorization; merge remains a user action.
+
+## DEC-065 — Stage 10 M9 remediation recheck passes
+
+- Date: 2026-09-29
+- Decision authority: independent QA delta review under DEC-064.
+- Verdict: `PASS` on remediation commit `d4407e8`, tree `0c18e76`, after the
+  initial M9 `FAIL`; the initial defects and evidence remain in `QA_REPORT.md`.
+- Evidence: full and focused tests, two byte-identical sealed candidates, actual
+  12-record fixture verification, no-index wheel/sdist install and `pip check`,
+  archive/privacy checks, QA provenance binding and Stage 09 immutability passed.
+- Boundary: M2–M9 are ready to present at M10A. This decision does not authorize
+  push, Draft PR, merge, tag or GitHub prerelease. CUDA remains `not tested` and
+  scientific/model completion remains absent.
+
+## DEC-064 — First Stage 10 M9 review fails and enters bounded remediation
+
+- Date: 2026-09-29
+- Decision authority: independent QA verdict under the PI-approved Charter;
+  remediation is limited to the already-approved release-hardening contract.
+- Verdict: `FAIL` on reviewed commit `d6e44f7`; M10A remains `HOLD`.
+- Findings: reject Windows drive-absolute package members; include an actual
+  generated synthetic corpus fixture; bind the final QA verdict/report hash in
+  the manifest; correct the closeout report's stale M8 wording.
+- Remediation: harden portable archive member validation, add a validated 12-record
+  seed-7 fixture to the offline bundle, derive QA identity from the committed
+  canonical QA report, add adversarial tests and rebuild/reseal the candidate.
+- Integrity boundary: retain the first `FAIL` and its findings in the Stage 10 QA
+  report. Stage 09 evidence/status stays immutable. One independent delta recheck
+  is required before M10A; M10B remains closed.
+
+## DEC-063 — PI approves MIT and immutable-evidence archive exclusions
+
+- Date: 2026-09-29
+- Decision authority: PI explicit approval of the DEC-062 remediation.
+- License: FlyTS source and distributions use the MIT License, with a tracked
+  top-level `LICENSE` included in package metadata and release candidates.
+- Privacy treatment: preserve the bytes and interpretation of historical
+  `reports/PILOT_RESULTS.json` and `docs/BASELINE_VALIDATION.md`; do not rewrite
+  history or evidence. Exclude both from new Git-generated and curated release
+  archives using `export-ignore` plus an independent builder exclusion.
+- Residual risk: the excluded files remain available in existing Git history;
+  archive exclusion prevents their redistribution in Stage 10 assets but is not
+  presented as erasure.
+- Authorization: lift the DEC-062 implementation `HOLD` and resume M7 remediation,
+  M8 clean-room verification and M9 independent QA. M10A/M10B remain closed.
+
+## DEC-062 — Stage 10 M7 audit enters HOLD on personal paths and project license
+
+- Date: 2026-09-29
+- Decision authority: Research Director applying the approved Charter stop rule;
+  PI disposition pending.
+- Finding: tracked historical `reports/PILOT_RESULTS.json` contains a user name and
+  absolute local `.venv`, `data` and `outputs` paths. Its Stage 08 evidence bytes
+  cannot be silently redacted, while a full tagged source archive would otherwise
+  distribute those strings.
+- Rights finding: the repository has dataset attributions and rights notes but no
+  top-level project source license/notice. Public source/wheel redistribution terms
+  are therefore not explicit.
+- Other audit evidence: no tracked secret-token/private-key pattern, tracked raw
+  checkpoint/array/archive binary, tracked symlink or tracked file above 1 MiB was
+  found. `reports/data/` contains tracked JSON/Markdown metadata reports, not raw
+  dataset arrays.
+- Recommended remediation: keep Stage 08 evidence bytes and verdict immutable;
+  add `export-ignore` plus the curated-builder exclusion for the historical pilot
+  JSON, verify generated archives omit it, record its continued historical Git
+  presence, and add a PI-selected project code license before public packaging.
+- Boundary: Stage 10 is `HOLD`. Do not resume release building, M8/M9, push/PR,
+  tag or prerelease before the PI decides both the archive treatment and license.
+
+## DEC-061 — PI approves the Stage 10 Research Preview Charter
+
+- Date: 2026-09-29
+- Decision authority: the user explicitly approved the proposed Stage 10 Charter
+  and requested implementation of M2 and later milestones.
+- Scope: execute release inventory, prospective reporter hardening, closeout
+  documents, deterministic manifest/bundle tooling, security/rights audit,
+  clean-room verification and independent release QA under DEC-060 and the
+  approved Charter.
+- Agent authorization: activate at most three specialists, at most two at once:
+  Program Integrator, one Implementation/Documentation owner and Independent QA.
+- Boundary: no new training/evaluation/calibration, final-held-out/HARTH access,
+  checkpoint publication, scientific claim, package-version change, PyPI upload,
+  push, Draft PR, tag or GitHub prerelease. M10A and M10B remain separate PI gates.
+
+## DEC-060 — PI selects the Stage 10 Research Preview contract
+
+- Date: 2026-09-29
+- Decision authority: the user explicitly approved implementation of the staged
+  release/closeout plan after selecting the recommended identity, checkpoint,
+  reporter, version, distribution and tag options.
+- Baseline: PR #15 is merged into GitHub `main` at
+  `af46eb6058c4abc13535c063295431a94dca640e`; merge tree
+  `077a555156384b4ec7562dcaa321c1ec9d4ed7a2` equals the reviewed Stage 09 head
+  tree.
+- Release identity: prepare `FlyTS-Mini v0.1 Research Preview`. Keep Python
+  package `flyts 0.2.0` and research artifact `v0.1` as separate version axes;
+  do not publish to PyPI or lower the package version.
+- Artifact policy: include source, wheel/sdist, supported configs, documents,
+  manifest/checksums, a synthetic fixture and offline verification instructions.
+  Exclude raw data and outputs, checkpoints, embeddings, HARTH artifacts,
+  Electricity model outputs and an unspecified dependency wheelhouse.
+- Checkpoint and claim boundary: publish no pretrained checkpoint. The preview
+  may claim a reproducible engineering MVP and public-data operational pipeline,
+  but no formal/final result, foundation quality, topology benefit, robustness,
+  transfer, CUDA or semiconductor suitability.
+- Reporter policy: prospectively remove live-config replay dependence and reject
+  numeric seed-directory aliases in future release code. Do not modify or
+  supersede Stage 09 reports, evidence hashes, `HOLD` status or QA `FAIL`.
+- Candidate publication: after independent release QA, integration, and a final
+  PI release gate, use tag `flyts-mini-v0.1-preview.1` and a GitHub prerelease.
+- Gate: M0 baseline reconciliation and an M1 proposed Charter are authorized.
+  M2 and later implementation require explicit Charter `GO`; Draft PR, tag and
+  GitHub prerelease retain their later M10 gates.
+
 ## DEC-059 — Stage 09 HOLD package opened as Draft PR #15
 
 - Date: 2026-09-28

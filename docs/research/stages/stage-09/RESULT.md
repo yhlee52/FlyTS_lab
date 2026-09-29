@@ -2,8 +2,11 @@
 
 Status: **HOLD — PI accepted closure under DEC-058; Draft PR authorized**
 
-Integration: [Draft PR #15](https://github.com/yhlee52/FlyTS_lab/pull/15) opened
-from head `4f9cd75` under DEC-059; merge is not authorized.
+Integration: [PR #15](https://github.com/yhlee52/FlyTS_lab/pull/15) was merged
+into `main` at `af46eb6058c4abc13535c063295431a94dca640e` on 2026-09-28.
+Its tree `077a555156384b4ec7562dcaa321c1ec9d4ed7a2` equals the reviewed Stage 09
+head `a02a9935b0827a8411057c443dc5045b669bfe63` tree. This integration note does
+not alter the evidence, `HOLD` result or QA `FAIL` below.
 
 ## Outcome
 
@@ -62,7 +65,7 @@ live-config replay dependency and a seed-directory alias gap. Final verdict is
 
 ## Gate
 
-The PI accepted Stage 09 closure at `HOLD` under DEC-058 and authorized a Draft
-PR containing this preserved package. Do not begin M2, M5/M6, final access or
-Stage 10, merge the PR, or expand claims without a separate PI gate. H-01–H-03
-were not formally tested, and H-04 remains excluded/not tested.
+The PI accepted Stage 09 closure at `HOLD` under DEC-058. PR #15 was subsequently
+merged without changing the reviewed tree. DEC-060 authorizes Stage 10 M0 and a
+proposed M1 Charter only; it does not reopen M2, M5/M6, final access or scientific
+claims. H-01–H-03 were not formally tested, and H-04 remains excluded/not tested.
