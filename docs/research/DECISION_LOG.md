@@ -1,5 +1,49 @@
 # FlyTS Decision Log
 
+## DEC-069 — Post-merge documentation remediation QA passes
+
+- Date: 2026-09-29
+- Decision authority: DEC-067 additional independent QA cycle.
+- Verdict: `PASS` on remediation commit
+  `c9f71d4acd9ecc0e62c45a973f30a6b24347f229`, tree
+  `94f78ecaeea3ad3438292f12e236cca4eac92fd8`.
+- Evidence: the PR #16/M10A wording is current; the change is documentation-only;
+  governance/notebook checks, focused tests, candidate verification, CPython
+  3.12 byte replay, fixture/archive/privacy checks and Stage 09 immutability pass.
+  Earlier full-suite and no-index install evidence remains applicable.
+- Boundary: cross-Python gzip byte identity is not claimed. This decision
+  authorizes only delivery of the documentation closeout PR; tag, prerelease,
+  PyPI/checkpoint publication and M10B remain unauthorized.
+
+## DEC-068 — First post-merge closeout QA fails on stale gate wording
+
+- Date: 2026-09-29
+- Decision authority: DEC-067 independent QA cycle.
+- Verdict: `FAIL` on `703e4a1` / tree `973a858`; M10B remains closed.
+- Finding: the release report still called M10A pending and instructed obtaining
+  it, while the Development Plan still said push/PR were gated, contradicting
+  merged PR #16 and DEC-067.
+- Other evidence: functional, packaging, install, fixture, security, Stage 09
+  immutability and Python 3.12 byte-replay checks passed. Python 3.14 produced
+  different gzip bytes for equal tar payloads; cross-version bitwise identity is
+  not claimed.
+- Remediation: correct only stale gate statements, disclose the recorded build-
+  environment replay boundary, rebind the candidate and independently recheck.
+
+## DEC-067 — PI approves post-merge closeout and one additional QA cycle
+
+- Date: 2026-09-29
+- Decision authority: explicit PI approval after PR #16 merge.
+- Merge identity: PR #16 merged as
+  `b193d91198adf8f7c5e5b1d7e177783252b7d932`; its tree
+  `1f590601b977b5fb9d6cc9d219a0e8478ec4a4d5` exactly equals reviewed PR head
+  `cb1a4b67be266438ae9565f5f10240cbc7397519`.
+- Authorization: prepare one documentation-only closeout PR and expand the Stage
+  10 budget by one independent QA cycle for that exact tree and its sealed
+  candidate. No new research, data access, training or package behavior change.
+- Boundary: this is M10B preparation, not release `GO`. Tag, GitHub prerelease,
+  PyPI/checkpoint publication and the next research cycle remain unauthorized.
+
 ## DEC-066 — PI grants Stage 10 M10A integration GO
 
 - Date: 2026-09-29

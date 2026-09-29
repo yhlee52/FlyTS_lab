@@ -46,6 +46,9 @@
 - Recorded execution evidence is CPU float32. CUDA validation is not complete.
 - Bitwise equality across operating systems, devices or PyTorch versions is not
   guaranteed.
+- Release artifact byte replay is recorded on CPython 3.12.14. CPython 3.14 can
+  produce different gzip bytes for the same decompressed tar payload; package
+  runtime support does not imply cross-Python build-byte identity.
 - The offline bundle intentionally excludes a dependency wheelhouse and requires
   separately approved compatible NumPy/PyTorch dependencies.
 - The same `flyts 0.2.0` package filename can represent different source builds;

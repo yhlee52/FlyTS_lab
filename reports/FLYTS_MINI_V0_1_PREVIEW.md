@@ -1,6 +1,6 @@
 # FlyTS-Mini v0.1 Research Preview — Closeout Report
 
-Status: Stage 10 release candidate; M8 and independent M9 `PASS`; M10A pending
+Status: post-merge closeout QA PASS; documentation PR merge and M10B pending
 
 ## Conclusion
 
@@ -31,8 +31,8 @@ Recorded engineering capabilities include:
 
 Stage 10 clean-room QA passed for the recorded pre-integration candidate. The
 first independent M9 review failed on release-hardening defects; the preserved
-findings were remediated and the independent delta recheck passed. M10A/M10B are
-still separate PI gates.
+findings were remediated and the independent delta recheck passed. M10A completed
+through merged PR #16; only the post-merge closeout and M10B release gate remain.
 
 ## Scientific/model completion
 
@@ -106,8 +106,6 @@ backbone hypothesis from an unexecuted formal study.
 
 ## Remaining release gates
 
-1. Obtain independent Stage 10 QA.
-2. Obtain M10A PI approval before push/Draft PR.
-3. After user merge and tree verification, regenerate and re-audit every asset,
-   then obtain M10B PI approval before tag or
-   GitHub prerelease creation.
+1. Merge the independently approved closeout documentation and regenerate/re-audit
+   every asset from the resulting exact `main` commit.
+2. Obtain M10B PI approval before tag or GitHub prerelease creation.
