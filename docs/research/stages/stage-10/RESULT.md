@@ -1,8 +1,8 @@
 # Stage 10 Result — FlyTS-Mini v0.1 Research Preview
 
-Status: **post-merge closeout QA PASS; documentation PR merge and M10B pending**
+Status: **engineering closeout merged; M10B STOP — not publicly released**
 
-Date: 2026-09-29
+Date: 2026-09-30
 
 ## Outcome
 
@@ -29,7 +29,7 @@ transfer, pretrained-checkpoint, CUDA or semiconductor result is claimed.
 | M7 security/rights | `PASS`; MIT, exclusions, portable-path and archive controls |
 | M8 clean room | `PASS`; CPU install/smoke/resume/embed/replay/no-network evidence |
 | M9 independent QA | initial `FAIL` preserved; DEC-064 remediation recheck `PASS` |
-| M10A/M10B | PR #16 merged without tree drift; closeout QA `PASS`; documentation PR merge and M10B pending |
+| M10A/M10B | PR #16 and PR #17 merged without tree drift; M10B `STOP`; no public release |
 
 ## Independent QA history
 
@@ -59,8 +59,8 @@ DEC-066 M10A `GO` authorizes only push and creation of a Draft PR. The user
 performed the merge as `b193d91198adf8f7c5e5b1d7e177783252b7d932`.
 Its tree `1f590601b977b5fb9d6cc9d219a0e8478ec4a4d5` exactly equals reviewed head
 `cb1a4b67be266438ae9565f5f10240cbc7397519`; integration introduced no drift.
-DEC-067 authorizes the required documentation-only closeout and one additional
-independent QA cycle. Any later changed tree returns to M9/M10 verification.
-After the merge, M10B requires a fresh head-bound build and explicit PI release
-`GO` before creating tag `flyts-mini-v0.1-preview.1` and a GitHub prerelease. No
-PyPI upload is authorized.
+DEC-067 authorized the documentation-only closeout and additional independent QA.
+PR #17 merged as `27f81eb2607444739a90b32a94ef11f184687a93`; its tree
+`3d80b52d33eeeb6a84eb1289f72a39584f2da280` equals reviewed head `1f2fdec`.
+DEC-070 sets M10B to `STOP`: no tag, GitHub release/prerelease, PyPI upload or
+checkpoint publication. No final public-release asset set was produced.

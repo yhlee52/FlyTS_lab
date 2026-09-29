@@ -1,8 +1,8 @@
 # FlyTS-Mini v0.1 Research Preview
 
-Status: release candidate; not published
+Status: archived engineering candidate; publication stopped at M10B
 
-Candidate tag: `flyts-mini-v0.1-preview.1`
+Former candidate tag (not created): `flyts-mini-v0.1-preview.1`
 Python package: `flyts 0.2.0`
 
 ## What this preview provides
@@ -48,5 +48,6 @@ The research artifact `v0.1` and Python package `0.2.0` are independent version
 axes. Verify source commit/tree, file sizes and SHA-256 values in the release
 manifest. Do not identify or trust a build from the package filename alone.
 
-The GitHub release, if approved, must be marked as a prerelease. Tag and release
-creation require the final M10B PI `GO` after integration and artifact QA.
+DEC-070 sets M10B to `STOP`. Do not create the candidate tag, a GitHub
+release/prerelease, a PyPI upload or a public checkpoint. Any future publication
+requires a new explicit PI decision and applicable verification.

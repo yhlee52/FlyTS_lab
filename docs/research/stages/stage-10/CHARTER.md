@@ -1,8 +1,8 @@
 # Stage 10 Charter — FlyTS-Mini v0.1 Research Preview
 
-Status: active
+Status: closed
 
-Progress: PR #16 merged; DEC-069 post-merge closeout QA `PASS`; documentation PR pending.
+Progress: PR #17 merged without tree drift; DEC-070 prohibits public release.
 
 Baseline: GitHub `main` merge commit
 `af46eb6058c4abc13535c063295431a94dca640e`, tree
@@ -75,8 +75,8 @@ The maximum positive release statement is:
 - Product name: `FlyTS-Mini v0.1 Research Preview`.
 - Python distribution: `flyts 0.2.0`; the package and research artifact use
   separate version axes.
-- Candidate tag: `flyts-mini-v0.1-preview.1`.
-- Candidate GitHub delivery: prerelease only, after M10B PI release `GO`.
+- Former candidate tag: `flyts-mini-v0.1-preview.1`; not created under DEC-070.
+- GitHub delivery: stopped at M10B; no release or prerelease is authorized.
 - Checkpoint policy: no public pretrained checkpoint; Stage 08 pilot artifacts
   remain local operational evidence and are not selected or optimal models.
 - Package publication: GitHub prerelease assets only; no PyPI publication and no
@@ -135,7 +135,7 @@ NumPy/PyTorch dependencies.
 | M7 — audit | tracked security/rights/hygiene result in the Stage 10 folder | no secret, private path/data, unclear-rights or unsupported artifact remains |
 | M8 — clean room | tracked reproducibility result in the Stage 10 folder | package, CPU smoke/resume/embed, replay, no-network and bundle checks pass |
 | M9 — QA | `docs/research/stages/stage-10/QA_REPORT.md` | independent `PASS`, `CONDITIONAL PASS` or `FAIL` |
-| M10 — gates | `docs/research/stages/stage-10/RESULT.md` and final candidate inventory | M10A integration decision, then post-merge M10B release decision |
+| M10 — gates | `docs/research/stages/stage-10/RESULT.md` and final candidate inventory | M10A integrated; M10B `STOP` without publication |
 
 ## Evidence classification
 
@@ -178,8 +178,8 @@ not be collapsed into a single field or interpreted as one another.
 | M3 historical-evidence impact | any change touching Stage 09 evidence semantics or hashes | prohibited; immediate `HOLD` |
 | M7 personal-path and project-license disposition | any public source/archive candidate | approved: MIT plus immutable-file archive exclusions (DEC-063) |
 | M10A integration | push or Draft PR | `GO`; completed by PR #16 (DEC-066) |
-| User merge | integration into `main` | PR #16 merged at `b193d91` |
-| M10B release | tag or GitHub prerelease | pending after merged-tree and final-asset verification |
+| User merge | integration into `main` | PR #16 and closeout PR #17 merged; reviewed trees preserved |
+| M10B release | tag or GitHub prerelease | `STOP`, 2026-09-30 (DEC-070); no publication |
 | Next research cycle | any formal/CUDA/semiconductor work | pending separate Charter and PI decision |
 
 ## Agent plan
@@ -217,8 +217,8 @@ agent_budget:
   checkpoint/config compatibility change or unapproved agent/token expansion.
 - A changed PR or merge tree returns to M9 and M10. Tagging cannot proceed from a
   tree different from the independently reviewed release candidate.
-- M10A `GO` authorizes push and Draft PR only. After the user merges, verify tree
-  identity and final assets; M10B `GO` alone authorizes tag and prerelease creation.
+- M10A integration and post-merge QA completed. DEC-070 closes M10B at `STOP`;
+  tag, prerelease, PyPI and checkpoint publication remain prohibited.
 
 ## User approval
 
@@ -229,5 +229,5 @@ agent_budget:
 - M10A decision: `GO`, 2026-09-29 (DEC-066); push and Draft PR only.
 - Post-merge closeout: approved with one additional independent QA cycle,
   2026-09-29 (DEC-067).
-- Remaining gate: user merge followed by merged-tree verification and explicit
-  M10B `GO` before tag or GitHub prerelease.
+- PR #17 merge/tree verified, 2026-09-30. M10B decision: `STOP` (DEC-070); no
+  tag, GitHub release/prerelease, PyPI upload or checkpoint publication.
