@@ -12,6 +12,8 @@
   checkpoint publication, M10B or the next research cycle.
 - Post-merge requirement: verify the reviewed tree against merged `main`, rebuild
   all assets, repeat M9/M10 checks and obtain explicit M10B release `GO`.
+- Delivery: branch `codex/stage-10-research-preview` was pushed and Draft PR #16
+  was opened under this authorization; merge remains a user action.
 
 ## DEC-065 — Stage 10 M9 remediation recheck passes
 

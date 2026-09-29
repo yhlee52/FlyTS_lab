@@ -1,6 +1,6 @@
 # Stage 10 Result — FlyTS-Mini v0.1 Research Preview
 
-Status: **M9 PASS; M10A GO; Draft PR delivery authorized**
+Status: **M9 PASS; M10A GO; Draft PR #16 open**
 
 Date: 2026-09-29
 
@@ -56,7 +56,8 @@ source/offline archives.
 ## Gate boundary
 
 DEC-066 M10A `GO` authorizes only push and creation of a Draft PR. The user
-performs the merge. Any changed PR or merge tree returns to M9/M10 verification.
+performs the merge; Draft PR #16 is the authorized delivery. Any changed PR or
+merge tree returns to M9/M10 verification.
 After the merge, M10B requires a fresh head-bound build and explicit PI release
 `GO` before creating tag `flyts-mini-v0.1-preview.1` and a GitHub prerelease. No
 PyPI upload is authorized.

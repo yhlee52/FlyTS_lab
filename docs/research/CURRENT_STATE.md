@@ -16,13 +16,12 @@ selecting MIT and preserving but archive-excluding two historical personal-path
 files. M7 and M8 passed for the pre-integration candidate. The first M9 review of
 `d6e44f7` failed under DEC-064; remediation commit `d4407e8` fixed all four
 findings and DEC-065 records the independent delta `PASS`. M2–M9 are complete.
-DEC-066 records PI M10A `GO`; M10B remains closed.
+DEC-066 records PI M10A `GO`; Draft PR #16 is open and M10B remains closed.
 
 ## Current goal
 
-Deliver the reviewed Stage 10 branch through push and a Draft PR under M10A,
-then await user review/merge. Do not merge, tag or create a prerelease; M10B is
-a separate post-merge PI decision.
+Await user review and merge of Draft PR #16. Do not merge, tag or create a
+prerelease; M10B is a separate post-merge PI decision.
 
 ## Canonical references
 
@@ -75,6 +74,7 @@ a separate post-merge PI decision.
   does not authorize push, Draft PR, merge, tag or prerelease.
 - DEC-066 grants M10A `GO` for branch push and Draft PR only. Merge, tag,
   prerelease, PyPI/checkpoint publication and future research remain unauthorized.
+  The authorized delivery is Draft PR #16.
 
 ## Open questions
 
@@ -142,6 +142,6 @@ a separate post-merge PI decision.
 
 ## Next action
 
-Push the M10A-authorized branch, open a Draft PR and stop for user review/merge.
-After merge, reverify the exact merged tree and final assets before presenting
-the separate M10B release gate.
+Wait for the user to review and merge Draft PR #16. After merge, reverify the
+exact merged tree and final assets before presenting the separate M10B release
+gate.
