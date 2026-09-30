@@ -1,6 +1,6 @@
 # FlyTS-Mini v0.1 Research Preview — Closeout Report
 
-Status: post-merge closeout QA PASS; documentation PR merge and M10B pending
+Status: engineering closeout merged; M10B STOP; not publicly released
 
 ## Conclusion
 
@@ -32,7 +32,8 @@ Recorded engineering capabilities include:
 Stage 10 clean-room QA passed for the recorded pre-integration candidate. The
 first independent M9 review failed on release-hardening defects; the preserved
 findings were remediated and the independent delta recheck passed. M10A completed
-through merged PR #16; only the post-merge closeout and M10B release gate remain.
+through merged PR #16, and PR #17 integrated the independently approved closeout.
+DEC-070 stops M10B and public distribution.
 
 ## Scientific/model completion
 
@@ -104,8 +105,9 @@ It does not support expanding the model/corpus based on topology benefit, claimi
 that the channel-agnostic front-end is scientifically validated, or rejecting the
 backbone hypothesis from an unexecuted formal study.
 
-## Remaining release gates
+## Release disposition
 
-1. Merge the independently approved closeout documentation and regenerate/re-audit
-   every asset from the resulting exact `main` commit.
-2. Obtain M10B PI approval before tag or GitHub prerelease creation.
+PR #17 merged without tree drift, but the PI set M10B to `STOP` because this is
+not completed scientific/model research. No tag, GitHub release/prerelease, PyPI
+upload or checkpoint publication is authorized. The local ignored candidate is
+engineering evidence only and is not a public release.

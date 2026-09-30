@@ -1,6 +1,6 @@
 # FlyTS Current Research State
 
-Updated: 2026-09-29
+Updated: 2026-09-30
 
 ## Current stage
 
@@ -16,16 +16,16 @@ selecting MIT and preserving but archive-excluding two historical personal-path
 files. M7 and M8 passed for the pre-integration candidate. The first M9 review of
 `d6e44f7` failed under DEC-064; remediation commit `d4407e8` fixed all four
 findings and DEC-065 records the independent delta `PASS`. M2–M9 are complete.
-DEC-066 M10A delivery merged through PR #16 at `b193d91`; its tree exactly equals
-the reviewed head. DEC-067 authorizes a documentation-only closeout and one
-additional independent QA cycle. Its first review failed on stale M10A wording
-under DEC-068; DEC-069 records the remediation recheck `PASS`. M10B remains closed.
+DEC-066 M10A delivery merged through PR #16 at `b193d91`. The independently
+reviewed documentation closeout merged through PR #17 at `27f81eb`; merge tree
+`3d80b52` exactly equals reviewed head `1f2fdec`. DEC-070 records the PI's M10B
+`STOP`: no tag, GitHub release/prerelease, PyPI upload or checkpoint publication.
 
 ## Current goal
 
-Complete the post-merge documentation closeout and added independent QA, then
-deliver the closeout PR for user merge. Do not tag or create a prerelease; M10B
-is a separate decision after final merged-tree assets verify.
+Preserve the completed engineering closeout without public release. Do not create
+a tag, GitHub release/prerelease, PyPI upload or public checkpoint. Any future
+research or release reconsideration requires a new explicit PI decision.
 
 ## Canonical references
 
@@ -52,8 +52,8 @@ is a separate decision after final merged-tree assets verify.
 - The prospective release code may remove the Stage 09 reporter's live-config
   dependency and reject numeric seed aliases. It cannot change Stage 09 reports,
   hashes, `HOLD` status or QA `FAIL`.
-- The candidate release identity is tag `flyts-mini-v0.1-preview.1` with a GitHub
-  prerelease, subject to a final PI release `GO` after integration and QA.
+- The former candidate tag `flyts-mini-v0.1-preview.1` remains uncreated. DEC-070
+  closes M10B at `STOP`; no public Research Preview release is authorized.
 - The reproducibility package includes source, wheel/sdist, exact supported
   configs, documents, manifest/checksums, a synthetic fixture and offline verify
   instructions. It excludes raw data, outputs, checkpoints, embeddings, HARTH
@@ -78,15 +78,13 @@ is a separate decision after final merged-tree assets verify.
 - DEC-066 grants M10A `GO` for branch push and Draft PR only. Merge, tag,
   prerelease, PyPI/checkpoint publication and future research remain unauthorized.
   The authorized PR #16 is merged at `b193d91`.
-- DEC-067 authorizes one documentation-only closeout PR and one additional
-  independent QA cycle. It does not authorize M10B release actions.
-- DEC-068 preserves the added QA `FAIL` for stale M10A wording and limits
-  remediation to documentation accuracy and build-environment disclosure.
-- DEC-069 records remediation QA `PASS`; only the documentation PR is authorized.
+- DEC-067 through DEC-069 preserve the post-merge QA `FAIL`, bounded remediation
+  and independent `PASS`; PR #17 merged that documentation without tree drift.
+- DEC-070 records the PI's M10B `STOP` and prohibits public release actions.
 
 ## Open questions
 
-- Whether the user merges the documentation closeout PR and later grants M10B.
+- A future formal research cycle requires a separate Charter and explicit PI gate.
 
 ## Active risks
 
@@ -107,10 +105,8 @@ is a separate decision after final merged-tree assets verify.
   incomplete sufficient statistics and mutable replay inputs remain historical.
 - Historical personal-path files remain in Git history. DEC-063 controls new
   archive redistribution but does not erase already-published history.
-- The first M9 review found that malformed external package input could use a
-  Windows drive-absolute member, the promised corpus fixture was absent, and the
-  manifest could not bind a final QA verdict. DEC-065 controls those defects;
-  the documentation closeout tree still requires the DEC-067 QA/audit cycle.
+- Public release could overstate incomplete science; DEC-070 prevents publication
+  while Stage 09 remains `HOLD`, CUDA is untested and formal evidence is absent.
 
 ## Latest evidence
 
@@ -139,12 +135,11 @@ is a separate decision after final merged-tree assets verify.
 - PR #16 merged as `b193d91198adf8f7c5e5b1d7e177783252b7d932`; merge tree
   `1f590601b977b5fb9d6cc9d219a0e8478ec4a4d5` exactly equals reviewed head
   `cb1a4b67be266438ae9565f5f10240cbc7397519`, so integration added no drift.
-- Post-merge QA failed `703e4a1` only for stale M10A wording; remediation
-  `c9f71d4` / tree `94f78ec` passed all rechecks. CPython 3.12 was byte-stable;
-  CPython 3.14 gzip differed although decompressed tar payloads matched.
+- PR #17 merged as `27f81eb2607444739a90b32a94ef11f184687a93`; merge tree
+  `3d80b52d33eeeb6a84eb1289f72a39584f2da280` equals reviewed head `1f2fdec`.
+  Both CI jobs passed. No candidate tag or public release was created.
 
 ## Next action
 
-Open the documentation closeout PR with DEC-069 QA `PASS` and stop for user merge.
-After that merge, build and verify final assets from exact `main` before presenting
-the separate M10B release gate.
+Stage 10 is closed at engineering completion with M10B `STOP`. Take no release
+action. Start future formal research only under a separately approved Charter.

@@ -17,12 +17,13 @@ Every item requires a new PI gate and, where indicated, a new protocol/Charter.
 
 ## Recommended sequence
 
-Close the Research Preview first. Then use the prospective reporter contract as a
-tooling baseline, admit adequate development and labeled target domains, redesign
-and freeze the protocol before any new training, execute the formal study, and
-open final-held-out evidence once. CUDA validation is a separate hardware gate.
-Semiconductor adaptation remains last and cannot inherit a claim from engineering
-completion alone.
+The engineering closeout is complete, but DEC-070 stops the public Research
+Preview release. Any future work requires a new PI-approved Charter. If resumed,
+use the prospective reporter contract as a tooling baseline, admit adequate
+development and labeled target domains, redesign and freeze the protocol before
+new training, execute the formal study, and open final-held-out evidence once.
+CUDA validation remains a separate hardware gate; semiconductor adaptation stays
+last and cannot inherit a claim from engineering completion alone.
 
 The current evidence supports only the conclusion that data and evaluation are
 insufficient and limited additional validation is required.

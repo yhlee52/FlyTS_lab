@@ -1,5 +1,20 @@
 # FlyTS Decision Log
 
+## DEC-070 — PI stops M10B and public Research Preview release
+
+- Date: 2026-09-30
+- Decision authority: explicit PI decision after PR #17 merge.
+- Integration fact: PR #17 merged at
+  `27f81eb2607444739a90b32a94ef11f184687a93`; tree
+  `3d80b52d33eeeb6a84eb1289f72a39584f2da280` exactly equals independently
+  reviewed head `1f2fdecb93a20f6778e2ea840012d2e64e2faf19`. Both CI jobs passed.
+- Decision: M10B is `STOP`. Do not create the candidate tag, GitHub
+  release/prerelease, PyPI upload or public checkpoint because scientific/model
+  completion was not achieved.
+- Boundary: the engineering closeout and prospective tooling remain in `main`.
+  Local ignored candidates are not releases. Any future publication or research
+  cycle requires a new explicit PI decision and applicable verification.
+
 ## DEC-069 — Post-merge documentation remediation QA passes
 
 - Date: 2026-09-29
