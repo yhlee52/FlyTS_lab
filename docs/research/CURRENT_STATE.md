@@ -17,19 +17,21 @@ files. M7 and M8 passed for the pre-integration candidate. The first M9 review o
 `d6e44f7` failed under DEC-064; remediation commit `d4407e8` fixed all four
 findings and DEC-065 records the independent delta `PASS`. M2–M9 are complete.
 DEC-066 M10A delivery merged through PR #16 at `b193d91`. The independently
-reviewed documentation closeout merged through PR #17 at `27f81eb`; merge tree
-`3d80b52` exactly equals reviewed head `1f2fdec`. DEC-070 records the PI's M10B
-`STOP`: no tag, GitHub release/prerelease, PyPI upload or checkpoint publication.
+reviewed documentation closeout merged through PR #17 at `27f81eb`. PR #18 merged
+the DEC-070 no-release closeout at `a6000c1` with no tree drift. DEC-071 records
+PI selection of Option A for the proposed formal training/evaluation phase.
 
 ## Current goal
 
-Preserve the completed engineering closeout without public release. Do not create
-a tag, GitHub release/prerelease, PyPI upload or public checkpoint. Any future
-research or release reconsideration requires a new explicit PI decision.
+Plan Phase 02 formal training and scientific evaluation without starting it.
+Present the Stage 11–19 decomposition and Stage 11 Charter for explicit PI `GO`.
+DEC-070 continues to prohibit public release and checkpoint publication.
 
 ## Canonical references
 
 - `docs/research/stages/stage-10/CHARTER.md`
+- `docs/research/PHASE_02_FORMAL_VALIDATION_PLAN.md`
+- `docs/research/stages/stage-11/CHARTER.md`
 - `docs/research/stages/stage-10/M8_REPRODUCIBILITY.md`
 - `docs/research/stages/stage-09/RESULT.md`
 - `docs/research/stages/stage-09/QA_REPORT.md`
@@ -81,10 +83,12 @@ research or release reconsideration requires a new explicit PI decision.
 - DEC-067 through DEC-069 preserve the post-merge QA `FAIL`, bounded remediation
   and independent `PASS`; PR #17 merged that documentation without tree drift.
 - DEC-070 records the PI's M10B `STOP` and prohibits public release actions.
+- DEC-071 approves Option A's phase objective: preregistered public-data formal
+  validation, development-only private checkpoint selection and gated final work.
 
 ## Open questions
 
-- A future formal research cycle requires a separate Charter and explicit PI gate.
+- The Phase 02 stage plan and Stage 11 Charter await explicit PI approval.
 
 ## Active risks
 
@@ -135,11 +139,11 @@ research or release reconsideration requires a new explicit PI decision.
 - PR #16 merged as `b193d91198adf8f7c5e5b1d7e177783252b7d932`; merge tree
   `1f590601b977b5fb9d6cc9d219a0e8478ec4a4d5` exactly equals reviewed head
   `cb1a4b67be266438ae9565f5f10240cbc7397519`, so integration added no drift.
-- PR #17 merged as `27f81eb2607444739a90b32a94ef11f184687a93`; merge tree
-  `3d80b52d33eeeb6a84eb1289f72a39584f2da280` equals reviewed head `1f2fdec`.
-  Both CI jobs passed. No candidate tag or public release was created.
+- PR #18 merged as `a6000c14bce5fc655a2b7120acf09d430595e72b`; tree
+  `8b39210d06a517b56f2aebbb35adf02b33259f71` equals reviewed head `aaf6a8f`.
+  Both CI jobs passed; no candidate tag or public release exists.
 
 ## Next action
 
-Stage 10 is closed at engineering completion with M10B `STOP`. Take no release
-action. Start future formal research only under a separately approved Charter.
+Review the proposed Phase 02 plan and Stage 11 Charter. Do not activate Stage 11,
+download data, train, evaluate or create checkpoints before explicit PI `GO`.

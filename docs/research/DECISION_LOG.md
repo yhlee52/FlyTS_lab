@@ -1,5 +1,21 @@
 # FlyTS Decision Log
 
+## DEC-071 — PI selects scientific validation-first for Phase 02
+
+- Date: 2026-09-30
+- Decision authority: explicit PI selection of Option A.
+- Ultimate objective: determine whether the fly-connectome-based FlyTS qualifies
+  as a multichannel time-series foundation model and evaluate it rigorously.
+- Phase objective: preregister public-data roles, metrics, statistical rules and
+  compute; execute matched multi-seed H-01–H-03 studies; select at most one
+  development-only private checkpoint; gate H-04 and final evidence separately.
+- Interpretation: the objective is falsifiable. `No-support`, harm, inconclusive
+  or infeasible outcomes remain valid results; positive evidence is bounded to
+  tested domains, tasks, channel ranges and budgets.
+- Boundary: this approves goal-directed planning only. The Stage 11 Charter and
+  stage decomposition still require PI `GO`; no data access, training, evaluation,
+  checkpoint creation, final opening or publication is authorized.
+
 ## DEC-070 — PI stops M10B and public Research Preview release
 
 - Date: 2026-09-30
