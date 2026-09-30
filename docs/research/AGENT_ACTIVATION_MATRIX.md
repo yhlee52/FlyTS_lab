@@ -16,6 +16,15 @@ Custom agents are a capability pool, not a standing meeting. Default to the prim
 | 8 — pilot | Director, Experiment, QA | Implementation, Data |
 | 9 — formal study | Director, Experiment, QA, Program Integrator | Architecture, Data |
 | 10 — v0.1 release | Director, Program Integrator, QA | relevant specialists |
+| 11 — qualification contract | Director, Program Integrator, QA | Experiment |
+| 12 — data/evaluation adequacy | Director, Data, QA | Experiment, Implementation |
+| 13 — protocol v3 freeze | Director, Experiment, Program Integrator, QA | Data, Architecture |
+| 14 — execution preflight | Director, Implementation, QA | Experiment, Data |
+| 15 — formal training | Director, Experiment, QA | Implementation, Program Integrator |
+| 16 — development evaluation/selection | Director, Experiment, QA | Program Integrator |
+| 17 — transfer/final readiness | Director, Data, Experiment, QA | Program Integrator |
+| 18 — one-time final evaluation | Director, Experiment, QA, Program Integrator | Data |
+| 19 — phase closeout | Director, Program Integrator, QA | Experiment, Data, Architecture |
 
 ## Activation rules
 
