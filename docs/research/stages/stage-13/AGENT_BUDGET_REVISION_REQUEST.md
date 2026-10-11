@@ -1,9 +1,9 @@
 # Stage 13 specialist-budget revision request
 
-Status: **proposal for PI decision**, 2026-10-11. No new specialist has been
-activated under this request. It changes neither dataset access nor compute.
-The Director checked Charter consistency; independent review of this new
-request awaits budget capacity and is not claimed as `PASS`.
+Status: **PI `GO` (DEC-086)**, 2026-10-11. This approves the bounded staffing
+ceiling below; it changes neither dataset access nor compute. Specialist
+activation remains conditional. The Director checked Charter consistency;
+independent review of this request itself is not claimed as `PASS`.
 
 ## Why the current allowance is exhausted
 
@@ -34,8 +34,9 @@ agent_budget:
   user_approval_for_expansion: true
 ```
 
-This is an **upper bound**, not automatic staffing. Activate Data only for a
-separately approved named-source audit/admission; Experiment only when an
+This is an **upper bound**, not automatic staffing. Activate Data for a
+named-source access/admission proposal review, then for an audit only after
+its separate access approval; Experiment only when an
 eligible endpoint packet can be designed; Integrator only for protocol/budget
 gate review. Reuse existing QA reviewers for one additional narrow source
 or pre-freeze review each. All research roles stay read-only, one code path
@@ -50,8 +51,8 @@ in this amendment.
 | `HOLD` | Continue Director-only tracked-document work; no new specialist or independent source/pre-freeze QA, so admission and Stage 13 freeze stay `HOLD`. |
 
 The immediately next source-signal access, source/use admission, role and split
-are **not** requested or approved here. After a budget decision, a named
-PhysioNet access/admission packet will state exact files, network/storage
-cost, rights and future test exclusion before the PI decides those gates.
+are **not approved here**. The named PhysioNet access proposal states exact
+files, network/storage cost, rights and future test exclusion for independent
+review before the PI decides those gates.
 Electricity and all test signals/scores remain sealed; Stage 09 status/hashes
 and DEC-070 public-release `STOP` are unchanged.

@@ -166,10 +166,10 @@ implementation owner edits a code path at a time. Specialists do not delegate.
 ```yaml
 agent_budget:
   default_mode: single_agent
-  max_specialists: 3
+  max_specialists: 6
   max_parallel_agents: 2
   max_debate_rounds: 1
-  max_followups_per_agent: 1
+  max_followups_per_agent: 2
   max_agent_report_words: 700
   user_approval_for_expansion: true
 ```
@@ -177,8 +177,16 @@ agent_budget:
 Compute budget: **unapproved**. No numerical threshold, seed identity,
 formal matrix, checkpoint policy or low/medium/high option is frozen here.
 
+DEC-086 approved this staffing ceiling after the original Charter. Three
+specialists and one follow-up each were already used; at most three additional
+conditional specialists and one further follow-up per existing reviewer are
+available. Parallelism remains two agents. This amendment authorizes no source
+access, role/split, protocol or compute decision.
+
 ## User approval
 
+- Specialist-budget amendment: `GO`, DEC-086, for the bounded ceiling above.
+  All source, role/split, protocol, compute and execution gates remain separate.
 - Charter decision: `GO`, DEC-082.
 - Candidate discovery decision: `GO`, DEC-083, on the bounded request above.
 - PhysioNet sidecar-only access: `GO`, DEC-084; see

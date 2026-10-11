@@ -1,5 +1,20 @@
 # FlyTS Decision Log
 
+## DEC-086 — PI approves the bounded Stage 13 specialist-budget amendment
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI approval of the proposed amendment in Draft
+  PR #26 after the Stage 13 Charter `GO` (DEC-082).
+- Approved ceiling: at most six specialists in Stage 13 (three already used and
+  up to three conditional additions), two concurrent agents, one debate round,
+  two follow-ups per specialist and 700 words per specialist report. The
+  concurrency, debate and report limits are unchanged. Activate additional
+  roles only when their scoped review is needed; specialists do not delegate.
+- Boundary: this is staffing authority only. PhysioNet signal/archive access,
+  source/use admission, role/split, protocol or compute approval, execution,
+  test/Electricity opening, PR merge and publication remain separately gated.
+  Stage 09 `HOLD`/final QA `FAIL`, H-04 `not tested` and DEC-070 `STOP` persist.
+
 ## DEC-085 — PI approves six PhysioNet EDF headers for a bounded pilot
 
 - Date: 2026-10-11.
