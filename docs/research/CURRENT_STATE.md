@@ -13,12 +13,12 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
 document-only QA `PASS`/PI `GO` (DEC-082); PI froze Stage 13 at `HOLD`
 (DEC-099) with document QA `PASS` (DEC-100); PRs #23–34 merged (DEC-101).
-PI chose route A (DEC-102); DEC-103 ZIP-tail read was withheld before access.
+PI chose route A (DEC-102); revised ZIP inventory QA `PASS`, access pending.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Stage 13 HOLD; revised two-Range access decision/QA pending; no Stage 14 handoff.
+Stage 13 HOLD; revised two-Range access decision pending; no Stage 14 handoff.
 
 ## Canonical references
 
@@ -147,4 +147,4 @@ Stage 13 HOLD; revised two-Range access decision/QA pending; no Stage 14 handoff
 
 ## Next action
 
-Decide revised two-Range request; QA PASS before any read; Stage 14 NO GO.
+Decide revised two-Range access with opaque-byte limit; Stage 14 NO GO.

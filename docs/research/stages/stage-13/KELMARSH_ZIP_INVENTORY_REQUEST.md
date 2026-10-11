@@ -1,10 +1,11 @@
 # Proposed minimum-byte Kelmarsh ZIP inventory gate
 
-Status: **revised two-Range access proposal pending PI decision and final
-independent pre-read QA; no source-file read executed**. The original
+Status: **revised two-Range access proposal pending PI decision; independent
+pre-read QA `PASS`; no source-file read executed**. The original
 one-Range DEC-103 access is withheld after QA found it could include compressed
-member payload. DEC-103's single reviewer follow-up remains active for this
-correction. Route A (DEC-102) preserves the Stage 11 H-01–H-03 contract;
+member payload. DEC-103's single reviewer follow-up completed with
+[PASS](KELMARSH_ZIP_INVENTORY_PREREAD_QA.md) on the correction. Route A
+(DEC-102) preserves the Stage 11 H-01–H-03 contract;
 source/use, role and split remain unapproved. Stage 13 freeze remains `HOLD`.
 
 ## Exact first unit

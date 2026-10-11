@@ -17,6 +17,10 @@
 - Pre-read QA found that the broad suffix could include compressed member
   bytes. The Director withheld this exact access before execution and
   proposed a narrower two-Range design; it needs a new PI access decision.
+- The one authorized reviewer follow-up returned `PASS` on the revised
+  two-Range code/request at `f98c5ca`, with the malformed-ZIP opaque-byte
+  limit explicit. See `stages/stage-13/KELMARSH_ZIP_INVENTORY_PREREAD_QA.md`.
+  This verdict does not approve the revised source access.
 - Boundary: no member/signal/test/Electricity/model access, source/use,
   role/split admission, result QA extension, protocol/budget freeze, Stage 14
   entry or release. Failure of the exact request remains `HOLD`.
