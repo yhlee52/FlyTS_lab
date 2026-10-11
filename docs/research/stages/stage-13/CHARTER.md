@@ -2,6 +2,9 @@
 
 Status: approved
 
+The Charter remains approved (DEC-082); the current freeze attempt is PI
+`HOLD` (DEC-099), with closeout QA pending. Acceptance criteria are unchanged.
+
 PI Charter `GO` was granted on 2026-10-11 (DEC-082), after independent
 document-only QA `PASS` and Draft PR #23 review. This activates the bounded
 Charter; it does not approve candidate discovery, source access/admission,
@@ -187,6 +190,9 @@ authorizes source access, admission, role/split, protocol or compute.
 
 ## User approval
 
+- Current Stage 13 freeze attempt: PI `HOLD`, DEC-099; see
+  [result](RESULT.md) and unapproved [recovery options](RECOVERY_OPTIONS.md).
+  No Stage 14 entry or protocol/budget freeze follows.
 - Kelmarsh DEC-097 result QA only: one read-only reviewer follow-up `GO`,
   DEC-098; no source reread or admission follows.
 - Kelmarsh corrected mapping-only read and one independent pre-read QA

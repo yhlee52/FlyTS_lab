@@ -16,6 +16,12 @@ Stage 09's closed `HOLD`, not completed formal outcomes or a Phase 02 run plan.
 The old numerical candidates, five-seed/60-run proposal and H-04 exclusion are
 not automatically transferred to a future protocol v3.
 
+DEC-099 places the current Stage 13 freeze attempt at `HOLD`: H-01–H-03
+remain without a frozen Phase 02 protocol or formal outcome. H-04 remains
+`not tested`; no Q1–Q3 claim or Stage 14 handoff follows. The recovery
+routes in `stages/stage-13/RECOVERY_OPTIONS.md` are proposals, not changes
+to any hypothesis, endpoint or acceptance rule.
+
 | Hypothesis | Adequacy and protocol | Execution, decision and claim gate |
 |---|---|---|
 | H-01 | Stage 12 Data audits independent units, count coverage and paired views; Stage 13 Experiment freezes permutation/count rules; Stage 14 QA checks masks and leakage. | Stages 15–16 Experiment records valid matched outcomes; Stage 18 final evidence needs Stage 17 PI unseal; Stage 19 permits only tested-domain/count claims. |
