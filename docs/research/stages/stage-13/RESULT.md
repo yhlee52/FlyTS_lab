@@ -88,4 +88,6 @@ Under the PI's bounded autonomy delegation (DEC-110), the Director closes
 this low-cost recovery at the existing Stage 13 **HOLD**. Protocol v3,
 low/medium/high compute choices, pre-freeze QA and PI protocol/budget `GO`
 remain absent. Stage 14 is **NO GO**. No further source access or external
-outreach is performed; Draft PR #35 stays unmerged pending an exact decision.
+outreach was performed. The PI later authorized PR #35's merge (DEC-111),
+and it merged at `dab9ac5830c418da16aabf5b2418b97da41e5f9d`. This
+integrates the bounded HOLD packet without satisfying the freeze gate.
