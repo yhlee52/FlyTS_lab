@@ -16,16 +16,15 @@ independent QA returned `PASS` after one PI-authorized extra review (DEC-073),
 and the PI accepted the Stage 11 result under DEC-074. Document-only PR #20
 subsequently merged into `main` at
 `4aed1926650fe304a818682a718e6b0d608367ba` on 2026-10-11.
-Stage 12 Charter is active under PI `GO` (DEC-075). DEC-076 separately approves
-bounded existing-source audit access for Appliances, Beijing and Bike only.
-DEC-077 permits reading shared manifest/notice metadata solely to audit those
-three sources; Electricity signals and model scores remain sealed.
+Stage 12 closed with independent audit QA `PASS` and PI bounded result `GO`
+(DEC-079). DEC-078 separately decided the three existing source uses, roles
+and splits. Electricity signals and model scores remain sealed.
 
 ## Current goal
 
-Present the independently QA-passed Stage 12 adequacy packet for separate PI
-source/use, role, split and result decisions. Later research gates still require
-separate PI decisions. DEC-070 no-release boundary remains in force.
+Hand off Stage 12 evidence for a proposed Stage 13 Charter. Stage 13 scope,
+protocol, compute and any new data access need separate PI decisions. DEC-070
+no-release boundary remains in force.
 
 ## Canonical references
 
@@ -33,11 +32,11 @@ separate PI decisions. DEC-070 no-release boundary remains in force.
 - `docs/research/stages/stage-11/CHARTER.md`
 - `docs/research/stages/stage-11/RESULT.md`
 - `docs/research/stages/stage-11/QA_REPORT.md`
-- `docs/research/stages/stage-12/CHARTER.md` (active; DEC-075/076)
-- `docs/research/stages/stage-12/ADEQUACY_PACKET.md` (audit proposal)
-- `docs/research/stages/stage-12/RESULT.md` (QA PASS; PI pending)
+- `docs/research/stages/stage-12/CHARTER.md` (closed; DEC-075–079)
+- `docs/research/stages/stage-12/ADEQUACY_PACKET.md` (bounded evidence)
+- `docs/research/stages/stage-12/RESULT.md` (QA PASS; PI GO)
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
-- `docs/research/DECISION_LOG.md` (DEC-070–077)
+- `docs/research/DECISION_LOG.md` (DEC-070–079)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -78,15 +77,15 @@ separate PI decisions. DEC-070 no-release boundary remains in force.
   model scores and role/split changes are outside this approval.
 - DEC-077 allows bounded shared manifest/notice metadata reads for the three
   approved sources, without an Electricity adequacy audit or final opening.
+- DEC-078 admits Appliances/Beijing for existing bounded uses with pretrain
+  roles/current splits; Bike retains development role/split for dimensionless
+  diagnostics only. Bike H-01 count coverage and `temp` semantics stay `HOLD`.
+  DEC-079 accepts the bounded Stage 12 result, not Stage 13 execution.
 
 ## Open questions
 
-- Stage 12 audit QA passed; source suitability and separate PI source/role/
-  split/result dispositions remain open. Unapproved candidates and sealed data
-  stay `HOLD`.
-- Dataset suitability/admission, minimum coverage, statistical thresholds,
-  seed/matrix, budget, H-04 target, CUDA environment and final open remain future
-  decisions with the named stage gates.
+- New candidate access/admission, Stage 13 scope, minimum coverage, statistical
+  thresholds, seed/matrix, budget, H-04 target, CUDA and final open remain gated.
 
 ## Active risks
 
@@ -118,7 +117,7 @@ separate PI decisions. DEC-070 no-release boundary remains in force.
   after clarifying that target-test class coverage needs approved metadata or
   a separate blinded metadata audit; otherwise admission stays `HOLD`. No data
   or ignored report bytes were opened. Draft PR #21 carries the proposal against
-  PR #20's merge commit; Stage 12 execution QA remains pending.
+  PR #20's merge commit; later Stage 12 audit QA is recorded separately.
 - PR #21 CI `tests` passed on `d729d8c` (existing governance, pytest and
   isolated synthetic CPU smoke); this is proposal engineering evidence only.
   DEC-075/076 are PI authority records, not adequacy or model results.
@@ -127,18 +126,18 @@ separate PI decisions. DEC-070 no-release boundary remains in force.
   arrays. Original entities: Appliances 1, Beijing 12, Bike 1; Bike 71 train
   fragments are not independent sources. Seen channel counts 11/26 exceed
   Bike's 4, preventing its current paired H-01 count view. H-04 remains HOLD;
-  no score or sealed array was opened. QA and PI review remain pending.
+  no score or sealed array was opened.
 - RK-56/57 track sparse Bike coverage and a Windows CRLF worktree registry-hash
   preflight risk; the canonical tracked Stage 06 registry bytes are unchanged.
 - RK-58 tracks conflicting Bike `temp` normalization formulas in its bundled
   README versus the current UCI page; physical-unit semantics remain unverified.
 - Independent Stage 12 audit QA returned `PASS` on the bounded packet after
   marking Bike `temp` semantics `conflict`; no source or Stage 13 gate is implied.
-- Draft PR #22 carries the audit packet at `369dc0b`, stacked on open Draft
-  PR #21; neither PR is merged or a PI source/result decision.
+- Draft PR #22 carries the audit packet, stacked on open Draft PR #21. Its two
+  CI pytest runs passed; neither PR is merged. DEC-078/079 record PI decisions.
 
 ## Next action
 
-Seek separate PI source/role/split and Stage 12 result decisions before Stage
-13 handoff. Keep
-Electricity final data and target test sealed; retain DEC-070 release `STOP`.
+Propose the Stage 13 Charter and any candidate-specific access packets for PI
+review. Keep Electricity final data and target test sealed; retain DEC-070
+release `STOP`.

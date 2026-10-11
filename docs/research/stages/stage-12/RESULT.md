@@ -1,6 +1,6 @@
-# Stage 12 result proposal — Data and Evaluation Adequacy
+# Stage 12 result — Data and Evaluation Adequacy
 
-Status: **bounded audit QA PASS; PI result and source/role/split gates pending**.
+Status: **closed — independent QA PASS; PI bounded result GO (DEC-079)**.
 Date: 2026-10-11. This is an adequacy finding, not a model result or a Stage 13
 protocol approval.
 
@@ -49,24 +49,23 @@ absence. H-04 stays `not tested`; Q2/Q3 are unavailable. This does not by
 itself block a separately approved Electricity-only preparation. Electricity
 final data and score remain sealed.
 
-## Separate PI decisions requested after QA
+## PI decisions and remaining gates
 
-1. For each of Appliances, Beijing and Bike: accept or revise the source/use
-   recommendation and rights basis; separately decide whether to keep the
-   existing role and exact split for the limited claims stated in the packet.
-   Bike's physical temperature interpretation remains excluded until its
-   source-document conflict is resolved.
-2. Decide whether Stage 13 may scope an Electricity-only preparation without
-   opening final data or scores, while H-01 breadth and H-04 remain `HOLD`.
-3. Decide whether to request candidate-specific access packets for additional
-   independent channel-count/domain sources and a rights-cleared H-04 target.
-4. Accept the Stage 12 result as bounded `GO`, request `REVISE`, or hold it.
-   This decision is separate from any Draft PR merge or release decision.
+DEC-078 separately admitted Appliances and Beijing for their **existing bounded
+use**, retaining each `pretrain` role and canonical r2 chronological split.
+It approved Bike only for dimensionless, bounded development diagnostics,
+retaining its `development-held-out` role and current split. Bike H-01
+paired-count coverage and physical `temp` interpretation remain `HOLD`.
+No registry or manifest change was required. These are source/use, role and
+split decisions for the named scope, not independent-entity or Q2 claims.
 
-Until these decisions, the audit is a proposal and no new source admission,
-role/split change, Stage 13 numerical freeze, training or final opening is
-authorized. Stage 09 `HOLD`/final QA `FAIL` and its report hashes are unchanged;
-DEC-070 public-release `STOP` remains in force.
+DEC-079 accepted the bounded Stage 12 result and its Stage 13 evidence handoff.
+The PI has not selected further candidates or authorized Electricity-only
+Stage 13 scope, a new protocol, numerical freeze, compute envelope, training,
+evaluation or final opening. Stage 13 must request its own Charter/compute and
+source-specific decisions. Draft PR #21/#22 merge is also separate. Stage 09
+`HOLD`/final QA `FAIL` and its report hashes are unchanged; DEC-070
+public-release `STOP` remains in force.
 
 ## Reproducibility and resource handoff
 
@@ -87,5 +86,5 @@ rule.
 - [x] H-04 HOLD and historical Stage 09/DEC-070 boundaries retained.
 - [x] Independent Stage 12 QA `PASS` recorded in `QA_REPORT.md`.
 - [x] Notebook/governance, diff and Stage 09 immutability checks passed.
-- [ ] PI decides the bounded Stage 12 result and each requested source/role/
-  split question.
+- [x] PI decided the bounded Stage 12 result (DEC-079) and the three named
+  source/use, role and split questions (DEC-078).

@@ -1,6 +1,8 @@
 # Stage 12 Charter — Data and Evaluation Adequacy
 
-Status: active
+Status: closed
+
+Independent audit QA `PASS`; PI bounded result `GO` (DEC-079).
 
 PI Charter `GO` is recorded in DEC-075. DEC-076 separately approves bounded
 access to existing Appliances, Beijing and Bike materials; all other source,
@@ -201,8 +203,8 @@ seeds, arms, steps, thresholds, uncertainty, checkpoint selection and freeze.
 |---|---|---|
 | Stage 12 Charter | Any Stage 12 data work or specialist data audit | `GO`, DEC-075 |
 | Per-source access, including existing raw/prepared corpus | Any read beyond tracked documentation/metadata or download | Appliances/Beijing/Bike `GO` within DEC-076; shared metadata exception DEC-077; other access pending |
-| Source admission, role and split | New use or a registry/manifest change | pending separately for each source/role/split |
-| Stage 12 result | Stage 13 work beyond a proposal | pending PI decision after independent QA |
+| Source admission, role and split | New use or a registry/manifest change | DEC-078 approves named bounded A/B/B uses with existing roles/splits; all expansions pending separately |
+| Stage 12 result | Stage 13 work beyond a proposal | bounded `GO`, DEC-079; Stage 13 Charter/protocol/compute still pending |
 | Final/test opening | Electricity or target-test evidence | outside Stage 12; pending Stage 17 PI gate |
 
 ## Agent plan and budget
@@ -248,3 +250,6 @@ approved source locations and scope; Stage 13 estimates formal compute.
 - Date: 2026-10-11.
 - Conditions: DEC-076 separately names the three approved access scopes.
   Charter `GO` does not replace admission, role, split or later stage gates.
+- Closure: independent Stage 12 audit QA `PASS`; DEC-078 decides the three
+  bounded source uses with unchanged roles/splits and DEC-079 accepts the
+  bounded adequacy result. No later stage or final/test gate is implied.

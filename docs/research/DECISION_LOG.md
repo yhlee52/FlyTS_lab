@@ -1,5 +1,38 @@
 # FlyTS Decision Log
 
+## DEC-079 — PI accepts the bounded Stage 12 adequacy result
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` after the Stage 12 adequacy packet,
+  independent audit QA `PASS` and Draft PR #22 were presented.
+- Decision: accept the bounded findings and Stage 13 evidence handoff under
+  DEC-078's source/use, role and split limits. H-01 held-out paired-count
+  coverage remains insufficient; H-04 is `not tested`, so Q2/Q3 are unavailable.
+- Boundary: no Stage 13 protocol or compute envelope is approved; no numerical
+  threshold, seed, matrix, checkpoint rule, training, evaluation, final/test
+  opening, PR merge or publication is authorized. Stage 09 `HOLD`/final QA
+  `FAIL` and DEC-070 release `STOP` remain in force.
+
+## DEC-078 — PI decides three existing source uses, roles and splits
+
+- Date: 2026-10-11.
+- Decision authority: explicit source-specific PI replies after Stage 12
+  independent QA `PASS`, with the proposed bounds stated in each question.
+- Appliances: `admit` for existing bounded source use; retain `pretrain` role
+  and the current canonical r2 chronological split. This is not an
+  independent-entity or Q2 claim.
+- Beijing: `admit` for existing bounded source use; retain `pretrain` role and
+  the current canonical r2 chronological split. Twelve recurring stations do
+  not establish unseen-station generalization or Q2 coverage.
+- Bike: approve dimensionless, bounded development diagnostics only; retain
+  `development-held-out` role and the current canonical r2 chronological
+  split. H-01 paired-count coverage and physical `temp` interpretation remain
+  `HOLD` under the one-entity/four-channel and source-document limits.
+- Boundary: no role or split changes, new candidate admission, HAR/HARTH
+  repair, Electricity adequacy/final opening, test access, model scoring,
+  training, post-result search or publication. Existing registry/manifest
+  bytes stay unchanged; any future expansion needs its own PI decision.
+
 ## DEC-077 — PI approves bounded shared corpus metadata read
 
 - Date: 2026-10-11

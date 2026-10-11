@@ -1,6 +1,6 @@
 # Stage 12 adequacy packet — approved existing sources
 
-Status: draft for independent QA and separate PI source/role/split decisions.
+Status: bounded evidence accepted by independent QA and PI under DEC-078/079.
 Date: 2026-10-11. No model training, evaluation, test-signal read, final opening,
 or new source admission is part of this packet.
 
@@ -170,9 +170,17 @@ This does not itself block separately approved Electricity-only readiness.
 | Electricity | No adequacy judgment | Keep sealed final-held-out | No change | Final-data/score opening remains outside Stage 12. |
 | HAR / HARTH | HOLD | No H-04 role | No split change | Candidate-specific rights and fixed-split evidence required. |
 
-The existing roles and splits remain historical baseline; none is readmitted or
-changed by this packet. A PI decision should name each source, allowed use,
-role, split identity and excluded claims. A missing decision is `HOLD`.
+The proposal table itself granted no admission and changed no role or split.
+Each PI decision names the source, allowed use, role, split identity and
+excluded claims. A missing decision remains `HOLD`.
+
+**PI disposition (DEC-078):** Appliances and Beijing each received `admit` for
+the existing bounded use with their current `pretrain` role and canonical r2
+chronological split. Bike received only bounded, dimensionless development
+diagnostic use with its current `development-held-out` role and split; H-01
+paired-count coverage and physical `temp` interpretation remain `HOLD`. These
+decisions create no new registry or manifest version because roles and splits
+were retained. Electricity and H-04 sources received no new admission.
 
 ## Stage 13 handoff inputs and open questions
 
