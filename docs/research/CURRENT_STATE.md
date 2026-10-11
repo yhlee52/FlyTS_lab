@@ -16,13 +16,15 @@ independent QA returned `PASS` after one PI-authorized extra review (DEC-073),
 and the PI accepted the Stage 11 result under DEC-074. Document-only PR #20
 subsequently merged into `main` at
 `4aed1926650fe304a818682a718e6b0d608367ba` on 2026-10-11.
+Stage 12 Charter is active under PI `GO` (DEC-075). DEC-076 separately approves
+bounded existing-source audit access for Appliances, Beijing and Bike only.
 
 ## Current goal
 
-Review the proposed Stage 12 Charter against the accepted Stage 11 contract.
-DEC-074 authorized drafting only; Stage 12 Charter approval, data access,
-source admission, role/split decisions and later research gates require separate
-PI decisions. DEC-070 no-release boundary remains in force.
+Execute the approved Stage 12 adequacy audit within DEC-076's three source
+scopes, with independent QA. Source admission, role/split decisions and later
+research gates still require separate PI decisions. DEC-070 no-release boundary
+remains in force.
 
 ## Canonical references
 
@@ -30,8 +32,8 @@ PI decisions. DEC-070 no-release boundary remains in force.
 - `docs/research/stages/stage-11/CHARTER.md`
 - `docs/research/stages/stage-11/RESULT.md`
 - `docs/research/stages/stage-11/QA_REPORT.md`
-- `docs/research/stages/stage-12/CHARTER.md` (proposed; PI approval pending)
-- `docs/research/DECISION_LOG.md` (DEC-070–074)
+- `docs/research/stages/stage-12/CHARTER.md` (active; DEC-075/076)
+- `docs/research/DECISION_LOG.md` (DEC-070–076)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -64,13 +66,17 @@ PI decisions. DEC-070 no-release boundary remains in force.
   follow-up limit; QA returned `PASS` on PR #20 head `0effe407`. This is not
   itself a Stage 11 result decision. DEC-074 separately records PI result `GO`:
   Stage 12 Charter drafting was authorized. PR #20 later merged, but Stage 12
-  data access, admission and role/split decisions remain unapproved.
+  data access, admission and role/split decisions were unapproved at that time.
+- DEC-075 approved the Stage 12 Charter. DEC-076 separately permits existing
+  local Appliances, Beijing and Bike official archives/notices, source lock,
+  manifest and prepared train/validation signals/masks for bounded audit only.
+  Test signals, Electricity raw/prepared/final, HAR/HARTH raw data, downloads,
+  model scores and role/split changes are outside this approval.
 
 ## Open questions
 
-- The proposed Stage 12 Charter and its separate PI approval remain open. Stage
-  11 result `GO` authorized the proposal only, not data work. Each source's
-  access and source/role/split decision is a further distinct gate.
+- Audit findings, source suitability and separate PI source/role/split
+  dispositions remain open. Unapproved candidate and sealed data stay `HOLD`.
 - Dataset suitability/admission, minimum coverage, statistical thresholds,
   seed/matrix, budget, H-04 target, CUDA environment and final open remain future
   decisions with the named stage gates.
@@ -106,9 +112,13 @@ PI decisions. DEC-070 no-release boundary remains in force.
   a separate blinded metadata audit; otherwise admission stays `HOLD`. No data
   or ignored report bytes were opened. Draft PR #21 carries the proposal against
   PR #20's merge commit; Stage 12 execution QA remains pending.
+- PR #21 CI `tests` passed on `d729d8c` (existing governance, pytest and
+  isolated synthetic CPU smoke); this is proposal engineering evidence only.
+  DEC-075/076 are PI authority records, not adequacy or model results.
 
 ## Next action
 
-Obtain a separate PI decision on the proposed Stage 12 Charter, then source-
-specific access and source/role/split decisions before affected data work. Keep
-Electricity final data and target test sealed; retain DEC-070 release `STOP`.
+Audit only the DEC-076 source scopes and prepare per-source evidence packets;
+obtain independent QA and separate PI source/role/split decisions before any
+admission or Stage 13 handoff. Keep Electricity final data and target test sealed;
+retain DEC-070 release `STOP`.

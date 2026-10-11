@@ -1,13 +1,16 @@
 # Stage 12 Charter — Data and Evaluation Adequacy
 
-Status: proposed
+Status: active
 
-PI Charter and data-access decisions are pending.
+PI Charter `GO` is recorded in DEC-075. DEC-076 separately approves bounded
+access to existing Appliances, Beijing and Bike materials; all other source,
+role, split and final/test gates remain pending.
 
 Proposal baseline: `main` at PR #20 merge
 `4aed1926650fe304a818682a718e6b0d608367ba` (2026-10-11).
-DEC-074 authorizes this Charter proposal only. It does not authorize Stage 12
-data access, a new source, a role or split decision, training, evaluation or a
+DEC-074 authorized drafting only. DEC-075 activates this Charter and DEC-076
+provides the three named source-access scopes. Neither decision admits a new
+source, changes a role or split, or authorizes training, evaluation or a
 final/test opening.
 
 ## Research question
@@ -69,14 +72,14 @@ Stage 13 can freeze a protocol?
 
 ## Per-source access request for a later PI decision
 
-The table is a request, not permission. A `GO` must name the exact source and
-permitted files/operations; record its decision ID before the first read.
+The table records each access decision, not a dataset-admission decision. A
+`GO` names the source and permitted files/operations before the first read.
 
 | Source | Requested only after Charter GO | Excluded from this request | Decision |
 |---|---|---|---|
-| Appliances | Existing local official archive/notice, source lock, manifest, and prepared train/validation signals and masks for rights, time, split and view auditing; no model scoring | New mirror/download, role/split change | pending |
-| Beijing | Same scope, with station identities, local cadence/gap and missingness checks | New mirror/download, station-transfer claim, role/split change | pending |
-| Bike | Same scope, with original entity/range identity and development validation view feasibility | Model selection/evaluation, new final claim, role/split change | pending |
+| Appliances | Existing local official archive/notice, source lock, manifest, and prepared train/validation signals and masks for rights, time, split and view auditing; no model scoring | New mirror/download, role/split change, test signals | `GO` DEC-076 |
+| Beijing | Same scope, with station identities, local cadence/gap and missingness checks | New mirror/download, station-transfer claim, role/split change, test signals | `GO` DEC-076 |
+| Bike | Same scope, with original entity/range identity and development validation view feasibility | Model selection/evaluation, new final claim, role/split change, test signals | `GO` DEC-076 |
 | Electricity | Already tracked documents, registry and corpus-report metadata only | Raw archive, untracked manifest, prepared arrays, final split and model scores | no new access requested |
 | HAR/HARTH | Already tracked rights and HOLD records only | Raw archive reinspection, signal values, split search, target test | no new access requested |
 | New candidate | No candidate selected by this Charter; a later packet must separately request source access and any blinded test-class metadata audit | Download, raw/array read, direct test-label inspection or admission until its own PI decisions | pending candidate-specific request |
@@ -89,7 +92,7 @@ needs a broader read, pause and request a narrower additional decision.
 
 | Unit | Director/Data deliverable after the applicable gate | Verification and independent QA |
 |---|---|---|
-| 0 — proposal | This Charter, access-decision requests and corrected PR #20 merge status | Director checks Stage 09 tracked files unchanged and gate wording; independent QA reviews the document-only proposal. Stop for PI Charter decision. |
+| 0 — proposal | This Charter, access-decision requests and corrected PR #20 merge status | Director checks Stage 09 tracked files unchanged and gate wording; independent document-only QA `PASS` and PI Charter `GO` recorded. |
 | 1 — access | Per-source purpose, approved bytes/metadata, rights and seal boundary ledger | QA compares every intended read/download with the PI decision before it occurs. Unapproved sources remain `HOLD`. |
 | 2 — provenance | Per-source official URL/DOI, terms and bundled notices, archive/member/manifest/registry hashes, schema, channel and time/missingness facts | QA independently rechecks recorded hashes and notices within approved access; discrepancies become `HOLD`, never silent substitutions. |
 | 3 — independence | Separate record, original entity/subject and nonoverlapping time-range counts; split, purge, preprocessing and role-leakage audit | QA checks identity and range overlap, source split before windows, 512-point purge and train-only fitted state; no window or seed count is used as sample size. |
@@ -192,8 +195,8 @@ seeds, arms, steps, thresholds, uncertainty, checkpoint selection and freeze.
 
 | Gate | Required before | Current state |
 |---|---|---|
-| Stage 12 Charter | Any Stage 12 data work or specialist data audit | pending PI `GO` |
-| Per-source access, including existing raw/prepared corpus | Any read beyond tracked documentation/metadata or download | pending separate PI decision |
+| Stage 12 Charter | Any Stage 12 data work or specialist data audit | `GO`, DEC-075 |
+| Per-source access, including existing raw/prepared corpus | Any read beyond tracked documentation/metadata or download | Appliances/Beijing/Bike `GO` within DEC-076; other access pending |
 | Source admission, role and split | New use or a registry/manifest change | pending separately for each source/role/split |
 | Stage 12 result | Stage 13 work beyond a proposal | pending PI decision after independent QA |
 | Final/test opening | Electricity or target-test evidence | outside Stage 12; pending Stage 17 PI gate |
@@ -237,7 +240,7 @@ approved source locations and scope; Stage 13 estimates formal compute.
 
 ## User approval
 
-- Decision: pending PI Charter `GO` / `REVISE` / `HOLD`.
-- Date: pending.
-- Conditions: DEC-074 approved this proposal only. Even Charter `GO` does not
-  replace per-source access, admission, role, split or later stage gates.
+- Decision: `GO` for this Stage 12 Charter (DEC-075).
+- Date: 2026-10-11.
+- Conditions: DEC-076 separately names the three approved access scopes.
+  Charter `GO` does not replace admission, role, split or later stage gates.
