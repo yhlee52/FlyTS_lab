@@ -16,7 +16,7 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-DEC-095 three-source screen has document QA PASS; no admission or freeze.
+DEC-096 Kelmarsh read: QA CONDITIONAL PASS; eligibility/freeze HOLD.
 
 ## Canonical references
 
@@ -28,7 +28,7 @@ DEC-095 three-source screen has document QA PASS; no admission or freeze.
 - `docs/research/stages/stage-12/RESULT.md` (QA PASS; PI GO)
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
-- `docs/research/stages/stage-13/MULTITURBINE_OPEN_CANDIDATE_SCREEN.md` (screen)
+- `docs/research/stages/stage-13/KELMARSH_METADATA_AUDIT.md` (bounded read)
 - `docs/research/stages/stage-13/PHYSIONET_SOURCE_USE_GATE.md` (rights HOLD)
 - `docs/research/DECISION_LOG.md` (DEC-070–089)
 - `docs/research/HYPOTHESES.md`
@@ -83,7 +83,7 @@ DEC-095 three-source screen has document QA PASS; no admission or freeze.
   six specified EDF headers only; signal/access/admission/role/split gated.
 - DEC-086–090 cover bounded staffing, six EDF/audit-only access and retry.
   DEC-091 inquiry stopped under DEC-092; DEC-093 screen closed with QA PASS.
-  DEC-094 QA PASS; DEC-095 permits three physical-device document screens.
+  DEC-094/095 QA PASS; DEC-096's two Kelmarsh metadata reads exhausted cap.
 
 ## Open questions
 
@@ -141,10 +141,10 @@ DEC-095 three-source screen has document QA PASS; no admission or freeze.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
   `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
 - Draft PR #28 records bounded PhysioNet QA `PASS`; rights remain HOLD.
-- Draft PR #31 records DEC-095 document QA `PASS`: Kelmarsh is a licensed
-  multi-turbine lead, but genuine concurrent count remains unverified.
+- DEC-096's two publisher MD5s matched; mapping has 60 rows, static file 6.
+  Titles/turbine IDs were omitted; 60 signal IDs appeared in the tool
+  transcript under ambiguous scope. Cap exhausted; channel count unverified.
 
 ## Next action
 
-Seek PI decision on Kelmarsh metadata-file access; Stage 13 freeze HOLD.
-Keep Electricity/test sealed, H-01 unfrozen and DEC-070 `STOP`.
+Review corrected metadata-access proposal; no repeat read under DEC-096.

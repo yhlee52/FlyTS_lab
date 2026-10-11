@@ -1,5 +1,23 @@
 # FlyTS Decision Log
 
+## DEC-096 — PI approves only two bounded Cubico Kelmarsh metadata CSV reads
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` after independent document QA `PASS`
+  on Draft PR #31 and its exact
+  `docs/research/stages/stage-13/KELMARSH_METADATA_ACCESS_REQUEST.md`.
+- Approved access: official Cubico Kelmarsh v4 Zenodo record `16807551`,
+  `Kelmarsh_WT_dataSignalMapping.csv` (3,150 bytes, publisher MD5
+  `ca8fe399ab15ae7111d3214c632efd36`) and `Kelmarsh_WT_static.csv`
+  (807 bytes, publisher MD5 `af3a038f0f7fddfc1608ad0bfc8cf5ba`),
+  memory-only with a combined 3,957-byte application-read cap and no
+  unbounded retries. Record only field-name, turbine-ID and count summaries.
+- Boundary: no SCADA archive/member or measured values, no source file saved
+  to disk, no other source, test/Electricity item, model score, training or
+  evaluation. This is not source admission, role/split, protocol/compute,
+  Stage 14 or release approval. Unexpected file identity/length/hash/redirect
+  means `HOLD` before further access.
+
 ## DEC-095 — PI approves one further three-source physical-device open-data metadata screen
 
 - Date: 2026-10-11.

@@ -131,7 +131,7 @@ result is a later scientific outcome, not a reason to rewrite this design.
 |---|---|---|
 | Stage 13 Charter `GO`/`REVISE`/`HOLD` | Units 1–5, subject to their additional gates | `GO`, DEC-082 |
 | Bounded metadata-only candidate search | Any search for a new source | DEC-083/093/094 screens exhausted; DEC-095 separately allows at most three physical-device, high-channel, non-human official-document candidates |
-| Candidate access, then source/use, role and split | First access/admission or change for each named source | PhysioNet sidecars `GO` DEC-084, six headers `GO` DEC-085, six full in-memory EDF streams `GO` DEC-087 and three audit-only subject exclusions `GO` DEC-088; source/use admission, development role and formal split pending |
+| Candidate access, then source/use, role and split | First access/admission or change for each named source | PhysioNet access bounded by DEC-084/085/087/088; Kelmarsh's exact two metadata CSV reads `GO` DEC-096; both source/use admission, development role and formal split pending |
 | Non-final/synthetic resource measurement, if needed | That measurement | pending |
 | Exact v3 and selected compute envelope `GO` | Freeze/Stage 14 handoff | pending |
 | Stage 15 execution; Stage 17 H-04/final opening; publication | Separate later stages | pending; publication `STOP` DEC-070 |
@@ -187,6 +187,10 @@ authorizes source access, admission, role/split, protocol or compute.
 
 ## User approval
 
+- Kelmarsh mapping/static metadata only: `GO`, DEC-096, for the exact two
+  official v4 CSVs and 3,957-byte combined application-read cap in
+  [the request](KELMARSH_METADATA_ACCESS_REQUEST.md); no admission or other
+  data access follows.
 - Further physical-device candidate discovery: `GO`, DEC-095, for up to three
   official-page non-human sources targeting at least 27 concurrent channels
   per distinct physical device and explicit data-reuse rights; no source-file
