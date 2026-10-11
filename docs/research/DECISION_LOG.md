@@ -17,6 +17,10 @@
 - Boundary: DEC-103's original one-Range access remains unused. No further
   member/signal access, source/use, role/split admission, result QA staffing,
   protocol/budget freeze, Stage 14, test/Electricity or release approval.
+- Outcome: the one approved execution read 22 EOCD plus 1,176 central
+  directory application bytes, listing six turbine-data and six status
+  members. See `stages/stage-13/KELMARSH_ZIP_INVENTORY_RESULT.md` for the
+  Director report; independent result QA is pending. The cap is exhausted.
 
 ## DEC-103 — PI approves one pre-read QA and one bounded ZIP-tail read
 

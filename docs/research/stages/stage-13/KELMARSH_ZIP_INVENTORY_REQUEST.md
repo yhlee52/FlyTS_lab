@@ -1,7 +1,8 @@
 # Proposed minimum-byte Kelmarsh ZIP inventory gate
 
 Status: **revised two-Range access PI `GO` (DEC-104), independent pre-read QA
-`PASS`; no source-file read executed yet**. The original
+`PASS`; one execution completed and its access cap exhausted**. See the
+[Director-reported result](KELMARSH_ZIP_INVENTORY_RESULT.md). The original
 one-Range DEC-103 access is withheld after QA found it could include compressed
 member payload. DEC-103's single reviewer follow-up completed with
 [PASS](KELMARSH_ZIP_INVENTORY_PREREAD_QA.md) on the correction. Route A
