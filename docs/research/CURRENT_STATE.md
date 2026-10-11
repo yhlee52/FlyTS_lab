@@ -12,7 +12,7 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 `PASS` and bounded PI `GO` (DEC-079); DEC-078 kept three existing roles and
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
 document-only QA `PASS`/PI `GO` (DEC-082); PI froze Stage 13 at `HOLD`
-(DEC-099). Draft PRs #23–33 remain open; closeout QA is pending.
+(DEC-099). Draft PRs #23–34 remain open; closeout QA is pending.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
@@ -139,7 +139,7 @@ Stage 13 PI HOLD: no v3/budget freeze or Stage 14 handoff.
   marking Bike `temp` semantics `conflict`; no source or Stage 13 gate is implied.
 - PR #22 merged the audit packet at `392b785` after PR #21 integration. Its
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
-- Stage 13 PRs #23–33 are Draft with CI passing; PhysioNet source/use HOLD.
+- Stage 13 PRs #23–33 are Draft with CI passing; #34 closeout CI pending.
 - DEC-096/097 mapping has 60 titles and static file six turbine rows;
   initial signal-ID emission remains an ambiguous-scope QA finding.
   DEC-098 result QA PASS checked claim limits, not network bytes. No
