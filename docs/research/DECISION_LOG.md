@@ -1,5 +1,36 @@
 # FlyTS Decision Log
 
+## DEC-100 — PI reallocates the unused Stage 13 QA follow-up to HOLD closeout
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` after Draft PR #34 and the exact
+  `stages/stage-13/CLOSEOUT_QA_REALLOCATION_REQUEST.md` were presented.
+- Decision: use the one DEC-090 reviewer follow-up reserved for a
+  conditional exact pre-freeze v3 packet for **one read-only, document-only
+  Stage 13 HOLD closeout QA**. No v3 packet exists under DEC-099. The
+  specialist count, total follow-up count and parallel ceiling do not rise.
+- Boundary: the reallocation exhausts that reserved follow-up; any later
+  Stage 13 pre-freeze QA needs a new staffing decision. This permits no
+  source/array/test/Electricity/model access, tracked QA edit, contract,
+  source/role/split, protocol/budget, Stage 14, PR merge or release `GO`.
+- Outcome: the independent document-only Stage 13 closeout review returned
+  `PASS`; see `stages/stage-13/QA_REPORT.md`. This is not pre-freeze QA.
+
+## DEC-099 — PI places the current Stage 13 freeze attempt on HOLD
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI direction to record `HOLD` and consider
+  a less burdensome way to meet Stage 13 after reviewing the absence of
+  an eligible source and the Stage 14 entry gate.
+- Decision: stop the current Stage 13 protocol/budget freeze attempt at
+  `HOLD`. Record the missing eligibility, protocol, budget and QA evidence
+  in `stages/stage-13/RESULT.md`; present recovery options without silently
+  narrowing H-01/Q1 or admitting Kelmarsh. This is not a model outcome.
+- Boundary: no Stage 14 preflight, Stage 15 training, test/Electricity
+  opening, new source access, source/role/split admission, protocol or
+  compute `GO`, checkpoint or public release. Stage 09 history and DEC-070
+  release `STOP` remain. Draft PR merge needs separate explicit approval.
+
 ## DEC-098 — PI approves one independent DEC-097 result QA follow-up
 
 - Date: 2026-10-11.
