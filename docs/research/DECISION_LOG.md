@@ -1,5 +1,19 @@
 # FlyTS Decision Log
 
+## DEC-083 — PI approves bounded Stage 13 metadata-only candidate discovery
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI reply to the Charter's separate discovery
+  request after Stage 13 Charter `GO` (DEC-082).
+- Approved scope: search official public dataset landing, rights, schema and
+  documentation pages for at most three held-out H-01/H-02 candidates; record
+  source links, channel and independent subject/group facts, and unresolved
+  eligibility fields in a metadata-only shortlist.
+- Boundary: no archive/download/mirror, sample value or array, test label or
+  signal, Electricity or model score access. This decision admits no source,
+  role or split and approves no protocol, compute, execution, PR merge or
+  public release. Each named candidate needs another PI access decision.
+
 ## DEC-082 — PI approves the Stage 13 Charter
 
 - Date: 2026-10-11.

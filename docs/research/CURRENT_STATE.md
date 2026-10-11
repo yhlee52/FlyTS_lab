@@ -16,9 +16,9 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Prepare a bounded metadata-only candidate-discovery request for PI review.
-DEC-081 sets the new-data-first path; DEC-082 approves the Charter alone.
-Candidate search/access/admission, protocol and compute remain separately gated.
+Run the DEC-083 approved metadata-only search of at most three official-source
+candidates. DEC-081/082 set the path and Charter; candidate access/admission,
+protocol and compute remain separately gated.
 
 ## Canonical references
 
@@ -31,7 +31,7 @@ Candidate search/access/admission, protocol and compute remain separately gated.
 - `docs/research/stages/stage-12/RESULT.md` (QA PASS; PI GO)
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
-- `docs/research/DECISION_LOG.md` (DEC-070–082)
+- `docs/research/DECISION_LOG.md` (DEC-070–083)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -82,10 +82,12 @@ Candidate search/access/admission, protocol and compute remain separately gated.
   it grants no Stage 13 or data access approval.
 - DEC-082 approves the Stage 13 Charter, not candidate discovery/access,
   admission, protocol/budget freeze, execution, final opening or PR merge.
+- DEC-083 approves official-page metadata discovery for at most three
+  candidates; their deeper access/admission and role/split remain gated.
 
 ## Open questions
 
-- Candidate discovery/access/admission, minimum coverage, statistical
+- Candidate access/admission, minimum coverage, statistical
   thresholds, seed/matrix, budget, H-04 target, CUDA and final open remain gated.
 
 ## Active risks
@@ -141,6 +143,5 @@ Candidate search/access/admission, protocol and compute remain separately gated.
 
 ## Next action
 
-Seek PI decision on the Charter's bounded metadata-only candidate search.
-Named-source access/admission remains separate. Keep Electricity/test sealed
-and DEC-070 release `STOP`.
+Prepare the approved three-candidate metadata-only shortlist and named-source
+access requests. Keep Electricity/test sealed and DEC-070 release `STOP`.
