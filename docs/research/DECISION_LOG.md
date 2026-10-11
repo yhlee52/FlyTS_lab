@@ -1,5 +1,23 @@
 # FlyTS Decision Log
 
+## DEC-106 — PI approves audit-only 2016 exclusion and pilot preparation
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` on the bounded
+  `stages/stage-13/KELMARSH_2016_SCHEMA_PILOT_PROPOSAL.md` after DEC-105 QA.
+- Entire Kelmarsh 2016 year for all six turbines is audit-only and excluded
+  from every future formal pretrain, development, final and test role.
+  This is a narrow exclusion, not source admission or a formal split.
+- Prepare the preselected turbine-1, one-Range 8,192-byte CSV-header pilot
+  script and synthetic tests. One additional existing-reviewer read-only
+  pre-read QA and one subsequent result QA are approved; the latter is
+  conditional on a separately authorized execution. Six-specialist and
+  two-parallel limits are unchanged.
+- **No member or signal access yet.** Exact script/byte hash, pre-read QA PASS
+  and a separate PI source-file access decision are still required. No other
+  year/member, formal source/use, role/split, protocol, compute, Stage 14 or
+  publication gate is granted.
+
 ## DEC-105 — PI approves one bounded ZIP-inventory result QA follow-up
 
 - Date: 2026-10-11.

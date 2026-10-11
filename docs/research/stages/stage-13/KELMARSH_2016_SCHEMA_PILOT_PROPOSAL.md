@@ -1,7 +1,8 @@
 # Proposed lowest-byte Kelmarsh 2016 schema pilot
 
-Status: **proposal only; no access, audit-only exclusion or staffing approval**.
-Stage 13 remains `HOLD`. This packet follows the bounded DEC-104 ZIP directory
+Status: **DEC-106 approved audit-only 2016 exclusion, tool preparation and
+two existing-reviewer follow-ups; source-file access pending**. Stage 13
+remains `HOLD`. This packet follows the bounded DEC-104 ZIP directory
 inventory and its [independent report QA](KELMARSH_ZIP_INVENTORY_RESULT_QA.md).
 
 ## Fixed question and source
@@ -17,20 +18,27 @@ cannot establish 27 simultaneous usable channels, independent farms, paired
 
 ## Proposed two-stage PI gate
 
-1. **Source/use and exclusion:** Decide whether Kelmarsh v4 may be read solely
-   for this bounded schema audit, with the entire **2016 year of all six
-   turbines excluded** from every future pretrain, development, final and
-   test role. This is an audit-only exclusion, not admission or a formal
-   train/validation/test split. If this condition is unacceptable, retain
-   `HOLD` and do not read a member.
-2. **Exact access and QA staffing:** If the first decision is `GO`, consider
+1. **Audit-only exclusion and preparation — PI GO, DEC-106:** Kelmarsh v4 may
+   be considered for this bounded schema audit, with the entire **2016 year
+   of all six turbines excluded** from every future pretrain, development,
+   final and test role. This is not formal source/use admission or a formal
+   train/validation/test split. No member read follows from this decision.
+2. **Exact access pending; QA staffing GO, DEC-106:** Consider
    one HTTP Range of **bytes 0–8191** from the same 97,915,553-byte official
    `Kelmarsh_SCADA_2016_3082.zip` URL used in DEC-104. Maximum application
    source bytes: **8,192**, once, with no retry, redirect or full-file
-   fallback. Authorize one existing reviewer pre-read code/fixture QA and
-   one bounded result QA separately; the current follow-up budget is exhausted.
+   fallback. DEC-106 authorizes one existing-reviewer pre-read code/fixture
+   QA and one later result QA; the earlier follow-up budget was exhausted.
    A final script, synthetic tests, exact script hash and independent pre-read
-   `PASS` must exist before access. This proposal alone is not executable.
+   `PASS` and a separate PI access `GO` must exist before execution.
+
+The prepared tool is `tools/stage13_kelmarsh_schema_pilot.py`; its current raw
+worktree SHA-256 is
+`48c71111f07553005ed9bcd5ef7e098b47ceb879e09f116a4d51454c45687b25`.
+The canonical Git blob and raw worktree bytes must match this hash after
+independent pre-read QA and immediately before any separately approved read.
+The new synthetic tests are `tests/test_stage13_kelmarsh_schema_pilot.py`.
+This fingerprint and proposal do not authorize execution.
 
 The script must require HTTP 206, exact URL, `Content-Range` including the
 published total, `Content-Length`, identity encoding and an exact 8,192-byte
