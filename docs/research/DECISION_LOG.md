@@ -1,5 +1,63 @@
 # FlyTS Decision Log
 
+## DEC-080 — PI authorizes integration of the two Stage 12 PRs
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI approval to merge the completed Stage 12
+  work after the bounded result `GO` and independent QA `PASS`.
+- Sequence: merge Charter PR #21 first, then retarget audit PR #22 to `main`,
+  verify its scope and checks, and merge at the verified head. PR #21 merged
+  into `main` at `f83f8941afb0a7859043253dc5c4251d953bed56` with head
+  `a14adc1be8a1700c0f7a8e7bee044b2a8aa8ac33` and passing checks.
+- Boundary: integration changes no dataset role/split, Stage 13 authorization,
+  final/test access, model result, or DEC-070 release `STOP`.
+
+## DEC-079 — PI accepts the bounded Stage 12 adequacy result
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` after the Stage 12 adequacy packet,
+  independent audit QA `PASS` and Draft PR #22 were presented.
+- Decision: accept the bounded findings and Stage 13 evidence handoff under
+  DEC-078's source/use, role and split limits. H-01 held-out paired-count
+  coverage remains insufficient; H-04 is `not tested`, so Q2/Q3 are unavailable.
+- Boundary: no Stage 13 protocol or compute envelope is approved; no numerical
+  threshold, seed, matrix, checkpoint rule, training, evaluation, final/test
+  opening, PR merge or publication is authorized. Stage 09 `HOLD`/final QA
+  `FAIL` and DEC-070 release `STOP` remain in force.
+
+## DEC-078 — PI decides three existing source uses, roles and splits
+
+- Date: 2026-10-11.
+- Decision authority: explicit source-specific PI replies after Stage 12
+  independent QA `PASS`, with the proposed bounds stated in each question.
+- Appliances: `admit` for existing bounded source use; retain `pretrain` role
+  and the current canonical r2 chronological split. This is not an
+  independent-entity or Q2 claim.
+- Beijing: `admit` for existing bounded source use; retain `pretrain` role and
+  the current canonical r2 chronological split. Twelve recurring stations do
+  not establish unseen-station generalization or Q2 coverage.
+- Bike: approve dimensionless, bounded development diagnostics only; retain
+  `development-held-out` role and the current canonical r2 chronological
+  split. H-01 paired-count coverage and physical `temp` interpretation remain
+  `HOLD` under the one-entity/four-channel and source-document limits.
+- Boundary: no role or split changes, new candidate admission, HAR/HARTH
+  repair, Electricity adequacy/final opening, test access, model scoring,
+  training, post-result search or publication. Existing registry/manifest
+  bytes stay unchanged; any future expansion needs its own PI decision.
+
+## DEC-077 — PI approves bounded shared corpus metadata read
+
+- Date: 2026-10-11
+- Decision authority: explicit PI reply after the Director disclosed that the
+  Stage 06 manifest and `source_notices.json` may contain Electricity entries.
+- Approved scope: read the local shared corpus manifest and notice metadata
+  only to identify and audit Appliances, Beijing and Bike records, source
+  provenance, schema, split and eligibility under DEC-076. Incidental parsing
+  of Electricity metadata is not an Electricity adequacy audit.
+- Exclusions: do not open Electricity raw archive, prepared signals/masks,
+  final split or model scores; do not read any target-test signal or score.
+  Download, training, evaluation, admission and role/split changes remain gated.
+
 ## DEC-076 — PI approves bounded Stage 12 access for three existing sources
 
 - Date: 2026-10-11
