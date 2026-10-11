@@ -1,6 +1,6 @@
 # Stage 11 Result — Foundation Qualification Contract
 
-Status: **GO — PI accepted Stage 11 result (DEC-074); Draft PR unmerged**
+Status: **GO — PI accepted Stage 11 result (DEC-074); PR #20 merged**
 
 Date: 2026-10-11
 
@@ -88,13 +88,16 @@ review (DEC-073). QA returned `PASS` on exact PR head `0effe407`. `QA_REPORT.md`
 preserves the initial conditional reviews and the final verdict.
 
 The PI accepted this Stage 11 result under DEC-074 after independent QA `PASS`.
-This authorizes drafting a Stage 12 Charter. A later Stage 12 Charter/data-access
-`GO` is still required before data work; no Stage 11 decision authorizes
+This authorizes drafting a Stage 12 Charter. Separate later Stage 12 Charter and
+source-specific data-access `GO` decisions are required before data work; no
+Stage 11 decision authorizes
 Electricity/target-test access, training or publication.
 
-Draft PR #20 (`codex/stage-11-qualification-contract`) presents the document-only
-packet for review (initial commit `b15b769`); it is not merged. Stage 11 result
-acceptance does not authorize its merge.
+Draft PR #20 (`codex/stage-11-qualification-contract`) presented the document-only
+packet for review (initial commit `b15b769`). It subsequently merged into `main`
+at `4aed1926650fe304a818682a718e6b0d608367ba` on 2026-10-11. DEC-074's
+earlier result acceptance did not itself authorize that merge or any Stage 12
+data access.
 
 Director final-diff checks on 2026-10-11: `python
 tools/validate_research_governance.py`, `python

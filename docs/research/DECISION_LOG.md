@@ -1,5 +1,36 @@
 # FlyTS Decision Log
 
+## DEC-076 — PI approves bounded Stage 12 access for three existing sources
+
+- Date: 2026-10-11
+- Decision authority: three explicit, source-specific PI replies after Stage 12
+  Charter `GO` (DEC-075).
+- Approved scope: for each of Appliances, Beijing and Bike, read the existing
+  local official archive/notice, source lock, manifest, and prepared train and
+  validation signals/masks solely to audit provenance, rights, schema, time,
+  missingness, identity, split/purge and H-01/H-02 view feasibility.
+- Exclusions: no download or mirror, test signal access, model selection,
+  training, evaluation, new final claim, or role/split change. Electricity
+  raw/prepared/final and model scores remain sealed; HAR/HARTH raw materials and
+  all target tests remain outside this approval.
+- Boundary: access is not source readmission, H-04 target admission, role/split
+  approval, numerical/protocol/compute freeze, Stage 13 `GO`, final opening,
+  Draft PR #21 merge, or publication. DEC-070 remains `STOP`.
+
+## DEC-075 — PI approves the Stage 12 Charter
+
+- Date: 2026-10-11
+- Decision authority: explicit PI `GO` for the Stage 12 Charter after the
+  proposed document-only Draft PR #21 and independent proposal QA `PASS`.
+- Decision: activate the bounded Data and Evaluation Adequacy Charter, its
+  ordered audit, evidence and independent QA responsibilities, and stated agent
+  budget. The Charter remains tied to PR #20 merge baseline
+  `4aed1926650fe304a818682a718e6b0d608367ba`.
+- Boundary: Charter approval alone does not authorize raw/prepared data access,
+  download, admission, role/split changes, model execution, final/test opening,
+  Draft PR #21 merge or public release. Each source's access requires a separate
+  PI decision; DEC-076 records the three approved existing-source scopes.
+
 ## DEC-074 — PI accepts the Stage 11 result
 
 - Date: 2026-10-11

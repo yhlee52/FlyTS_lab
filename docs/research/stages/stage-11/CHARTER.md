@@ -71,7 +71,9 @@ stages, before any new training begins?
 
 The PI authorized one additional bounded review (DEC-073). Independent QA
 returned `PASS` on the corrected PR head `0effe407`; the PI accepted the Stage 11
-result under DEC-074. Draft PR #20 remains unmerged.
+result under DEC-074. PR #20 subsequently merged into `main` at
+`4aed1926650fe304a818682a718e6b0d608367ba` on 2026-10-11. Its merge does
+not extend DEC-074 beyond Stage 12 Charter drafting.
 
 ## User checkpoints
 
