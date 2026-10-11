@@ -1,5 +1,20 @@
 # FlyTS Decision Log
 
+## DEC-095 — PI approves one further three-source physical-device open-data metadata screen
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` after the DEC-094 screen's independent
+  document QA `PASS` and Draft PR #30 review.
+- Approved scope: official publisher landing, rights, schema and documentation
+  pages for at most three further non-human candidate sources, targeting at
+  least 27 genuinely concurrent channels **per physical device**, multiple
+  original physical devices and a clear data-reuse license. Mark unverified
+  or conflicting facts; these targets are not admission facts.
+- Boundary: no source archive/member/sidecar/sample/array, annotation,
+  test/Electricity item or model score access or download. No source/use
+  admission, role/split assignment, protocol/compute freeze, execution,
+  PR merge or release. Any first source-file read needs its own PI gate.
+
 ## DEC-094 — PI approves one targeted high-channel open-data metadata screen
 
 - Date: 2026-10-11.
