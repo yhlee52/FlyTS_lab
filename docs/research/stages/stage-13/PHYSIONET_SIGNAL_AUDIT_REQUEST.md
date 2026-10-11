@@ -1,10 +1,10 @@
 # Proposed PhysioNet eligibility signal audit: separate PI gates
 
-Status: **PI decision pending**, with independent
+Status: **scope A access `GO` (DEC-087) and audit-only exclusion `GO`
+(DEC-088)**, with independent
 [document-only QA `PASS`](PHYSIONET_SIGNAL_AUDIT_REQUEST_QA.md).
-DEC-085 permitted six EDF headers, not signal bytes or full-file transfer.
-No signal or annotation value has been read. Source/use admission, development
-role and formal split remain `HOLD`.
+No signal or annotation value had been read before these two decisions.
+Source/use admission, development role and formal split remain `HOLD`.
 
 ## Why another access is needed
 
@@ -36,8 +36,10 @@ the maximum planned full-file network transfer, excluding HTTP overhead; it
 is not a measured download or Stage 13 compute envelope. The largest single
 file is 2,596,896 bytes. For scope A, require HTTP 200 and the exact
 header-pilot file size as both the expected HTTP `Content-Length` and hard
-per-file receive cap;
-abort on an extra byte or early EOF. Both scopes use the official exact URL
+per-file receive cap; never read beyond that cap, and abort on a declared
+overlength or early EOF. The client cannot establish whether a nonconforming
+server has trailing, undeclared bytes without exceeding the approved cap;
+the official member SHA-256 must also match. Both scopes use the official exact URL
 only, reject redirects or content encoding other than identity, and require
 the expected HTTP status and response length before reading. Use only bounded
 in-memory reads; save no EDF or raw array, and retain only provenance
@@ -101,10 +103,9 @@ new subject IDs after viewing outcomes.
 
 DEC-086 approved the separate
 [specialist-budget amendment](AGENT_BUDGET_REVISION_REQUEST.md). Data specialist
-review of this proposal and independent QA may now proceed read-only. Neither
-review admits the source or authorizes bytes beyond the DEC-085 headers. No
-signal access starts until the PI decides both the exact access scope and
-audit-only restriction.
+review of this proposal and independent QA passed before PI access decisions.
+The reviews themselves did not admit the source. The PI separately approved
+scope A and the audit-only restriction in DEC-087/088; scope B is not approved.
 
 Stop on off-host redirect, size/hash mismatch, unexpected annotation layout,
 invalid EDF parse, any test/seal ambiguity or out-of-scope byte access. Any
