@@ -42,9 +42,11 @@ stop without trying another range or choosing another member.
 Only after those checks may it inflate a bounded prefix of that member to
 find its first CSV line. This **does read compressed measurement payload** and
 may temporarily inflate part of the first data row; neither raw nor inflated
-bytes may be stored. Bound decompressed output and stop at the first line;
-emit only the member identity, parser/byte counts, schema column count and
-bounded header names/hashes. Do not inspect or report measurement values,
+bytes may be stored. Cap total decompressed output at **65,536 bytes**, the
+header line at **8,192 bytes**, and emitted names at **128 columns of at most
+256 characters each**; stop at the first line. Emit only the member identity,
+parser/byte counts, schema column count and bounded header names/hashes. Do
+not inspect or report measurement values,
 timestamps, score, missingness or target labels. If the line is incomplete
 within the one range, record inconclusive `HOLD`, with no automatic repeat.
 The whole-archive MD5 and member CRC remain unverified.
