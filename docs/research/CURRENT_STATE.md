@@ -146,5 +146,5 @@ compute remain separately gated after the DEC-082 Charter `GO`.
 
 ## Next action
 
-Seek PI decision on `stage-13/AGENT_BUDGET_REVISION_REQUEST.md`, then prepare
-source-access packet. Keep Electricity/test sealed and DEC-070 `STOP`.
+Seek PI budget decision, then independently review the proposed PhysioNet
+signal-access packet. Keep Electricity/test sealed and DEC-070 `STOP`.
