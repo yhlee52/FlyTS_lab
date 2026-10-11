@@ -11,7 +11,7 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 (DEC-074); PR #20 merged at `4aed192`. Stage 12 closed with independent QA
 `PASS` and bounded PI `GO` (DEC-079); DEC-078 kept three existing roles and
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
-document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23–28 are open.
+document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23–30 are open.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
@@ -141,7 +141,7 @@ DEC-094 screen has independent document QA PASS; no admission or freeze.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
   `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
 - Draft PR #28 records bounded PhysioNet QA `PASS`; rights remain HOLD.
-- DEC-093/094 screens have QA `PASS`; DEC-094 finds UCI rights/entity gaps,
+- Draft PR #30 records DEC-094 screen QA `PASS`: UCI rights/entity gaps,
   Harvard synthetic-only units and SMD data-rights uncertainty.
 
 ## Next action
