@@ -5,7 +5,7 @@
 | RK-01 | Hidden target leaks through normalization or context. | invalid self-supervised results | visible-only statistics and explicit QA tests | active |
 | RK-02 | Source ranges or groups leak across splits. | inflated downstream evidence | split-before-windowing, manifest ranges, QA | active |
 | RK-03 | Topology comparison changes multiple factors. | false Fly-topology conclusion | matched front-end/budget protocol | active |
-| RK-04 | Dataset rights or schema are misunderstood; PhysioNet ODC-By does not resolve possible separate individual EEG content/privacy rights. | unusable corpus or invalid semantics | source notices, checksums, data review; keep PhysioNet source/use HOLD pending publisher or applicable institutional clarification | active |
+| RK-04 | Dataset rights or schema are misunderstood; PhysioNet ODC-By leaves individual EEG rights unresolved, and UCI Gas Sensor Drift's research-only text conflicts with its CC BY 4.0 panel. | unusable corpus or invalid semantics | source notices, checksums, independent data/rights review; keep conflicting source/use HOLD and require explicit PI admission after resolution | active |
 | RK-05 | Agent context drift or notebook staleness. | inconsistent implementation | concise CURRENT_STATE validation | active |
 | RK-06 | Excess delegation consumes tokens without evidence gain. | budget exhaustion | activation matrix, delegation gate, stage budget | active |
 | RK-07 | CUDA behavior is claimed without hardware validation. | misleading portability claim | explicit pending status and device tests | active |

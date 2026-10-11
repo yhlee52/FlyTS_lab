@@ -1,5 +1,19 @@
 # FlyTS Decision Log
 
+## DEC-093 — PI approves bounded non-human open-license metadata search
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` to screen up to three non-human
+  time-series sources with clear public reuse licenses after DEC-092.
+- Approved scope: read only official publisher landing, license, schema and
+  documentation pages; record source links, stated reuse conditions, genuine
+  channel counts, original entities, cadence/missingness and apparent same-
+  record 11/26/>26 nested-view potential. Mark uncertainty and conflicts.
+- Boundary: no source/archive/member download, sidecar or sample-value access,
+  array, annotation/test/Electricity or model-score read; no source admission,
+  role/split assignment, protocol/compute freeze, execution, PR merge or public
+  release. Each candidate's deeper access requires its own PI gate.
+
 ## DEC-092 — PI redirects Stage 13 toward clearly reusable open data
 
 - Date: 2026-10-11.
