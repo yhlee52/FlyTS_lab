@@ -146,4 +146,4 @@ Stage 13 HOLD; bounded ZIP inventory QA PASS, source admission pending; no Stage
 
 ## Next action
 
-Decide a bounded 2016 audit-only pilot or retain HOLD; member access needs PI GO.
+Decide proposed 2016 audit-only schema pilot or HOLD; see Stage 13 pilot packet.
