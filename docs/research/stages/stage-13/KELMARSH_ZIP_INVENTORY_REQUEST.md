@@ -38,9 +38,10 @@ The tool is `tools/stage13_kelmarsh_zip_inventory.py`; synthetic tests are
 requires `--execute-approved-read` and has **not** been run. Its exact code
 SHA-256 in this proposal is
 `0e3e631bf8010d8d29dd3847cdc6057ee842ed9723ebfc95dae42bec76dc112c`;
-the byte-exact value must be
-checked again after pre-read QA and immediately before any authorized
-execution. No change to the historical Stage 06 hashes is needed.
+the canonical Git blob **and raw worktree bytes** must both match that value
+after pre-read QA and immediately before any authorized execution. A Windows
+CRLF checkout mismatch stops the run until the worktree is restored to the
+canonical LF bytes. No change to the historical Stage 06 hashes is needed.
 
 ## Why this order is cheap
 
