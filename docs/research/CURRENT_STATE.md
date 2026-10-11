@@ -16,9 +16,8 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Review the DEC-089 six-file aggregate audit result and prepare a separate
-source/role/split admission path. Independent source QA, protocol and compute
-remain separately gated.
+DEC-090 permits one reviewer two QA follow-ups. Review the aggregate and
+admission packet first; source/role/split, protocol and compute stay gated.
 
 ## Canonical references
 
@@ -84,7 +83,8 @@ remain separately gated.
 - DEC-083–085 permit three official-page candidates, PhysioNet sidecars and
   six specified EDF headers only; signal/access/admission/role/split gated.
 - DEC-086 expands staffing; DEC-087/088 permit six EDF streams and audit-only
-  exclusion; DEC-089 allowed one capped retry. Admission/split stay gated.
+  exclusion; DEC-089 allowed one capped retry. DEC-090 permits two focused QA
+  follow-ups for one reviewer. Admission/split stay gated.
 
 ## Open questions
 
@@ -146,5 +146,5 @@ remain separately gated.
 
 ## Next action
 
-Seek independent source-result QA and a PI-reviewed source/role/split path.
+Run DEC-090 source-result QA, then seek a PI-reviewed source/role/split path.
 Keep Electricity/test sealed, H-01 unfrozen and DEC-070 `STOP`.

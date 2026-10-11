@@ -1,5 +1,20 @@
 # FlyTS Decision Log
 
+## DEC-090 — PI approves two focused independent-QA follow-ups
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI selection of the two-follow-up `GO` in the
+  Stage 13 [QA extension request](stages/stage-13/QA_EXTENSION_REQUEST.md).
+- Approved staffing: one existing independent QA reviewer may take two
+  additional read-only follow-ups: first the six-file aggregate and admission
+  readiness packet, then exact pre-freeze QA only if a valid protocol v3 packet
+  exists. The general `max_followups_per_agent` ceiling rises from 2 to 4
+  solely to allow that reviewer; other reviewers gain no extra follow-up.
+  Maximum six specialists and two concurrent agents are unchanged.
+- Boundary: no source/use admission, formal role or split, further data access,
+  protocol or compute freeze, execution, test/Electricity opening, PR merge or
+  release is approved. Stage 09 history and DEC-070 `STOP` persist.
+
 ## DEC-089 — PI approves one bounded same-file PhysioNet retry
 
 - Date: 2026-10-11.

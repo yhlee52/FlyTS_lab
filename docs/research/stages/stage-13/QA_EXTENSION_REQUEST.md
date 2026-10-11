@@ -1,6 +1,7 @@
 # Stage 13 independent-QA follow-up extension request
 
-Status: **proposal for a separate PI staffing decision**. DEC-086 approved
+Status: **PI `GO` (DEC-090)** for the two scoped follow-ups of one existing
+independent QA reviewer. DEC-086 approved
 at most six Stage 13 specialists, two concurrent agents and two follow-ups
 per specialist. Three previously activated independent QA reviewers have
 used their permitted second follow-ups on the signal-access request and

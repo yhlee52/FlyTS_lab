@@ -169,7 +169,7 @@ agent_budget:
   max_specialists: 6
   max_parallel_agents: 2
   max_debate_rounds: 1
-  max_followups_per_agent: 2
+  max_followups_per_agent: 4
   max_agent_report_words: 700
   user_approval_for_expansion: true
 ```
@@ -177,14 +177,18 @@ agent_budget:
 Compute budget: **unapproved**. No numerical threshold, seed identity,
 formal matrix, checkpoint policy or low/medium/high option is frozen here.
 
-DEC-086 approved this staffing ceiling after the original Charter. Three
-specialists and one follow-up each were already used; at most three additional
-conditional specialists and one further follow-up per existing reviewer are
-available. Parallelism remains two agents. This amendment authorizes no source
-access, role/split, protocol or compute decision.
+DEC-086 approved the six-specialist ceiling after the original Charter.
+DEC-090 permits exactly one existing independent QA reviewer to use two
+additional focused follow-ups beyond the previous per-agent limit of two:
+source-result/admission-readiness QA now, and exact pre-freeze QA only if a
+valid protocol v3 packet exists. The ceiling of four is not a general grant
+to other reviewers. Parallelism remains two agents. Neither staffing decision
+authorizes source access, admission, role/split, protocol or compute.
 
 ## User approval
 
+- Independent-QA extension: `GO`, DEC-090, for the two scoped follow-ups of
+  one existing reviewer in the [request](QA_EXTENSION_REQUEST.md).
 - Specialist-budget amendment: `GO`, DEC-086, for the bounded ceiling above.
   All source, role/split, protocol, compute and execution gates remain separate.
 - Charter decision: `GO`, DEC-082.
