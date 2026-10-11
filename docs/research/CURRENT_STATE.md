@@ -141,7 +141,7 @@ compute require separate decisions. DEC-070 release `STOP` remains in force.
   marking Bike `temp` semantics `conflict`; no source or Stage 13 gate is implied.
 - PR #22 merged the audit packet at `392b785` after PR #21 integration. Its
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
-- Stage 13 Charter proposal has document-only independent QA `PASS`.
+- Stage 13 Charter has document-only QA `PASS`; Draft PR #23 awaits PI review.
 
 ## Next action
 
