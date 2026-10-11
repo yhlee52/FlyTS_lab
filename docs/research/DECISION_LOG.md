@@ -1,5 +1,19 @@
 # FlyTS Decision Log
 
+## DEC-091 — PI selects rights clarification while source/use remains HOLD
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI choice A after review of the Stage 13
+  [source/use gate](stages/stage-13/PHYSIONET_SOURCE_USE_GATE.md) and bounded
+  source-result QA `PASS`.
+- Decision: keep PhysioNet EEG v1.0.0 source/use admission `HOLD` and prepare
+  a reviewable [rights inquiry draft](stages/stage-13/PHYSIONET_RIGHTS_INQUIRY_DRAFT.md)
+  concerning individual EEG contents and the planned internal research use.
+- Boundary: no message may be sent without separate PI authorization. No
+  additional signal access, source admission, role/split, protocol/compute
+  freeze, training, evaluation, test/Electricity opening, PR merge or release
+  is approved. DEC-088 audit-only exclusions and DEC-070 `STOP` persist.
+
 ## DEC-090 — PI approves two focused independent-QA follow-ups
 
 - Date: 2026-10-11.

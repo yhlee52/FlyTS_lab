@@ -1,6 +1,8 @@
 # PhysioNet EEG v1.0.0: source/use decision gate
 
-Status: **HOLD — rights clarification needed before source/use admission**.
+Status: **HOLD — PI selected written rights clarification (DEC-091)** before
+source/use admission. The [inquiry draft](PHYSIONET_RIGHTS_INQUIRY_DRAFT.md)
+is unsent.
 This is a PI decision packet, not an admission or permission for further data
 access. The six-file [audit](PHYSIONET_SIGNAL_AUDIT.md) and independent
 [source-result QA](PHYSIONET_SIGNAL_AUDIT_QA.md) establish only bounded
@@ -13,6 +15,8 @@ source/use `HOLD`; it is not legal clearance or a formal role/split review.
   lists the dataset as open access under ODC-By v1.0 and requests three
   citations: Schalk's dataset DOI `10.13026/C28G6P`, Schalk et al. (2004)
   BCI2000, and the standard PhysioNet citation (Pollard et al., 2026).
+- PhysioNet's [About page](https://physionet.org/about/) additionally requests
+  its Goldberger et al. (2000) citation for publications using PhysioNet data.
 - The [ODC-By terms](https://physionet.org/content/eegmmidb/view-license/1.0.0/)
   grant database rights subject to conditions. Sections 2.4 and the preamble
   say individual contents may carry separate copyright, privacy or data-
@@ -32,6 +36,10 @@ source/use `HOLD`; it is not legal clearance or a formal role/split review.
 | **A — seek written rights clarification (recommended)** | Keep source/use `HOLD`; request publisher/contributor clarification or an applicable institutional privacy/legal determination for the exact planned internal model-development use. No message is sent by the research agents without separate authorization. Resume admission review only when the answer is recorded. |
 | B — use another candidate | Keep PhysioNet `HOLD`; start a new, separately approved source/role/split and access path for a candidate with clearer individual-content reuse conditions. |
 | C — pause the source path | Keep PhysioNet and the Stage 13 protocol freeze `HOLD` pending a later PI direction. |
+
+**PI selection:** A (DEC-091). The [unsent inquiry](PHYSIONET_RIGHTS_INQUIRY_DRAFT.md)
+is prepared for review; no external contact or admission follows from this
+choice alone.
 
 If source/use is later approved, separately decide a development-held-out role
 and an exact subject-disjoint split **before** opening any further signal.

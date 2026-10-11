@@ -16,8 +16,8 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-DEC-090 source-result QA returned bounded `PASS`; PhysioNet source/use stays
-`HOLD` pending rights clarification. Role/split, protocol and compute are gated.
+DEC-091 chose an unsent rights inquiry; PhysioNet source/use stays `HOLD`.
+Role/split, protocol and compute remain gated after bounded QA `PASS`.
 
 ## Canonical references
 
@@ -83,8 +83,8 @@ DEC-090 source-result QA returned bounded `PASS`; PhysioNet source/use stays
 - DEC-083–085 permit three official-page candidates, PhysioNet sidecars and
   six specified EDF headers only; signal/access/admission/role/split gated.
 - DEC-086 expands staffing; DEC-087/088 permit six EDF streams and audit-only
-  exclusion; DEC-089 allowed one capped retry. DEC-090 permits two focused QA
-  follow-ups for one reviewer. Admission/split stay gated.
+  exclusion; DEC-089 allowed one capped retry. DEC-090 permits two QA reviews;
+  DEC-091 chose an unsent rights inquiry. Admission/split stay gated.
 
 ## Open questions
 
@@ -146,5 +146,5 @@ DEC-090 source-result QA returned bounded `PASS`; PhysioNet source/use stays
 
 ## Next action
 
-Seek PI choice on rights clarification; source/role/split stay separate.
+Review the unsent rights inquiry; external contact needs separate PI GO.
 Keep Electricity/test sealed, H-01 unfrozen and DEC-070 `STOP`.

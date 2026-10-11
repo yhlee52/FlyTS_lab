@@ -187,6 +187,9 @@ authorizes source access, admission, role/split, protocol or compute.
 
 ## User approval
 
+- PhysioNet rights path: DEC-091 keeps source/use `HOLD` and permits only an
+  unsent inquiry draft. External contact and source admission need later
+  distinct PI decisions.
 - Independent-QA extension: `GO`, DEC-090, for the two scoped follow-ups of
   one existing reviewer in the [request](QA_EXTENSION_REQUEST.md).
 - Specialist-budget amendment: `GO`, DEC-086, for the bounded ceiling above.
