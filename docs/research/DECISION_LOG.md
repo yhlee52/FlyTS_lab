@@ -1,5 +1,21 @@
 # FlyTS Decision Log
 
+## DEC-073 — PI authorizes one additional independent Stage 11 QA review
+
+- Date: 2026-10-11
+- Decision authority: explicit PI approval of one extra independent QA review
+  after the Stage 11 Charter's original one-follow-up limit was used.
+- Scope: read-only recheck of Draft PR #20 head
+  `0effe407bc9de59d5d09b994368132c941b7e403`, especially the corrected
+  Stage 17 Electricity/H-04 handoff and the Charter acceptance contract.
+- Evidence: the QA Engineer independently returned `PASS` on that exact commit.
+  Notebook/governance validators, commit diff check, Stage 09 tracked-file
+  immutability check and clean worktree check passed. Ignored Stage 09 report
+  JSON bytes were not independently rehashed.
+- Boundary: QA `PASS` is not PI `GO` on the Stage 11 result. Stage 12 Charter,
+  Stage 12 data work, formal execution, final/test access and publication remain
+  separately gated; DEC-070 remains `STOP` for public release.
+
 ## DEC-072 — PI authorizes Stage 11 qualification-contract work
 
 - Date: 2026-10-11

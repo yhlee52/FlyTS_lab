@@ -67,11 +67,11 @@ stages, before any new training begins?
   remain separate and require the PI decisions stated in the phase plan.
 - [x] Stage 12–19 scopes do not silently authorize data access or training.
 - [x] Stage 09 artifacts and verdict remain byte/semantically immutable.
-- [ ] Notebook and governance validators pass; independent QA reports a verdict.
+- [x] Notebook and governance validators pass; independent QA reports a verdict.
 
-The last item remains open for an independent final `PASS`: validators pass and
-QA recorded `CONDITIONAL PASS`, but its final wording correction was made after
-the allowed delta review. The Stage 11 PI result gate remains pending.
+The PI authorized one additional bounded review (DEC-073). Independent QA
+returned `PASS` on the corrected PR head `0effe407`; the Stage 11 PI result gate
+remains pending.
 
 ## User checkpoints
 

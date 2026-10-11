@@ -12,7 +12,8 @@ is `not tested`. Stage 10 engineering closeout merged through PR #18, but DEC-07
 stopped M10B public release. PR #19 merged the proposed Phase 02 plan into
 `main` at `52fd44af0145e19d5f26138382bb0661e975eb09`. DEC-071 approved its
 objective; DEC-072 authorizes Stage 11 document-only contract work. Stage 11
-independent QA recorded `CONDITIONAL PASS`; result PI gate remains pending.
+independent QA returned `PASS` after one PI-authorized extra review (DEC-073);
+the Stage 11 result PI gate remains pending.
 The document-only Draft PR #20 is open from
 `codex/stage-11-qualification-contract` (initial commit `b15b769`); it is not merged.
 
@@ -59,13 +60,15 @@ boundary remains in force.
 - DEC-070 prohibits tag, GitHub release/prerelease, PyPI and checkpoint
   publication. Package `flyts 0.2.0` and research artifact `v0.1` remain distinct.
   Existing Stage 10 CPU/offline evidence has no CUDA or scientific inference.
+- DEC-073 authorized one additional independent QA review beyond the Stage 11
+  follow-up limit; QA returned `PASS` on PR #20 head `0effe407`. This is not
+  Stage 11 result `GO`.
 
 ## Open questions
 
-- Stage 11 QA recorded `CONDITIONAL PASS`; the Director corrected its final
-  gate-wording condition after the permitted delta review. Independent final
-  `PASS` and PI result disposition remain pending. Acceptance may authorize
-  drafting a Stage 12 Charter only, not data work.
+- Stage 11 independent QA `PASS` is recorded. PI result disposition remains
+  pending. Acceptance may authorize drafting a Stage 12 Charter only, not data
+  work.
 - Dataset suitability/admission, minimum coverage, statistical thresholds,
   seed/matrix, budget, H-04 target, CUDA environment and final open remain future
   decisions with the named stage gates.
@@ -91,13 +94,13 @@ boundary remains in force.
 - Stage 11 contract/result drafts are documentation only. Program Integrator
   read-only audit found a premature Stage 11 envelope choice and stale
   Stage 09/opening references. QA's first and delta reviews were conditional;
-  the final wording correction has Director-only verification.
-- Draft PR #20 contains the Stage 11 documents and discloses the conditional QA,
-  unchanged Stage 09 tracked files and pending PI result gate.
+  the PI-authorized final review returned independent `PASS` on `0effe407`.
+- Draft PR #20 contains the Stage 11 documents; GitHub Actions `tests` passed on
+  `0effe407`, including the repository's existing synthetic CPU smoke. Stage 09
+  tracked files remain unchanged and the PI result gate remains pending.
 
 ## Next action
 
-Review Draft PR #20 with the `CONDITIONAL PASS` and corrected final wording
-disclosed. Obtain PI Stage 11 result disposition and, if required, approval for
-one extra bounded independent QA recheck. Keep Electricity/target test sealed
-and do not begin Stage 12 data work.
+Present Draft PR #20 with independent QA `PASS` for PI Stage 11 result
+disposition. Keep Electricity/target test sealed and do not begin Stage 12 data
+work or merge the PR without separate PI approval.

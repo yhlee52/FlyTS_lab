@@ -1,6 +1,6 @@
 # Stage 11 Result — Foundation Qualification Contract
 
-Status: contract drafted; independent QA `CONDITIONAL PASS`; PI result gate pending
+Status: contract drafted; independent QA `PASS`; PI result gate pending
 
 Date: 2026-10-11
 
@@ -81,11 +81,11 @@ drift, the premature Stage 11 envelope-selection gate and the Stage 17/18 openin
 reference. The contract, hypothesis/requirement maps and risk controls now address
 those points. Independent QA records its own verdict in `QA_REPORT.md`.
 
-The independent QA first found two stale/ambiguous gate lines; its one delta
+The independent QA first found two stale/ambiguous gate lines; its first delta
 review verified those corrections and found one related Result line. The Director
-corrected the final line after the permitted QA follow-up. Governance, notebook,
-diff and focused wording checks pass locally, but an independent final `PASS` was
-not recorded. `QA_REPORT.md` preserves this conditional verdict and limitation.
+corrected the final line, and the PI authorized one additional bounded independent
+review (DEC-073). QA returned `PASS` on exact PR head `0effe407`. `QA_REPORT.md`
+preserves the initial conditional reviews and the final verdict.
 
 Stage 11 cannot authorize Stage 12 data work. After QA, the PI must decide whether
 to accept this result and whether a Stage 12 Charter may be drafted. A later
@@ -99,5 +99,5 @@ Director final-diff checks on 2026-10-11: `python
 tools/validate_research_governance.py`, `python
 .agents/skills/flyts-lab-notebook/scripts/check_notebook.py`, `git diff
 --check`, `git diff --exit-code main -- docs/research/stages/stage-09`, and a
-focused read of the corrected Stage 17 rows and approval line all passed. These
-checks do not replace the missing independent final delta confirmation.
+focused read of the corrected Stage 17 rows and approval line all passed. The
+separate DEC-073 QA review independently confirmed the corrected contract.

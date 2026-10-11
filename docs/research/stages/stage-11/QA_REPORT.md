@@ -1,10 +1,34 @@
 # Stage 11 Independent QA Report
 
-Verdict: **CONDITIONAL PASS — final wording correction awaits independent delta confirmation**
+Current verdict: **PASS — PI-authorized additional independent review**
 
 Date: 2026-10-11
 
-## Independent scope and evidence
+## Final independent review (DEC-073)
+
+The PI authorized one additional bounded QA review after the original
+one-follow-up limit. The QA Engineer reviewed the exact Draft PR #20 head
+`0effe407bc9de59d5d09b994368132c941b7e403` and returned `PASS` with no
+contract blocker. The Stage 17 Result row now keeps H-04 `not tested` when no
+target is admitted while allowing separately approved Electricity-only readiness;
+it agrees with the Phase 02 stage table. Q0–Q3 prerequisites, H-01–H-04 and
+R-01–R-12 ownership, Stage 12/13 handoffs, separate PI gates, DEC-070 and Stage
+09 tracked-file immutability were checked.
+
+Independent commands passed: notebook validator (103/150 lines), governance
+validator, commit diff check, Stage 09 tracked-file diff against `main` at
+`52fd44af0145e19d5f26138382bb0661e975eb09`, and clean worktree check.
+Nine changed paths were research documents only. Ignored Stage 09 report JSON
+bytes were not accessed or rehashed; their recorded hashes remain historical.
+No data, outputs, code tests, training or final assets were accessed by QA.
+This `PASS` addresses Stage 11 contract quality only; it does not authorize
+Stage 12 data work or any later stage.
+Subsequent tracked edits record DEC-073, this verdict, Charter/notebook status
+and the Phase 02 review label; they do not change the reviewed qualification
+contract or stage gates. The Director reruns document validators on that
+reporting-only delta.
+
+## Earlier conditional reviews and remediation
 
 The QA Engineer independently reviewed the Stage 11 document diff against
 `main` at `52fd44af0145e19d5f26138382bb0661e975eb09`, including the Phase 02
@@ -32,14 +56,11 @@ published SHA-256 values were checked against the historical QA report.
    `CONDITIONAL PASS`.
 3. The Director corrected that Result row after the delta review: target absence
    now leaves H-04 `not tested` while separately approved Electricity readiness
-   remains possible. Director-run validators and a focused text/diff check are
-   recorded in the Result. No independent `PASS` is claimed for this final edit.
+   remains possible. At that point no independent `PASS` had been recorded; the
+   DEC-073 additional review above later confirmed the exact corrected commit.
 
 ## Gate recommendation
 
-The substantive contract and controls have no other reported QA finding. The
-last wording condition is corrected but has not received independent delta
-confirmation under the Stage 11 limit of one follow-up per specialist. Keep the
-Stage 11 result gate pending; the PI may accept this disclosed conditional QA or
-authorize one extra bounded independent recheck. Neither disposition authorizes
-Stage 12 data work, formal execution, final/test access or publication.
+Accept independent Stage 11 document QA `PASS`. The PI Stage 11 result gate is
+still pending; `PASS` does not authorize a Stage 12 Charter or data work, formal
+execution, final/test access or publication.

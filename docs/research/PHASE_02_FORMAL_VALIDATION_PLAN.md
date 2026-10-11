@@ -1,6 +1,6 @@
 # FlyTS Phase 02 — Formal Training and Scientific Evaluation
 
-Status: Stage 11 contract under PI result review; independent QA conditional;
+Status: Stage 11 contract under PI result review; independent QA `PASS`;
 phase objective approved by the PI
 
 Decision basis: DEC-071, 2026-09-30; Stage 11 Charter `GO` granted by the PI
