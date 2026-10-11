@@ -11,7 +11,7 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 (DEC-074); PR #20 merged at `4aed192`. Stage 12 closed with independent QA
 `PASS` and bounded PI `GO` (DEC-079); DEC-078 kept three existing roles and
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
-document-only QA `PASS` and PI `GO` (DEC-082); Draft PR #23 remains unmerged.
+document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23/#24 are open.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
@@ -140,7 +140,7 @@ gated after the DEC-082 Charter `GO`.
 - PR #22 merged the audit packet at `392b785` after PR #21 integration. Its
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
-  `pytest` passes; Draft PR #23 remains open and unmerged.
+  `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
 - DEC-083 screens PhysioNet EEG (64 nominal channels), UCI PAMAP2 (at most 39
   candidate IMU axes) and UCI Daily/Sports (45); document QA PASS only.
 
