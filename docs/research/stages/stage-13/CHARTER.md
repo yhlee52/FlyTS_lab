@@ -131,7 +131,7 @@ result is a later scientific outcome, not a reason to rewrite this design.
 |---|---|---|
 | Stage 13 Charter `GO`/`REVISE`/`HOLD` | Units 1–5, subject to their additional gates | `GO`, DEC-082 |
 | Bounded metadata-only candidate search | Any search for a new source | `GO`, DEC-083; at most three official-document candidates |
-| Candidate access, then source/use, role and split | First access/admission or change for each named source | PhysioNet `RECORDS`/`SHA256SUMS.txt` read-only access `GO` DEC-084; every deeper access, admission, role and split pending |
+| Candidate access, then source/use, role and split | First access/admission or change for each named source | PhysioNet sidecars `GO` DEC-084 and six specified EDF headers `GO` DEC-085; signal/archive access, admission, role and split pending |
 | Non-final/synthetic resource measurement, if needed | That measurement | pending |
 | Exact v3 and selected compute envelope `GO` | Freeze/Stage 14 handoff | pending |
 | Stage 15 execution; Stage 17 H-04/final opening; publication | Separate later stages | pending; publication `STOP` DEC-070 |
@@ -166,10 +166,10 @@ implementation owner edits a code path at a time. Specialists do not delegate.
 ```yaml
 agent_budget:
   default_mode: single_agent
-  max_specialists: 3
+  max_specialists: 6
   max_parallel_agents: 2
   max_debate_rounds: 1
-  max_followups_per_agent: 1
+  max_followups_per_agent: 2
   max_agent_report_words: 700
   user_approval_for_expansion: true
 ```
@@ -177,11 +177,22 @@ agent_budget:
 Compute budget: **unapproved**. No numerical threshold, seed identity,
 formal matrix, checkpoint policy or low/medium/high option is frozen here.
 
+DEC-086 approved this staffing ceiling after the original Charter. Three
+specialists and one follow-up each were already used; at most three additional
+conditional specialists and one further follow-up per existing reviewer are
+available. Parallelism remains two agents. This amendment authorizes no source
+access, role/split, protocol or compute decision.
+
 ## User approval
 
+- Specialist-budget amendment: `GO`, DEC-086, for the bounded ceiling above.
+  All source, role/split, protocol, compute and execution gates remain separate.
 - Charter decision: `GO`, DEC-082.
 - Candidate discovery decision: `GO`, DEC-083, on the bounded request above.
 - PhysioNet sidecar-only access: `GO`, DEC-084; see
   [inventory](PHYSIONET_SIDECAR_AUDIT.md). Source/use admission, role, split and
   all deeper source access are pending by named candidate.
+- Six EDF headers only: `GO`, DEC-085; see the approved
+  [request](PHYSIONET_HEADER_PILOT_REQUEST.md). Signal/archive access remains
+  pending; this is not source admission or a split.
 - Protocol and compute decision: pending after independent pre-freeze QA.

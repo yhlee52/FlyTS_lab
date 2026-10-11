@@ -1,9 +1,10 @@
 # Proposed next PI gate: six PhysioNet EDF headers
 
-Status: **request only; no EDF access approved or performed**. This request
-follows the DEC-084 sidecar inventory and its independent QA `PASS`. The
-request itself received independent document-only QA `PASS` after a range and
-byte-cap correction; this does not approve the requested EDF access.
+Status: approved by PI as DEC-085 and performed within the stated scope; see
+the [header pilot result](PHYSIONET_HEADER_PILOT.md). This request followed
+the DEC-084 sidecar inventory and its independent QA `PASS`. The request
+itself received independent document-only QA `PASS` after a range and byte-cap
+correction; QA was not the access authority.
 
 ## Proposed bounded read
 
@@ -46,6 +47,9 @@ access. The publisher page currently lists about 1.9 GB compressed and
 3.4 GB uncompressed for the resource; no local cost has been measured.
 
 ## Decision options
+
+The PI selected option 1 (`GO`, DEC-085) on 2026-10-11. The alternatives below
+are preserved as the reviewed request, not active approvals.
 
 1. **GO, recommended:** authorize only the six header reads above. Low data
    exposure screens channel/time compatibility, but H-01 count stays `HOLD`.

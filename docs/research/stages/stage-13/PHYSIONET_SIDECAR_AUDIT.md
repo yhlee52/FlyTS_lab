@@ -55,9 +55,10 @@ minimal next option is a predetermined, header-only sample across selected
 subject/run IDs to screen channel layout and duration without reading signal
 samples. A fuller audit would need separately authorized source bytes and a
 precommitted subject-disjoint split proposal. Neither option is approved by
-DEC-084. The separate [six-header request](PHYSIONET_HEADER_PILOT_REQUEST.md)
-defines the proposed pilot and awaits PI decision. H-01 held-out count and
-protocol-v3 freeze remain `HOLD`.
+DEC-084. The [six-header request](PHYSIONET_HEADER_PILOT_REQUEST.md) later
+received separate PI `GO` (DEC-085); its bounded [result](PHYSIONET_HEADER_PILOT.md)
+does not admit the source. H-01 held-out count and protocol-v3 freeze remain
+`HOLD`.
 
 Electricity and all test signals/scores stayed sealed; no annotation content,
 array, model score, training or evaluation was accessed. HAR/HARTH remain

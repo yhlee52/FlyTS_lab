@@ -1,5 +1,33 @@
 # FlyTS Decision Log
 
+## DEC-086 — PI approves the bounded Stage 13 specialist-budget amendment
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI approval of the proposed amendment in Draft
+  PR #26 after the Stage 13 Charter `GO` (DEC-082).
+- Approved ceiling: at most six specialists in Stage 13 (three already used and
+  up to three conditional additions), two concurrent agents, one debate round,
+  two follow-ups per specialist and 700 words per specialist report. The
+  concurrency, debate and report limits are unchanged. Activate additional
+  roles only when their scoped review is needed; specialists do not delegate.
+- Boundary: this is staffing authority only. PhysioNet signal/archive access,
+  source/use admission, role/split, protocol or compute approval, execution,
+  test/Electricity opening, PR merge and publication remain separately gated.
+  Stage 09 `HOLD`/final QA `FAIL`, H-04 `not tested` and DEC-070 `STOP` persist.
+
+## DEC-085 — PI approves six PhysioNet EDF headers for a bounded pilot
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI reply after review of the DEC-084 sidecar
+  audit, independent QA `PASS`, and the six-header request in Draft PR #25.
+- Approved access: EDF+ **header bytes only** for S001/S055/S109, each R01/R03,
+  using the request's exact HTTP Range/`Content-Range` checks and 32 KiB total
+  per-file cap. Inspect channel/time schema only; record bounded findings.
+- Boundary: no sample bytes, `.event`/annotation contents, full EDF or archive,
+  local download, test/Electricity, model score, preprocessing, admission,
+  role/split change, protocol/budget freeze, training/evaluation, PR merge or
+  release. Deeper source access still needs a separate PI decision.
+
 ## DEC-084 — PI approves PhysioNet EEG sidecar-only inventory
 
 - Date: 2026-10-11.

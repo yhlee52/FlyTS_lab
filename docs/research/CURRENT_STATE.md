@@ -11,14 +11,14 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 (DEC-074); PR #20 merged at `4aed192`. Stage 12 closed with independent QA
 `PASS` and bounded PI `GO` (DEC-079); DEC-078 kept three existing roles and
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
-document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23–25 are open.
+document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23–26 are open.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Seek a PI decision on six specified PhysioNet EDF headers after DEC-084's
-sidecar QA `PASS`. Source admission, role, split, protocol and compute remain
-gated after the DEC-082 Charter `GO`.
+Seek separate PI decisions on the Data-reviewed, independently QA-passed
+PhysioNet signal-access proposal and audit-only subject exclusion. Source/use
+admission, formal role/split, protocol and compute remain separately gated.
 
 ## Canonical references
 
@@ -32,7 +32,7 @@ gated after the DEC-082 Charter `GO`.
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
 - `docs/research/stages/stage-13/CANDIDATE_SHORTLIST.md` (metadata; QA PASS)
 - `docs/research/stages/stage-13/PHYSIONET_SIDECAR_AUDIT.md` (list only)
-- `docs/research/DECISION_LOG.md` (DEC-070–084)
+- `docs/research/DECISION_LOG.md` (DEC-070–086)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -77,14 +77,14 @@ gated after the DEC-082 Charter `GO`.
   roles/current splits; Bike retains development role/split for dimensionless
   diagnostics only. Bike H-01 count coverage and `temp` semantics stay `HOLD`.
   DEC-079 accepts the bounded Stage 12 result, not Stage 13 execution.
-- DEC-080 separately authorizes merging the two Stage 12 PRs; it changes no
-  scientific or release gate.
-- DEC-081 chooses new-data-first planning and requests a Charter proposal;
-  it grants no Stage 13 or data access approval.
+- DEC-080 authorizes two Stage 12 PR merges, with no scientific/release gate.
+- DEC-081 requests new-data-first Stage 13 planning, with no access approval.
 - DEC-082 approves the Stage 13 Charter, not candidate discovery/access,
   admission, protocol/budget freeze, execution, final opening or PR merge.
-- DEC-083/084 permit three official-page candidates and PhysioNet `RECORDS`/
-  `SHA256SUMS.txt` reads only; deeper access/admission/role/split remain gated.
+- DEC-083–085 permit three official-page candidates, PhysioNet sidecars and
+  six specified EDF headers only; signal/access/admission/role/split gated.
+- DEC-086 expands only the Stage 13 specialist ceiling to six and follow-ups
+  to two; two-agent parallelism remains. Source, split and compute gates persist.
 
 ## Open questions
 
@@ -141,10 +141,10 @@ gated after the DEC-082 Charter `GO`.
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
   `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
-- PhysioNet sidecar and six-header request QA both `PASS`; lists show 109 IDs
-  × 14 runs and 3,058 checksum rows, but source-byte validity is unverified.
+- DEC-085 six headers show 64 EEG labels at 160 Hz; the revised signal-access
+  request has independent document QA `PASS`. Signal eligibility unverified.
 
 ## Next action
 
-Seek PI decision on the fixed six-header pilot; do not read EDFs before it.
-Keep Electricity/test sealed and DEC-070 release `STOP`.
+Present the QA-passed PhysioNet signal request for separate PI access and
+audit-only split decisions. Keep Electricity/test sealed and DEC-070 `STOP`.
