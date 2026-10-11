@@ -187,9 +187,11 @@ authorizes source access, admission, role/split, protocol or compute.
 
 ## User approval
 
+- Open-source direction: DEC-092 stops the PhysioNet contact path and keeps
+  its source/use admission `HOLD`; any new candidate search requires a fresh
+  bounded PI decision because DEC-083's three-candidate limit was exhausted.
 - PhysioNet rights path: DEC-091 keeps source/use `HOLD` and permits only an
-  unsent inquiry draft. External contact and source admission need later
-  distinct PI decisions.
+  unsent inquiry draft; DEC-092 later stopped that contact path.
 - Independent-QA extension: `GO`, DEC-090, for the two scoped follow-ups of
   one existing reviewer in the [request](QA_EXTENSION_REQUEST.md).
 - Specialist-budget amendment: `GO`, DEC-086, for the bounded ceiling above.

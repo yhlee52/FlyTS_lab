@@ -1,8 +1,9 @@
 # PhysioNet EEG v1.0.0: source/use decision gate
 
-Status: **HOLD — PI selected written rights clarification (DEC-091)** before
-source/use admission. The [inquiry draft](PHYSIONET_RIGHTS_INQUIRY_DRAFT.md)
-is unsent.
+Status: **HOLD — DEC-092 stopped the PhysioNet clarification path** in favor
+of clearly reusable open sources. The earlier DEC-091
+[inquiry draft](PHYSIONET_RIGHTS_INQUIRY_DRAFT.md) remains unsent and is no
+longer a pending action.
 This is a PI decision packet, not an admission or permission for further data
 access. The six-file [audit](PHYSIONET_SIGNAL_AUDIT.md) and independent
 [source-result QA](PHYSIONET_SIGNAL_AUDIT_QA.md) establish only bounded
@@ -37,9 +38,8 @@ source/use `HOLD`; it is not legal clearance or a formal role/split review.
 | B — use another candidate | Keep PhysioNet `HOLD`; start a new, separately approved source/role/split and access path for a candidate with clearer individual-content reuse conditions. |
 | C — pause the source path | Keep PhysioNet and the Stage 13 protocol freeze `HOLD` pending a later PI direction. |
 
-**PI selection:** A (DEC-091). The [unsent inquiry](PHYSIONET_RIGHTS_INQUIRY_DRAFT.md)
-is prepared for review; no external contact or admission follows from this
-choice alone.
+**Decision history:** DEC-091 selected A and produced an unsent inquiry.
+DEC-092 superseded that next action; no external contact or admission follows.
 
 If source/use is later approved, separately decide a development-held-out role
 and an exact subject-disjoint split **before** opening any further signal.

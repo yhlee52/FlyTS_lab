@@ -1,7 +1,8 @@
 # PhysioNet EEG v1.0.0: unsent rights inquiry
 
-Status: **draft only; not sent**. DEC-091 selected written clarification while
-keeping source/use admission `HOLD`. The official
+Status: **historical unsent draft; DEC-092 stopped this contact path**.
+DEC-091 had selected written clarification while keeping source/use admission
+`HOLD`. The official
 [PhysioNet About page](https://physionet.org/about/#contact_us) lists
 `contact@physionet.org`. A PI or institutional representative should review
 the sender identity, exact intended use and institutional route before any

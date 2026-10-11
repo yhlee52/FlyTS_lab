@@ -1,5 +1,21 @@
 # FlyTS Decision Log
 
+## DEC-092 — PI redirects Stage 13 toward clearly reusable open data
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI instruction to avoid sources with possible
+  rights or other unresolved problems and proceed using open sources only.
+- Decision: stop the PhysioNet clarification path selected in DEC-091; its
+  draft remains unsent and PhysioNet source/use stays `HOLD`. Do not treat the
+  CC BY labels of the other two previously screened human-activity datasets
+  as automatic clearance of their individual-content or privacy conditions.
+  Prefer clearly licensed and lower-risk source documentation for a new
+  candidate screen, subject to a separate search-scope PI decision.
+- Boundary: this direction does not extend DEC-083's exhausted three-candidate
+  discovery allowance. It grants no new source access, admission, role/split,
+  protocol/compute freeze, training/evaluation, test/Electricity opening, PR
+  merge or release. DEC-070 `STOP` persists.
+
 ## DEC-091 — PI selects rights clarification while source/use remains HOLD
 
 - Date: 2026-10-11.

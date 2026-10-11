@@ -16,8 +16,8 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-DEC-091 chose an unsent rights inquiry; PhysioNet source/use stays `HOLD`.
-Role/split, protocol and compute remain gated after bounded QA `PASS`.
+DEC-092 stopped the PhysioNet contact path; source/use remains `HOLD`.
+Clearly reusable open-source screening is the next gated work.
 
 ## Canonical references
 
@@ -84,7 +84,7 @@ Role/split, protocol and compute remain gated after bounded QA `PASS`.
   six specified EDF headers only; signal/access/admission/role/split gated.
 - DEC-086 expands staffing; DEC-087/088 permit six EDF streams and audit-only
   exclusion; DEC-089 allowed one capped retry. DEC-090 permits two QA reviews;
-  DEC-091 chose an unsent rights inquiry. Admission/split stay gated.
+  DEC-091 drafted but DEC-092 stopped the rights inquiry. Admission/split gated.
 
 ## Open questions
 
@@ -146,5 +146,5 @@ Role/split, protocol and compute remain gated after bounded QA `PASS`.
 
 ## Next action
 
-Review the unsent rights inquiry; external contact needs separate PI GO.
+Record the separate metadata-search GO before screening open sources.
 Keep Electricity/test sealed, H-01 unfrozen and DEC-070 `STOP`.
