@@ -97,6 +97,18 @@ class InventoryTests(unittest.TestCase):
                 directory, eocd = split_directory(data)
                 parse_directory(directory, eocd, len(data))
 
+    def test_spoofed_offset_can_read_opaque_bytes_but_parser_rejects(self):
+        data = synthetic_zip()
+        directory, eocd = split_directory(data)
+        offset, size, _ = parse_end_directory(eocd, len(data))
+        spoofed = bytearray(eocd)
+        struct.pack_into("<I", spoofed, 12, size + 4)
+        struct.pack_into("<I", spoofed, 16, offset - 4)
+        self.assertEqual(parse_end_directory(bytes(spoofed), len(data)), (offset - 4, size + 4, 2))
+        opaque = data[offset - 4 : offset + size]
+        with self.assertRaisesRegex(ValueError, "signature"):
+            parse_directory(opaque, bytes(spoofed), len(data))
+
     def test_exact_range_and_one_request(self):
         url = "https://example.invalid/archive.zip"
         response = Response(url, b"abc", range_header="bytes 7-9/10", length=3)

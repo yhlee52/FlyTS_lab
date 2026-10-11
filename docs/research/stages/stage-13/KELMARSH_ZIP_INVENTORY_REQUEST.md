@@ -29,7 +29,13 @@ fallback:
    stop after this first request. On an invalid ZIP those 22 bytes are opaque
    trailer bytes, never parsed as a member.
 2. Only after the EOCD checks, read the **exact directory span** given by its
-   offset and size. No local header or compressed member span is requested.
+   offset and size. For a valid ZIP, this excludes local headers and
+   compressed members. A malformed or spoofed EOCD could point this bounded
+   second request at opaque bytes, including compressed member bytes. The
+   parser rejects a non-directory signature after receipt; it never decodes
+   or emits those bytes. This is **not an absolute zero-payload-byte guarantee**
+   for a malformed source, and the revised PI access decision must cover the
+   bounded opaque-byte possibility.
 
 Both responses must be HTTP 206 from the exact URL, with exact
 `Content-Range` start/end/total, exact `Content-Length`, and identity encoding
