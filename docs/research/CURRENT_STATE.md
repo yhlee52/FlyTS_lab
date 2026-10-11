@@ -11,7 +11,7 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 (DEC-074); PR #20 merged at `4aed192`. Stage 12 closed with independent QA
 `PASS` and bounded PI `GO` (DEC-079); DEC-078 kept three existing roles and
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
-document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23–30 are open.
+document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23–31 are open.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
@@ -141,7 +141,7 @@ DEC-095 three-source screen has document QA PASS; no admission or freeze.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
   `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
 - Draft PR #28 records bounded PhysioNet QA `PASS`; rights remain HOLD.
-- DEC-095 screen/request document QA `PASS`: Kelmarsh is a licensed
+- Draft PR #31 records DEC-095 document QA `PASS`: Kelmarsh is a licensed
   multi-turbine lead, but genuine concurrent count remains unverified.
 
 ## Next action
