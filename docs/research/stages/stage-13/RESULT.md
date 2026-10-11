@@ -43,8 +43,8 @@ not a positive H-01–H-03 result or permission to change the Stage 11 contract.
 
 The completed work is the Charter, bounded candidate screens and access
 packets, approved metadata audits, their narrow independent QA records and
-decision/provenance trail. Draft PRs #23–34 form an unmerged stack over
-`main`; CI success on reviewed heads verifies code/document checks only.
+decision/provenance trail. PRs #23–34 later merged into `main` at `c87eaad`
+under DEC-101; successful CI verifies code/document checks only.
 The [closeout QA](QA_REPORT.md) passed the bounded `HOLD` packet under
 DEC-100, not a protocol freeze.
 No Stage 13 formal training, model evaluation, checkpoint, numerical

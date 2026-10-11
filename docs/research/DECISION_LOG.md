@@ -1,5 +1,19 @@
 # FlyTS Decision Log
 
+## DEC-101 — PI authorizes integration of all open Stage 13 PRs
+
+- Date: 2026-10-11.
+- Decision authority: the PI explicitly requested that every open PR be
+  merged without conflicts before a lowest-cost Stage 13 recovery.
+- Outcome: PRs #23–34 were merged in dependency order using merge commits.
+  Each PR was retargeted to `main`, checked `CLEAN`/`MERGEABLE` with successful
+  CI, then merged. No open PR remained. Local and remote `main` are
+  `c87eaad20b5391955673c1e9cdddb7ba1c402035`; its tree matches the
+  former PR #34 head. Stage 09 tracked files are unchanged.
+- Boundary: integration is not source access/admission, a changed H-01/Q1
+  contract, protocol/budget freeze, Stage 14 entry or public release. The
+  Stage 13 `HOLD` in DEC-099 remains until a separate recovery decision.
+
 ## DEC-100 — PI reallocates the unused Stage 13 QA follow-up to HOLD closeout
 
 - Date: 2026-10-11.

@@ -12,12 +12,12 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 `PASS` and bounded PI `GO` (DEC-079); DEC-078 kept three existing roles and
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
 document-only QA `PASS`/PI `GO` (DEC-082); PI froze Stage 13 at `HOLD`
-(DEC-099) with document QA `PASS` (DEC-100); PRs #23–34 remain Draft.
+(DEC-099) with document QA `PASS` (DEC-100); PRs #23–34 merged (DEC-101).
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Stage 13 closed HOLD: no v3/budget freeze or Stage 14 handoff.
+Stage 13 HOLD; lowest-cost recovery pending; no v3/budget or Stage 14 handoff.
 
 ## Canonical references
 
@@ -29,9 +29,9 @@ Stage 13 closed HOLD: no v3/budget freeze or Stage 14 handoff.
 - `docs/research/stages/stage-12/RESULT.md` (QA PASS; PI GO)
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
-- `docs/research/stages/stage-13/RESULT.md` (PI HOLD; QA pending)
+- `docs/research/stages/stage-13/RESULT.md` (PI HOLD; document QA PASS)
 - `docs/research/stages/stage-13/RECOVERY_OPTIONS.md` (unapproved routes)
-- `docs/research/DECISION_LOG.md` (DEC-070–100)
+- `docs/research/DECISION_LOG.md` (DEC-070–101)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -139,7 +139,7 @@ Stage 13 closed HOLD: no v3/budget freeze or Stage 14 handoff.
   marking Bike `temp` semantics `conflict`; no source or Stage 13 gate is implied.
 - PR #22 merged the audit packet at `392b785` after PR #21 integration. Its
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
-- Stage 13 PRs #23–33 are Draft with CI passing; #34 closeout CI pending.
+- PRs #23–34 merged, CI passed, main `c87eaad` (DEC-101); HOLD remains.
 - DEC-096/097 mapping has 60 titles and static file six turbine rows;
   initial signal-ID emission remains an ambiguous-scope QA finding.
   DEC-098 result QA PASS checked claim limits, not network bytes. No
@@ -147,4 +147,4 @@ Stage 13 closed HOLD: no v3/budget freeze or Stage 14 handoff.
 
 ## Next action
 
-Choose a separately gated recovery or Phase 02 HOLD; Stage 14 NO GO.
+Select a separately gated lowest-cost recovery; Stage 14 remains NO GO.
