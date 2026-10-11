@@ -17,7 +17,7 @@ Electricity and all target test signals/scores remain sealed.
 ## Current goal
 
 DEC-093's three non-human publisher-document screens found no full H-01 count
-remedy; shortlist QA is pending. PhysioNet source/use remains `HOLD`.
+remedy; independent QA `PASS` followed a rights correction. Sources stay HOLD.
 
 ## Canonical references
 
@@ -141,9 +141,9 @@ remedy; shortlist QA is pending. PhysioNet source/use remains `HOLD`.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
   `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
 - Draft PR #28 records bounded PhysioNet QA `PASS`; rights remain HOLD.
-- DEC-093's three open-license screens show channel/time or rights gaps.
+- DEC-093's three official screens have QA `PASS`; channel/time/rights gaps remain.
 
 ## Next action
 
-Seek independent screen QA; further search needs a fresh PI gate.
+Seek PI direction for any further search; Stage 13 freeze remains HOLD.
 Keep Electricity/test sealed, H-01 unfrozen and DEC-070 `STOP`.

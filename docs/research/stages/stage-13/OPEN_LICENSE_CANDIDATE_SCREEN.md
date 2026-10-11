@@ -1,7 +1,9 @@
 # Stage 13 non-human open-license candidate screen
 
-Status: **metadata-only Director screen; independent QA pending; no source
-admission or deeper access**. Prepared 2026-10-11 under DEC-092/093. Three
+Status: **metadata-only Director screen; independent document QA `PASS` after
+a rights-conflict correction; no source admission or deeper access**. See the
+[QA record](OPEN_LICENSE_CANDIDATE_SCREEN_QA.md). Prepared 2026-10-11 under
+DEC-092/093. Three
 non-human sources were screened from official publisher landing and linked
 rights/schema documentation. Search-result snippets were not treated as
 source evidence. No archive, sidecar, sample table, signal, array, label,
