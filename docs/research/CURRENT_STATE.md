@@ -13,6 +13,8 @@ stopped M10B public release. PR #19 merged the proposed Phase 02 plan into
 `main` at `52fd44af0145e19d5f26138382bb0661e975eb09`. DEC-071 approved its
 objective; DEC-072 authorizes Stage 11 document-only contract work. Stage 11
 independent QA recorded `CONDITIONAL PASS`; result PI gate remains pending.
+The document-only Draft PR #20 is open from
+`codex/stage-11-qualification-contract` (initial commit `b15b769`); it is not merged.
 
 ## Current goal
 
@@ -90,10 +92,12 @@ boundary remains in force.
   read-only audit found a premature Stage 11 envelope choice and stale
   Stage 09/opening references. QA's first and delta reviews were conditional;
   the final wording correction has Director-only verification.
+- Draft PR #20 contains the Stage 11 documents and discloses the conditional QA,
+  unchanged Stage 09 tracked files and pending PI result gate.
 
 ## Next action
 
-Deliver a Draft PR with the `CONDITIONAL PASS` and corrected final wording
+Review Draft PR #20 with the `CONDITIONAL PASS` and corrected final wording
 disclosed. Obtain PI Stage 11 result disposition and, if required, approval for
 one extra bounded independent QA recheck. Keep Electricity/target test sealed
 and do not begin Stage 12 data work.

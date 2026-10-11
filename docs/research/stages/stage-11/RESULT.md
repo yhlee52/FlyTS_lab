@@ -91,6 +91,10 @@ Stage 11 cannot authorize Stage 12 data work. After QA, the PI must decide wheth
 to accept this result and whether a Stage 12 Charter may be drafted. A later
 Stage 12 Charter/data-access `GO` is still required before data work.
 
+Draft PR #20 (`codex/stage-11-qualification-contract`) presents the document-only
+packet for review (initial commit `b15b769`); it is not merged or a Stage 11 result
+decision.
+
 Director final-diff checks on 2026-10-11: `python
 tools/validate_research_governance.py`, `python
 .agents/skills/flyts-lab-notebook/scripts/check_notebook.py`, `git diff
