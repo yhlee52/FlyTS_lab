@@ -22,7 +22,9 @@
 - Outcome: the one Range completed with 8,192 application bytes and a
   Director-reported one-field first line under a comma parser; see
   `stages/stage-13/KELMARSH_2016_SCHEMA_PILOT_RESULT.md`. Header identity and
-  channel count remain unverified. The access is exhausted; result QA pending.
+  channel count remain unverified. The access is exhausted; bounded independent
+  result QA `PASS` is in `stages/stage-13/KELMARSH_2016_SCHEMA_PILOT_RESULT_QA.md`.
+  No response replay occurred and the reserved QA follow-up is exhausted.
 
 ## DEC-106 — PI approves audit-only 2016 exclusion and pilot preparation
 
@@ -44,7 +46,8 @@
 - Outcome to date: independent pre-read QA `PASS` on PR #35 head `a0821e4`
   after two safety fixes. See
   `stages/stage-13/KELMARSH_2016_SCHEMA_PILOT_PREREAD_QA.md`. The pre-read
-  follow-up is used; result QA remains conditional and source access pending.
+  follow-up is used. DEC-107 later approved and exhausted the separate source
+  access; the reserved result QA follow-up is now being used.
 
 ## DEC-105 — PI approves one bounded ZIP-inventory result QA follow-up
 

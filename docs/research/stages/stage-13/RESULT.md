@@ -27,8 +27,11 @@ not a positive H-01–H-03 result or permission to change the Stage 11 contract.
   Kelmarsh's time coverage, per-turbine availability, independent-unit
   dependence, split and paired 11/26/>26 views remain unverified. Its two
   metadata access caps were exhausted at closeout. DEC-104 later read only
-  the 2016 ZIP directory; no archive member or measurement was opened. That
-  bounded result received DEC-105 report-consistency QA `PASS` without replay.
+  the 2016 ZIP directory, with DEC-105 bounded QA `PASS`. DEC-107 then read
+  one 8,192-byte prefix including compressed member bytes; the first line
+  parsed as one comma-delimited field with header identity unverified.
+  DEC-107 bounded result QA `PASS` did not replay the response. No full
+  member, archive or model score was opened. Channel coverage remains HOLD.
 - No labeled H-04 target was admitted. HAR/HARTH keep their prior `HOLD`
   reasons; H-04 is `not tested`. Q2/Q3 are unavailable. Electricity and
   every test signal/score remain sealed.

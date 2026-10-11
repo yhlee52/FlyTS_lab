@@ -13,7 +13,7 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
 document-only QA `PASS`/PI `GO` (DEC-082); PI froze Stage 13 at `HOLD`
 (DEC-099) with document QA `PASS` (DEC-100); PRs #23–34 merged (DEC-101).
-PI chose route A; DEC-107's one pilot read completed, bounded result QA pending.
+PI chose route A; DEC-107's one pilot read has bounded result QA PASS.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
@@ -141,9 +141,10 @@ Stage 13 HOLD; bounded ZIP inventory QA PASS, source admission pending; no Stage
 - PR #22 merged the audit packet at `392b785` after PR #21 integration. Its
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
 - DEC-104 read 1,198 ZIP-directory bytes: six turbine-data and six status
-  members, Director-reported with bounded DEC-105 QA PASS. No member was opened.
-  Concurrent channels, source admission, protocol v3 and compute remain HOLD.
+  members, with bounded DEC-105 QA PASS. DEC-107 read one 8,192-byte member
+  prefix; one comma field is not a channel count. Both responses remain
+  Director-reported; source admission, protocol v3 and compute remain HOLD.
 
 ## Next action
 
-Complete DEC-107 bounded result QA; channel count remains unverified and HOLD.
+Decide next low-cost source-format gate or retain Stage 13 HOLD.

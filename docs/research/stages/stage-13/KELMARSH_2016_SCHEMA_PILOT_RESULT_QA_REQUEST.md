@@ -1,7 +1,8 @@
 # Kelmarsh first-line pilot: bounded independent result QA request
 
-Status: **DEC-106 reserved one existing-reviewer read-only result follow-up;
-review pending.** DEC-107's one 8,192-byte source read is completed and
+Status: **DEC-106's reserved result follow-up completed with bounded
+[PASS](KELMARSH_2016_SCHEMA_PILOT_RESULT_QA.md).** DEC-107's one 8,192-byte
+source read is completed and
 exhausted. This request uses the remaining DEC-106 follow-up; it does not
 grant or request further source access.
 
@@ -16,5 +17,5 @@ the **one comma-delimited field**, absence of a 27-channel or schema claim,
 **Do not replay Zenodo, open source/array/test/Electricity bytes, execute the
 network flag, or edit tracked files.** The response, hashes, member header,
 first-line hash/count and no-retry report remain Director-reported. Local
-synthetic tests and validators are allowed. After this review the reserved
-follow-up is exhausted. Further access or staffing requires its own PI gate.
+synthetic tests and validators were allowed. This review exhausted the
+reserved follow-up. Further access or staffing requires its own PI gate.

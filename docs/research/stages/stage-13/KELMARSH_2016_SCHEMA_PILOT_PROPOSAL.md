@@ -34,7 +34,8 @@ cannot establish 27 simultaneous usable channels, independent farms, paired
    `PASS`; one later result QA follow-up remains reserved.
    A final script, synthetic tests, exact script hash and independent pre-read
    `PASS`, both PR CI jobs `PASS` and the separate PI access `GO` must exist
-   before execution. DEC-107 is the latter decision; no run has occurred yet.
+   before execution. DEC-107 supplied the latter decision; the one completed
+   run is recorded in the [result](KELMARSH_2016_SCHEMA_PILOT_RESULT.md).
 
 The prepared tool is `tools/stage13_kelmarsh_schema_pilot.py`; its current raw
 worktree SHA-256 is
@@ -42,8 +43,8 @@ worktree SHA-256 is
 The canonical Git blob and raw worktree bytes must match this hash after
 independent pre-read QA and immediately before any separately approved read.
 The new synthetic tests are `tests/test_stage13_kelmarsh_schema_pilot.py`.
-This fingerprint alone does not authorize execution; DEC-107 and the CI/hash
-preconditions govern the one approved attempt.
+This fingerprint alone did not authorize execution; DEC-107 and the CI/hash
+preconditions governed the one completed attempt. The access is exhausted.
 
 The script must require HTTP 206, exact URL, `Content-Range` including the
 published total, `Content-Length`, identity encoding and an exact 8,192-byte

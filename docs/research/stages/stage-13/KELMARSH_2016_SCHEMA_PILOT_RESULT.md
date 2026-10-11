@@ -1,7 +1,8 @@
 # Kelmarsh 2016 bounded first-line pilot result
 
 Status: **DEC-107's one exact Range completed; Director-reported result;
-independent result QA pending; Stage 13 freeze HOLD**. Executed 2026-10-11
+independent [bounded result QA PASS](KELMARSH_2016_SCHEMA_PILOT_RESULT_QA.md);
+Stage 13 freeze HOLD**. Executed 2026-10-11
 from Draft PR #35 head `cde9698` after independent pre-read QA `PASS`, both
 head CI `pytest` jobs `PASS` (4m06s and 2m23s), local 18 synthetic checks
 `PASS`, and byte-exact preflight. The Git blob and raw worktree SHA-256 of
@@ -39,4 +40,5 @@ pilot cannot establish simultaneous finite channel coverage, paired 11/26/>26
 views, time coverage or independent-domain inference. H-01 count remains
 untested. Stage 13 stays `HOLD`, H-04 `not tested`, Q2/Q3 unavailable,
 Electricity/test sealed, Stage 14 `NO GO`, Stage 09 history unchanged and
-DEC-070 public release `STOP` active.
+DEC-070 public release `STOP` active. DEC-106's reserved result-review
+follow-up is exhausted.
