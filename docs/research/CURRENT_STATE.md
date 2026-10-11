@@ -16,8 +16,8 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-DEC-090 permits one reviewer two QA follow-ups. Review the aggregate and
-admission packet first; source/role/split, protocol and compute stay gated.
+DEC-090 source-result QA returned bounded `PASS`; present the separate
+source/role/split path. Protocol and compute remain gated.
 
 ## Canonical references
 
@@ -142,9 +142,9 @@ admission packet first; source/role/split, protocol and compute stay gated.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
   `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
 - Draft PR #28 records six DEC-089 publisher hash matches over 11,515,296
-  EDF bytes; three audit-only subjects show mechanical 11/26/64 prefixes.
+  retry EDF bytes; source-result QA `PASS` covers only audit readiness.
 
 ## Next action
 
-Run DEC-090 source-result QA, then seek a PI-reviewed source/role/split path.
+Seek PI source/role decisions, then an independently reviewed exact split.
 Keep Electricity/test sealed, H-01 unfrozen and DEC-070 `STOP`.

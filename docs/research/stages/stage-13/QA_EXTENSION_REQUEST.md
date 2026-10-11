@@ -1,7 +1,9 @@
 # Stage 13 independent-QA follow-up extension request
 
 Status: **PI `GO` (DEC-090)** for the two scoped follow-ups of one existing
-independent QA reviewer. DEC-086 approved
+independent QA reviewer. The first returned bounded `PASS` in
+[source-result QA](PHYSIONET_SIGNAL_AUDIT_QA.md); the second remains reserved
+for an exact pre-freeze packet if reached. DEC-086 approved
 at most six Stage 13 specialists, two concurrent agents and two follow-ups
 per specialist. Three previously activated independent QA reviewers have
 used their permitted second follow-ups on the signal-access request and

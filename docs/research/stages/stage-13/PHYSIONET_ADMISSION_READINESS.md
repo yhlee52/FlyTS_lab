@@ -1,6 +1,7 @@
 # PhysioNet EEG v1.0.0: source/role/split admission readiness
 
-Status: **HOLD — proposal inputs, no admission decision**. This packet uses
+Status: **HOLD — independently QA-passed proposal inputs, no admission
+decision**. This packet uses
 the [six-file audit](PHYSIONET_SIGNAL_AUDIT.md), independent
 [Data review](PHYSIONET_SIGNAL_AUDIT_DATA_REVIEW.md), official
 [dataset page](https://physionet.org/content/eegmmidb/1.0.0/) and
@@ -18,10 +19,9 @@ It does not authorize more source access, model work or a new split.
 
 ## Smallest next gated work
 
-1. Obtain independent QA on this bounded audit and admission-readiness packet.
-   The Stage 13 QA follow-up allowance is exhausted; see the separate
-   [staffing request](QA_EXTENSION_REQUEST.md). A Data review cannot replace
-   independent QA.
+1. Independent [source-result QA](PHYSIONET_SIGNAL_AUDIT_QA.md) returned
+   `PASS` on this bounded audit and admission-readiness packet under DEC-090.
+   That verdict does not clear source rights or approve role/split.
 2. Present **source/use** and a proposed **development-held-out role** as
    distinct PI decisions, with exact attribution, notice, exclusion and
    nonpublic-use conditions. If rights remain unresolved, keep source `HOLD`.

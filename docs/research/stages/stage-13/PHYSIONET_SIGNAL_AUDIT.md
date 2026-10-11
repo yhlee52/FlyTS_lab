@@ -7,7 +7,8 @@ retry after an incomplete first attempt (DEC-089). This packet records the
 successful retry, not a formal evaluation or a corpus-wide adequacy verdict.
 Independent [Data review](PHYSIONET_SIGNAL_AUDIT_DATA_REVIEW.md) found the
 aggregate internally consistent for an audit-only packet (`GO with limits`).
-Independent source/admission QA is pending.
+Independent [source-result QA](PHYSIONET_SIGNAL_AUDIT_QA.md) returned `PASS`
+within the bounded audit/admission-readiness scope; no admission was granted.
 
 ## Access and provenance
 
