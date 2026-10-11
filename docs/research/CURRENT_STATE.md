@@ -11,7 +11,7 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 (DEC-074); PR #20 merged at `4aed192`. Stage 12 closed with independent QA
 `PASS` and bounded PI `GO` (DEC-079); DEC-078 kept three existing roles and
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
-document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23–27 are open.
+document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23–28 are open.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
@@ -141,8 +141,8 @@ remain separately gated.
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
   `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
-- The DEC-089 retry matched six publisher hashes over 11,515,296 EDF bytes;
-  3 audit-only subjects have 11/26/64 valid prefixes. Data review is bounded.
+- Draft PR #28 records six DEC-089 publisher hash matches over 11,515,296
+  EDF bytes; three audit-only subjects show mechanical 11/26/64 prefixes.
 
 ## Next action
 
