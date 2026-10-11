@@ -193,6 +193,8 @@ document-only Stage 13 `HOLD` closeout QA. Later pre-freeze QA needs a new
 specific staffing decision.
 DEC-103 grants one further existing-reviewer follow-up for the exact
 Kelmarsh ZIP inventory pre-read QA only; it does not restore pre-freeze QA.
+DEC-104 separately approves the revised bounded ZIP inventory access after
+that QA PASS; source/use, role and split remain pending.
 
 ## User approval
 

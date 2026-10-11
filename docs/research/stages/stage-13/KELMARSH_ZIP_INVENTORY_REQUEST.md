@@ -1,7 +1,7 @@
 # Proposed minimum-byte Kelmarsh ZIP inventory gate
 
-Status: **revised two-Range access proposal pending PI decision; independent
-pre-read QA `PASS`; no source-file read executed**. The original
+Status: **revised two-Range access PI `GO` (DEC-104), independent pre-read QA
+`PASS`; no source-file read executed yet**. The original
 one-Range DEC-103 access is withheld after QA found it could include compressed
 member payload. DEC-103's single reviewer follow-up completed with
 [PASS](KELMARSH_ZIP_INVENTORY_PREREAD_QA.md) on the correction. Route A
@@ -35,8 +35,8 @@ fallback:
    second request at opaque bytes, including compressed member bytes. The
    parser rejects a non-directory signature after receipt; it never decodes
    or emits those bytes. This is **not an absolute zero-payload-byte guarantee**
-   for a malformed source, and the revised PI access decision must cover the
-   bounded opaque-byte possibility.
+   for a malformed source; DEC-104 explicitly covers this bounded
+   opaque-byte possibility.
 
 Both responses must be HTTP 206 from the exact URL, with exact
 `Content-Range` start/end/total, exact `Content-Length`, and identity encoding
@@ -83,10 +83,11 @@ decisions before admission. No other annual archive is silently substituted.
    DEC-100 exhausted the earlier reserved follow-up. The reviewer must report
    `PASS` on this revised code and request before any range. This is a one-review expansion of the
    per-agent ceiling, not a new specialist or broader Stage 13 budget.
-2. **Source-file access — revised decision pending:** the exact two-range,
+2. **Source-file access — GO, DEC-104:** the exact two-range,
    at-most-131,072-byte memory-only ZIP-directory read above. DEC-103's
    one-range approval is not used because it does not ensure the stated
-   no-member-payload boundary. A QA `PASS` does not grant revised access.
+   no-member-payload boundary. The separate DEC-104 decision grants the
+   revised bounded access, conditional on the final code/CI preflight.
    Failure gets no automatic retry, member read or archive download.
 
 Electricity and all test signals/scores remain sealed. PhysioNet stays on

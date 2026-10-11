@@ -1,5 +1,23 @@
 # FlyTS Decision Log
 
+## DEC-104 — PI approves revised two-Range ZIP inventory access
+
+- Date: 2026-10-11.
+- Decision authority: two explicit PI `GO` answers after the DEC-103
+  one-Range flaw, revised Draft PR #35 request, and independent pre-read QA
+  `PASS` were presented. The second answer explicitly accepts the residual
+  possibility of at most 131,050 opaque bytes, possibly compressed member
+  bytes, if a malformed/spoofed ZIP end record points to the wrong span.
+- Access: only Cubico Kelmarsh v4 `Kelmarsh_SCADA_2016_3082.zip` at the
+  locked 97,915,553-byte identity. Request the final 22 bytes first; if the
+  standard no-comment EOCD passes, request only its declared central
+  directory. At most two HTTP Ranges and 131,072 application bytes total,
+  memory only, no retry or full-file fallback. Reject and HOLD on any
+  response, layout or parser failure; do not decode or emit member payload.
+- Boundary: DEC-103's original one-Range access remains unused. No further
+  member/signal access, source/use, role/split admission, result QA staffing,
+  protocol/budget freeze, Stage 14, test/Electricity or release approval.
+
 ## DEC-103 — PI approves one pre-read QA and one bounded ZIP-tail read
 
 - Date: 2026-10-11.
