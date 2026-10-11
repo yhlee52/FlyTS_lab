@@ -1,5 +1,54 @@
 # FlyTS Decision Log
 
+## DEC-074 — PI accepts the Stage 11 result
+
+- Date: 2026-10-11
+- Decision authority: explicit PI `GO` after reviewing the Stage 11 result and
+  DEC-073 independent QA `PASS`.
+- Decision: accept the bounded Q0–Q3 qualification contract, H/R prospective
+  ownership and Stage 12/13 handoff requirements as the Stage 11 result. Stage
+  11 may close; drafting a proposed Stage 12 Charter is authorized.
+- Evidence: Draft PR #20 head `ffc0bdf8d4ee9a58660a3e7f7064fa4d1e9c12a9`;
+  independent QA `PASS` on the substantive contract at `0effe407`, with the
+  later commit limited to verdict/status records; GitHub Actions `tests` and
+  local notebook/governance/diff checks passed.
+- Boundary: this does not approve Stage 12 data access, any dataset admission,
+  role/split change, protocol or compute budget, formal execution, final/test
+  opening, Draft PR #20 merge or public release. Stage 09 `HOLD`/QA `FAIL` and
+  DEC-070 `STOP` remain historical/current constraints respectively.
+
+## DEC-073 — PI authorizes one additional independent Stage 11 QA review
+
+- Date: 2026-10-11
+- Decision authority: explicit PI approval of one extra independent QA review
+  after the Stage 11 Charter's original one-follow-up limit was used.
+- Scope: read-only recheck of Draft PR #20 head
+  `0effe407bc9de59d5d09b994368132c941b7e403`, especially the corrected
+  Stage 17 Electricity/H-04 handoff and the Charter acceptance contract.
+- Evidence: the QA Engineer independently returned `PASS` on that exact commit.
+  Notebook/governance validators, commit diff check, Stage 09 tracked-file
+  immutability check and clean worktree check passed. Ignored Stage 09 report
+  JSON bytes were not independently rehashed.
+- Boundary: QA `PASS` is not PI `GO` on the Stage 11 result. Stage 12 Charter,
+  Stage 12 data work, formal execution, final/test access and publication remain
+  separately gated; DEC-070 remains `STOP` for public release.
+
+## DEC-072 — PI authorizes Stage 11 qualification-contract work
+
+- Date: 2026-10-11
+- Decision authority: explicit PI request to implement the bounded Stage 11 plan.
+- Scope: documentation-only Q0–Q3 contract, H/R prospective stage traceability,
+  Stage 12 adequacy measures, Stage 13 low/medium/high envelope fields, Stage
+  12–19 handoff gates, independent QA and a Draft PR.
+- Interpretation: remove Stage 11's premature compute/data-envelope selection;
+  Stage 12 decides admission/role/split separately and Stage 13 later proposes
+  budget options and freezes a PI-approved protocol. This decision selects no
+  dataset, numerical rule, seed, experiment matrix or compute budget.
+- Boundary: Stage 09 `HOLD`, final QA `FAIL`, preserved reports/hashes and DEC-070
+  public-release `STOP` remain in force. Electricity and target test stay sealed.
+  Stage 11 results, Stage 12 data work, training and publication are not approved
+  by this implementation request.
+
 ## DEC-071 — PI selects scientific validation-first for Phase 02
 
 - Date: 2026-09-30

@@ -1,8 +1,18 @@
 # FlyTS Phase 02 — Formal Training and Scientific Evaluation
 
-Status: proposed stage plan; phase objective approved by the PI
+Status: Stage 11 contract accepted by PI (DEC-074); independent QA `PASS`;
+phase objective approved by the PI
 
-Decision basis: DEC-071, 2026-09-30
+Decision basis: DEC-071, 2026-09-30; Stage 11 Charter `GO` granted by the PI
+on 2026-10-11. DEC-074 accepted the Stage 11 result; later stage gates remain
+pending.
+
+The Stage 01 `docs/EXPERIMENT_PROTOCOL.md` and the Stage 09 protocol-v2 60-run,
+five-seed proposal record earlier rules and an unfrozen historical plan. Stage 09
+closed at `HOLD` with final QA `FAIL`. Neither its numerical candidates nor its
+matrix are a Phase 02 freeze. Historical Stage 09 and Stage 10 execution/release
+language in `docs/DEVELOPMENT_PLAN.md` is read with those later decisions and
+DEC-070, not as present execution or publication authority.
 
 ## Program objective
 
@@ -48,13 +58,65 @@ force unless a future, separate PI decision explicitly changes it.
 | Q2 — bounded foundation-encoder evidence | Q1 plus preregistered support for variable-channel behavior, robustness and reusable representations, including H-04 on admitted target tasks | Evidence supports foundation-encoder candidacy only within the tested domains, tasks, channel ranges and budgets. |
 | Q3 — connectome-specific FlyTS evidence | Q2 plus H-03 support against both matched topology controls | The tested fly-like topology contributes under the frozen comparison; no universal topology claim follows. |
 
-Q2 and Q3 thresholds, minimum domain/task coverage and uncertainty rules must be
-fixed in Stages 12–13 before formal results. This phase cannot establish a
-universal foundation-model, production, CUDA or semiconductor claim.
+Q0 records bounded CPU engineering operation; it does not imply any H-01–H-04
+support. Q1 requires valid, frozen, multi-seed H-01–H-03 outcomes and independent
+QA, including valid negative outcomes; it means formally evaluated, not that every
+hypothesis was supported. Q2 additionally requires preregistered positive evidence
+for variable-channel behavior, robustness and H-04 reusable representations on an
+admitted target. Q3 additionally requires H-03 support against *both* matched
+rewired and random sparse controls. Failure of either contrast cannot be rescued
+by a secondary endpoint. Q2 and Q3 thresholds, minimum domain/task coverage and
+uncertainty rules require Stage 12 adequacy evidence and Stage 13 PI-approved
+freeze before formal results. This phase cannot establish a universal
+foundation-model, production, CUDA or semiconductor claim.
 
 If H-01/H-02/H-04 support but H-03 does not, evidence may support the
 channel-agnostic encoder but not a connectome-specific advantage. If H-04 cannot
 be admitted, Q2/Q3 are not reached and H-04 remains `not tested`.
+
+A valid `no-support`, `harm`, `inconclusive`, or infeasible result is a research
+outcome, not a reason to alter a frozen design after viewing results. If an
+unresolved integrity defect prevents valid formal inference, the phase can close
+at `HOLD`/`STOP` with Q0 as its highest evidenced level and the untested
+hypotheses explicit. No Q level is awarded from a proposed protocol, a failed
+QA review, or a missing prerequisite.
+
+## Stage 11 qualification-to-evidence contract
+
+| Item | Evidence and control to register in later stages | Evidence owner and claim limit |
+|---|---|---|
+| H-01 / R-01 / R-02 | Stage 12 checks independent records, seen/unseen count coverage and valid paired nested views; Stage 13 freezes permutation/count endpoints and rules; Stage 14 rehearses paired masks and leakage guards; Stages 15–16 execute and analyze, with final evidence only after Stage 17. | Stage 12 Data, Stage 13 Experiment, Stage 14 Implementation/QA, Stages 15–16 Experiment, Stage 18 final QA. Count behavior and global representation invariance only within admitted domains and ranges. |
+| H-02 / R-04 | Stage 12 checks missingness and usable paired corruption views; Stage 13 freezes dropout, clean-harm and uncertainty rules; Stage 14 checks target/reference separation; Stages 15–16 execute and analyze matched masking controls. | Stage 12 Data, Stage 13 Experiment, Stage 14 QA, Stages 15–16 Experiment. Registered missing-channel corruption only. |
+| H-03 / R-05 | Stage 13 freezes two primary topology contrasts and single-factor matching; Stage 14 validates graph, front-end, steps, exposure and parameter tolerance; Stages 15–16 execute and analyze both matched controls. | Stage 13 Experiment, Stage 14 QA, Stages 15–16 Experiment. A null or harmful topology result does not refute front-end behavior. |
+| H-04 | Stage 12 audits eligible labeled target, ontology, independent groups and split without opening target test; Stage 13 freezes general probe, control, effect and analysis rules; Stage 17 binds an approved target-specific packet before separate H-04/test access; Stage 18 runs once. | Stage 12 Data, Stage 13 Experiment, Stage 17 Data/Experiment/QA, Stage 18 Experiment/QA. Target-local transfer within admitted task families only; without admission it is `not tested`. |
+| R-03 | Stage 12 checks signal-only schema, Stage 13 registers the metadata-absent path, Stage 14 verifies it against frozen manifests, and later runs record whether metadata was used. | Stage 12 Data, Stage 13 Experiment, Stage 14 Implementation/QA, Stages 15–16 Experiment. Optional metadata operation, not equal quality. |
+| R-06 / R-07 | Stage 14 checks the exact device environment and closed-network preflight; Stage 15 records actual training-device evidence. | Stage 14 Implementation/QA and Stage 15 Experiment/QA. CPU evidence cannot establish CUDA; offline evidence binds only its tested bundle. |
+| R-08 | Stage 19 records the public-data conclusion and a separate later PI gate. | Stage 19 Director/QA. No semiconductor suitability or adaptation claim in Phase 02. |
+
+Stage 19 maps recorded valid evidence to Q0–Q3. Existing H/R statuses and Stage 09
+findings remain historical; this table assigns prospective responsibility only.
+
+## Required Stage 12 and Stage 13 handoffs
+
+Stage 12 must measure, for each existing or proposed public domain, source rights
+and checksums; schema, timestamp/sampling and missingness semantics; independent
+record, entity/subject and time-range units; split-before-windowing and purge
+feasibility; leakage and train-only preprocessing boundaries; seen/unseen channel
+count distribution and paired interpolation/extrapolation views; and, for H-04,
+target labels, class/task-family coverage, ontology compatibility, group-disjoint
+splits and target-test sealing. It must state where evidence is insufficient and
+prepare a separate PI decision for each source, role and split. Measurement does
+not admit a dataset or change a role.
+
+Stage 13 must present low, medium and high resource envelopes using Stage 12
+evidence. Each option must state its candidate arm/run and seed structure,
+optimizer steps and exposure, setup/data preparation, training, validation,
+evaluation and checkpoint time, peak memory and disk, exact hardware/software
+environment, estimator basis and uncertainty, failure/diagnostic allowance, and
+which registered claims fit the envelope. FLOPs, wall time and steps must remain
+distinct quantities. Stage 13 recommends one option for explicit PI approval and
+freezes endpoints, numerical guards, uncertainty/multiplicity, selection and the
+run matrix before any formal result; Stage 11 selects no values or option.
 
 ## Data and artifact boundary
 
@@ -73,13 +135,13 @@ be admitted, Q2/Q3 are not reached and H-04 remains `not tested`.
 
 | Stage | Purpose | Main deliverables | Exit gate |
 |---:|---|---|---|
-| 11 — Qualification contract | Turn the approved objective into falsifiable qualification levels, hypotheses, claim boundaries, stage ownership and compute-envelope options. | Stage Charter, qualification matrix, updated traceability and risks, phase budget options. | PI `GO` on the Stage 11 result and chosen compute/data planning envelope. No training. |
+| 11 — Qualification contract | Turn the approved objective into falsifiable qualification levels, hypotheses, claim boundaries, stage ownership and required later compute-envelope fields. | Stage Charter, qualification matrix, updated traceability and risks, Stage 12/13 handoff requirements. | PI decides whether to accept the contract and authorize drafting a Stage 12 Charter. No dataset or budget approval. |
 | 12 — Data and evaluation adequacy | Determine whether existing and candidate public domains provide enough independent records, channel-count coverage and eligible target tasks without leakage or rights ambiguity. | Dataset admission packets, role/split manifests, independent-unit audit, H-01/H-02 coverage analysis and H-04 target decision. | PI approves every new source/role/split; otherwise `HOLD` or reduce the registered claim set. |
-| 13 — Protocol v3 and budget freeze | Freeze endpoints, guards, minimum effects, uncertainty/multiplicity rules, seeds, comparison arms, checkpoint selection, run matrix and compute budget before formal results. | Hashed protocol v3, configs, run matrix, statistical analysis plan, compute estimate and freeze manifest. | Independent pre-freeze QA `PASS` plus explicit PI protocol/budget `GO`. Any later change creates v4. |
+| 13 — Protocol v3 and budget freeze | Freeze endpoints, guards, minimum effects, uncertainty/multiplicity rules, seeds, comparison arms, checkpoint selection, run matrix and compute budget before formal results. H-04 general rules are frozen here; Stage 17 may bind only a previously approved target-specific packet without changing them. | Hashed protocol v3, configs, run matrix, statistical analysis plan, low/medium/high estimates and freeze manifest. | Independent pre-freeze QA `PASS` plus explicit PI protocol/budget `GO`. Any material later change creates v4 before affected execution. |
 | 14 — Execution preflight | Prove that the frozen runner, reporter, cache, checkpoint, resume and failure paths work end to end without using formal/final evidence. | Synthetic/tiny blind rehearsal, runtime/memory evidence, deterministic manifests, no-network test and preflight QA report. | QA `PASS`; predicted resources fit the approved envelope. CUDA use requires a separately validated exact environment. |
 | 15 — Formal multi-seed training | Execute the frozen H-01–H-03 matrix without adaptive changes, result-driven stopping or added runs. | Local checkpoints, run manifests, logs, failure ledger, exact exposure/compute records and sealed evaluation inputs. | All planned runs are valid, or the preregistered failure/diagnostic rule yields `HOLD`/`STOP`. No final-held-out access. |
 | 16 — Development evaluation and selection | Apply the frozen analysis plan, issue bounded H-01–H-03 outcomes and select at most one private checkpoint using development evidence only. | Locked report, sufficient statistics, hypothesis outcomes, selection ledger and checkpoint provenance. | Independent QA `PASS`; PI accepts the outcomes and either one candidate or an explicit no-candidate result. |
-| 17 — Transfer/final readiness | If Stage 12 admitted a target, freeze H-04 probe controls and audit the selected checkpoint plus one-time final orchestration. | Target protocol, ontology/split evidence, final access ledger, unseal rehearsal and readiness QA. | Separate PI `GO` for H-04 execution and/or the one-time final open. Missing prerequisites keep H-04 `not tested`. |
+| 17 — Transfer/final readiness | If Stage 16 selected a candidate, audit one-time Electricity final orchestration. If Stage 12 separately admitted an H-04 target, also bind its target-specific packet to Stage 13 frozen rules. | Conditional target protocol binding, ontology/split evidence, final access ledger, unseal rehearsal and readiness QA. | Separate PI `GO` for H-04 execution and/or the one-time Electricity final open. Missing H-04 prerequisites keep H-04 `not tested`; without a candidate, skip final execution and record why. |
 | 18 — One-time final evaluation | Evaluate the already selected checkpoint once on the frozen final/target evidence; never tune, rerank or add runs from the result. | Atomic unseal record, final predictions/sufficient statistics, locked report and independent QA. | PI accepts `support`, `no-support`, `harm`, `inconclusive` or invalid/stop outcome. No automatic rerun. |
 | 19 — Phase closeout | Map all valid outcomes to Q0–Q3, decide private checkpoint retention and record limitations and the next research decision. | Final evidence matrix, model card update, private checkpoint disposition, phase result and QA report. | PI `GO`, `HOLD` or `STOP`. Publication remains a separate future decision and defaults to no release. |
 
@@ -105,7 +167,8 @@ The phase is complete when:
 
 - Stages 11–16 produce a frozen, independently audited formal evidence package,
   or an explicit `HOLD`/`STOP` identifies why valid execution is infeasible;
-- H-01–H-03 each receive a bounded outcome rather than an implied positive claim;
+- H-01–H-03 each receive a bounded valid outcome or an explicit `not tested`/
+  invalid status with the `HOLD`/`STOP` cause rather than an implied positive claim;
 - H-04 is either executed under an admitted target contract or remains clearly
   `not tested`;
 - at most one development-selected private checkpoint is retained, or the record
@@ -121,8 +184,9 @@ Scientific success is valid evidence, not necessarily a positive model result.
 | Gate | Required before | Current state |
 |---|---|---|
 | Phase objective | Drafting this stage plan | `GO`, Option A, 2026-09-30 (DEC-071) |
-| Phase stage plan and Stage 11 Charter | Beginning Stage 11 implementation | pending PI review |
-| Dataset admission/role/split | Using any new domain or changed role | pending per Stage 12 proposal |
+| Phase stage plan and Stage 11 Charter | Beginning Stage 11 implementation | `GO` requested by PI on 2026-10-11 for Stage 11 document work only |
+| Stage 11 result | Drafting a Stage 12 Charter | `GO`, 2026-10-11 (DEC-074); does not authorize data work |
+| Stage 12 Charter and each dataset/role/split | Any Stage 12 data access or changed source/role/split | pending separate PI decisions |
 | Protocol v3 and compute budget | Any formal training | pending Stage 13 result |
 | Formal execution | Starting Stage 15 | pending preflight QA and explicit PI `GO` |
 | H-04/final unseal | Any target-test or Electricity final access | pending Stage 17 and explicit PI `GO` |
@@ -156,6 +220,8 @@ Scientific success is valid evidence, not necessarily a positive model result.
 ## Planning approval
 
 - Phase objective: approved by PI, 2026-09-30 (Option A).
-- Stage decomposition and Stage 11 Charter: pending PI `GO`.
+- Stage decomposition and Stage 11 Charter: `GO` for Stage 11 document-only
+  implementation requested by the PI on 2026-10-11 (DEC-072); Stage 11 result
+  accepted by the PI under DEC-074. Every later stage remains separately gated.
 - No dataset download, code change, training, checkpoint creation or evaluation is
   authorized by this planning document alone.
