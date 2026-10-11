@@ -104,7 +104,8 @@ PI decisions. DEC-070 no-release boundary remains in force.
 - The proposed Stage 12 Charter received document-only independent QA `PASS`
   after clarifying that target-test class coverage needs approved metadata or
   a separate blinded metadata audit; otherwise admission stays `HOLD`. No data
-  or ignored report bytes were opened. Stage 12 execution QA remains pending.
+  or ignored report bytes were opened. Draft PR #21 carries the proposal against
+  PR #20's merge commit; Stage 12 execution QA remains pending.
 
 ## Next action
 
