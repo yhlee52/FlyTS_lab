@@ -13,16 +13,16 @@ stopped M10B public release. PR #19 merged the proposed Phase 02 plan into
 `main` at `52fd44af0145e19d5f26138382bb0661e975eb09`. DEC-071 approved its
 objective; DEC-072 authorized Stage 11 document-only contract work. Stage 11
 independent QA returned `PASS` after one PI-authorized extra review (DEC-073),
-and the PI accepted the Stage 11 result under DEC-074.
-The document-only Draft PR #20 is open from
-`codex/stage-11-qualification-contract` (initial commit `b15b769`); it is not merged.
+and the PI accepted the Stage 11 result under DEC-074. Document-only PR #20
+subsequently merged into `main` at
+`4aed1926650fe304a818682a718e6b0d608367ba` on 2026-10-11.
 
 ## Current goal
 
-Prepare a proposed Stage 12 Charter from the accepted Stage 11 contract and
-handoff. Stage 12 data access, source admission, role/split decisions and every
-later research gate require separate PI approval. DEC-070 no-release boundary
-remains in force; Draft PR #20 is not merged.
+Review the proposed Stage 12 Charter against the accepted Stage 11 contract.
+DEC-074 authorized drafting only; Stage 12 Charter approval, data access,
+source admission, role/split decisions and later research gates require separate
+PI decisions. DEC-070 no-release boundary remains in force.
 
 ## Canonical references
 
@@ -30,6 +30,7 @@ remains in force; Draft PR #20 is not merged.
 - `docs/research/stages/stage-11/CHARTER.md`
 - `docs/research/stages/stage-11/RESULT.md`
 - `docs/research/stages/stage-11/QA_REPORT.md`
+- `docs/research/stages/stage-12/CHARTER.md` (proposed; PI approval pending)
 - `docs/research/DECISION_LOG.md` (DEC-070–074)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
@@ -62,12 +63,14 @@ remains in force; Draft PR #20 is not merged.
 - DEC-073 authorized one additional independent QA review beyond the Stage 11
   follow-up limit; QA returned `PASS` on PR #20 head `0effe407`. This is not
   itself a Stage 11 result decision. DEC-074 separately records PI result `GO`:
-  Stage 12 Charter drafting is authorized, data work and PR merge are not.
+  Stage 12 Charter drafting was authorized. PR #20 later merged, but Stage 12
+  data access, admission and role/split decisions remain unapproved.
 
 ## Open questions
 
-- Stage 12 Charter scope and its separate PI approval remain open. Stage 11
-  result `GO` authorizes a Charter proposal only, not data work.
+- The proposed Stage 12 Charter and its separate PI approval remain open. Stage
+  11 result `GO` authorized the proposal only, not data work. Each source's
+  access and source/role/split decision is a further distinct gate.
 - Dataset suitability/admission, minimum coverage, statistical thresholds,
   seed/matrix, budget, H-04 target, CUDA environment and final open remain future
   decisions with the named stage gates.
@@ -94,13 +97,17 @@ remains in force; Draft PR #20 is not merged.
   read-only audit found a premature Stage 11 envelope choice and stale
   Stage 09/opening references. QA's first and delta reviews were conditional;
   the PI-authorized final review returned independent `PASS` on `0effe407`.
-- Draft PR #20 contains the Stage 11 documents; GitHub Actions `tests` passed on
-  `0effe407`, including the repository's existing synthetic CPU smoke. Stage 09
-  tracked files remain unchanged. CI also passed on the QA-reporting commit
-  `ffc0bdf`; DEC-074 records PI acceptance without authorizing PR merge.
+- PR #20 merged the Stage 11 documents at `4aed192`; GitHub Actions `tests`
+  passed on `0effe407`, including the repository's existing synthetic CPU smoke.
+  Stage 09 tracked files remain unchanged. CI also passed on the QA-reporting
+  commit `ffc0bdf`. Merge is an integration fact, not a Stage 12 data gate.
+- The proposed Stage 12 Charter received document-only independent QA `PASS`
+  after clarifying that target-test class coverage needs approved metadata or
+  a separate blinded metadata audit; otherwise admission stays `HOLD`. No data
+  or ignored report bytes were opened. Stage 12 execution QA remains pending.
 
 ## Next action
 
-Draft the Stage 12 Charter as a proposal against the accepted Stage 11 contract;
-request separate PI `GO` before any Stage 12 data work. Keep Electricity/target
-test sealed and do not merge Draft PR #20 without separate PI approval.
+Obtain a separate PI decision on the proposed Stage 12 Charter, then source-
+specific access and source/role/split decisions before affected data work. Keep
+Electricity final data and target test sealed; retain DEC-070 release `STOP`.
