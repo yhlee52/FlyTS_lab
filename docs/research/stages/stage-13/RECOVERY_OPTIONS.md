@@ -1,8 +1,11 @@
 # Stage 13 recovery options after PI HOLD
 
-Status: **options for a later PI decision, not an access, contract or
-compute approval**. The current Stage 13 freeze attempt is `HOLD`
-(DEC-099). No option turns the 60 Kelmarsh mapping rows into 60 observed
+Status: **route A selected (DEC-102); DEC-104 and DEC-107 bounded reads
+completed; DEC-110 retains recovery `HOLD`; further source access, admission
+and compute remain unapproved**.
+The current Stage 13 freeze attempt is `HOLD` (DEC-099). Its first bounded
+request was [the ZIP inventory proposal](KELMARSH_ZIP_INVENTORY_REQUEST.md).
+No option turns the 60 Kelmarsh mapping rows into 60 observed
 channels or treats windows, fragments, turbines in one farm or seeds as
 independent farms.
 
@@ -30,3 +33,25 @@ Route C is a clean stop if avoiding more source work is the priority.
 Until a later PI decision, no candidate source is admitted, no protocol or
 compute is frozen, Stage 14 remains closed, H-04 stays `not tested`, and
 Electricity/test and DEC-070 release gates remain unchanged.
+
+## After the DEC-107 first-line result
+
+The [one-range pilot](KELMARSH_2016_SCHEMA_PILOT_RESULT.md) reported **one
+field under a comma parser**. Independent bounded result QA `PASS` confirms
+the claim limit, not the source bytes. A delimiter, header or channel-count
+conclusion cannot follow. DEC-107 source access and DEC-106 QA follow-ups are
+exhausted. The minimum next choices are:
+
+| Choice | Cost and useful answer | Separate gate |
+|---|---|---|
+| **A1. Official format-document screen** (recommended) | Search at most two official owner documentation pages linked from the known Kelmarsh v4 record for CSV dialect/header conventions. No member or measured value read. If there is no clear owner statement, record `unverified` and stop this step. Lowest new data I/O, but cannot prove finite channels. | PI document-search `GO`; no source-file or QA budget is implied. |
+| **A2. Another exact audit-only member prefix** | A new, pre-registered byte range and parser could count possible delimiters without emitting raw values. It repeats a source read and requires a new script, PI access and independent pre-read/result QA budget. It still cannot prove 27 concurrent finite channels. | Separate PI source/role boundary and QA staffing decisions; no automatic repeat of DEC-107. |
+| **C. Retain Stage 13 HOLD** | No more access or effort; current H-01 count and protocol v3 remain untested/unfrozen. | PI chooses to stop this recovery attempt. |
+
+No choice reuses the 2016 audit-only year for formal evidence. The accepted
+Stage 11 contract remains in force unless the PI separately revises it.
+
+DEC-108 authorized A1. Its [one-page result](KELMARSH_FORMAT_DOC_SCREEN.md)
+found no delimiter/header statement or eligible linked owner format document;
+independent bounded [QA PASS](KELMARSH_FORMAT_DOC_QA.md) confirmed the page
+claim limit. The stop-if-unclear rule ended that screen. A2 remains unselected.

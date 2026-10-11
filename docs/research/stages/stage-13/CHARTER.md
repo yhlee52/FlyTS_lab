@@ -191,6 +191,21 @@ authorizes source access, admission, role/split, protocol or compute.
 DEC-100 reallocates the unused conditional pre-freeze follow-up to one
 document-only Stage 13 `HOLD` closeout QA. Later pre-freeze QA needs a new
 specific staffing decision.
+DEC-103 grants one further existing-reviewer follow-up for the exact
+Kelmarsh ZIP inventory pre-read QA only; it does not restore pre-freeze QA.
+DEC-104 separately approves the revised bounded ZIP inventory access after
+that QA PASS; source/use, role and split remain pending.
+DEC-105 permits one more existing-reviewer read-only follow-up for this
+inventory's result QA; it grants no source replay or later pilot QA.
+DEC-106 separately grants one existing-reviewer pre-read QA follow-up for
+the proposed 2016 schema pilot and reserves one result QA follow-up if an
+exact member read is later approved. It excludes all Kelmarsh 2016 turbine
+data from future formal roles. Pre-read QA returned `PASS` on `a0821e4` and
+used that follow-up. DEC-107 separately approves one exact 8,192-byte 2016
+first-line source read after CI/hash preflight; source admission remains absent.
+DEC-109 grants one more existing-reviewer read-only follow-up for the DEC-108
+official format-page screen only. Its bounded QA returned `PASS` and exhausted
+that follow-up; no further source access or review follows.
 
 ## User approval
 

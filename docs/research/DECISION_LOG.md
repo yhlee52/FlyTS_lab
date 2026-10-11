@@ -1,5 +1,203 @@
 # FlyTS Decision Log
 
+## DEC-110 — PI delegates bounded continuation; Director retains Stage 13 HOLD
+
+- Date: 2026-10-12.
+- Decision authority: the PI asked the Research Director to continue Stage 13
+  autonomously and treat ordinary matters as `GO`, while passing or stopping
+  work that takes too long, requires external outreach or material confirmation.
+  This delegation is recorded rather than inferred from silence.
+- Director disposition: finish the already approved DEC-109 document QA and
+  local reproducibility/consistency checks, then retain the existing Stage 13
+  `HOLD`. DEC-108 found no owner-page CSV rule; DEC-107 did not establish a
+  header or channel count. Eligibility, paired held-out H-01 count, protocol
+  v3 and a justified compute envelope are unmet. No numerical relaxation or
+  pseudo-replication substitutes for them.
+- Boundary: no new external source request, owner contact, dataset access,
+  admission, role/split, model work, Electricity/test opening, protocol/budget
+  freeze or Stage 14 entry under this delegation. Draft PR #35 remains unmerged
+  without an explicit merge decision; DEC-070 public release `STOP` persists.
+
+## DEC-109 — PI approves one bounded format-screen QA follow-up
+
+- Date: 2026-10-12.
+- Decision authority: explicit PI `GO` after seeing Draft PR #35's
+  `stages/stage-13/KELMARSH_FORMAT_DOC_SCREEN.md` and
+  `stages/stage-13/KELMARSH_FORMAT_DOC_QA_REQUEST.md`.
+- Staffing: one additional read-only follow-up by the same existing
+  independent reviewer, restricted to the tracked packet and the same
+  official Kelmarsh v4 record page. Six-specialist/two-parallel limits remain.
+- Boundary: no CSV/ZIP preview or source-file access, other page or mirror,
+  contact, measurement, test/Electricity, tracked edit, admission, role/split,
+  protocol/compute, Stage 14, PR merge or release. The reviewer checks the
+  absence of a format statement on the inspected page, not the absence of
+  documentation everywhere. No further follow-up is implied.
+- Outcome: independent bounded document QA `PASS`; see
+  `stages/stage-13/KELMARSH_FORMAT_DOC_QA.md`. The reviewer inspected the
+  same official record only; this follow-up is exhausted.
+
+## DEC-108 — PI approves a minimal official Kelmarsh format-document screen
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI selection of A1 in
+  `stages/stage-13/RECOVERY_OPTIONS.md` after DEC-107 bounded result QA.
+- Scope: read at most two official owner documentation pages linked from the
+  known Kelmarsh v4 record, solely for CSV delimiter and header conventions.
+  Record page URLs, exact assertions and missing/conflicting format detail.
+  If neither page states the format clearly, mark it `unverified` and stop.
+- No ZIP/member/CSV source-file access, measurement, test/Electricity or model
+  score read; no download, source admission, formal role/split, protocol or
+  compute approval. DEC-107's exhausted Range cannot be replayed. Separate
+  independent document QA staffing, if needed, remains gated.
+- Outcome: only the official v4 record was opened; it states no annual-member
+  delimiter/header rule and links no eligible owner format document. See
+  `stages/stage-13/KELMARSH_FORMAT_DOC_SCREEN.md`. A second page was not opened;
+  dialect and header identity remain unverified. Independent QA pending.
+
+## DEC-107 — PI approves one bounded 2016 ZIP first-line read
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` on the exact
+  `stages/stage-13/KELMARSH_2016_SCHEMA_PILOT_PROPOSAL.md` after independent
+  pre-read QA `PASS` on code commit `a0821e4`.
+- Scope: one HTTP Range `bytes=0-8191` from the official v4
+  `Kelmarsh_SCADA_2016_3082.zip` URL, up to 8,192 application bytes in memory,
+  for the preselected turbine-1 2016 member at local offset zero. Compressed
+  measurement bytes may be received and some may be transiently inflated.
+  Emit only a first-line field count/hash with header identity `unverified`.
+- Preconditions: both PR #35 CI `pytest` jobs PASS on the execution head and
+  canonical Git blob/raw worktree script SHA-256 both equal
+  `28dad91664e48a2a8293460dc993c54efa1950a13da7411a8f8eb2022f487c14`
+  immediately before execution. HTTP validation, no fallback/retry/alternate
+  member and no source-byte storage apply. Any failure is `HOLD`.
+- DEC-106 excludes all six turbines' 2016 data from every future formal role.
+  This read does not grant formal source/use admission, role/split, protocol,
+  compute, Stage 14, test/Electricity opening or publication.
+- Outcome: the one Range completed with 8,192 application bytes and a
+  Director-reported one-field first line under a comma parser; see
+  `stages/stage-13/KELMARSH_2016_SCHEMA_PILOT_RESULT.md`. Header identity and
+  channel count remain unverified. The access is exhausted; bounded independent
+  result QA `PASS` is in `stages/stage-13/KELMARSH_2016_SCHEMA_PILOT_RESULT_QA.md`.
+  No response replay occurred and the reserved QA follow-up is exhausted.
+
+## DEC-106 — PI approves audit-only 2016 exclusion and pilot preparation
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` on the bounded
+  `stages/stage-13/KELMARSH_2016_SCHEMA_PILOT_PROPOSAL.md` after DEC-105 QA.
+- Entire Kelmarsh 2016 year for all six turbines is audit-only and excluded
+  from every future formal pretrain, development, final and test role.
+  This is a narrow exclusion, not source admission or a formal split.
+- Prepare the preselected turbine-1, one-Range 8,192-byte CSV-header pilot
+  script and synthetic tests. One additional existing-reviewer read-only
+  pre-read QA and one subsequent result QA are approved; the latter is
+  conditional on a separately authorized execution. Six-specialist and
+  two-parallel limits are unchanged.
+- **No member or signal access yet.** Exact script/byte hash, pre-read QA PASS
+  and a separate PI source-file access decision are still required. No other
+  year/member, formal source/use, role/split, protocol, compute, Stage 14 or
+  publication gate is granted.
+- Outcome to date: independent pre-read QA `PASS` on PR #35 head `a0821e4`
+  after two safety fixes. See
+  `stages/stage-13/KELMARSH_2016_SCHEMA_PILOT_PREREAD_QA.md`. The pre-read
+  follow-up is used. DEC-107 later approved and exhausted the separate source
+  access; the reserved result QA follow-up is now being used.
+
+## DEC-105 — PI approves one bounded ZIP-inventory result QA follow-up
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` after Draft PR #35's 1,198-byte
+  Director report and exact
+  `stages/stage-13/KELMARSH_ZIP_INVENTORY_RESULT_QA_REQUEST.md` were shown.
+- Staffing: one further read-only follow-up by the same existing independent
+  reviewer to check the DEC-104 report, code/hash/CI provenance, directory
+  summary and claim limits. The reviewer may run local synthetic validators.
+  The specialist count and parallel ceiling remain unchanged.
+- Boundary: no Zenodo/source replay, member or signal read, test/Electricity,
+  tracked edit, source/use, role/split, protocol/budget, Stage 14 or release.
+  Source responses and span hashes remain Director-reported; this decision
+  does not make them independently observed.
+- Outcome: independent bounded report/claim QA `PASS`; see
+  `stages/stage-13/KELMARSH_ZIP_INVENTORY_RESULT_QA.md`. The reviewer did not
+  replay either Range; this follow-up is exhausted.
+
+## DEC-104 — PI approves revised two-Range ZIP inventory access
+
+- Date: 2026-10-11.
+- Decision authority: two explicit PI `GO` answers after the DEC-103
+  one-Range flaw, revised Draft PR #35 request, and independent pre-read QA
+  `PASS` were presented. The second answer explicitly accepts the residual
+  possibility of at most 131,050 opaque bytes, possibly compressed member
+  bytes, if a malformed/spoofed ZIP end record points to the wrong span.
+- Access: only Cubico Kelmarsh v4 `Kelmarsh_SCADA_2016_3082.zip` at the
+  locked 97,915,553-byte identity. Request the final 22 bytes first; if the
+  standard no-comment EOCD passes, request only its declared central
+  directory. At most two HTTP Ranges and 131,072 application bytes total,
+  memory only, no retry or full-file fallback. Reject and HOLD on any
+  response, layout or parser failure; do not decode or emit member payload.
+- Boundary: DEC-103's original one-Range access remains unused. No further
+  member/signal access, source/use, role/split admission, result QA staffing,
+  protocol/budget freeze, Stage 14, test/Electricity or release approval.
+- Outcome: the one approved execution read 22 EOCD plus 1,176 central
+  directory application bytes, listing six turbine-data and six status
+  members. See `stages/stage-13/KELMARSH_ZIP_INVENTORY_RESULT.md` for the
+  Director report; independent result QA is pending. The cap is exhausted.
+
+## DEC-103 — PI approves one pre-read QA and one bounded ZIP-tail read
+
+- Date: 2026-10-11.
+- Decision authority: two explicit PI `GO` answers on the exact Draft PR #35
+  `stages/stage-13/KELMARSH_ZIP_INVENTORY_REQUEST.md` after CI passed.
+- Staffing: one additional read-only follow-up by an existing independent
+  reviewer for the request, script and synthetic tests before execution.
+  This is a specific exception beyond DEC-100's exhausted follow-up ceiling;
+  no new specialist or concurrent-agent expansion is approved.
+- Source access: conditional on that pre-read QA `PASS` and byte-exact code
+  hash, one HTTP Range request for bytes `97784481-97915552` (131,072
+  application bytes) of only Cubico Kelmarsh v4's
+  `Kelmarsh_SCADA_2016_3082.zip`. Parse only ZIP directory metadata in
+  memory; no retry or full archive fallback.
+- Pre-read QA found that the broad suffix could include compressed member
+  bytes. The Director withheld this exact access before execution and
+  proposed a narrower two-Range design; it needs a new PI access decision.
+- The one authorized reviewer follow-up returned `PASS` on the revised
+  two-Range code/request at `f98c5ca`, with the malformed-ZIP opaque-byte
+  limit explicit. See `stages/stage-13/KELMARSH_ZIP_INVENTORY_PREREAD_QA.md`.
+  This verdict does not approve the revised source access.
+- Boundary: no member/signal/test/Electricity/model access, source/use,
+  role/split admission, result QA extension, protocol/budget freeze, Stage 14
+  entry or release. Failure of the exact request remains `HOLD`.
+
+## DEC-102 — PI selects the lowest-byte route preserving Stage 11
+
+- Date: 2026-10-11.
+- Decision authority: after all Stage 13 PRs were merged, the PI explicitly
+  selected recovery route A: retain the accepted H-01–H-03 contract and begin
+  with the smallest bounded Kelmarsh eligibility audit.
+- Scope: prepare a proposal for the owner-licensed candidate's smallest
+  annual archive before any new source read. The Director checked the
+  official record page and record-level file metadata only; no SCADA file,
+  member, measurement, model output, test or Electricity item was read.
+- Boundary: this route choice does not lift DEC-099 `HOLD` or approve a
+  source-file range request, staffing expansion, source/use, role, split,
+  protocol, compute, Stage 14 or release. The exact first read and its
+  independent pre-read QA require the separate gates in
+  `stages/stage-13/KELMARSH_ZIP_INVENTORY_REQUEST.md`.
+
+## DEC-101 — PI authorizes integration of all open Stage 13 PRs
+
+- Date: 2026-10-11.
+- Decision authority: the PI explicitly requested that every open PR be
+  merged without conflicts before a lowest-cost Stage 13 recovery.
+- Outcome: PRs #23–34 were merged in dependency order using merge commits.
+  Each PR was retargeted to `main`, checked `CLEAN`/`MERGEABLE` with successful
+  CI, then merged. No open PR remained. Local and remote `main` are
+  `c87eaad20b5391955673c1e9cdddb7ba1c402035`; its tree matches the
+  former PR #34 head. Stage 09 tracked files are unchanged.
+- Boundary: integration is not source access/admission, a changed H-01/Q1
+  contract, protocol/budget freeze, Stage 14 entry or public release. The
+  Stage 13 `HOLD` in DEC-099 remains until a separate recovery decision.
+
 ## DEC-100 — PI reallocates the unused Stage 13 QA follow-up to HOLD closeout
 
 - Date: 2026-10-11.

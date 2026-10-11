@@ -1,6 +1,6 @@
 # FlyTS Current Research State
 
-Updated: 2026-10-11
+Updated: 2026-10-12
 
 ## Current stage
 
@@ -12,12 +12,13 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 `PASS` and bounded PI `GO` (DEC-079); DEC-078 kept three existing roles and
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
 document-only QA `PASS`/PI `GO` (DEC-082); PI froze Stage 13 at `HOLD`
-(DEC-099) with document QA `PASS` (DEC-100); PRs #23–34 remain Draft.
+(DEC-099) with document QA `PASS` (DEC-100); PRs #23–34 merged (DEC-101).
+PI chose route A; DEC-107/109 bounded QA PASS; DEC-110 retains Stage 13 HOLD.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Stage 13 closed HOLD: no v3/budget freeze or Stage 14 handoff.
+Stage 13 HOLD; bounded ZIP inventory QA PASS, source admission pending; no Stage 14.
 
 ## Canonical references
 
@@ -29,9 +30,9 @@ Stage 13 closed HOLD: no v3/budget freeze or Stage 14 handoff.
 - `docs/research/stages/stage-12/RESULT.md` (QA PASS; PI GO)
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
-- `docs/research/stages/stage-13/RESULT.md` (PI HOLD; QA pending)
+- `docs/research/stages/stage-13/RESULT.md` (PI HOLD; document QA PASS)
 - `docs/research/stages/stage-13/RECOVERY_OPTIONS.md` (unapproved routes)
-- `docs/research/DECISION_LOG.md` (DEC-070–100)
+- `docs/research/DECISION_LOG.md` (DEC-070–110)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -139,12 +140,11 @@ Stage 13 closed HOLD: no v3/budget freeze or Stage 14 handoff.
   marking Bike `temp` semantics `conflict`; no source or Stage 13 gate is implied.
 - PR #22 merged the audit packet at `392b785` after PR #21 integration. Its
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
-- Stage 13 PRs #23–33 are Draft with CI passing; #34 closeout CI pending.
-- DEC-096/097 mapping has 60 titles and static file six turbine rows;
-  initial signal-ID emission remains an ambiguous-scope QA finding.
-  DEC-098 result QA PASS checked claim limits, not network bytes. No
-  concurrent count, source admission, protocol v3 or compute freeze exists.
+- DEC-104 read 1,198 ZIP-directory bytes: six turbine-data and six status
+  members, with bounded DEC-105 QA PASS. DEC-107 read one 8,192-byte member
+  prefix; one comma field is not a channel count. Both responses remain
+  Director-reported; source admission, protocol v3 and compute remain HOLD.
 
 ## Next action
 
-Choose a separately gated recovery or Phase 02 HOLD; Stage 14 NO GO.
+Stage 13 recovery HOLD; no Stage 14 or further source access under DEC-110.
