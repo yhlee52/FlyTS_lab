@@ -1,9 +1,11 @@
 # Stage 13 Charter proposal — Protocol v3 and Compute Budget Freeze
 
-Status: proposed
+Status: approved
 
-PI Charter decision pending. This document requests bounded Stage 13 work. It
-does not approve a protocol, dataset access, compute, training, evaluation or
+PI Charter `GO` was granted on 2026-10-11 (DEC-082), after independent
+document-only QA `PASS` and Draft PR #23 review. This activates the bounded
+Charter; it does not approve candidate discovery, source access/admission,
+role/split changes, a protocol, compute budget, training, evaluation or
 final/test opening.
 
 Proposal baseline: PR #21 merged at
@@ -127,12 +129,30 @@ result is a later scientific outcome, not a reason to rewrite this design.
 
 | Decision | Required before | State |
 |---|---|---|
-| Stage 13 Charter `GO`/`REVISE`/`HOLD` | Units 1–5 | pending |
+| Stage 13 Charter `GO`/`REVISE`/`HOLD` | Units 1–5, subject to their additional gates | `GO`, DEC-082 |
 | Bounded metadata-only candidate search | Any search for a new source | pending |
 | Candidate access, then source/use, role and split | First access/admission or change for each named source | pending; no candidate selected |
 | Non-final/synthetic resource measurement, if needed | That measurement | pending |
 | Exact v3 and selected compute envelope `GO` | Freeze/Stage 14 handoff | pending |
 | Stage 15 execution; Stage 17 H-04/final opening; publication | Separate later stages | pending; publication `STOP` DEC-070 |
+
+## Proposed candidate discovery request — PI decision pending
+
+Search at most three official public dataset landing pages and their linked
+license, schema and documentation pages for a development-held-out candidate.
+Record only publisher-stated rights, original entity/group count and dependence,
+native channel count and ordering, cadence/missingness, available time/group
+split information, and whether same-record nested seen/unseen views appear
+possible. Prioritize a source with at least 11 genuine channels; upper-count
+extrapolation beyond the currently seen maximum 26 requires at least 27.
+These are screening criteria, not admission or a promise of statistical power.
+
+This request excludes archives, downloads, mirrors, sample tables, raw or
+prepared arrays, test labels/signals/scores, model outputs, and performance-
+based candidate ranking. The output is a short metadata-only shortlist with
+`confirmed`/`unverified`/`conflict` fields and source links. Each named
+candidate's first deeper read/download, source/use, role and split still need
+separate PI decisions. No search begins until the PI decides this request.
 
 ## Agent plan and budget
 
@@ -159,6 +179,7 @@ formal matrix, checkpoint policy or low/medium/high option is frozen here.
 
 ## User approval
 
-- Charter decision: pending.
+- Charter decision: `GO`, DEC-082.
+- Candidate discovery decision: pending on the bounded request above.
 - Source/access/admission decisions: pending by named candidate.
 - Protocol and compute decision: pending after independent pre-freeze QA.

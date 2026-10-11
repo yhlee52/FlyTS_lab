@@ -1,5 +1,20 @@
 # FlyTS Decision Log
 
+## DEC-082 — PI approves the Stage 13 Charter
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` in response to the Stage 13 Charter
+  proposal in Draft PR #23 after independent document-only QA `PASS` and two
+  successful GitHub `pytest` checks on `89e49c5`.
+- Decision: activate the bounded Charter for protocol-v3 and compute-budget
+  planning, following DEC-081's new-data-first direction. An inadequate
+  held-out paired-count source leaves the complete freeze at `HOLD`.
+- Boundary: candidate discovery, each new source's access/admission, role and
+  split, non-final resource measurement, exact protocol/budget freeze, Stage
+  14/15 execution, final/test opening, Draft PR #23 merge and publication
+  remain separate gates. Stage 09 `HOLD`/QA `FAIL`, H-04 `not tested` and
+  DEC-070 public-release `STOP` remain unchanged.
+
 ## DEC-081 — PI selects the Stage 13 planning path and requests a Charter proposal
 
 - Date: 2026-10-11.

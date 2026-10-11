@@ -4,28 +4,21 @@ Updated: 2026-10-11
 
 ## Current stage
 
-Stage 08 closed with independent QA `PASS`. Stage 09 closed at PI-accepted
-`HOLD` (DEC-058) with DEC-057 final reporter QA `FAIL`; its PR #15 merged without
-changing the reviewed tree. No numerical freeze, formal training, formal/final
-analysis or Electricity opening occurred. H-01–H-03 have no formal result; H-04
-is `not tested`. Stage 10 engineering closeout merged through PR #18, but DEC-070
-stopped M10B public release. PR #19 merged the proposed Phase 02 plan into
-`main` at `52fd44af0145e19d5f26138382bb0661e975eb09`. DEC-071 approved its
-objective; DEC-072 authorized Stage 11 document-only contract work. Stage 11
-independent QA returned `PASS` after one PI-authorized extra review (DEC-073),
-and the PI accepted the Stage 11 result under DEC-074. Document-only PR #20
-subsequently merged into `main` at
-`4aed1926650fe304a818682a718e6b0d608367ba` on 2026-10-11.
-Stage 12 closed with independent audit QA `PASS` and PI bounded result `GO`
-(DEC-079). DEC-078 separately decided the three existing source uses, roles
-and splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter
-has proposal QA `PASS`, with PI `GO` pending. Electricity remains sealed.
+Stage 09 closed at PI-accepted `HOLD` (DEC-058) with final reporter QA `FAIL`
+(DEC-057); H-01–H-03 have no formal result and H-04 is `not tested`. Stage 10
+CPU/offline engineering did not override DEC-070 public-release `STOP`.
+Stage 11's qualification contract received independent QA `PASS` and PI `GO`
+(DEC-074); PR #20 merged at `4aed192`. Stage 12 closed with independent QA
+`PASS` and bounded PI `GO` (DEC-079); DEC-078 kept three existing roles and
+splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
+document-only QA `PASS` and PI `GO` (DEC-082); Draft PR #23 remains unmerged.
+Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Seek PI review of the Stage 13 Charter proposal. DEC-081 records the new-data-
-first planning path, while Charter, source access/admission, protocol and
-compute require separate decisions. DEC-070 release `STOP` remains in force.
+Prepare a bounded metadata-only candidate-discovery request for PI review.
+DEC-081 sets the new-data-first path; DEC-082 approves the Charter alone.
+Candidate search/access/admission, protocol and compute remain separately gated.
 
 ## Canonical references
 
@@ -37,8 +30,8 @@ compute require separate decisions. DEC-070 release `STOP` remains in force.
 - `docs/research/stages/stage-12/ADEQUACY_PACKET.md` (bounded evidence)
 - `docs/research/stages/stage-12/RESULT.md` (QA PASS; PI GO)
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
-- `docs/research/stages/stage-13/CHARTER.md` (proposal; PI decision pending)
-- `docs/research/DECISION_LOG.md` (DEC-070–081)
+- `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
+- `docs/research/DECISION_LOG.md` (DEC-070–082)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -87,10 +80,12 @@ compute require separate decisions. DEC-070 release `STOP` remains in force.
   scientific or release gate.
 - DEC-081 chooses new-data-first planning and requests a Charter proposal;
   it grants no Stage 13 or data access approval.
+- DEC-082 approves the Stage 13 Charter, not candidate discovery/access,
+  admission, protocol/budget freeze, execution, final opening or PR merge.
 
 ## Open questions
 
-- Stage 13 Charter, new candidate access/admission, minimum coverage, statistical
+- Candidate discovery/access/admission, minimum coverage, statistical
   thresholds, seed/matrix, budget, H-04 target, CUDA and final open remain gated.
 
 ## Active risks
@@ -141,10 +136,11 @@ compute require separate decisions. DEC-070 release `STOP` remains in force.
   marking Bike `temp` semantics `conflict`; no source or Stage 13 gate is implied.
 - PR #22 merged the audit packet at `392b785` after PR #21 integration. Its
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
-- Stage 13 Charter has document-only QA `PASS`; Draft PR #23 awaits PI review.
+- Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
+  `pytest` passes; Draft PR #23 remains open and unmerged.
 
 ## Next action
 
-Obtain document QA and PI decision on the Stage 13 Charter proposal. Name any
-new candidate in a separate access request. Keep Electricity/test sealed and
-DEC-070 release `STOP`.
+Seek PI decision on the Charter's bounded metadata-only candidate search.
+Named-source access/admission remains separate. Keep Electricity/test sealed
+and DEC-070 release `STOP`.
