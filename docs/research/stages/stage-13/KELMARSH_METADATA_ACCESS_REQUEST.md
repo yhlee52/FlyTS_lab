@@ -1,8 +1,14 @@
 # Proposed Kelmarsh mapping/static metadata access gate
 
-Status: **request only; PI access decision pending**. Prepared under the
-DEC-095 official-document screen. This proposal does not admit Kelmarsh,
+Status: **two-file metadata access GO, DEC-096; one bounded execution
+completed and its 3,957-byte cap exhausted**. Prepared under the
+DEC-095 official-document screen. This approval does not admit Kelmarsh,
 assign a role/split or change Stage 13 freeze `HOLD`.
+
+Execution and independent conditional QA are recorded in
+`KELMARSH_METADATA_AUDIT.md` and `KELMARSH_METADATA_AUDIT_QA.md`. The
+prospective wording below records what the PI approved at the time; it is
+not continuing permission for another read.
 
 ## Exact candidate and purpose
 
@@ -36,6 +42,6 @@ DEC-070 public release `STOP` remains.
 
 ## PI decision
 
-- Mapping/static file access: **pending** (`GO` / `REVISE` / `HOLD`).
+- Mapping/static file access: **GO**, DEC-096, exact scope above.
 - Source/use admission: **pending** (not decided by this request).
 - Role and split: **pending** (not decided by this request).
