@@ -11,14 +11,14 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 (DEC-074); PR #20 merged at `4aed192`. Stage 12 closed with independent QA
 `PASS` and bounded PI `GO` (DEC-079); DEC-078 kept three existing roles and
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
-document-only QA `PASS` and PI `GO` (DEC-082); Draft PR #23 remains unmerged.
+document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23/#24 are open.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Run the DEC-083 approved metadata-only search of at most three official-source
-candidates. DEC-081/082 set the path and Charter; candidate access/admission,
-protocol and compute remain separately gated.
+Review the DEC-083 three-source metadata shortlist and a named-source access
+request. Candidate access/admission, protocol and compute remain separately
+gated after the DEC-082 Charter `GO`.
 
 ## Canonical references
 
@@ -31,6 +31,7 @@ protocol and compute remain separately gated.
 - `docs/research/stages/stage-12/RESULT.md` (QA PASS; PI GO)
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
+- `docs/research/stages/stage-13/CANDIDATE_SHORTLIST.md` (metadata; QA PASS)
 - `docs/research/DECISION_LOG.md` (DEC-070–083)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
@@ -139,9 +140,11 @@ protocol and compute remain separately gated.
 - PR #22 merged the audit packet at `392b785` after PR #21 integration. Its
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
-  `pytest` passes; Draft PR #23 remains open and unmerged.
+  `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
+- DEC-083 screens PhysioNet EEG (64 nominal channels), UCI PAMAP2 (at most 39
+  candidate IMU axes) and UCI Daily/Sports (45); document QA PASS only.
 
 ## Next action
 
-Prepare the approved three-candidate metadata-only shortlist and named-source
-access requests. Keep Electricity/test sealed and DEC-070 release `STOP`.
+Seek PI decision on the proposed PhysioNet sidecar inventory; source access,
+admission and split remain pending. Keep Electricity/test and DEC-070 `STOP`.
