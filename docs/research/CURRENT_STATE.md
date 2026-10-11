@@ -18,13 +18,14 @@ subsequently merged into `main` at
 `4aed1926650fe304a818682a718e6b0d608367ba` on 2026-10-11.
 Stage 12 closed with independent audit QA `PASS` and PI bounded result `GO`
 (DEC-079). DEC-078 separately decided the three existing source uses, roles
-and splits. Electricity signals and model scores remain sealed.
+and splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter
+has proposal QA `PASS`, with PI `GO` pending. Electricity remains sealed.
 
 ## Current goal
 
-Hand off Stage 12 evidence for a proposed Stage 13 Charter. Stage 13 scope,
-protocol, compute and any new data access need separate PI decisions. DEC-070
-no-release boundary remains in force.
+Seek PI review of the Stage 13 Charter proposal. DEC-081 records the new-data-
+first planning path, while Charter, source access/admission, protocol and
+compute require separate decisions. DEC-070 release `STOP` remains in force.
 
 ## Canonical references
 
@@ -36,7 +37,8 @@ no-release boundary remains in force.
 - `docs/research/stages/stage-12/ADEQUACY_PACKET.md` (bounded evidence)
 - `docs/research/stages/stage-12/RESULT.md` (QA PASS; PI GO)
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
-- `docs/research/DECISION_LOG.md` (DEC-070–080)
+- `docs/research/stages/stage-13/CHARTER.md` (proposal; PI decision pending)
+- `docs/research/DECISION_LOG.md` (DEC-070–081)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -83,10 +85,12 @@ no-release boundary remains in force.
   DEC-079 accepts the bounded Stage 12 result, not Stage 13 execution.
 - DEC-080 separately authorizes merging the two Stage 12 PRs; it changes no
   scientific or release gate.
+- DEC-081 chooses new-data-first planning and requests a Charter proposal;
+  it grants no Stage 13 or data access approval.
 
 ## Open questions
 
-- New candidate access/admission, Stage 13 scope, minimum coverage, statistical
+- Stage 13 Charter, new candidate access/admission, minimum coverage, statistical
   thresholds, seed/matrix, budget, H-04 target, CUDA and final open remain gated.
 
 ## Active risks
@@ -135,11 +139,12 @@ no-release boundary remains in force.
   README versus the current UCI page; physical-unit semantics remain unverified.
 - Independent Stage 12 audit QA returned `PASS` on the bounded packet after
   marking Bike `temp` semantics `conflict`; no source or Stage 13 gate is implied.
-- PR #22 carries the audit packet against `main` after PR #21 integration. Its
+- PR #22 merged the audit packet at `392b785` after PR #21 integration. Its
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
+- Stage 13 Charter proposal has document-only independent QA `PASS`.
 
 ## Next action
 
-Propose the Stage 13 Charter and any candidate-specific access packets for PI
-review. Keep Electricity final data and target test sealed; retain DEC-070
-release `STOP`.
+Obtain document QA and PI decision on the Stage 13 Charter proposal. Name any
+new candidate in a separate access request. Keep Electricity/test sealed and
+DEC-070 release `STOP`.

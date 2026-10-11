@@ -186,7 +186,8 @@ Scientific success is valid evidence, not necessarily a positive model result.
 | Phase objective | Drafting this stage plan | `GO`, Option A, 2026-09-30 (DEC-071) |
 | Phase stage plan and Stage 11 Charter | Beginning Stage 11 implementation | `GO` requested by PI on 2026-10-11 for Stage 11 document work only |
 | Stage 11 result | Drafting a Stage 12 Charter | `GO`, 2026-10-11 (DEC-074); does not authorize data work |
-| Stage 12 Charter and each dataset/role/split | Any Stage 12 data access or changed source/role/split | pending separate PI decisions |
+| Stage 12 Charter and each dataset/role/split | Any Stage 12 data access or changed source/role/split | Charter `GO` DEC-075; bounded three-source access DEC-076/077 and source/use, role, split decisions DEC-078; Stage 12 result `GO` DEC-079. New sources/changes still require separate PI decisions. |
+| Stage 13 Charter and candidate discovery/access | Stage 13 work beyond a proposal or any new-source search/read | Charter pending; candidate discovery, access, admission, role and split each require separate PI decisions. |
 | Protocol v3 and compute budget | Any formal training | pending Stage 13 result |
 | Formal execution | Starting Stage 15 | pending preflight QA and explicit PI `GO` |
 | H-04/final unseal | Any target-test or Electricity final access | pending Stage 17 and explicit PI `GO` |

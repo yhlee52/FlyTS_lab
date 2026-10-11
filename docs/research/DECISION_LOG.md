@@ -1,5 +1,19 @@
 # FlyTS Decision Log
 
+## DEC-081 — PI selects the Stage 13 planning path and requests a Charter proposal
+
+- Date: 2026-10-11.
+- Decision authority: the PI selected the new-data-first path when presented
+  with the Stage 12 held-out count gap, then requested implementation of the
+  Stage 13 execution plan.
+- Direction: propose a Stage 13 Charter and seek separate source-specific
+  access/admission before any full H-01–H-03 protocol-v3 freeze. If no eligible
+  held-out paired-count source is admitted, report freeze `HOLD`.
+- Boundary: this direction is **not** Stage 13 Charter `GO`, candidate
+  access/admission, role/split change, protocol/budget freeze, model execution,
+  final/test opening, PR merge or publication. DEC-079 and DEC-070 remain in
+  force. The proposed Charter requires its own PI decision.
+
 ## DEC-080 — PI authorizes integration of the two Stage 12 PRs
 
 - Date: 2026-10-11.
@@ -8,7 +22,8 @@
 - Sequence: merge Charter PR #21 first, then retarget audit PR #22 to `main`,
   verify its scope and checks, and merge at the verified head. PR #21 merged
   into `main` at `f83f8941afb0a7859043253dc5c4251d953bed56` with head
-  `a14adc1be8a1700c0f7a8e7bee044b2a8aa8ac33` and passing checks.
+  `a14adc1be8a1700c0f7a8e7bee044b2a8aa8ac33` and passing checks. PR #22
+  then merged at `392b7853cf5e6ef022ab943fb8e6dd3481d13e7d`.
 - Boundary: integration changes no dataset role/split, Stage 13 authorization,
   final/test access, model result, or DEC-070 release `STOP`.
 
