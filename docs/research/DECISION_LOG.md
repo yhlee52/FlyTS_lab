@@ -1,5 +1,21 @@
 # FlyTS Decision Log
 
+## DEC-102 — PI selects the lowest-byte route preserving Stage 11
+
+- Date: 2026-10-11.
+- Decision authority: after all Stage 13 PRs were merged, the PI explicitly
+  selected recovery route A: retain the accepted H-01–H-03 contract and begin
+  with the smallest bounded Kelmarsh eligibility audit.
+- Scope: prepare a proposal for the owner-licensed candidate's smallest
+  annual archive before any new source read. The Director checked the
+  official record page and record-level file metadata only; no SCADA file,
+  member, measurement, model output, test or Electricity item was read.
+- Boundary: this route choice does not lift DEC-099 `HOLD` or approve a
+  source-file range request, staffing expansion, source/use, role, split,
+  protocol, compute, Stage 14 or release. The exact first read and its
+  independent pre-read QA require the separate gates in
+  `stages/stage-13/KELMARSH_ZIP_INVENTORY_REQUEST.md`.
+
 ## DEC-101 — PI authorizes integration of all open Stage 13 PRs
 
 - Date: 2026-10-11.

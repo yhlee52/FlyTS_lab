@@ -1,8 +1,9 @@
 # Stage 13 recovery options after PI HOLD
 
-Status: **options for a later PI decision, not an access, contract or
-compute approval**. The current Stage 13 freeze attempt is `HOLD`
-(DEC-099). No option turns the 60 Kelmarsh mapping rows into 60 observed
+Status: **route A selected as a direction (DEC-102); source access and
+compute remain unapproved**. The current Stage 13 freeze attempt is `HOLD`
+(DEC-099). Its first bounded request is
+[the ZIP inventory proposal](KELMARSH_ZIP_INVENTORY_REQUEST.md). No option turns the 60 Kelmarsh mapping rows into 60 observed
 channels or treats windows, fragments, turbines in one farm or seeds as
 independent farms.
 

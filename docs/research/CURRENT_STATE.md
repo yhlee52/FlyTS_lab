@@ -13,11 +13,12 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
 document-only QA `PASS`/PI `GO` (DEC-082); PI froze Stage 13 at `HOLD`
 (DEC-099) with document QA `PASS` (DEC-100); PRs #23–34 merged (DEC-101).
+PI selected route A for bounded Kelmarsh eligibility (DEC-102), not access.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Stage 13 HOLD; lowest-cost recovery pending; no v3/budget or Stage 14 handoff.
+Stage 13 HOLD; route A first access/QA gates pending; no v3 or Stage 14 handoff.
 
 ## Canonical references
 
@@ -31,7 +32,7 @@ Stage 13 HOLD; lowest-cost recovery pending; no v3/budget or Stage 14 handoff.
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
 - `docs/research/stages/stage-13/RESULT.md` (PI HOLD; document QA PASS)
 - `docs/research/stages/stage-13/RECOVERY_OPTIONS.md` (unapproved routes)
-- `docs/research/DECISION_LOG.md` (DEC-070–101)
+- `docs/research/DECISION_LOG.md` (DEC-070–102)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -139,7 +140,6 @@ Stage 13 HOLD; lowest-cost recovery pending; no v3/budget or Stage 14 handoff.
   marking Bike `temp` semantics `conflict`; no source or Stage 13 gate is implied.
 - PR #22 merged the audit packet at `392b785` after PR #21 integration. Its
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
-- PRs #23–34 merged, CI passed, main `c87eaad` (DEC-101); HOLD remains.
 - DEC-096/097 mapping has 60 titles and static file six turbine rows;
   initial signal-ID emission remains an ambiguous-scope QA finding.
   DEC-098 result QA PASS checked claim limits, not network bytes. No
@@ -147,4 +147,4 @@ Stage 13 HOLD; lowest-cost recovery pending; no v3/budget or Stage 14 handoff.
 
 ## Next action
 
-Select a separately gated lowest-cost recovery; Stage 14 remains NO GO.
+Decide the exact 2016 ZIP-tail access and one pre-read QA; Stage 14 NO GO.
