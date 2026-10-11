@@ -1,5 +1,48 @@
 # FlyTS Decision Log
 
+## DEC-083 — PI approves bounded Stage 13 metadata-only candidate discovery
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI reply to the Charter's separate discovery
+  request after Stage 13 Charter `GO` (DEC-082).
+- Approved scope: search official public dataset landing, rights, schema and
+  documentation pages for at most three held-out H-01/H-02 candidates; record
+  source links, channel and independent subject/group facts, and unresolved
+  eligibility fields in a metadata-only shortlist.
+- Boundary: no archive/download/mirror, sample value or array, test label or
+  signal, Electricity or model score access. This decision admits no source,
+  role or split and approves no protocol, compute, execution, PR merge or
+  public release. Each named candidate needs another PI access decision.
+
+## DEC-082 — PI approves the Stage 13 Charter
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` in response to the Stage 13 Charter
+  proposal in Draft PR #23 after independent document-only QA `PASS` and two
+  successful GitHub `pytest` checks on `89e49c5`.
+- Decision: activate the bounded Charter for protocol-v3 and compute-budget
+  planning, following DEC-081's new-data-first direction. An inadequate
+  held-out paired-count source leaves the complete freeze at `HOLD`.
+- Boundary: candidate discovery, each new source's access/admission, role and
+  split, non-final resource measurement, exact protocol/budget freeze, Stage
+  14/15 execution, final/test opening, Draft PR #23 merge and publication
+  remain separate gates. Stage 09 `HOLD`/QA `FAIL`, H-04 `not tested` and
+  DEC-070 public-release `STOP` remain unchanged.
+
+## DEC-081 — PI selects the Stage 13 planning path and requests a Charter proposal
+
+- Date: 2026-10-11.
+- Decision authority: the PI selected the new-data-first path when presented
+  with the Stage 12 held-out count gap, then requested implementation of the
+  Stage 13 execution plan.
+- Direction: propose a Stage 13 Charter and seek separate source-specific
+  access/admission before any full H-01–H-03 protocol-v3 freeze. If no eligible
+  held-out paired-count source is admitted, report freeze `HOLD`.
+- Boundary: this direction is **not** Stage 13 Charter `GO`, candidate
+  access/admission, role/split change, protocol/budget freeze, model execution,
+  final/test opening, PR merge or publication. DEC-079 and DEC-070 remain in
+  force. The proposed Charter requires its own PI decision.
+
 ## DEC-080 — PI authorizes integration of the two Stage 12 PRs
 
 - Date: 2026-10-11.
@@ -8,7 +51,8 @@
 - Sequence: merge Charter PR #21 first, then retarget audit PR #22 to `main`,
   verify its scope and checks, and merge at the verified head. PR #21 merged
   into `main` at `f83f8941afb0a7859043253dc5c4251d953bed56` with head
-  `a14adc1be8a1700c0f7a8e7bee044b2a8aa8ac33` and passing checks.
+  `a14adc1be8a1700c0f7a8e7bee044b2a8aa8ac33` and passing checks. PR #22
+  then merged at `392b7853cf5e6ef022ab943fb8e6dd3481d13e7d`.
 - Boundary: integration changes no dataset role/split, Stage 13 authorization,
   final/test access, model result, or DEC-070 release `STOP`.
 
