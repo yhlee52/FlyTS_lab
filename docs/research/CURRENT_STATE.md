@@ -16,8 +16,8 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-DEC-092 stopped the PhysioNet contact path; source/use remains `HOLD`.
-Clearly reusable open-source screening is the next gated work.
+DEC-093's three non-human publisher-document screens found no full H-01 count
+remedy; shortlist QA is pending. PhysioNet source/use remains `HOLD`.
 
 ## Canonical references
 
@@ -29,7 +29,7 @@ Clearly reusable open-source screening is the next gated work.
 - `docs/research/stages/stage-12/RESULT.md` (QA PASS; PI GO)
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
-- `docs/research/stages/stage-13/PHYSIONET_SIGNAL_AUDIT.md` (bounded)
+- `docs/research/stages/stage-13/OPEN_LICENSE_CANDIDATE_SCREEN.md` (screen)
 - `docs/research/stages/stage-13/PHYSIONET_SOURCE_USE_GATE.md` (rights HOLD)
 - `docs/research/DECISION_LOG.md` (DEC-070–089)
 - `docs/research/HYPOTHESES.md`
@@ -82,9 +82,8 @@ Clearly reusable open-source screening is the next gated work.
   admission, protocol/budget freeze, execution, final opening or PR merge.
 - DEC-083–085 permit three official-page candidates, PhysioNet sidecars and
   six specified EDF headers only; signal/access/admission/role/split gated.
-- DEC-086 expands staffing; DEC-087/088 permit six EDF streams and audit-only
-  exclusion; DEC-089 allowed one capped retry. DEC-090 permits two QA reviews;
-  DEC-091 drafted but DEC-092 stopped the rights inquiry. Admission/split gated.
+- DEC-086–090 cover bounded staffing, six EDF/audit-only access and retry.
+  DEC-091 inquiry stopped under DEC-092; DEC-093 permits three official screens.
 
 ## Open questions
 
@@ -141,10 +140,10 @@ Clearly reusable open-source screening is the next gated work.
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
   `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
-- Draft PR #28 records six DEC-089 publisher hash matches over 11,515,296
-  retry EDF bytes; QA `PASS` covers audit readiness, while rights remain HOLD.
+- Draft PR #28 records bounded PhysioNet QA `PASS`; rights remain HOLD.
+- DEC-093's three open-license screens show channel/time or rights gaps.
 
 ## Next action
 
-Record the separate metadata-search GO before screening open sources.
+Seek independent screen QA; further search needs a fresh PI gate.
 Keep Electricity/test sealed, H-01 unfrozen and DEC-070 `STOP`.
