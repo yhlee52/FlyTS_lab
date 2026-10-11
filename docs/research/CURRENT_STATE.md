@@ -16,9 +16,9 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Seek separate PI decisions on the Data-reviewed, independently QA-passed
-PhysioNet signal-access proposal and audit-only subject exclusion. Source/use
-admission, formal role/split, protocol and compute remain separately gated.
+Review one same-file transfer retry after the DEC-087/088 first audit attempt
+was interrupted without an EDF byte ledger. Source admission, formal split,
+protocol and compute remain separately gated.
 
 ## Canonical references
 
@@ -32,7 +32,7 @@ admission, formal role/split, protocol and compute remain separately gated.
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
 - `docs/research/stages/stage-13/CANDIDATE_SHORTLIST.md` (metadata; QA PASS)
 - `docs/research/stages/stage-13/PHYSIONET_SIDECAR_AUDIT.md` (list only)
-- `docs/research/DECISION_LOG.md` (DEC-070–086)
+- `docs/research/DECISION_LOG.md` (DEC-070–088)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -83,8 +83,8 @@ admission, formal role/split, protocol and compute remain separately gated.
   admission, protocol/budget freeze, execution, final opening or PR merge.
 - DEC-083–085 permit three official-page candidates, PhysioNet sidecars and
   six specified EDF headers only; signal/access/admission/role/split gated.
-- DEC-086 expands only the Stage 13 specialist ceiling to six and follow-ups
-  to two; two-agent parallelism remains. Source, split and compute gates persist.
+- DEC-086 expands staffing only; DEC-087/088 permit six in-memory EDF streams
+  and S001/S055/S109 audit-only exclusion. Admission/formal split stay gated.
 
 ## Open questions
 
@@ -93,8 +93,8 @@ admission, formal role/split, protocol and compute remain separately gated.
 
 ## Active risks
 
-- RK-08, RK-33 and RK-51–55: final/test leakage, pseudo-replication, selection
-  leakage, post-result scope expansion, compute infeasibility and historical
+- RK-08, RK-33, RK-51–55 and RK-59: leakage, pseudo-replication, selection,
+  scope expansion, compute/transfer uncertainty and historical
   Stage 09 or Stage 11 gates being misread as new authority.
 - H-04 can remain `not tested`; without an admitted target Q2/Q3 are unavailable.
   A valid negative, inconclusive or infeasible result is still a research result.
@@ -141,10 +141,10 @@ admission, formal role/split, protocol and compute remain separately gated.
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
   `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
-- DEC-085 six headers show 64 EEG labels at 160 Hz; the revised signal-access
-  request has independent document QA `PASS`. Signal eligibility unverified.
+- DEC-087/088 signal audit was interrupted after a silent network wait; no
+  EDF hash or eligibility result was retained. A retry needs PI transfer GO.
 
 ## Next action
 
-Present the QA-passed PhysioNet signal request for separate PI access and
-audit-only split decisions. Keep Electricity/test sealed and DEC-070 `STOP`.
+Independently QA the same-file retry request, then seek a distinct PI transfer
+decision. Keep Electricity/test sealed and DEC-070 `STOP`.

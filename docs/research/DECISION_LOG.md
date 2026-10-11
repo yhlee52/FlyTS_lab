@@ -1,5 +1,39 @@
 # FlyTS Decision Log
 
+## DEC-088 — PI fixes three PhysioNet subjects as audit-only
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI approval of the separately presented
+  S001/S055/S109 audit-only exclusion in the independently QA-passed Stage 13
+  [request](stages/stage-13/PHYSIONET_SIGNAL_AUDIT_REQUEST.md).
+- Decision: these three subject IDs, including all their runs, may be used
+  only for the bounded eligibility audit in DEC-087. Exclude them from encoder
+  pretraining, formal development evidence and all final/test use. The other
+  106 listed subject IDs remain unassigned. This is not source/use admission,
+  a development role for the corpus, or a formal train/validation/test split.
+- Boundary: group by original subject before any later windowing. Do not
+  substitute subjects after viewing audit values; all six paths were fixed
+  before signal access. H-01 coverage, protocol and compute remain `HOLD`.
+
+## DEC-087 — PI approves six PhysioNet EDF in-memory signal streams
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI selection of scope A in the independently
+  QA-passed Stage 13 [request](stages/stage-13/PHYSIONET_SIGNAL_AUDIT_REQUEST.md),
+  separately from the audit-only exclusion (DEC-088).
+- Approved access: only S001/S055/S109, each R01/R03, under the official
+  PhysioNet EEG v1.0.0 `/files/` path. Transfer at most the six exact
+  header-declared full-file sizes (11,515,296 bytes total) into bounded memory;
+  require exact HTTP 200/length, identity encoding, no redirect, official
+  member SHA-256 match, and parse only EEG channels for fixed quality and
+  same-record nested-view feasibility counts. Annotation bytes may transit
+  but must not be decoded or retained; no `.edf.event` access or file saving.
+- Boundary: no other EDF/archive, model loss/score, training/evaluation,
+  Electricity/test, source/use admission, formal role/split, H-01 endpoint
+  approval, protocol/budget freeze, PR merge or publication. Stop on a
+  transport, digest, layout, seal or access-scope mismatch. DEC-088 exclusion
+  is also required before signal access and was separately approved.
+
 ## DEC-086 — PI approves the bounded Stage 13 specialist-budget amendment
 
 - Date: 2026-10-11.
