@@ -1,7 +1,7 @@
-"""One bounded, metadata-only read of the Kelmarsh 2016 ZIP directory.
+"""Two bounded, metadata-only reads of the Kelmarsh 2016 ZIP directory.
 
-Run only after the named PI source-access and independent pre-read QA gates.
-No archive member, measurement, or model output is read or written.
+Run only after the revised PI access decision and independent pre-read QA.
+No archive member is opened, decompressed, inspected or written.
 """
 
 from __future__ import annotations
@@ -19,9 +19,10 @@ URL = (
 )
 PUBLISHED_SIZE = 97_915_553
 PUBLISHED_MD5 = "ca8efbb6dbcfae3516583937eb5b5402"
-TAIL_CAP = 131_072
+TOTAL_CAP = 131_072
+EOCD_BYTES = 22
 MAX_ENTRIES = 128
-_EOCD = b"PK\x05\x06"
+_EOCD = 0x06054B50
 _CENTRAL = 0x02014B50
 _CENTRAL_FORMAT = "<I6H3I5H2I"
 
@@ -31,74 +32,69 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
         return None
 
 
-def fetch_tail(opener, *, url: str, total: int, cap: int) -> bytes:
-    if cap <= 0 or cap > total:
-        raise ValueError("invalid range cap")
-    start = total - cap
+def fetch_range(opener, *, url: str, total: int, start: int, end: int) -> bytes:
+    length = end - start + 1
+    if start < 0 or end >= total or length <= 0 or length > TOTAL_CAP:
+        raise ValueError("invalid range")
     request = urllib.request.Request(
         url,
         headers={
-            "Range": f"bytes={start}-{total - 1}",
+            "Range": f"bytes={start}-{end}",
             "Accept-Encoding": "identity",
         },
     )
     with opener.open(request, timeout=20) as response:
         if response.status != 206 or response.geturl() != url:
             raise ValueError("range not honored or redirect")
-        expected = f"bytes {start}-{total - 1}/{total}"
-        if response.headers.get("Content-Range") != expected:
+        if response.headers.get("Content-Range") != f"bytes {start}-{end}/{total}":
             raise ValueError("unexpected Content-Range")
-        if response.headers.get("Content-Length") != str(cap):
+        if response.headers.get("Content-Length") != str(length):
             raise ValueError("unexpected Content-Length")
         if response.headers.get("Content-Encoding", "identity").lower() != "identity":
             raise ValueError("unexpected content encoding")
         chunks: list[bytes] = []
         received = 0
-        while received < cap:
-            chunk = response.read(min(8192, cap - received))
+        while received < length:
+            chunk = response.read(min(8192, length - received))
             if not chunk:
                 raise ValueError("short range response")
             received += len(chunk)
-            if received > cap:
+            if received > length:
                 raise ValueError("range cap exceeded")
             chunks.append(chunk)
     return b"".join(chunks)
 
 
-def _eocd_position(tail: bytes) -> int:
-    for pos in range(len(tail) - 22, -1, -1):
-        if tail[pos : pos + 4] != _EOCD:
-            continue
-        comment_length = struct.unpack_from("<H", tail, pos + 20)[0]
-        if pos + 22 + comment_length == len(tail):
-            return pos
-    raise ValueError("complete ZIP end directory not in approved tail")
-
-
-def parse_directory(tail: bytes, total: int) -> list[dict[str, object]]:
-    if not tail or len(tail) > total:
-        raise ValueError("invalid tail length")
-    tail_start = total - len(tail)
-    eocd_pos = _eocd_position(tail)
-    _, disk, cd_disk, disk_count, entry_count, cd_size, cd_offset, _ = (
-        struct.unpack_from("<I4H2IH", tail, eocd_pos)
+def parse_end_directory(eocd: bytes, total: int) -> tuple[int, int, int]:
+    if len(eocd) != EOCD_BYTES:
+        raise ValueError("ZIP end directory is not exactly 22 bytes")
+    signature, disk, cd_disk, disk_count, entry_count, cd_size, cd_offset, comment = (
+        struct.unpack("<I4H2IH", eocd)
     )
+    if signature != _EOCD or comment:
+        raise ValueError("ZIP comment or end directory unsupported")
     if disk or cd_disk or disk_count != entry_count:
         raise ValueError("multi-disk ZIP unsupported")
-    if entry_count > MAX_ENTRIES or cd_size == 0:
-        raise ValueError("directory size or entry count unsupported")
+    if entry_count > MAX_ENTRIES or cd_size == 0 or cd_size > TOTAL_CAP - EOCD_BYTES:
+        raise ValueError("directory exceeds approved cap or entry count")
     if cd_size == 0xFFFFFFFF or cd_offset == 0xFFFFFFFF:
         raise ValueError("ZIP64 unsupported")
-    if cd_offset < tail_start or cd_offset + cd_size != tail_start + eocd_pos:
-        raise ValueError("central directory outside approved tail")
-    pos = cd_offset - tail_start
-    cd_end = pos + cd_size
+    if cd_offset + cd_size != total - EOCD_BYTES:
+        raise ValueError("directory offset does not precede ZIP end exactly")
+    return cd_offset, cd_size, entry_count
+
+
+def parse_directory(directory: bytes, eocd: bytes, total: int) -> list[dict[str, object]]:
+    cd_offset, cd_size, entry_count = parse_end_directory(eocd, total)
+    if len(directory) != cd_size:
+        raise ValueError("incomplete central directory")
+    pos = 0
     entries: list[dict[str, object]] = []
     names: set[str] = set()
     for _ in range(entry_count):
-        if pos + 46 > cd_end:
+        if pos + 46 > cd_size:
             raise ValueError("truncated central directory")
-        fields = struct.unpack_from(_CENTRAL_FORMAT, tail, pos)
+        fields = struct.unpack_from(_CENTRAL_FORMAT, directory, pos)
         if fields[0] != _CENTRAL:
             raise ValueError("bad central directory signature")
         flags, method = fields[3], fields[4]
@@ -106,9 +102,9 @@ def parse_directory(tail: bytes, total: int) -> list[dict[str, object]]:
         name_length, extra_length, comment_length = fields[10:13]
         local_offset = fields[16]
         end = pos + 46 + name_length + extra_length + comment_length
-        if end > cd_end or compressed == 0xFFFFFFFF or uncompressed == 0xFFFFFFFF:
+        if end > cd_size or compressed == 0xFFFFFFFF or uncompressed == 0xFFFFFFFF:
             raise ValueError("truncated or ZIP64 directory entry")
-        raw_name = tail[pos + 46 : pos + 46 + name_length]
+        raw_name = directory[pos + 46 : pos + 46 + name_length]
         name = raw_name.decode("utf-8" if flags & 0x800 else "cp437", "strict")
         if not name or "\x00" in name or name.startswith("/") or "\\" in name:
             raise ValueError("unsafe member name")
@@ -128,18 +124,29 @@ def parse_directory(tail: bytes, total: int) -> list[dict[str, object]]:
             }
         )
         pos = end
-    if pos != cd_end:
+    if pos != cd_size:
         raise ValueError("unparsed central directory bytes")
     return entries
 
 
 def main(argv: list[str]) -> int:
     if argv != ["--execute-approved-read"]:
-        print("requires --execute-approved-read after PI and QA gates", file=sys.stderr)
+        print("requires --execute-approved-read after revised PI and QA gates", file=sys.stderr)
         return 2
     opener = urllib.request.build_opener(NoRedirect)
-    tail = fetch_tail(opener, url=URL, total=PUBLISHED_SIZE, cap=TAIL_CAP)
-    entries = parse_directory(tail, PUBLISHED_SIZE)
+    end_start = PUBLISHED_SIZE - EOCD_BYTES
+    eocd = fetch_range(
+        opener, url=URL, total=PUBLISHED_SIZE, start=end_start, end=PUBLISHED_SIZE - 1
+    )
+    cd_offset, cd_size, _ = parse_end_directory(eocd, PUBLISHED_SIZE)
+    directory = fetch_range(
+        opener,
+        url=URL,
+        total=PUBLISHED_SIZE,
+        start=cd_offset,
+        end=cd_offset + cd_size - 1,
+    )
+    entries = parse_directory(directory, eocd, PUBLISHED_SIZE)
     print(
         json.dumps(
             {
@@ -147,12 +154,13 @@ def main(argv: list[str]) -> int:
                 "archive": "Kelmarsh_SCADA_2016_3082.zip",
                 "published_size": PUBLISHED_SIZE,
                 "published_md5_unverified": PUBLISHED_MD5,
-                "range_start": PUBLISHED_SIZE - TAIL_CAP,
-                "application_bytes_read": len(tail),
-                "tail_sha256": hashlib.sha256(tail).hexdigest(),
+                "ranges": [[end_start, PUBLISHED_SIZE - 1], [cd_offset, cd_offset + cd_size - 1]],
+                "application_bytes_read": len(eocd) + len(directory),
+                "eocd_sha256": hashlib.sha256(eocd).hexdigest(),
+                "directory_sha256": hashlib.sha256(directory).hexdigest(),
                 "entry_count": len(entries),
                 "entries": entries,
-                "signal_values_read": False,
+                "member_payload_opened": False,
             },
             sort_keys=True,
         )

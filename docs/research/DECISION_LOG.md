@@ -1,5 +1,26 @@
 # FlyTS Decision Log
 
+## DEC-103 — PI approves one pre-read QA and one bounded ZIP-tail read
+
+- Date: 2026-10-11.
+- Decision authority: two explicit PI `GO` answers on the exact Draft PR #35
+  `stages/stage-13/KELMARSH_ZIP_INVENTORY_REQUEST.md` after CI passed.
+- Staffing: one additional read-only follow-up by an existing independent
+  reviewer for the request, script and synthetic tests before execution.
+  This is a specific exception beyond DEC-100's exhausted follow-up ceiling;
+  no new specialist or concurrent-agent expansion is approved.
+- Source access: conditional on that pre-read QA `PASS` and byte-exact code
+  hash, one HTTP Range request for bytes `97784481-97915552` (131,072
+  application bytes) of only Cubico Kelmarsh v4's
+  `Kelmarsh_SCADA_2016_3082.zip`. Parse only ZIP directory metadata in
+  memory; no retry or full archive fallback.
+- Pre-read QA found that the broad suffix could include compressed member
+  bytes. The Director withheld this exact access before execution and
+  proposed a narrower two-Range design; it needs a new PI access decision.
+- Boundary: no member/signal/test/Electricity/model access, source/use,
+  role/split admission, result QA extension, protocol/budget freeze, Stage 14
+  entry or release. Failure of the exact request remains `HOLD`.
+
 ## DEC-102 — PI selects the lowest-byte route preserving Stage 11
 
 - Date: 2026-10-11.

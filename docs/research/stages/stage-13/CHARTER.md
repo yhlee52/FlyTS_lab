@@ -191,6 +191,8 @@ authorizes source access, admission, role/split, protocol or compute.
 DEC-100 reallocates the unused conditional pre-freeze follow-up to one
 document-only Stage 13 `HOLD` closeout QA. Later pre-freeze QA needs a new
 specific staffing decision.
+DEC-103 grants one further existing-reviewer follow-up for the exact
+Kelmarsh ZIP inventory pre-read QA only; it does not restore pre-freeze QA.
 
 ## User approval
 

@@ -1,9 +1,11 @@
 # Proposed minimum-byte Kelmarsh ZIP inventory gate
 
-Status: **proposal only**. The PI selected recovery route A (DEC-102), which
-preserves the Stage 11 H-01–H-03 contract. That decision does **not** approve
-this source-file read, independent QA expansion, source/use admission, a
-development role or a split. The Stage 13 freeze remains `HOLD`.
+Status: **revised two-Range access proposal pending PI decision and final
+independent pre-read QA; no source-file read executed**. The original
+one-Range DEC-103 access is withheld after QA found it could include compressed
+member payload. DEC-103's single reviewer follow-up remains active for this
+correction. Route A (DEC-102) preserves the Stage 11 H-01–H-03 contract;
+source/use, role and split remain unapproved. Stage 13 freeze remains `HOLD`.
 
 ## Exact first unit
 
@@ -15,29 +17,41 @@ exactly **97,915,553 bytes**, publisher MD5
 
 `https://zenodo.org/api/records/16807551/files/Kelmarsh_SCADA_2016_3082.zip/content`
 
-The first proposed source read is **one HTTP GET Range** for the last
-**131,072 bytes only**, `bytes=97784481-97915552`. The application-read cap
-is **131,072 bytes total**, with no retry or fallback to a full download.
-Require HTTP 206, exact final URL, `Content-Range:
-bytes 97784481-97915552/97915553`, exact `Content-Length: 131072`, and
-identity encoding before reading the body. HTTP 200, redirect, changed size,
-short response or missing/invalid ZIP directory stops the attempt at `HOLD`.
-The script does not try a second range if the directory exceeds the cap.
+The revised first source read is exactly **two HTTP GET Ranges**, with a
+combined application-read cap of **131,072 bytes** and no retry or full-file
+fallback:
+
+1. Read only the last **22 bytes**, `bytes=97915531-97915552`, the location of
+   a standard ZIP end-of-central-directory (EOCD) record without a comment.
+   Require zero comment length, single disk, at most 128 entries, no ZIP64,
+   central-directory size between 1 and 131,050 bytes, and an offset placing
+   the directory immediately before those final 22 bytes. If any check fails,
+   stop after this first request. On an invalid ZIP those 22 bytes are opaque
+   trailer bytes, never parsed as a member.
+2. Only after the EOCD checks, read the **exact directory span** given by its
+   offset and size. No local header or compressed member span is requested.
+
+Both responses must be HTTP 206 from the exact URL, with exact
+`Content-Range` start/end/total, exact `Content-Length`, and identity encoding
+before body reads. HTTP 200, redirect, size mismatch, short response,
+unsupported layout or malformed directory stops at `HOLD`. A failed first
+request produces no second request.
 
 Parse only the ZIP end and central directory. Emit at most 128 member names,
 compressed/uncompressed byte counts, compression methods, encryption flags,
-CRC-32 values, response byte count and tail SHA-256. Do not open a member or
+CRC-32 values, both range coordinates and byte counts, and the SHA-256 of each
+metadata span. Do not open a member or
 emit a CSV header, timestamp, measurement, event, array or score. Keep the
-tail in memory and save no source bytes. The publisher MD5 covers the **whole
-archive** and cannot be verified from this tail; `Content-Range` and tail
-SHA-256 are bounded provenance, not source identity proof. Transport-layer
+two spans in memory and save no source bytes. The publisher MD5 covers the
+**whole archive** and cannot be verified from these spans; `Content-Range`
+and span SHA-256 are bounded provenance, not source identity proof. Transport-layer
 buffering beyond application reads is not measured.
 
 The tool is `tools/stage13_kelmarsh_zip_inventory.py`; synthetic tests are
 `tests/test_stage13_kelmarsh_zip_inventory.py`. The network entry point
 requires `--execute-approved-read` and has **not** been run. Its exact code
 SHA-256 in this proposal is
-`0e3e631bf8010d8d29dd3847cdc6057ee842ed9723ebfc95dae42bec76dc112c`;
+`781840249016735cbf2953af5ca3d33f0dd20e26003d3e99f82f4f3510b02986`;
 the canonical Git blob **and raw worktree bytes** must both match that value
 after pre-read QA and immediately before any authorized execution. A Windows
 CRLF checkout mismatch stops the run until the worktree is restored to the
@@ -46,7 +60,7 @@ canonical LF bytes. No change to the historical Stage 06 hashes is needed.
 ## Why this order is cheap
 
 The directory may identify per-turbine member names and sizes using at most
-0.134% of the listed archive bytes. This can reject an unsuitable archive
+0.134% of the listed archive bytes, and usually much less. This can reject an unsuitable archive
 without obtaining the remaining 97.8 MB. It **cannot** establish 27 genuine
 concurrent channels, finite/missingness coverage, paired 11/26/>26 views,
 independent farms or a clean split. If the inventory succeeds, propose a
@@ -57,15 +71,16 @@ decisions before admission. No other annual archive is silently substituted.
 
 ## Two separate PI gates before execution
 
-1. **Staffing:** permit one additional read-only follow-up by an existing
+1. **Staffing — GO, DEC-103:** one additional read-only follow-up by an existing
    independent QA reviewer for this exact request, script and synthetic tests.
    DEC-100 exhausted the earlier reserved follow-up. The reviewer must report
-   `PASS` before the range request. This is a one-review expansion of the
+   `PASS` on this revised code and request before any range. This is a one-review expansion of the
    per-agent ceiling, not a new specialist or broader Stage 13 budget.
-2. **Source-file access:** approve or hold the exact one-range, 131,072-byte
-   memory-only ZIP-directory read above. A QA `PASS` does not itself grant
-   access; the PI must decide this gate separately. A failed request gets no
-   automatic retry, member read or archive download.
+2. **Source-file access — revised decision pending:** the exact two-range,
+   at-most-131,072-byte memory-only ZIP-directory read above. DEC-103's
+   one-range approval is not used because it does not ensure the stated
+   no-member-payload boundary. A QA `PASS` does not grant revised access.
+   Failure gets no automatic retry, member read or archive download.
 
 Electricity and all test signals/scores remain sealed. PhysioNet stays on
 source/use `HOLD`; H-04 is `not tested`; no protocol/budget freeze, Stage 14

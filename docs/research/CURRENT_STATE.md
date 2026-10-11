@@ -13,12 +13,12 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
 document-only QA `PASS`/PI `GO` (DEC-082); PI froze Stage 13 at `HOLD`
 (DEC-099) with document QA `PASS` (DEC-100); PRs #23–34 merged (DEC-101).
-PI selected route A for bounded Kelmarsh eligibility (DEC-102), not access.
+PI chose route A (DEC-102); DEC-103 ZIP-tail read was withheld before access.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Stage 13 HOLD; route A first access/QA gates pending; no v3 or Stage 14 handoff.
+Stage 13 HOLD; revised two-Range access decision/QA pending; no Stage 14 handoff.
 
 ## Canonical references
 
@@ -32,7 +32,7 @@ Stage 13 HOLD; route A first access/QA gates pending; no v3 or Stage 14 handoff.
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
 - `docs/research/stages/stage-13/RESULT.md` (PI HOLD; document QA PASS)
 - `docs/research/stages/stage-13/RECOVERY_OPTIONS.md` (unapproved routes)
-- `docs/research/DECISION_LOG.md` (DEC-070–102)
+- `docs/research/DECISION_LOG.md` (DEC-070–103)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -147,4 +147,4 @@ Stage 13 HOLD; route A first access/QA gates pending; no v3 or Stage 14 handoff.
 
 ## Next action
 
-Decide the exact 2016 ZIP-tail access and one pre-read QA; Stage 14 NO GO.
+Decide revised two-Range request; QA PASS before any read; Stage 14 NO GO.
