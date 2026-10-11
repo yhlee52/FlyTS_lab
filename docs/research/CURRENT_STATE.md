@@ -11,7 +11,7 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 (DEC-074); PR #20 merged at `4aed192`. Stage 12 closed with independent QA
 `PASS` and bounded PI `GO` (DEC-079); DEC-078 kept three existing roles and
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
-document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23/#24 are open.
+document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23–25 are open.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
