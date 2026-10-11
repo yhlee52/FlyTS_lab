@@ -1,5 +1,17 @@
 # FlyTS Decision Log
 
+## DEC-080 — PI authorizes integration of the two Stage 12 PRs
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI approval to merge the completed Stage 12
+  work after the bounded result `GO` and independent QA `PASS`.
+- Sequence: merge Charter PR #21 first, then retarget audit PR #22 to `main`,
+  verify its scope and checks, and merge at the verified head. PR #21 merged
+  into `main` at `f83f8941afb0a7859043253dc5c4251d953bed56` with head
+  `a14adc1be8a1700c0f7a8e7bee044b2a8aa8ac33` and passing checks.
+- Boundary: integration changes no dataset role/split, Stage 13 authorization,
+  final/test access, model result, or DEC-070 release `STOP`.
+
 ## DEC-079 — PI accepts the bounded Stage 12 adequacy result
 
 - Date: 2026-10-11.

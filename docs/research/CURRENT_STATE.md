@@ -36,7 +36,7 @@ no-release boundary remains in force.
 - `docs/research/stages/stage-12/ADEQUACY_PACKET.md` (bounded evidence)
 - `docs/research/stages/stage-12/RESULT.md` (QA PASS; PI GO)
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
-- `docs/research/DECISION_LOG.md` (DEC-070–079)
+- `docs/research/DECISION_LOG.md` (DEC-070–080)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -81,6 +81,8 @@ no-release boundary remains in force.
   roles/current splits; Bike retains development role/split for dimensionless
   diagnostics only. Bike H-01 count coverage and `temp` semantics stay `HOLD`.
   DEC-079 accepts the bounded Stage 12 result, not Stage 13 execution.
+- DEC-080 separately authorizes merging the two Stage 12 PRs; it changes no
+  scientific or release gate.
 
 ## Open questions
 
@@ -116,8 +118,8 @@ no-release boundary remains in force.
 - The proposed Stage 12 Charter received document-only independent QA `PASS`
   after clarifying that target-test class coverage needs approved metadata or
   a separate blinded metadata audit; otherwise admission stays `HOLD`. No data
-  or ignored report bytes were opened. Draft PR #21 carries the proposal against
-  PR #20's merge commit; later Stage 12 audit QA is recorded separately.
+  or ignored report bytes were opened. PR #21 carried the proposal and merged
+  into `main` at `f83f894`; later Stage 12 audit QA is recorded separately.
 - PR #21 CI `tests` passed on `d729d8c` (existing governance, pytest and
   isolated synthetic CPU smoke); this is proposal engineering evidence only.
   DEC-075/076 are PI authority records, not adequacy or model results.
@@ -133,8 +135,8 @@ no-release boundary remains in force.
   README versus the current UCI page; physical-unit semantics remain unverified.
 - Independent Stage 12 audit QA returned `PASS` on the bounded packet after
   marking Bike `temp` semantics `conflict`; no source or Stage 13 gate is implied.
-- Draft PR #22 carries the audit packet, stacked on open Draft PR #21. Its two
-  CI pytest runs passed; neither PR is merged. DEC-078/079 record PI decisions.
+- PR #22 carries the audit packet against `main` after PR #21 integration. Its
+  two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
 
 ## Next action
 

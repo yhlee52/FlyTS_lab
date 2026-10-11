@@ -63,7 +63,8 @@ DEC-079 accepted the bounded Stage 12 result and its Stage 13 evidence handoff.
 The PI has not selected further candidates or authorized Electricity-only
 Stage 13 scope, a new protocol, numerical freeze, compute envelope, training,
 evaluation or final opening. Stage 13 must request its own Charter/compute and
-source-specific decisions. Draft PR #21/#22 merge is also separate. Stage 09
+source-specific decisions. PR integration requires the separate DEC-080 PI
+authorization. Stage 09
 `HOLD`/final QA `FAIL` and its report hashes are unchanged; DEC-070
 public-release `STOP` remains in force.
 
