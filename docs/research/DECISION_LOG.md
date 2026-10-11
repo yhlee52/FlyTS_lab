@@ -1,5 +1,18 @@
 # FlyTS Decision Log
 
+## DEC-077 — PI approves bounded shared corpus metadata read
+
+- Date: 2026-10-11
+- Decision authority: explicit PI reply after the Director disclosed that the
+  Stage 06 manifest and `source_notices.json` may contain Electricity entries.
+- Approved scope: read the local shared corpus manifest and notice metadata
+  only to identify and audit Appliances, Beijing and Bike records, source
+  provenance, schema, split and eligibility under DEC-076. Incidental parsing
+  of Electricity metadata is not an Electricity adequacy audit.
+- Exclusions: do not open Electricity raw archive, prepared signals/masks,
+  final split or model scores; do not read any target-test signal or score.
+  Download, training, evaluation, admission and role/split changes remain gated.
+
 ## DEC-076 — PI approves bounded Stage 12 access for three existing sources
 
 - Date: 2026-10-11

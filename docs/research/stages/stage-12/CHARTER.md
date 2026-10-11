@@ -4,7 +4,8 @@ Status: active
 
 PI Charter `GO` is recorded in DEC-075. DEC-076 separately approves bounded
 access to existing Appliances, Beijing and Bike materials; all other source,
-role, split and final/test gates remain pending.
+role, split and final/test gates remain pending. DEC-077 separately permits a
+shared manifest/notice metadata read for these three sources only.
 
 Proposal baseline: `main` at PR #20 merge
 `4aed1926650fe304a818682a718e6b0d608367ba` (2026-10-11).
@@ -80,13 +81,16 @@ The table records each access decision, not a dataset-admission decision. A
 | Appliances | Existing local official archive/notice, source lock, manifest, and prepared train/validation signals and masks for rights, time, split and view auditing; no model scoring | New mirror/download, role/split change, test signals | `GO` DEC-076 |
 | Beijing | Same scope, with station identities, local cadence/gap and missingness checks | New mirror/download, station-transfer claim, role/split change, test signals | `GO` DEC-076 |
 | Bike | Same scope, with original entity/range identity and development validation view feasibility | Model selection/evaluation, new final claim, role/split change, test signals | `GO` DEC-076 |
-| Electricity | Already tracked documents, registry and corpus-report metadata only | Raw archive, untracked manifest, prepared arrays, final split and model scores | no new access requested |
+| Electricity | Already tracked documents, registry and corpus-report metadata; DEC-077 permits incidental parsing of shared manifest/notice metadata solely to extract the three approved sources | Raw archive, prepared arrays, final split and model scores; no Electricity adequacy analysis | metadata exception DEC-077 only |
 | HAR/HARTH | Already tracked rights and HOLD records only | Raw archive reinspection, signal values, split search, target test | no new access requested |
 | New candidate | No candidate selected by this Charter; a later packet must separately request source access and any blinded test-class metadata audit | Download, raw/array read, direct test-label inspection or admission until its own PI decisions | pending candidate-specific request |
 
 For the first three sources, test-range identity and purge may be checked from
 approved manifest metadata without opening test signal values. If the packet
 needs a broader read, pause and request a narrower additional decision.
+DEC-077 resolves the shared-file boundary: only the three approved sources'
+rows and notices may enter Stage 12 findings. Electricity metadata encountered
+while parsing the shared file is not an approved Electricity audit.
 
 ## Ordered work units and deliverables
 
@@ -196,7 +200,7 @@ seeds, arms, steps, thresholds, uncertainty, checkpoint selection and freeze.
 | Gate | Required before | Current state |
 |---|---|---|
 | Stage 12 Charter | Any Stage 12 data work or specialist data audit | `GO`, DEC-075 |
-| Per-source access, including existing raw/prepared corpus | Any read beyond tracked documentation/metadata or download | Appliances/Beijing/Bike `GO` within DEC-076; other access pending |
+| Per-source access, including existing raw/prepared corpus | Any read beyond tracked documentation/metadata or download | Appliances/Beijing/Bike `GO` within DEC-076; shared metadata exception DEC-077; other access pending |
 | Source admission, role and split | New use or a registry/manifest change | pending separately for each source/role/split |
 | Stage 12 result | Stage 13 work beyond a proposal | pending PI decision after independent QA |
 | Final/test opening | Electricity or target-test evidence | outside Stage 12; pending Stage 17 PI gate |
