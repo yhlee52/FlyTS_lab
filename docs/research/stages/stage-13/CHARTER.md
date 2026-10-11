@@ -131,7 +131,7 @@ result is a later scientific outcome, not a reason to rewrite this design.
 |---|---|---|
 | Stage 13 Charter `GO`/`REVISE`/`HOLD` | Units 1–5, subject to their additional gates | `GO`, DEC-082 |
 | Bounded metadata-only candidate search | Any search for a new source | `GO`, DEC-083; at most three official-document candidates |
-| Candidate access, then source/use, role and split | First access/admission or change for each named source | PhysioNet `RECORDS`/`SHA256SUMS.txt` read-only access `GO` DEC-084; every deeper access, admission, role and split pending |
+| Candidate access, then source/use, role and split | First access/admission or change for each named source | PhysioNet sidecars `GO` DEC-084 and six specified EDF headers `GO` DEC-085; signal/archive access, admission, role and split pending |
 | Non-final/synthetic resource measurement, if needed | That measurement | pending |
 | Exact v3 and selected compute envelope `GO` | Freeze/Stage 14 handoff | pending |
 | Stage 15 execution; Stage 17 H-04/final opening; publication | Separate later stages | pending; publication `STOP` DEC-070 |
@@ -184,4 +184,7 @@ formal matrix, checkpoint policy or low/medium/high option is frozen here.
 - PhysioNet sidecar-only access: `GO`, DEC-084; see
   [inventory](PHYSIONET_SIDECAR_AUDIT.md). Source/use admission, role, split and
   all deeper source access are pending by named candidate.
+- Six EDF headers only: `GO`, DEC-085; see the approved
+  [request](PHYSIONET_HEADER_PILOT_REQUEST.md). Signal/archive access remains
+  pending; this is not source admission or a split.
 - Protocol and compute decision: pending after independent pre-freeze QA.

@@ -1,5 +1,18 @@
 # FlyTS Decision Log
 
+## DEC-085 — PI approves six PhysioNet EDF headers for a bounded pilot
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI reply after review of the DEC-084 sidecar
+  audit, independent QA `PASS`, and the six-header request in Draft PR #25.
+- Approved access: EDF+ **header bytes only** for S001/S055/S109, each R01/R03,
+  using the request's exact HTTP Range/`Content-Range` checks and 32 KiB total
+  per-file cap. Inspect channel/time schema only; record bounded findings.
+- Boundary: no sample bytes, `.event`/annotation contents, full EDF or archive,
+  local download, test/Electricity, model score, preprocessing, admission,
+  role/split change, protocol/budget freeze, training/evaluation, PR merge or
+  release. Deeper source access still needs a separate PI decision.
+
 ## DEC-084 — PI approves PhysioNet EEG sidecar-only inventory
 
 - Date: 2026-10-11.

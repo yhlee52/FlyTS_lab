@@ -16,9 +16,9 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Seek a PI decision on six specified PhysioNet EDF headers after DEC-084's
-sidecar QA `PASS`. Source admission, role, split, protocol and compute remain
-gated after the DEC-082 Charter `GO`.
+Prepare the next PhysioNet source-access packet after DEC-085's six-header
+screen. Source admission, role, split, protocol and compute remain gated after
+the DEC-082 Charter `GO`.
 
 ## Canonical references
 
@@ -32,7 +32,7 @@ gated after the DEC-082 Charter `GO`.
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
 - `docs/research/stages/stage-13/CANDIDATE_SHORTLIST.md` (metadata; QA PASS)
 - `docs/research/stages/stage-13/PHYSIONET_SIDECAR_AUDIT.md` (list only)
-- `docs/research/DECISION_LOG.md` (DEC-070–084)
+- `docs/research/DECISION_LOG.md` (DEC-070–085)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -83,8 +83,8 @@ gated after the DEC-082 Charter `GO`.
   it grants no Stage 13 or data access approval.
 - DEC-082 approves the Stage 13 Charter, not candidate discovery/access,
   admission, protocol/budget freeze, execution, final opening or PR merge.
-- DEC-083/084 permit three official-page candidates and PhysioNet `RECORDS`/
-  `SHA256SUMS.txt` reads only; deeper access/admission/role/split remain gated.
+- DEC-083–085 permit three official-page candidates, PhysioNet sidecars and
+  six specified EDF headers only; signal/access/admission/role/split gated.
 
 ## Open questions
 
@@ -141,10 +141,10 @@ gated after the DEC-082 Charter `GO`.
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
   `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
-- PhysioNet sidecar and six-header request QA both `PASS`; lists show 109 IDs
-  × 14 runs and 3,058 checksum rows, but source-byte validity is unverified.
+- DEC-085 six headers show 64 EEG labels at 160 Hz; independent method QA
+  `PASS` without byte replay. Signals, independence and split unverified.
 
 ## Next action
 
-Seek PI decision on the fixed six-header pilot; do not read EDFs before it.
-Keep Electricity/test sealed and DEC-070 release `STOP`.
+Prepare a scoped source-access and QA-budget request for PI review. Keep
+Electricity/test sealed and DEC-070 release `STOP`.
