@@ -92,8 +92,8 @@ remedy; independent QA `PASS` followed a rights correction. Sources stay HOLD.
 
 ## Active risks
 
-- RK-08, RK-33, RK-51–55 and RK-59: leakage, pseudo-replication, selection,
-  scope expansion, compute/transfer uncertainty and historical
+- RK-04, RK-08, RK-33, RK-51–55 and RK-59: unclear rights, leakage,
+  pseudo-replication, selection, compute/transfer uncertainty and historical
   Stage 09 or Stage 11 gates being misread as new authority.
 - H-04 can remain `not tested`; without an admitted target Q2/Q3 are unavailable.
   A valid negative, inconclusive or infeasible result is still a research result.
