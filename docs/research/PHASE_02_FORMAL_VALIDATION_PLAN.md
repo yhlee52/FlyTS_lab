@@ -1,10 +1,11 @@
 # FlyTS Phase 02 — Formal Training and Scientific Evaluation
 
-Status: Stage 11 contract under PI result review; independent QA `PASS`;
+Status: Stage 11 contract accepted by PI (DEC-074); independent QA `PASS`;
 phase objective approved by the PI
 
 Decision basis: DEC-071, 2026-09-30; Stage 11 Charter `GO` granted by the PI
-on 2026-10-11. Later stage and result gates remain pending.
+on 2026-10-11. DEC-074 accepted the Stage 11 result; later stage gates remain
+pending.
 
 The Stage 01 `docs/EXPERIMENT_PROTOCOL.md` and the Stage 09 protocol-v2 60-run,
 five-seed proposal record earlier rules and an unfrozen historical plan. Stage 09
@@ -184,7 +185,7 @@ Scientific success is valid evidence, not necessarily a positive model result.
 |---|---|---|
 | Phase objective | Drafting this stage plan | `GO`, Option A, 2026-09-30 (DEC-071) |
 | Phase stage plan and Stage 11 Charter | Beginning Stage 11 implementation | `GO` requested by PI on 2026-10-11 for Stage 11 document work only |
-| Stage 11 result | Drafting a Stage 12 Charter | pending; does not authorize data work |
+| Stage 11 result | Drafting a Stage 12 Charter | `GO`, 2026-10-11 (DEC-074); does not authorize data work |
 | Stage 12 Charter and each dataset/role/split | Any Stage 12 data access or changed source/role/split | pending separate PI decisions |
 | Protocol v3 and compute budget | Any formal training | pending Stage 13 result |
 | Formal execution | Starting Stage 15 | pending preflight QA and explicit PI `GO` |
@@ -221,6 +222,6 @@ Scientific success is valid evidence, not necessarily a positive model result.
 - Phase objective: approved by PI, 2026-09-30 (Option A).
 - Stage decomposition and Stage 11 Charter: `GO` for Stage 11 document-only
   implementation requested by the PI on 2026-10-11 (DEC-072); Stage 11 result
-  and every later stage remain separately gated.
+  accepted by the PI under DEC-074. Every later stage remains separately gated.
 - No dataset download, code change, training, checkpoint creation or evaluation is
   authorized by this planning document alone.

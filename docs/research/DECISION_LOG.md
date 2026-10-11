@@ -1,5 +1,22 @@
 # FlyTS Decision Log
 
+## DEC-074 — PI accepts the Stage 11 result
+
+- Date: 2026-10-11
+- Decision authority: explicit PI `GO` after reviewing the Stage 11 result and
+  DEC-073 independent QA `PASS`.
+- Decision: accept the bounded Q0–Q3 qualification contract, H/R prospective
+  ownership and Stage 12/13 handoff requirements as the Stage 11 result. Stage
+  11 may close; drafting a proposed Stage 12 Charter is authorized.
+- Evidence: Draft PR #20 head `ffc0bdf8d4ee9a58660a3e7f7064fa4d1e9c12a9`;
+  independent QA `PASS` on the substantive contract at `0effe407`, with the
+  later commit limited to verdict/status records; GitHub Actions `tests` and
+  local notebook/governance/diff checks passed.
+- Boundary: this does not approve Stage 12 data access, any dataset admission,
+  role/split change, protocol or compute budget, formal execution, final/test
+  opening, Draft PR #20 merge or public release. Stage 09 `HOLD`/QA `FAIL` and
+  DEC-070 `STOP` remain historical/current constraints respectively.
+
 ## DEC-073 — PI authorizes one additional independent Stage 11 QA review
 
 - Date: 2026-10-11

@@ -1,6 +1,6 @@
 # Stage 11 Charter — Foundation Qualification Contract
 
-Status: review
+Status: closed
 
 PI requested implementation of this Stage 11 plan on 2026-10-11.
 
@@ -70,8 +70,8 @@ stages, before any new training begins?
 - [x] Notebook and governance validators pass; independent QA reports a verdict.
 
 The PI authorized one additional bounded review (DEC-073). Independent QA
-returned `PASS` on the corrected PR head `0effe407`; the Stage 11 PI result gate
-remains pending.
+returned `PASS` on the corrected PR head `0effe407`; the PI accepted the Stage 11
+result under DEC-074. Draft PR #20 remains unmerged.
 
 ## User checkpoints
 
@@ -80,7 +80,7 @@ remains pending.
 | Phase objective | before drafting the stage plan | `GO`, Option A, 2026-09-30 |
 | Stage 11 Charter | before Stage 11 implementation or specialist activation | `GO` for this document-only plan, 2026-10-11 |
 | Qualification/claim change | before affected contract work continues | pending as needed |
-| Stage 11 result | before Stage 12 Charter or data work | pending |
+| Stage 11 result | before Stage 12 Charter | `GO`, 2026-10-11 (DEC-074); Stage 12 data work still gated |
 
 ## Agent plan
 

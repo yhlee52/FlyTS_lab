@@ -11,19 +11,18 @@ analysis or Electricity opening occurred. H-01–H-03 have no formal result; H-0
 is `not tested`. Stage 10 engineering closeout merged through PR #18, but DEC-070
 stopped M10B public release. PR #19 merged the proposed Phase 02 plan into
 `main` at `52fd44af0145e19d5f26138382bb0661e975eb09`. DEC-071 approved its
-objective; DEC-072 authorizes Stage 11 document-only contract work. Stage 11
-independent QA returned `PASS` after one PI-authorized extra review (DEC-073);
-the Stage 11 result PI gate remains pending.
+objective; DEC-072 authorized Stage 11 document-only contract work. Stage 11
+independent QA returned `PASS` after one PI-authorized extra review (DEC-073),
+and the PI accepted the Stage 11 result under DEC-074.
 The document-only Draft PR #20 is open from
 `codex/stage-11-qualification-contract` (initial commit `b15b769`); it is not merged.
 
 ## Current goal
 
-Complete Stage 11's falsifiable Q0–Q3 contract, prospective H/R ownership,
-Stage 12 adequacy and Stage 13 budget-information handoffs, and independent QA.
-Seek a separate PI decision on the Stage 11 result before a Stage 12 Charter;
-Stage 12 data work requires its own later authorization. DEC-070 no-release
-boundary remains in force.
+Prepare a proposed Stage 12 Charter from the accepted Stage 11 contract and
+handoff. Stage 12 data access, source admission, role/split decisions and every
+later research gate require separate PI approval. DEC-070 no-release boundary
+remains in force; Draft PR #20 is not merged.
 
 ## Canonical references
 
@@ -31,7 +30,7 @@ boundary remains in force.
 - `docs/research/stages/stage-11/CHARTER.md`
 - `docs/research/stages/stage-11/RESULT.md`
 - `docs/research/stages/stage-11/QA_REPORT.md`
-- `docs/research/DECISION_LOG.md` (DEC-070–072)
+- `docs/research/DECISION_LOG.md` (DEC-070–074)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -47,8 +46,8 @@ boundary remains in force.
 - Q0 means bounded CPU engineering operation; Q1 requires valid frozen H-01–H-03
   evaluation; Q2 additionally needs registered H-01/H-02 and admitted-target
   H-04 support; Q3 additionally needs H-03 support against both matched topology
-  controls. These are proposed qualification rules pending Stage 11 result gate,
-  not achieved scientific claims.
+  controls. These are PI-accepted Stage 11 qualification rules, not achieved
+  scientific claims; later eligibility and numerical rules remain gated.
 - Stage 09's `HOLD`, QA `FAIL`, reports/hashes and unfrozen v2 matrix are historical.
   Prospective Stage 10 reporter hardening does not retrospectively repair them.
 - Appliances/Beijing remain pretrain, Bike development-only and Electricity
@@ -62,13 +61,13 @@ boundary remains in force.
   Existing Stage 10 CPU/offline evidence has no CUDA or scientific inference.
 - DEC-073 authorized one additional independent QA review beyond the Stage 11
   follow-up limit; QA returned `PASS` on PR #20 head `0effe407`. This is not
-  Stage 11 result `GO`.
+  itself a Stage 11 result decision. DEC-074 separately records PI result `GO`:
+  Stage 12 Charter drafting is authorized, data work and PR merge are not.
 
 ## Open questions
 
-- Stage 11 independent QA `PASS` is recorded. PI result disposition remains
-  pending. Acceptance may authorize drafting a Stage 12 Charter only, not data
-  work.
+- Stage 12 Charter scope and its separate PI approval remain open. Stage 11
+  result `GO` authorizes a Charter proposal only, not data work.
 - Dataset suitability/admission, minimum coverage, statistical thresholds,
   seed/matrix, budget, H-04 target, CUDA environment and final open remain future
   decisions with the named stage gates.
@@ -97,10 +96,11 @@ boundary remains in force.
   the PI-authorized final review returned independent `PASS` on `0effe407`.
 - Draft PR #20 contains the Stage 11 documents; GitHub Actions `tests` passed on
   `0effe407`, including the repository's existing synthetic CPU smoke. Stage 09
-  tracked files remain unchanged and the PI result gate remains pending.
+  tracked files remain unchanged. CI also passed on the QA-reporting commit
+  `ffc0bdf`; DEC-074 records PI acceptance without authorizing PR merge.
 
 ## Next action
 
-Present Draft PR #20 with independent QA `PASS` for PI Stage 11 result
-disposition. Keep Electricity/target test sealed and do not begin Stage 12 data
-work or merge the PR without separate PI approval.
+Draft the Stage 12 Charter as a proposal against the accepted Stage 11 contract;
+request separate PI `GO` before any Stage 12 data work. Keep Electricity/target
+test sealed and do not merge Draft PR #20 without separate PI approval.

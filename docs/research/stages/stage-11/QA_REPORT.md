@@ -4,6 +4,12 @@ Current verdict: **PASS — PI-authorized additional independent review**
 
 Date: 2026-10-11
 
+Post-review disposition: the PI accepted the Stage 11 result under DEC-074.
+The independent `PASS` and earlier conditional findings remain unchanged. This
+acceptance permits a Stage 12 Charter proposal only; it does not approve data
+work or Draft PR #20 merge. The gate recommendation below records the state at
+the time of QA review.
+
 ## Final independent review (DEC-073)
 
 The PI authorized one additional bounded QA review after the original
