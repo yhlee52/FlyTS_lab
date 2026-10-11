@@ -134,6 +134,8 @@ separate PI decisions. DEC-070 no-release boundary remains in force.
   README versus the current UCI page; physical-unit semantics remain unverified.
 - Independent Stage 12 audit QA returned `PASS` on the bounded packet after
   marking Bike `temp` semantics `conflict`; no source or Stage 13 gate is implied.
+- Draft PR #22 carries the audit packet at `369dc0b`, stacked on open Draft
+  PR #21; neither PR is merged or a PI source/result decision.
 
 ## Next action
 
