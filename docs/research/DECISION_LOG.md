@@ -1,5 +1,20 @@
 # FlyTS Decision Log
 
+## DEC-094 — PI approves one targeted high-channel open-data metadata screen
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` after the independently QA-passed
+  DEC-093 three-source negative screen and Draft PR #29 review.
+- Approved scope: official publisher landing, rights, schema and documentation
+  pages for at most three further **non-human** time-series candidate sources,
+  prefiltered for at least 27 genuinely concurrent channels, multiple
+  original entities and a clear record-specific public data-reuse license.
+  Record missing or conflicting evidence; this is a screen, not admission.
+- Boundary: no archive, source member, sidecar, sample value, signal/array,
+  annotation, test/Electricity item or model score access; no download,
+  source/use admission, role/split assignment, protocol/compute freeze,
+  execution, PR merge or release. Each deeper read requires its own PI gate.
+
 ## DEC-093 — PI approves bounded non-human open-license metadata search
 
 - Date: 2026-10-11.
