@@ -11,19 +11,18 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 (DEC-074); PR #20 merged at `4aed192`. Stage 12 closed with independent QA
 `PASS` and bounded PI `GO` (DEC-079); DEC-078 kept three existing roles and
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
-document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23/#24 are open.
+document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23–25 are open.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Review the DEC-083 three-source metadata shortlist and a named-source access
-request. Candidate access/admission, protocol and compute remain separately
+Seek a PI decision on six specified PhysioNet EDF headers after DEC-084's
+sidecar QA `PASS`. Source admission, role, split, protocol and compute remain
 gated after the DEC-082 Charter `GO`.
 
 ## Canonical references
 
 - `docs/research/PHASE_02_FORMAL_VALIDATION_PLAN.md`
-- `docs/research/stages/stage-11/CHARTER.md`
 - `docs/research/stages/stage-11/RESULT.md`
 - `docs/research/stages/stage-11/QA_REPORT.md`
 - `docs/research/stages/stage-12/CHARTER.md` (closed; DEC-075–079)
@@ -32,7 +31,8 @@ gated after the DEC-082 Charter `GO`.
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
 - `docs/research/stages/stage-13/CANDIDATE_SHORTLIST.md` (metadata; QA PASS)
-- `docs/research/DECISION_LOG.md` (DEC-070–083)
+- `docs/research/stages/stage-13/PHYSIONET_SIDECAR_AUDIT.md` (list only)
+- `docs/research/DECISION_LOG.md` (DEC-070–084)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -83,8 +83,8 @@ gated after the DEC-082 Charter `GO`.
   it grants no Stage 13 or data access approval.
 - DEC-082 approves the Stage 13 Charter, not candidate discovery/access,
   admission, protocol/budget freeze, execution, final opening or PR merge.
-- DEC-083 approves official-page metadata discovery for at most three
-  candidates; their deeper access/admission and role/split remain gated.
+- DEC-083/084 permit three official-page candidates and PhysioNet `RECORDS`/
+  `SHA256SUMS.txt` reads only; deeper access/admission/role/split remain gated.
 
 ## Open questions
 
@@ -141,10 +141,10 @@ gated after the DEC-082 Charter `GO`.
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
   `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
-- DEC-083 screens PhysioNet EEG (64 nominal channels), UCI PAMAP2 (at most 39
-  candidate IMU axes) and UCI Daily/Sports (45); document QA PASS only.
+- PhysioNet sidecar and six-header request QA both `PASS`; lists show 109 IDs
+  × 14 runs and 3,058 checksum rows, but source-byte validity is unverified.
 
 ## Next action
 
-Seek PI decision on the proposed PhysioNet sidecar inventory; source access,
-admission and split remain pending. Keep Electricity/test and DEC-070 `STOP`.
+Seek PI decision on the fixed six-header pilot; do not read EDFs before it.
+Keep Electricity/test sealed and DEC-070 release `STOP`.

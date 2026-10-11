@@ -1,5 +1,19 @@
 # FlyTS Decision Log
 
+## DEC-084 — PI approves PhysioNet EEG sidecar-only inventory
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI reply after review of the DEC-083 candidate
+  shortlist and its independent document-only QA `PASS` in Draft PR #24.
+- Approved access: read only the official PhysioNet EEG v1.0.0 `RECORDS` and
+  `SHA256SUMS.txt` sidecars to audit subject/run filenames and publisher
+  checksum-list structure. Record findings in the Stage 13 sidecar packet.
+- Boundary: no EDF header or signal, annotation content, archive or local
+  download, test/Electricity, model score, source admission, role/split decision,
+  protocol freeze, compute approval, execution, PR merge or public release.
+  Each deeper access and source/use, role and split still requires a distinct
+  PI decision.
+
 ## DEC-083 — PI approves bounded Stage 13 metadata-only candidate discovery
 
 - Date: 2026-10-11.
