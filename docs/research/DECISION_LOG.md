@@ -1,5 +1,66 @@
 # FlyTS Decision Log
 
+## DEC-092 — PI redirects Stage 13 toward clearly reusable open data
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI instruction to avoid sources with possible
+  rights or other unresolved problems and proceed using open sources only.
+- Decision: stop the PhysioNet clarification path selected in DEC-091; its
+  draft remains unsent and PhysioNet source/use stays `HOLD`. Do not treat the
+  CC BY labels of the other two previously screened human-activity datasets
+  as automatic clearance of their individual-content or privacy conditions.
+  Prefer clearly licensed and lower-risk source documentation for a new
+  candidate screen, subject to a separate search-scope PI decision.
+- Boundary: this direction does not extend DEC-083's exhausted three-candidate
+  discovery allowance. It grants no new source access, admission, role/split,
+  protocol/compute freeze, training/evaluation, test/Electricity opening, PR
+  merge or release. DEC-070 `STOP` persists.
+
+## DEC-091 — PI selects rights clarification while source/use remains HOLD
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI choice A after review of the Stage 13
+  [source/use gate](stages/stage-13/PHYSIONET_SOURCE_USE_GATE.md) and bounded
+  source-result QA `PASS`.
+- Decision: keep PhysioNet EEG v1.0.0 source/use admission `HOLD` and prepare
+  a reviewable [rights inquiry draft](stages/stage-13/PHYSIONET_RIGHTS_INQUIRY_DRAFT.md)
+  concerning individual EEG contents and the planned internal research use.
+- Boundary: no message may be sent without separate PI authorization. No
+  additional signal access, source admission, role/split, protocol/compute
+  freeze, training, evaluation, test/Electricity opening, PR merge or release
+  is approved. DEC-088 audit-only exclusions and DEC-070 `STOP` persist.
+
+## DEC-090 — PI approves two focused independent-QA follow-ups
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI selection of the two-follow-up `GO` in the
+  Stage 13 [QA extension request](stages/stage-13/QA_EXTENSION_REQUEST.md).
+- Approved staffing: one existing independent QA reviewer may take two
+  additional read-only follow-ups: first the six-file aggregate and admission
+  readiness packet, then exact pre-freeze QA only if a valid protocol v3 packet
+  exists. The general `max_followups_per_agent` ceiling rises from 2 to 4
+  solely to allow that reviewer; other reviewers gain no extra follow-up.
+  Maximum six specialists and two concurrent agents are unchanged.
+- Boundary: no source/use admission, formal role or split, further data access,
+  protocol or compute freeze, execution, test/Electricity opening, PR merge or
+  release is approved. Stage 09 history and DEC-070 `STOP` persist.
+
+## DEC-089 — PI approves one bounded same-file PhysioNet retry
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI selection of the one-retry `GO` after the
+  incomplete DEC-087 first attempt and review of Draft PR #27's
+  [request](stages/stage-13/PHYSIONET_SIGNAL_RETRY_REQUEST.md).
+- Approved extension: one additional attempt on the same six EDF paths only,
+  with at most 11,515,296 additional application-read EDF bytes, exact
+  per-file caps, progress ledger, one-attempt marker and publisher SHA-256
+  checks. The previously authorized checksum sidecar may be re-read.
+- Boundary: no third attempt or subject/file substitution on failure.
+  DEC-088 audit-only exclusion persists. Source/use admission, formal
+  role/split, model training/evaluation, test/Electricity opening, H-01
+  endpoint, protocol/compute freeze, PR merge and public release remain
+  separate decisions; DEC-070 `STOP` persists.
+
 ## DEC-088 — PI fixes three PhysioNet subjects as audit-only
 
 - Date: 2026-10-11.

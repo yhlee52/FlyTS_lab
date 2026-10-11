@@ -11,14 +11,13 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 (DEC-074); PR #20 merged at `4aed192`. Stage 12 closed with independent QA
 `PASS` and bounded PI `GO` (DEC-079); DEC-078 kept three existing roles and
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
-document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23–26 are open.
+document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23–28 are open.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Review one same-file transfer retry after the DEC-087/088 first audit attempt
-was interrupted without an EDF byte ledger. Source admission, formal split,
-protocol and compute remain separately gated.
+DEC-092 stopped the PhysioNet contact path; source/use remains `HOLD`.
+Clearly reusable open-source screening is the next gated work.
 
 ## Canonical references
 
@@ -30,9 +29,9 @@ protocol and compute remain separately gated.
 - `docs/research/stages/stage-12/RESULT.md` (QA PASS; PI GO)
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
-- `docs/research/stages/stage-13/CANDIDATE_SHORTLIST.md` (metadata; QA PASS)
-- `docs/research/stages/stage-13/PHYSIONET_SIDECAR_AUDIT.md` (list only)
-- `docs/research/DECISION_LOG.md` (DEC-070–088)
+- `docs/research/stages/stage-13/PHYSIONET_SIGNAL_AUDIT.md` (bounded)
+- `docs/research/stages/stage-13/PHYSIONET_SOURCE_USE_GATE.md` (rights HOLD)
+- `docs/research/DECISION_LOG.md` (DEC-070–089)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -83,8 +82,9 @@ protocol and compute remain separately gated.
   admission, protocol/budget freeze, execution, final opening or PR merge.
 - DEC-083–085 permit three official-page candidates, PhysioNet sidecars and
   six specified EDF headers only; signal/access/admission/role/split gated.
-- DEC-086 expands staffing only; DEC-087/088 permit six in-memory EDF streams
-  and S001/S055/S109 audit-only exclusion. Admission/formal split stay gated.
+- DEC-086 expands staffing; DEC-087/088 permit six EDF streams and audit-only
+  exclusion; DEC-089 allowed one capped retry. DEC-090 permits two QA reviews;
+  DEC-091 drafted but DEC-092 stopped the rights inquiry. Admission/split gated.
 
 ## Open questions
 
@@ -141,10 +141,10 @@ protocol and compute remain separately gated.
   two CI pytest runs passed; DEC-078/079 record PI scientific decisions.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
   `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
-- DEC-087/088 signal audit was interrupted after a silent network wait; no
-  EDF hash or eligibility result was retained. A retry needs PI transfer GO.
+- Draft PR #28 records six DEC-089 publisher hash matches over 11,515,296
+  retry EDF bytes; QA `PASS` covers audit readiness, while rights remain HOLD.
 
 ## Next action
 
-Independently QA the same-file retry request, then seek a distinct PI transfer
-decision. Keep Electricity/test sealed and DEC-070 `STOP`.
+Record the separate metadata-search GO before screening open sources.
+Keep Electricity/test sealed, H-01 unfrozen and DEC-070 `STOP`.
