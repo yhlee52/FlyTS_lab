@@ -199,4 +199,7 @@ access, role/split, protocol or compute decision.
   [signal-audit request](PHYSIONET_SIGNAL_AUDIT_REQUEST.md) allows no other
   source, model or test access. Source/use admission and formal split remain
   pending.
+- One same-six-file retry after an incomplete first attempt: `GO`, DEC-089,
+  with an additional 11,515,296-byte cap and no third attempt. See the
+  [retry request](PHYSIONET_SIGNAL_RETRY_REQUEST.md).
 - Protocol and compute decision: pending after independent pre-freeze QA.

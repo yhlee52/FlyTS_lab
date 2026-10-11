@@ -1,5 +1,21 @@
 # FlyTS Decision Log
 
+## DEC-089 — PI approves one bounded same-file PhysioNet retry
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI selection of the one-retry `GO` after the
+  incomplete DEC-087 first attempt and review of Draft PR #27's
+  [request](stages/stage-13/PHYSIONET_SIGNAL_RETRY_REQUEST.md).
+- Approved extension: one additional attempt on the same six EDF paths only,
+  with at most 11,515,296 additional application-read EDF bytes, exact
+  per-file caps, progress ledger, one-attempt marker and publisher SHA-256
+  checks. The previously authorized checksum sidecar may be re-read.
+- Boundary: no third attempt or subject/file substitution on failure.
+  DEC-088 audit-only exclusion persists. Source/use admission, formal
+  role/split, model training/evaluation, test/Electricity opening, H-01
+  endpoint, protocol/compute freeze, PR merge and public release remain
+  separate decisions; DEC-070 `STOP` persists.
+
 ## DEC-088 — PI fixes three PhysioNet subjects as audit-only
 
 - Date: 2026-10-11.

@@ -1,6 +1,6 @@
 # Proposed retry of the six-EDF PhysioNet eligibility audit
 
-Status: **separate PI transfer decision pending**. DEC-087/088 authorized
+Status: **PI `GO`, DEC-089, for one bounded same-file retry**. DEC-087/088 authorized
 the named scope A audit and three audit-only subjects, but the
 [first attempt](PHYSIONET_SIGNAL_AUDIT_ATTEMPT.md) was manually interrupted
 without a byte ledger. Its actual EDF bytes received are unknown. A new
