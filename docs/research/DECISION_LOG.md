@@ -19,6 +19,10 @@
 - DEC-106 excludes all six turbines' 2016 data from every future formal role.
   This read does not grant formal source/use admission, role/split, protocol,
   compute, Stage 14, test/Electricity opening or publication.
+- Outcome: the one Range completed with 8,192 application bytes and a
+  Director-reported one-field first line under a comma parser; see
+  `stages/stage-13/KELMARSH_2016_SCHEMA_PILOT_RESULT.md`. Header identity and
+  channel count remain unverified. The access is exhausted; result QA pending.
 
 ## DEC-106 — PI approves audit-only 2016 exclusion and pilot preparation
 
