@@ -1,5 +1,38 @@
 # FlyTS Decision Log
 
+## DEC-098 — PI approves one independent DEC-097 result QA follow-up
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` after Draft PR #33 and the exact
+  `KELMARSH_MAPPING_RESULT_QA_REQUEST.md` were presented.
+- Scope: one further read-only follow-up by the same independent reviewer
+  to inspect the DEC-097 audit, execution summary, byte/hash and code-hash
+  provenance, and the limits of tentative title categories. Synthetic
+  tests may be rerun. The six-specialist and two-concurrent ceilings stay.
+- Boundary: no Zenodo/source reread, test/Electricity or model access,
+  tracked edit, source admission, role/split, protocol/compute freeze,
+  training, evaluation or release. Both Kelmarsh read caps are exhausted.
+
+## DEC-097 — PI approves one corrected Kelmarsh mapping read and one pre-read QA review
+
+- Date: 2026-10-11.
+- Decision authority: two explicit PI `GO` answers after Draft PR #32's
+  DEC-096 audit, independent `CONDITIONAL PASS` and the exact
+  `KELMARSH_METADATA_CORRECTION_REQUEST.md` were presented.
+- Access: one additional in-memory read of only Cubico Kelmarsh v4
+  `Kelmarsh_WT_dataSignalMapping.csv`, at most 3,150 application bytes,
+  publisher MD5 `ca8fe399ab15ae7111d3214c632efd36`, one request with no
+  retry. Only the two title-column values (at most 60 pairs), schema,
+  tentative category counts and SHA-256 evidence hash may be emitted;
+  the previous 60 signal-ID values may not be reused or emitted again.
+- QA staffing: one additional bounded review by the existing independent
+  reviewer of the corrected script, synthetic tests and exact output
+  contract **before** any source read; keep the two-concurrent limit.
+- Boundary: neither answer admits the source, assigns a role/split, opens
+  SCADA measurements or test/Electricity, freezes protocol/compute, permits
+  model work or changes DEC-070 release `STOP`. Failed pre-read QA or any
+  access/hash/schema mismatch means `HOLD` before another request.
+
 ## DEC-096 — PI approves only two bounded Cubico Kelmarsh metadata CSV reads
 
 - Date: 2026-10-11.

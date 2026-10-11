@@ -1,6 +1,7 @@
 # Proposed one-file Kelmarsh metadata correction gate
 
-Status: **proposal only; no repeat access authorized**. DEC-096's 3,957-byte
+Status: **DEC-097 PI GO, pre-read QA PASS and one corrected read completed;
+the 3,150-byte cap is exhausted**. DEC-096's 3,957-byte
 application-read cap was exhausted by one read of each approved CSV. The
 independent [audit QA](KELMARSH_METADATA_AUDIT_QA.md) returned `CONDITIONAL
 PASS` for the access boundary and kept eligibility `HOLD` because the
@@ -49,3 +50,8 @@ Stage 09 history and DEC-070 release `STOP` remain unchanged.
    unchanged. This is a QA budget decision, not data access or admission.
 
 Both decisions and pre-read QA are required before another source request.
+The two PI decisions are recorded in DEC-097; pre-read QA passed.
+The pre-read QA and execution are recorded in
+`KELMARSH_MAPPING_PREREAD_QA.md` and
+`KELMARSH_MAPPING_CORRECTION_AUDIT.md`. The prospective wording above is
+historical and authorizes no additional read.

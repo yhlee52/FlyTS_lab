@@ -131,7 +131,7 @@ result is a later scientific outcome, not a reason to rewrite this design.
 |---|---|---|
 | Stage 13 Charter `GO`/`REVISE`/`HOLD` | Units 1–5, subject to their additional gates | `GO`, DEC-082 |
 | Bounded metadata-only candidate search | Any search for a new source | DEC-083/093/094 screens exhausted; DEC-095 separately allows at most three physical-device, high-channel, non-human official-document candidates |
-| Candidate access, then source/use, role and split | First access/admission or change for each named source | PhysioNet access bounded by DEC-084/085/087/088; Kelmarsh's exact two metadata CSV reads `GO` DEC-096; both source/use admission, development role and formal split pending |
+| Candidate access, then source/use, role and split | First access/admission or change for each named source | PhysioNet access bounded by DEC-084/085/087/088; Kelmarsh two metadata CSV reads `GO` DEC-096 and one corrected mapping read after pre-read QA `GO` DEC-097; both source/use admission, development role and formal split pending |
 | Non-final/synthetic resource measurement, if needed | That measurement | pending |
 | Exact v3 and selected compute envelope `GO` | Freeze/Stage 14 handoff | pending |
 | Stage 15 execution; Stage 17 H-04/final opening; publication | Separate later stages | pending; publication `STOP` DEC-070 |
@@ -187,6 +187,11 @@ authorizes source access, admission, role/split, protocol or compute.
 
 ## User approval
 
+- Kelmarsh DEC-097 result QA only: one read-only reviewer follow-up `GO`,
+  DEC-098; no source reread or admission follows.
+- Kelmarsh corrected mapping-only read and one independent pre-read QA
+  review: `GO`, DEC-097, for the exact 3,150-byte one-request scope in
+  [the request](KELMARSH_METADATA_CORRECTION_REQUEST.md); QA must pass first.
 - Kelmarsh mapping/static metadata only: `GO`, DEC-096, for the exact two
   official v4 CSVs and 3,957-byte combined application-read cap in
   [the request](KELMARSH_METADATA_ACCESS_REQUEST.md); no admission or other
