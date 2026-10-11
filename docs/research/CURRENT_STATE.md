@@ -16,7 +16,7 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-DEC-096 Kelmarsh read: QA CONDITIONAL PASS; eligibility/freeze HOLD.
+DEC-097 mapping read complete after pre-read QA PASS; result QA pending.
 
 ## Canonical references
 
@@ -141,10 +141,10 @@ DEC-096 Kelmarsh read: QA CONDITIONAL PASS; eligibility/freeze HOLD.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
   `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
 - Draft PR #28 records bounded PhysioNet QA `PASS`; rights remain HOLD.
-- DEC-096's two publisher MD5s matched; mapping has 60 rows, static file 6.
-  Titles/turbine IDs were omitted; 60 signal IDs appeared in the tool
-  transcript under ambiguous scope. Cap exhausted; channel count unverified.
+- DEC-096/097 publisher MD5s matched; mapping has 60 titles, static file 6.
+  Initial signal-ID emission remains an ambiguous-scope QA finding. Corrected
+  output omitted IDs; both caps are exhausted, concurrent count unverified.
 
 ## Next action
 
-Review corrected metadata-access proposal; no repeat read under DEC-096.
+Review DEC-097 result; both approved Kelmarsh read caps exhausted.
