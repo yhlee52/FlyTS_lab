@@ -84,7 +84,8 @@ time/purge policy and train-only preprocessing are unverified.
 
 The [official dataset page](https://physionet.org/content/eegmmidb/1.0.0/)
 reports open access and ODC-By v1.0 and requests the dataset DOI
-`10.13026/C28G6P` plus the original Schalk et al. (2004) BCI2000 paper.
+`10.13026/C28G6P`, the original Schalk et al. (2004) BCI2000 paper and
+the standard PhysioNet citation (Pollard et al., 2026).
 The [license text](https://physionet.org/content/eegmmidb/view-license/1.0.0/)
 distinguishes database rights from possible individual-content/privacy
 rights and specifies notice for public use. Rights in individual EEG

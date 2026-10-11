@@ -16,8 +16,8 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-DEC-090 source-result QA returned bounded `PASS`; present the separate
-source/role/split path. Protocol and compute remain gated.
+DEC-090 source-result QA returned bounded `PASS`; PhysioNet source/use stays
+`HOLD` pending rights clarification. Role/split, protocol and compute are gated.
 
 ## Canonical references
 
@@ -30,7 +30,7 @@ source/role/split path. Protocol and compute remain gated.
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
 - `docs/research/stages/stage-13/PHYSIONET_SIGNAL_AUDIT.md` (bounded)
-- `docs/research/stages/stage-13/PHYSIONET_SIDECAR_AUDIT.md` (list only)
+- `docs/research/stages/stage-13/PHYSIONET_SOURCE_USE_GATE.md` (rights HOLD)
 - `docs/research/DECISION_LOG.md` (DEC-070–089)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
@@ -142,9 +142,9 @@ source/role/split path. Protocol and compute remain gated.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
   `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
 - Draft PR #28 records six DEC-089 publisher hash matches over 11,515,296
-  retry EDF bytes; source-result QA `PASS` covers only audit readiness.
+  retry EDF bytes; QA `PASS` covers audit readiness, while rights remain HOLD.
 
 ## Next action
 
-Seek PI source/role decisions, then an independently reviewed exact split.
+Seek PI choice on rights clarification; source/role/split stay separate.
 Keep Electricity/test sealed, H-01 unfrozen and DEC-070 `STOP`.

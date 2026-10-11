@@ -1,7 +1,8 @@
 # PhysioNet EEG v1.0.0: source/role/split admission readiness
 
-Status: **HOLD — independently QA-passed proposal inputs, no admission
-decision**. This packet uses
+Status: **HOLD — independently QA-passed technical inputs, unresolved
+source/use rights, no admission decision**. See the separate
+[source/use gate](PHYSIONET_SOURCE_USE_GATE.md). This packet uses
 the [six-file audit](PHYSIONET_SIGNAL_AUDIT.md), independent
 [Data review](PHYSIONET_SIGNAL_AUDIT_DATA_REVIEW.md), official
 [dataset page](https://physionet.org/content/eegmmidb/1.0.0/) and
@@ -10,7 +11,7 @@ It does not authorize more source access, model work or a new split.
 
 | Decision axis | Confirmed within current scope | Missing before an admit/role/split proposal |
 |---|---|---|
-| Source and provenance | PhysioNet version 1.0.0 is listed open access; six predetermined EDFs match publisher member SHA-256. The source page requests dataset DOI `10.13026/C28G6P` and the original Schalk et al. (2004) BCI2000 citation. | Review exact intended internal use against the publisher terms, ODC attribution/notice and any separate individual-content/privacy rights. Bind a source lock and retrieval/notice record for every later used member; the sidecar's own raw-byte hash was not verified. |
+| Source and provenance | PhysioNet version 1.0.0 is listed open access; six predetermined EDFs match publisher member SHA-256. The source page requests the dataset DOI, original Schalk et al. (2004) BCI2000 paper and standard PhysioNet citation. | Obtain publisher/contributor or applicable institutional clarification of individual-content/privacy rights for the planned internal use before a source/use admission proposal. Bind a source lock and retrieval/notice record for every later used member; the sidecar's own raw-byte hash was not verified. |
 | Current inspected subjects | S001/S055/S109 have two inspected runs each, 64 ordered EEG channels and mechanically valid header-order 11/26/64 paired prefixes. | They are permanently audit-only under DEC-088 and cannot contribute to formal development, pretraining or test evidence. Their three subject groups do not establish cross-subject generalization. |
 | Candidate role | A future **development-held-out** role for a subject-disjoint subset of the other 106 listed IDs is scientifically plausible because EEG is absent from current encoder pretraining. | PI source/use and role decisions are needed. No other subject signal has been read; its layout/quality and dependence remain unverified. Do not silently promote the audit-only group to formal evidence. |
 | Split and seal | Subject IDs and R01–R14 names are listed by official sidecars. | PI must approve exact eligible run subset, subject-level train/validation allocation and any sealed test allocation **before** those signals are opened or windowed. Runs/windows must remain within subject partitions and recording boundaries; purge and train-only preprocessing need explicit rules. No score- or coverage-based redraw. |
@@ -22,9 +23,9 @@ It does not authorize more source access, model work or a new split.
 1. Independent [source-result QA](PHYSIONET_SIGNAL_AUDIT_QA.md) returned
    `PASS` on this bounded audit and admission-readiness packet under DEC-090.
    That verdict does not clear source rights or approve role/split.
-2. Present **source/use** and a proposed **development-held-out role** as
-   distinct PI decisions, with exact attribution, notice, exclusion and
-   nonpublic-use conditions. If rights remain unresolved, keep source `HOLD`.
+2. Resolve the separate [source/use gate](PHYSIONET_SOURCE_USE_GATE.md).
+   Rights remain unresolved, so source admission is `HOLD`. A proposed
+   **development-held-out role** requires its own later PI decision.
 3. Design an exact subject/run split from the 106 unassigned IDs **without
    seeing their signals or model outcomes**; independently review it, then
    request a separate PI split decision. Any selected development train/
