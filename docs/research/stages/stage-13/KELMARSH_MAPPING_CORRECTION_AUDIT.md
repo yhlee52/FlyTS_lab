@@ -1,6 +1,7 @@
 # Kelmarsh v4 mapping-title correction audit
 
-Status: **DEC-097's single mapping read completed; result QA pending;
+Status: **DEC-097's single mapping read completed; independent result QA
+PASS for provenance/claim bounds under DEC-098;
 source/use, role, split, H-01 count and Stage 13 freeze HOLD**. Executed
 2026-10-11 with Python 3.14.5 after independent [pre-read QA
 PASS](KELMARSH_MAPPING_PREREAD_QA.md). The executed
@@ -42,6 +43,6 @@ follows from this read. H-04 remains `not tested`, Q2/Q3 unavailable,
 Stage 09 history intact and DEC-070 public release `STOP` in force.
 
 The 3,150-byte DEC-097 cap is exhausted. Any further source read requires
-a new exact PI decision. Independent result QA has not replayed the source;
-the received bytes, hash and parsed output above are Director-reported
-execution evidence pending that review.
+a new exact PI decision. Independent [result QA](KELMARSH_MAPPING_RESULT_QA.md)
+did not replay the source; the received bytes, hash and parsed output above
+remain Director-reported execution evidence.

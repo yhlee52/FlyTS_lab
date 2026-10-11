@@ -187,6 +187,8 @@ authorizes source access, admission, role/split, protocol or compute.
 
 ## User approval
 
+- Kelmarsh DEC-097 result QA only: one read-only reviewer follow-up `GO`,
+  DEC-098; no source reread or admission follows.
 - Kelmarsh corrected mapping-only read and one independent pre-read QA
   review: `GO`, DEC-097, for the exact 3,150-byte one-request scope in
   [the request](KELMARSH_METADATA_CORRECTION_REQUEST.md); QA must pass first.

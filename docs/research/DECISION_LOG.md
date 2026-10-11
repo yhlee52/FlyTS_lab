@@ -1,5 +1,18 @@
 # FlyTS Decision Log
 
+## DEC-098 — PI approves one independent DEC-097 result QA follow-up
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` after Draft PR #33 and the exact
+  `KELMARSH_MAPPING_RESULT_QA_REQUEST.md` were presented.
+- Scope: one further read-only follow-up by the same independent reviewer
+  to inspect the DEC-097 audit, execution summary, byte/hash and code-hash
+  provenance, and the limits of tentative title categories. Synthetic
+  tests may be rerun. The six-specialist and two-concurrent ceilings stay.
+- Boundary: no Zenodo/source reread, test/Electricity or model access,
+  tracked edit, source admission, role/split, protocol/compute freeze,
+  training, evaluation or release. Both Kelmarsh read caps are exhausted.
+
 ## DEC-097 — PI approves one corrected Kelmarsh mapping read and one pre-read QA review
 
 - Date: 2026-10-11.

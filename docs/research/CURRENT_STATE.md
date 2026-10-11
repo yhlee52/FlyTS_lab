@@ -11,12 +11,12 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 (DEC-074); PR #20 merged at `4aed192`. Stage 12 closed with independent QA
 `PASS` and bounded PI `GO` (DEC-079); DEC-078 kept three existing roles and
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
-document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23–31 are open.
+document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23–33 are open.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-DEC-097 mapping read complete after pre-read QA PASS; result QA pending.
+DEC-097 mapping read complete; DEC-098 result QA PASS, eligibility HOLD.
 
 ## Canonical references
 
@@ -147,4 +147,4 @@ DEC-097 mapping read complete after pre-read QA PASS; result QA pending.
 
 ## Next action
 
-Review DEC-097 result; both approved Kelmarsh read caps exhausted.
+Keep Kelmarsh eligibility HOLD; both approved access caps exhausted.

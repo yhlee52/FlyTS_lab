@@ -1,6 +1,6 @@
 # Proposed independent QA extension for DEC-097 result
 
-Status: **proposal only; reviewer follow-up not yet authorized**. DEC-097
+Status: **one bounded result-QA follow-up GO, DEC-098; review PASS**. DEC-097
 approved one additional review of the corrected code **before** the read.
 That review returned `PASS` and used its entire added allowance. The
 approved 3,150-byte mapping read then completed once. Its Director-reported
@@ -22,3 +22,6 @@ Kelmarsh access, source/use admission, role/split, protocol or compute
 freeze, training, evaluation, checkpoint creation or publication. Both
 Kelmarsh access caps are exhausted. With no result review, the packet
 remains Director-reported and candidate eligibility stays `HOLD`.
+
+The PI approved only the reviewer follow-up described here (DEC-098).
+The independent outcome is recorded in `KELMARSH_MAPPING_RESULT_QA.md`.
