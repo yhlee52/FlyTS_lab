@@ -147,4 +147,4 @@ Stage 13 HOLD; bounded ZIP inventory QA PASS, source admission pending; no Stage
 
 ## Next action
 
-Decide next low-cost source-format gate or retain Stage 13 HOLD.
+Decide official Kelmarsh format-document screen or retain Stage 13 HOLD.
