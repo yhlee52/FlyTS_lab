@@ -16,9 +16,9 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Prepare the next PhysioNet source-access packet after DEC-085's six-header
-screen. Source admission, role, split, protocol and compute remain gated after
-the DEC-082 Charter `GO`.
+Seek PI review of the Stage 13 specialist-budget amendment after DEC-085's
+six-header screen. PhysioNet signal access/admission, role, split, protocol and
+compute remain separately gated after the DEC-082 Charter `GO`.
 
 ## Canonical references
 
@@ -146,5 +146,5 @@ the DEC-082 Charter `GO`.
 
 ## Next action
 
-Prepare a scoped source-access and QA-budget request for PI review. Keep
-Electricity/test sealed and DEC-070 release `STOP`.
+Seek PI decision on `stage-13/AGENT_BUDGET_REVISION_REQUEST.md`, then prepare
+source-access packet. Keep Electricity/test sealed and DEC-070 `STOP`.
