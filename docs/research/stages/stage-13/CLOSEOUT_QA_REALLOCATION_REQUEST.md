@@ -1,6 +1,7 @@
 # Proposed Stage 13 HOLD closeout QA reallocation
 
-Status: **proposal; no reviewer reallocation yet approved**. DEC-090
+Status: **PI `GO` (DEC-100); one read-only closeout review completed with
+`PASS`**. DEC-090
 reserved one additional read-only follow-up of the existing independent
 reviewer for an exact pre-freeze v3 packet, conditional on such a packet
 existing. DEC-099 instead placed the current freeze attempt at `HOLD`;
@@ -24,3 +25,7 @@ independent pre-freeze QA staffing decision. This request does not approve
 source access/admission, role/split, contract change, protocol/budget,
 Stage 14, PR merge or publication. If the PI declines, DEC-099 `HOLD`
 stands, while the whole-stage closeout QA remains pending.
+
+The prospective request above is preserved as the decision basis. DEC-100
+authorizes this one review; it does not restore the pre-freeze reservation.
+The completed independent verdict is in `QA_REPORT.md`.

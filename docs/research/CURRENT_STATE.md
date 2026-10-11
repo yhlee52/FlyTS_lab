@@ -12,12 +12,12 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 `PASS` and bounded PI `GO` (DEC-079); DEC-078 kept three existing roles and
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
 document-only QA `PASS`/PI `GO` (DEC-082); PI froze Stage 13 at `HOLD`
-(DEC-099). Draft PRs #23–34 remain open; closeout QA is pending.
+(DEC-099) with document QA `PASS` (DEC-100); PRs #23–34 remain Draft.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Stage 13 PI HOLD: no v3/budget freeze or Stage 14 handoff.
+Stage 13 closed HOLD: no v3/budget freeze or Stage 14 handoff.
 
 ## Canonical references
 
@@ -31,7 +31,7 @@ Stage 13 PI HOLD: no v3/budget freeze or Stage 14 handoff.
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
 - `docs/research/stages/stage-13/RESULT.md` (PI HOLD; QA pending)
 - `docs/research/stages/stage-13/RECOVERY_OPTIONS.md` (unapproved routes)
-- `docs/research/DECISION_LOG.md` (DEC-070–089)
+- `docs/research/DECISION_LOG.md` (DEC-070–100)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -147,4 +147,4 @@ Stage 13 PI HOLD: no v3/budget freeze or Stage 14 handoff.
 
 ## Next action
 
-Independent Stage 13 closeout QA; Stage 14 remains NO GO.
+Choose a separately gated recovery or Phase 02 HOLD; Stage 14 NO GO.

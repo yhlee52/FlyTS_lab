@@ -1,7 +1,7 @@
 # Stage 13 result — Protocol v3 and Compute Budget Freeze
 
-Status: **PI `HOLD` (DEC-099); protocol/budget not frozen; Stage 14 NO GO**.
-Independent stage-closeout QA is pending. Date: 2026-10-11. The PI chose to
+Status: **closed at PI `HOLD` (DEC-099); independent document QA `PASS`;
+protocol/budget not frozen; Stage 14 NO GO**. Date: 2026-10-11. The PI chose to
 stop the current Stage 13 freeze attempt and asked for lower-burden recovery
 paths. This is a valid infeasibility finding under the [Charter](CHARTER.md),
 not a positive H-01–H-03 result or permission to change the Stage 11 contract.
@@ -43,8 +43,10 @@ not a positive H-01–H-03 result or permission to change the Stage 11 contract.
 
 The completed work is the Charter, bounded candidate screens and access
 packets, approved metadata audits, their narrow independent QA records and
-decision/provenance trail. Draft PRs #23–33 form an unmerged stack over
-`main`; CI success on that stack verifies code/document checks only.
+decision/provenance trail. Draft PRs #23–34 form an unmerged stack over
+`main`; CI success on reviewed heads verifies code/document checks only.
+The [closeout QA](QA_REPORT.md) passed the bounded `HOLD` packet under
+DEC-100, not a protocol freeze.
 No Stage 13 formal training, model evaluation, checkpoint, numerical
 threshold, seed, experiment matrix, compute envelope or CUDA path exists.
 

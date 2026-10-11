@@ -1,5 +1,21 @@
 # FlyTS Decision Log
 
+## DEC-100 — PI reallocates the unused Stage 13 QA follow-up to HOLD closeout
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` after Draft PR #34 and the exact
+  `stages/stage-13/CLOSEOUT_QA_REALLOCATION_REQUEST.md` were presented.
+- Decision: use the one DEC-090 reviewer follow-up reserved for a
+  conditional exact pre-freeze v3 packet for **one read-only, document-only
+  Stage 13 HOLD closeout QA**. No v3 packet exists under DEC-099. The
+  specialist count, total follow-up count and parallel ceiling do not rise.
+- Boundary: the reallocation exhausts that reserved follow-up; any later
+  Stage 13 pre-freeze QA needs a new staffing decision. This permits no
+  source/array/test/Electricity/model access, tracked QA edit, contract,
+  source/role/split, protocol/budget, Stage 14, PR merge or release `GO`.
+- Outcome: the independent document-only Stage 13 closeout review returned
+  `PASS`; see `stages/stage-13/QA_REPORT.md`. This is not pre-freeze QA.
+
 ## DEC-099 — PI places the current Stage 13 freeze attempt on HOLD
 
 - Date: 2026-10-11.

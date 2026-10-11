@@ -2,8 +2,9 @@
 
 Status: approved
 
-The Charter remains approved (DEC-082); the current freeze attempt is PI
-`HOLD` (DEC-099), with closeout QA pending. Acceptance criteria are unchanged.
+The Charter remains approved (DEC-082); the current freeze attempt closed
+at PI `HOLD` (DEC-099) with independent document QA `PASS` (DEC-100).
+Acceptance criteria are unchanged.
 
 PI Charter `GO` was granted on 2026-10-11 (DEC-082), after independent
 document-only QA `PASS` and Draft PR #23 review. This activates the bounded
@@ -187,9 +188,14 @@ source-result/admission-readiness QA now, and exact pre-freeze QA only if a
 valid protocol v3 packet exists. The ceiling of four is not a general grant
 to other reviewers. Parallelism remains two agents. Neither staffing decision
 authorizes source access, admission, role/split, protocol or compute.
+DEC-100 reallocates the unused conditional pre-freeze follow-up to one
+document-only Stage 13 `HOLD` closeout QA. Later pre-freeze QA needs a new
+specific staffing decision.
 
 ## User approval
 
+- One existing reviewer follow-up reallocated from conditional pre-freeze
+  QA to Stage 13 `HOLD` closeout QA: `GO`, DEC-100; no data or Stage 14 gate.
 - Current Stage 13 freeze attempt: PI `HOLD`, DEC-099; see
   [result](RESULT.md) and unapproved [recovery options](RECOVERY_OPTIONS.md).
   No Stage 14 entry or protocol/budget freeze follows.
