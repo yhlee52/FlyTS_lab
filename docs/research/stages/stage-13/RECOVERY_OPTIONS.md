@@ -49,3 +49,7 @@ exhausted. The minimum next choices are:
 
 No choice reuses the 2016 audit-only year for formal evidence. The accepted
 Stage 11 contract remains in force unless the PI separately revises it.
+
+DEC-108 authorized A1. Its [one-page result](KELMARSH_FORMAT_DOC_SCREEN.md)
+found no delimiter/header statement or eligible linked owner format document;
+the stop-if-unclear rule ended that screen. A2 and C remain unselected.

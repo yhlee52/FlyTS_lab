@@ -1,5 +1,23 @@
 # FlyTS Decision Log
 
+## DEC-108 — PI approves a minimal official Kelmarsh format-document screen
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI selection of A1 in
+  `stages/stage-13/RECOVERY_OPTIONS.md` after DEC-107 bounded result QA.
+- Scope: read at most two official owner documentation pages linked from the
+  known Kelmarsh v4 record, solely for CSV delimiter and header conventions.
+  Record page URLs, exact assertions and missing/conflicting format detail.
+  If neither page states the format clearly, mark it `unverified` and stop.
+- No ZIP/member/CSV source-file access, measurement, test/Electricity or model
+  score read; no download, source admission, formal role/split, protocol or
+  compute approval. DEC-107's exhausted Range cannot be replayed. Separate
+  independent document QA staffing, if needed, remains gated.
+- Outcome: only the official v4 record was opened; it states no annual-member
+  delimiter/header rule and links no eligible owner format document. See
+  `stages/stage-13/KELMARSH_FORMAT_DOC_SCREEN.md`. A second page was not opened;
+  dialect and header identity remain unverified. Independent QA pending.
+
 ## DEC-107 — PI approves one bounded 2016 ZIP first-line read
 
 - Date: 2026-10-11.
