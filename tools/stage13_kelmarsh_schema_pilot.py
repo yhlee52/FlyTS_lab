@@ -1,4 +1,4 @@
-"""Proposed one-range Kelmarsh 2016 audit-only CSV-header pilot.
+"""Proposed one-range Kelmarsh 2016 audit-only first-line pilot.
 
 Network execution requires a separate PI source-access decision and independent
 pre-read QA. Importing this module or running it without the explicit flag
@@ -37,7 +37,7 @@ SOURCE_BYTES = RANGE_END + 1
 HEADER_CAP = 8192
 OUTPUT_CAP = 65536
 MAX_COLUMNS = 128
-MAX_NAME_CHARS = 256
+MAX_FIELD_CHARS = 256
 EXPECTED_MEMBER = "Turbine_Data_Kelmarsh_1_2016-01-03_-_2017-01-01_228.csv"
 _LOCAL_HEADER = "<IHHHHHIIIHH"
 _LOCAL_SIGNATURE = 0x04034B50
@@ -77,8 +77,8 @@ def parse_member_header(prefix: bytes) -> tuple[str, int]:
     return name, data_offset
 
 
-def parse_csv_header(prefix: bytes) -> dict[str, object]:
-    """Inflate only enough of the preselected member to parse its first line."""
+def parse_first_csv_line(prefix: bytes) -> dict[str, object]:
+    """Parse one CSV line without assuming it is a header or emitting fields."""
     name, data_offset = parse_member_header(prefix)
     inflater = zlib.decompressobj(-zlib.MAX_WBITS)
     output = bytearray()
@@ -88,7 +88,7 @@ def parse_csv_header(prefix: bytes) -> dict[str, object]:
         # is stricter than the proposal's 65536-byte total and 8192-byte line.
         remaining = min(OUTPUT_CAP, HEADER_CAP + 1) - len(output)
         if remaining <= 0:
-            raise ValueError("CSV header exceeds the output cap")
+            raise ValueError("first CSV line exceeds the output cap")
         try:
             chunk = inflater.decompress(bytes((value,)), remaining)
         except zlib.error as exc:
@@ -99,36 +99,36 @@ def parse_csv_header(prefix: bytes) -> dict[str, object]:
         output.extend(chunk)
         newline = output.find(b"\n")
         if newline >= 0:
-            if newline > HEADER_CAP:
-                raise ValueError("CSV header line exceeds 8192 bytes")
+            if newline >= HEADER_CAP:
+                raise ValueError("first CSV line exceeds 8192 bytes")
             line = bytes(output[: newline + 1])
             try:
                 decoded = line.decode("utf-8-sig", "strict")
             except UnicodeDecodeError as exc:
-                raise ValueError("CSV header is not UTF-8") from exc
+                raise ValueError("first CSV line is not UTF-8") from exc
             try:
                 columns = next(csv.reader(io.StringIO(decoded, newline=""), strict=True))
             except (csv.Error, StopIteration) as exc:
-                raise ValueError("invalid CSV header") from exc
+                raise ValueError("invalid first CSV line") from exc
             if not 1 <= len(columns) <= MAX_COLUMNS:
-                raise ValueError("CSV header column count outside bound")
-            if any(not c or len(c) > MAX_NAME_CHARS for c in columns):
-                raise ValueError("empty or oversized CSV column name")
+                raise ValueError("first CSV line field count outside bound")
+            if any(not c or len(c) > MAX_FIELD_CHARS for c in columns):
+                raise ValueError("empty or oversized first-line field")
             if len(set(columns)) != len(columns):
-                raise ValueError("duplicate CSV column names")
+                raise ValueError("duplicate first-line fields")
             return {
                 "member": name,
                 "range": [0, RANGE_END],
                 "application_bytes_read": SOURCE_BYTES,
                 "compressed_input_consumed": compressed_consumed,
                 "decompressed_prefix_bytes": len(output),
-                "header_sha256": hashlib.sha256(line).hexdigest(),
-                "column_count": len(columns),
-                "columns": columns,
+                "first_line_sha256": hashlib.sha256(line).hexdigest(),
+                "first_line_field_count": len(columns),
+                "header_identity": "unverified",
             }
         if inflater.eof:
-            raise ValueError("deflate member ended before CSV header newline")
-    raise ValueError("CSV header incomplete in the one approved range")
+            raise ValueError("deflate member ended before first CSV newline")
+    raise ValueError("first CSV line incomplete in the one approved range")
 
 
 def main(argv: list[str]) -> int:
@@ -139,7 +139,7 @@ def main(argv: list[str]) -> int:
     prefix = fetch_range(
         opener, url=URL, total=PUBLISHED_SIZE, start=0, end=RANGE_END
     )
-    result = parse_csv_header(prefix)
+    result = parse_first_csv_line(prefix)
     result["record"] = "16807551"
     result["archive"] = "Kelmarsh_SCADA_2016_3082.zip"
     result["range_sha256"] = hashlib.sha256(prefix).hexdigest()

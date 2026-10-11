@@ -8,8 +8,9 @@ inventory and its [independent report QA](KELMARSH_ZIP_INVENTORY_RESULT_QA.md).
 ## Fixed question and source
 
 Does the first, preselected `Turbine_Data_Kelmarsh_1_2016-01-03_-_2017-01-01_228.csv`
-member have a parseable SCADA CSV header with enough candidate columns to
-justify a later finite-channel availability audit? The official Cubico
+member have a parseable **first CSV line** with enough fields to justify a
+later verified-schema and finite-channel availability audit? Header identity
+cannot be established from that line alone. The official Cubico
 Kelmarsh v4 owner record is CC BY 4.0; that public-data condition supports a
 request for **audit-only** access, not automatic formal source admission.
 The six directory-listed turbines share one farm. A member name and header
@@ -34,7 +35,7 @@ cannot establish 27 simultaneous usable channels, independent farms, paired
 
 The prepared tool is `tools/stage13_kelmarsh_schema_pilot.py`; its current raw
 worktree SHA-256 is
-`48c71111f07553005ed9bcd5ef7e098b47ceb879e09f116a4d51454c45687b25`.
+`28dad91664e48a2a8293460dc993c54efa1950a13da7411a8f8eb2022f487c14`.
 The canonical Git blob and raw worktree bytes must match this hash after
 independent pre-read QA and immediately before any separately approved read.
 The new synthetic tests are `tests/test_stage13_kelmarsh_schema_pilot.py`.
@@ -51,17 +52,18 @@ Only after those checks may it inflate a bounded prefix of that member to
 find its first CSV line. This **does read compressed measurement payload** and
 may temporarily inflate part of the first data row; neither raw nor inflated
 bytes may be stored. Cap total decompressed output at **65,536 bytes**, the
-header line at **8,192 bytes**, and emitted names at **128 columns of at most
-256 characters each**; stop at the first line. Emit only the member identity,
-parser/byte counts, schema column count and bounded header names/hashes. Do
-not inspect or report measurement values,
+first line including newline at **8,192 bytes**, and parsed fields at **128
+fields of at most 256 characters each**; stop at the first line. Emit only
+member identity, parser/byte counts, the first-line field count and first-line
+SHA-256. **Do not emit field values or call them confirmed header names.**
+Do not inspect or report measurement values,
 timestamps, score, missingness or target labels. If the line is incomplete
 within the one range, record inconclusive `HOLD`, with no automatic repeat.
 The whole-archive MD5 and member CRC remain unverified.
 
-If the header has too few plausible measurement columns or the first member
-does not match, reject this exact low-byte route and seek a new PI decision
-before any alternative. If it is promising, a later, separately approved
+If the first line has too few fields or the first member does not match,
+reject this exact low-byte route and seek a new PI decision before any
+alternative. If it is promising, a later, separately approved schema and
 finite/missingness audit must establish actual concurrent usable channels and
 the same-record paired views. Formal source/use, role and split admission
 remain separate PI gates. The 2016 audit year never becomes formal evidence.

@@ -12,7 +12,7 @@ from tools.stage13_kelmarsh_schema_pilot import (
     EXPECTED_MEMBER,
     SOURCE_BYTES,
     main,
-    parse_csv_header,
+    parse_first_csv_line,
     parse_member_header,
 )
 
@@ -27,21 +27,31 @@ def prefix_for(body: bytes, *, member: str = EXPECTED_MEMBER) -> bytes:
 class SchemaPilotTests(unittest.TestCase):
     def test_valid_header_and_no_measurement_output(self):
         prefix = prefix_for(b"TimeStamp,WindSpeed,Power\r\nsecret,1,2\r\n")
-        result = parse_csv_header(prefix)
-        self.assertEqual(result["columns"], ["TimeStamp", "WindSpeed", "Power"])
-        self.assertEqual(result["column_count"], 3)
+        result = parse_first_csv_line(prefix)
+        self.assertEqual(result["first_line_field_count"], 3)
+        self.assertEqual(result["header_identity"], "unverified")
+        self.assertNotIn("TimeStamp", str(result))
         self.assertNotIn("secret", str(result))
         self.assertLess(result["compressed_input_consumed"], SOURCE_BYTES)
 
     def test_wrong_first_member_stops(self):
         with self.assertRaisesRegex(ValueError, "preselected turbine"):
-            parse_csv_header(prefix_for(b"A,B\n1,2\n", member="other.csv"))
+            parse_first_csv_line(prefix_for(b"A,B\n1,2\n", member="other.csv"))
+
+    def test_headerless_data_row_is_not_emitted_or_called_header(self):
+        result = parse_first_csv_line(
+            prefix_for(b"2016-01-03T00:00:00,12.3,5.0\nnext,1,2\n")
+        )
+        self.assertEqual(result["first_line_field_count"], 3)
+        self.assertEqual(result["header_identity"], "unverified")
+        self.assertNotIn("2016-01-03T00:00:00", str(result))
+        self.assertNotIn("12.3", str(result))
 
     def test_not_a_zip_and_short_body_stop(self):
         with self.assertRaisesRegex(ValueError, "offset zero"):
-            parse_csv_header(b"X" * SOURCE_BYTES)
+            parse_first_csv_line(b"X" * SOURCE_BYTES)
         with self.assertRaisesRegex(ValueError, "exactly 8192"):
-            parse_csv_header(b"X" * 30)
+            parse_first_csv_line(b"X" * 30)
 
     def test_encryption_and_unsupported_method_stop(self):
         encrypted = bytearray(prefix_for(b"A\n1\n"))
@@ -58,21 +68,33 @@ class SchemaPilotTests(unittest.TestCase):
         _, offset = parse_member_header(prefix)
         prefix[offset : offset + 8] = b"\xff" * 8
         with self.assertRaises(ValueError):
-            parse_csv_header(prefix)
+            parse_first_csv_line(prefix)
 
     def test_incomplete_and_oversized_header_stop(self):
         with self.assertRaisesRegex(ValueError, "incomplete|ended"):
-            parse_csv_header(prefix_for(b"NoNewline"))
+            parse_first_csv_line(prefix_for(b"NoNewline"))
         with self.assertRaisesRegex(ValueError, "cap|8192"):
-            parse_csv_header(prefix_for(b"A" * 9000 + b"\n"))
+            parse_first_csv_line(prefix_for(b"A" * 9000 + b"\n"))
+
+    def test_first_line_cap_includes_newline(self):
+        fields = [f"{i:02d}".encode() + b"A" * 253 for i in range(32)]
+        first_line = b",".join(fields) + b"\n"
+        self.assertEqual(len(first_line), 8192)
+        self.assertEqual(
+            parse_first_csv_line(prefix_for(first_line))["first_line_field_count"],
+            32,
+        )
+        fields[0] += b"A"
+        with self.assertRaisesRegex(ValueError, "8192"):
+            parse_first_csv_line(prefix_for(b",".join(fields) + b"\n"))
 
     def test_ambiguous_columns_stop(self):
         with self.assertRaisesRegex(ValueError, "duplicate"):
-            parse_csv_header(prefix_for(b"A,A\n1,2\n"))
+            parse_first_csv_line(prefix_for(b"A,A\n1,2\n"))
         with self.assertRaisesRegex(ValueError, "empty"):
-            parse_csv_header(prefix_for(b"A,\n1,2\n"))
-        with self.assertRaisesRegex(ValueError, "column count"):
-            parse_csv_header(prefix_for(b",".join([b"x"] * 129) + b"\n"))
+            parse_first_csv_line(prefix_for(b"A,\n1,2\n"))
+        with self.assertRaisesRegex(ValueError, "field count"):
+            parse_first_csv_line(prefix_for(b",".join([b"x"] * 129) + b"\n"))
 
     def test_no_flag_never_uses_network(self):
         with patch(
@@ -97,7 +119,9 @@ class SchemaPilotTests(unittest.TestCase):
         self.assertEqual(fetch.call_args.kwargs["start"], 0)
         self.assertEqual(fetch.call_args.kwargs["end"], 8191)
         output = json.loads(stream.getvalue())
-        self.assertEqual(output["columns"], ["TimeStamp", "Power"])
+        self.assertEqual(output["first_line_field_count"], 2)
+        self.assertEqual(output["header_identity"], "unverified")
+        self.assertNotIn("TimeStamp", stream.getvalue())
         self.assertNotIn("secret", stream.getvalue())
 
 
