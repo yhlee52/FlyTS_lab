@@ -57,13 +57,14 @@ buffering beyond application reads is not measured.
 
 The tool is `tools/stage13_kelmarsh_zip_inventory.py`; synthetic tests are
 `tests/test_stage13_kelmarsh_zip_inventory.py`. The network entry point
-requires `--execute-approved-read` and has **not** been run. Its exact code
-SHA-256 in this proposal is
+requires `--execute-approved-read`. It had not been run when this access was
+proposed; the one DEC-104 execution is reported separately. Its exact code
+SHA-256 for that execution is
 `781840249016735cbf2953af5ca3d33f0dd20e26003d3e99f82f4f3510b02986`;
-the canonical Git blob **and raw worktree bytes** must both match that value
-after pre-read QA and immediately before any authorized execution. A Windows
-CRLF checkout mismatch stops the run until the worktree is restored to the
-canonical LF bytes. No change to the historical Stage 06 hashes is needed.
+the canonical Git blob **and raw worktree bytes** were required to match that
+value immediately before the DEC-104 execution and did match, as reported in
+the result. The Windows CRLF checkout check did not change the historical
+Stage 06 hashes.
 
 ## Why this order is cheap
 

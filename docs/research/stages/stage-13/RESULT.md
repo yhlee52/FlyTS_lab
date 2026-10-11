@@ -26,7 +26,9 @@ not a positive H-01–H-03 result or permission to change the Stage 11 contract.
   source access. A mapping entry is not a concurrent usable channel.
   Kelmarsh's time coverage, per-turbine availability, independent-unit
   dependence, split and paired 11/26/>26 views remain unverified. Its two
-  access caps are exhausted. No SCADA ZIP/member or measurement was opened.
+  metadata access caps were exhausted at closeout. DEC-104 later read only
+  the 2016 ZIP directory; no archive member or measurement was opened. That
+  bounded result received DEC-105 report-consistency QA `PASS` without replay.
 - No labeled H-04 target was admitted. HAR/HARTH keep their prior `HOLD`
   reasons; H-04 is `not tested`. Q2/Q3 are unavailable. Electricity and
   every test signal/score remain sealed.
@@ -56,7 +58,8 @@ Stage 14 is defined as a preflight of the **frozen** runner, reporter,
 matrix and approved budget. It cannot start from this `HOLD`. The
 [recovery options](RECOVERY_OPTIONS.md) compare a narrow open-licensed
 Kelmarsh availability audit, a new PI-approved narrower contract and an
-early Phase 02 `HOLD`. None is automatically selected. Reopening Stage 13
+early Phase 02 `HOLD`. The PI selected bounded Kelmarsh route A under DEC-102;
+that choice does not approve source admission. Reopening Stage 13
 requires its named data/scope gates, a complete v3 and budget packet,
 independent pre-freeze QA `PASS` and an explicit PI protocol/budget `GO`.
 Synthetic engineering checks under a separately approved scope would not

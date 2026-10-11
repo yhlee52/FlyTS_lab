@@ -1,7 +1,8 @@
 # Kelmarsh 2016 ZIP inventory result
 
 Status: **DEC-104's one bounded read completed; Director-reported result,
-independent result QA pending; Stage 13 freeze HOLD**. Executed 2026-10-11
+independent result QA [PASS](KELMARSH_ZIP_INVENTORY_RESULT_QA.md) for consistency
+and claim limits under DEC-105; Stage 13 freeze HOLD**. Executed 2026-10-11
 from Draft PR #35 after independent pre-read QA `PASS`, two GitHub `pytest`
 checks `PASS`, seven synthetic tests `PASS`, and a byte-exact script preflight.
 The canonical Git blob and raw worktree SHA-256 of
@@ -23,7 +24,7 @@ exact-URL, `Content-Range`, `Content-Length` and identity-encoding checks.
 Total application bytes read: **1,198**. No retry, redirect, full ZIP fetch,
 local member read, decompression, CSV header, measurement, model output,
 Electricity or test item was accessed. These are Director-reported execution
-facts; QA has not independently replayed the network response. The publisher
+facts; QA did not independently replay the network response. The publisher
 whole-archive MD5 `ca8efbb6dbcfae3516583937eb5b5402` remains
 **unverified** by this partial access.
 
@@ -52,7 +53,7 @@ columns, genuine simultaneous measurements, 27 finite channels, paired
 11/26/>26 views, independent farms, source identity beyond the checked range
 headers, or a leakage-free formal split. The six turbines share one farm.
 
-DEC-104's access is exhausted. A result QA follow-up, any member or signal
+DEC-104's access and DEC-105's result QA are exhausted. Any member or signal
 read, source/use admission, audit-only exclusion, development role and formal
 split each need their own applicable PI decision. The Stage 11 contract is
 unchanged; H-01 count remains untested, H-04 `not tested`, Q2/Q3 unavailable,

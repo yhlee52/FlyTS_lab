@@ -14,6 +14,9 @@
   tracked edit, source/use, role/split, protocol/budget, Stage 14 or release.
   Source responses and span hashes remain Director-reported; this decision
   does not make them independently observed.
+- Outcome: independent bounded report/claim QA `PASS`; see
+  `stages/stage-13/KELMARSH_ZIP_INVENTORY_RESULT_QA.md`. The reviewer did not
+  replay either Range; this follow-up is exhausted.
 
 ## DEC-104 — PI approves revised two-Range ZIP inventory access
 
