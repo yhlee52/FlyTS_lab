@@ -11,12 +11,12 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 (DEC-074); PR #20 merged at `4aed192`. Stage 12 closed with independent QA
 `PASS` and bounded PI `GO` (DEC-079); DEC-078 kept three existing roles and
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
-document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23–30 are open.
+document-only QA `PASS` and PI `GO` (DEC-082); Draft PRs #23–31 are open.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-DEC-094 screen has independent document QA PASS; no admission or freeze.
+DEC-095 three-source screen has document QA PASS; no admission or freeze.
 
 ## Canonical references
 
@@ -28,7 +28,7 @@ DEC-094 screen has independent document QA PASS; no admission or freeze.
 - `docs/research/stages/stage-12/RESULT.md` (QA PASS; PI GO)
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
-- `docs/research/stages/stage-13/HIGH_CHANNEL_OPEN_CANDIDATE_SCREEN.md` (screen)
+- `docs/research/stages/stage-13/MULTITURBINE_OPEN_CANDIDATE_SCREEN.md` (screen)
 - `docs/research/stages/stage-13/PHYSIONET_SOURCE_USE_GATE.md` (rights HOLD)
 - `docs/research/DECISION_LOG.md` (DEC-070–089)
 - `docs/research/HYPOTHESES.md`
@@ -83,7 +83,7 @@ DEC-094 screen has independent document QA PASS; no admission or freeze.
   six specified EDF headers only; signal/access/admission/role/split gated.
 - DEC-086–090 cover bounded staffing, six EDF/audit-only access and retry.
   DEC-091 inquiry stopped under DEC-092; DEC-093 screen closed with QA PASS.
-  DEC-094 permits one targeted three-source official-document screen only.
+  DEC-094 QA PASS; DEC-095 permits three physical-device document screens.
 
 ## Open questions
 
@@ -141,10 +141,10 @@ DEC-094 screen has independent document QA PASS; no admission or freeze.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
   `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
 - Draft PR #28 records bounded PhysioNet QA `PASS`; rights remain HOLD.
-- Draft PR #30 records DEC-094 screen QA `PASS`: UCI rights/entity gaps,
-  Harvard synthetic-only units and SMD data-rights uncertainty.
+- Draft PR #31 records DEC-095 document QA `PASS`: Kelmarsh is a licensed
+  multi-turbine lead, but genuine concurrent count remains unverified.
 
 ## Next action
 
-Seek PI direction for any next source gate; Stage 13 freeze remains HOLD.
+Seek PI decision on Kelmarsh metadata-file access; Stage 13 freeze HOLD.
 Keep Electricity/test sealed, H-01 unfrozen and DEC-070 `STOP`.
