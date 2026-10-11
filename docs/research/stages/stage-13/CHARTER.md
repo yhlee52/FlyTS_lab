@@ -203,6 +203,8 @@ exact member read is later approved. It excludes all Kelmarsh 2016 turbine
 data from future formal roles. Pre-read QA returned `PASS` on `a0821e4` and
 used that follow-up. DEC-107 separately approves one exact 8,192-byte 2016
 first-line source read after CI/hash preflight; source admission remains absent.
+DEC-109 grants one more existing-reviewer read-only follow-up for the DEC-108
+official format-page screen only; no further source access or review follows.
 
 ## User approval
 

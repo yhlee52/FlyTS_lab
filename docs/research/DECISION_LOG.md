@@ -1,5 +1,20 @@
 # FlyTS Decision Log
 
+## DEC-109 — PI approves one bounded format-screen QA follow-up
+
+- Date: 2026-10-12.
+- Decision authority: explicit PI `GO` after seeing Draft PR #35's
+  `stages/stage-13/KELMARSH_FORMAT_DOC_SCREEN.md` and
+  `stages/stage-13/KELMARSH_FORMAT_DOC_QA_REQUEST.md`.
+- Staffing: one additional read-only follow-up by the same existing
+  independent reviewer, restricted to the tracked packet and the same
+  official Kelmarsh v4 record page. Six-specialist/two-parallel limits remain.
+- Boundary: no CSV/ZIP preview or source-file access, other page or mirror,
+  contact, measurement, test/Electricity, tracked edit, admission, role/split,
+  protocol/compute, Stage 14, PR merge or release. The reviewer checks the
+  absence of a format statement on the inspected page, not the absence of
+  documentation everywhere. No further follow-up is implied.
+
 ## DEC-108 — PI approves a minimal official Kelmarsh format-document screen
 
 - Date: 2026-10-11.
