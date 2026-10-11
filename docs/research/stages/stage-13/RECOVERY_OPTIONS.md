@@ -1,7 +1,8 @@
 # Stage 13 recovery options after PI HOLD
 
 Status: **route A selected (DEC-102); DEC-104 and DEC-107 bounded reads
-completed; further source access, admission and compute remain unapproved**.
+completed; DEC-110 retains recovery `HOLD`; further source access, admission
+and compute remain unapproved**.
 The current Stage 13 freeze attempt is `HOLD` (DEC-099). Its first bounded
 request was [the ZIP inventory proposal](KELMARSH_ZIP_INVENTORY_REQUEST.md).
 No option turns the 60 Kelmarsh mapping rows into 60 observed
@@ -52,4 +53,5 @@ Stage 11 contract remains in force unless the PI separately revises it.
 
 DEC-108 authorized A1. Its [one-page result](KELMARSH_FORMAT_DOC_SCREEN.md)
 found no delimiter/header statement or eligible linked owner format document;
-the stop-if-unclear rule ended that screen. A2 and C remain unselected.
+independent bounded [QA PASS](KELMARSH_FORMAT_DOC_QA.md) confirmed the page
+claim limit. The stop-if-unclear rule ended that screen. A2 remains unselected.

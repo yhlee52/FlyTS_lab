@@ -70,3 +70,22 @@ count as Stage 14 completion.
 
 Stage 09's `HOLD`, final QA `FAIL` and report hashes are unchanged. DEC-070
 public-release `STOP` remains. No Stage 13 PR merge is approved by DEC-099.
+
+## Bounded recovery closeout (DEC-102–110)
+
+The PI selected route A and separately approved the exact DEC-104 and DEC-107
+reads. The directory inventory had bounded result QA `PASS`; the 2016
+audit-only turbine-1 prefix had pre-read and bounded result QA `PASS`.
+It produced **one first-line field under a comma parser**, with header identity
+and delimiter unverified. The official owner record did not state the member
+format; DEC-108's one-page screen received bounded independent QA `PASS` under
+DEC-109. These QA verdicts check access/report limits, not eligibility or
+model performance. The six turbines share one farm and 2016 is excluded from
+formal roles. No independent held-out H-01 paired count observations were
+established and no Kelmarsh source/role/split was admitted.
+
+Under the PI's bounded autonomy delegation (DEC-110), the Director closes
+this low-cost recovery at the existing Stage 13 **HOLD**. Protocol v3,
+low/medium/high compute choices, pre-freeze QA and PI protocol/budget `GO`
+remain absent. Stage 14 is **NO GO**. No further source access or external
+outreach is performed; Draft PR #35 stays unmerged pending an exact decision.

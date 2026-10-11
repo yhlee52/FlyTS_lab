@@ -1,7 +1,8 @@
 # Kelmarsh official format-document screen: independent QA request
 
-Status: **one existing-reviewer read-only follow-up PI `GO` (DEC-109), review
-pending**. Earlier Stage 13 reviewer follow-up grants were exhausted.
+Status: **one existing-reviewer read-only follow-up PI `GO` (DEC-109),
+completed with [bounded QA `PASS`](KELMARSH_FORMAT_DOC_QA.md)**. Earlier
+Stage 13 reviewer follow-up grants were exhausted.
 The [DEC-108 result](KELMARSH_FORMAT_DOC_SCREEN.md) is Director-reported and
 does not admit a source or resolve the delimiter.
 

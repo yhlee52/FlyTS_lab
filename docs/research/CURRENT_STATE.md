@@ -13,7 +13,7 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
 document-only QA `PASS`/PI `GO` (DEC-082); PI froze Stage 13 at `HOLD`
 (DEC-099) with document QA `PASS` (DEC-100); PRs #23–34 merged (DEC-101).
-PI chose route A; DEC-107 QA PASS; DEC-108 screen inconclusive, QA GO DEC-109.
+PI chose route A; DEC-107/109 bounded QA PASS; DEC-110 retains Stage 13 HOLD.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
@@ -32,7 +32,7 @@ Stage 13 HOLD; bounded ZIP inventory QA PASS, source admission pending; no Stage
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
 - `docs/research/stages/stage-13/RESULT.md` (PI HOLD; document QA PASS)
 - `docs/research/stages/stage-13/RECOVERY_OPTIONS.md` (unapproved routes)
-- `docs/research/DECISION_LOG.md` (DEC-070–109)
+- `docs/research/DECISION_LOG.md` (DEC-070–110)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -147,4 +147,4 @@ Stage 13 HOLD; bounded ZIP inventory QA PASS, source admission pending; no Stage
 
 ## Next action
 
-Complete DEC-109 format-page QA; then decide further audit or Stage 13 HOLD.
+Stage 13 recovery HOLD; no Stage 14 or further source access under DEC-110.

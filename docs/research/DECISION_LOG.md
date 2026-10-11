@@ -1,5 +1,23 @@
 # FlyTS Decision Log
 
+## DEC-110 — PI delegates bounded continuation; Director retains Stage 13 HOLD
+
+- Date: 2026-10-12.
+- Decision authority: the PI asked the Research Director to continue Stage 13
+  autonomously and treat ordinary matters as `GO`, while passing or stopping
+  work that takes too long, requires external outreach or material confirmation.
+  This delegation is recorded rather than inferred from silence.
+- Director disposition: finish the already approved DEC-109 document QA and
+  local reproducibility/consistency checks, then retain the existing Stage 13
+  `HOLD`. DEC-108 found no owner-page CSV rule; DEC-107 did not establish a
+  header or channel count. Eligibility, paired held-out H-01 count, protocol
+  v3 and a justified compute envelope are unmet. No numerical relaxation or
+  pseudo-replication substitutes for them.
+- Boundary: no new external source request, owner contact, dataset access,
+  admission, role/split, model work, Electricity/test opening, protocol/budget
+  freeze or Stage 14 entry under this delegation. Draft PR #35 remains unmerged
+  without an explicit merge decision; DEC-070 public release `STOP` persists.
+
 ## DEC-109 — PI approves one bounded format-screen QA follow-up
 
 - Date: 2026-10-12.
@@ -14,6 +32,9 @@
   protocol/compute, Stage 14, PR merge or release. The reviewer checks the
   absence of a format statement on the inspected page, not the absence of
   documentation everywhere. No further follow-up is implied.
+- Outcome: independent bounded document QA `PASS`; see
+  `stages/stage-13/KELMARSH_FORMAT_DOC_QA.md`. The reviewer inspected the
+  same official record only; this follow-up is exhausted.
 
 ## DEC-108 — PI approves a minimal official Kelmarsh format-document screen
 

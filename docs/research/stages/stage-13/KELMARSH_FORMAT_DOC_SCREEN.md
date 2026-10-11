@@ -1,7 +1,8 @@
 # Kelmarsh v4 official format-document screen
 
-Status: **DEC-108 one-page owner-record screen completed; Director finding,
-independent document QA pending; Stage 13 HOLD**. Accessed 2026-10-11.
+Status: **DEC-108 one-page owner-record screen completed; independent bounded
+[document QA PASS](KELMARSH_FORMAT_DOC_QA.md); Stage 13 HOLD**.
+Accessed 2026-10-11.
 The approved limit was at most two owner documentation pages. Only the known
 [official Cubico Kelmarsh v4 record](https://zenodo.org/records/16807551)
 was opened. No eligible linked owner format-document page was present, so a
