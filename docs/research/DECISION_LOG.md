@@ -1,5 +1,25 @@
 # FlyTS Decision Log
 
+## DEC-107 — PI approves one bounded 2016 ZIP first-line read
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` on the exact
+  `stages/stage-13/KELMARSH_2016_SCHEMA_PILOT_PROPOSAL.md` after independent
+  pre-read QA `PASS` on code commit `a0821e4`.
+- Scope: one HTTP Range `bytes=0-8191` from the official v4
+  `Kelmarsh_SCADA_2016_3082.zip` URL, up to 8,192 application bytes in memory,
+  for the preselected turbine-1 2016 member at local offset zero. Compressed
+  measurement bytes may be received and some may be transiently inflated.
+  Emit only a first-line field count/hash with header identity `unverified`.
+- Preconditions: both PR #35 CI `pytest` jobs PASS on the execution head and
+  canonical Git blob/raw worktree script SHA-256 both equal
+  `28dad91664e48a2a8293460dc993c54efa1950a13da7411a8f8eb2022f487c14`
+  immediately before execution. HTTP validation, no fallback/retry/alternate
+  member and no source-byte storage apply. Any failure is `HOLD`.
+- DEC-106 excludes all six turbines' 2016 data from every future formal role.
+  This read does not grant formal source/use admission, role/split, protocol,
+  compute, Stage 14, test/Electricity opening or publication.
+
 ## DEC-106 — PI approves audit-only 2016 exclusion and pilot preparation
 
 - Date: 2026-10-11.

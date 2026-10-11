@@ -1,8 +1,9 @@
 # Proposed lowest-byte Kelmarsh 2016 schema pilot
 
 Status: **DEC-106 approved audit-only 2016 exclusion and tool/QA preparation;
-independent [pre-read QA PASS](KELMARSH_2016_SCHEMA_PILOT_PREREAD_QA.md),
-source-file access pending**. Stage 13
+independent [pre-read QA PASS](KELMARSH_2016_SCHEMA_PILOT_PREREAD_QA.md);
+DEC-107 approved one exact source-file read subject to CI and byte-hash
+preflight**. Stage 13
 remains `HOLD`. This packet follows the bounded DEC-104 ZIP directory
 inventory and its [independent report QA](KELMARSH_ZIP_INVENTORY_RESULT_QA.md).
 
@@ -25,14 +26,15 @@ cannot establish 27 simultaneous usable channels, independent farms, paired
    of all six turbines excluded** from every future pretrain, development,
    final and test role. This is not formal source/use admission or a formal
    train/validation/test split. No member read follows from this decision.
-2. **Exact access pending; QA staffing GO, DEC-106:** Consider
-   one HTTP Range of **bytes 0–8191** from the same 97,915,553-byte official
+2. **Exact access GO, DEC-107; QA staffing GO, DEC-106:** One
+   HTTP Range of **bytes 0–8191** from the same 97,915,553-byte official
    `Kelmarsh_SCADA_2016_3082.zip` URL used in DEC-104. Maximum application
    source bytes: **8,192**, once, with no retry, redirect or full-file
    fallback. DEC-106's existing-reviewer pre-read code/fixture QA returned
    `PASS`; one later result QA follow-up remains reserved.
    A final script, synthetic tests, exact script hash and independent pre-read
-   `PASS` and a separate PI access `GO` must exist before execution.
+   `PASS`, both PR CI jobs `PASS` and the separate PI access `GO` must exist
+   before execution. DEC-107 is the latter decision; no run has occurred yet.
 
 The prepared tool is `tools/stage13_kelmarsh_schema_pilot.py`; its current raw
 worktree SHA-256 is
@@ -40,7 +42,8 @@ worktree SHA-256 is
 The canonical Git blob and raw worktree bytes must match this hash after
 independent pre-read QA and immediately before any separately approved read.
 The new synthetic tests are `tests/test_stage13_kelmarsh_schema_pilot.py`.
-This fingerprint and proposal do not authorize execution.
+This fingerprint alone does not authorize execution; DEC-107 and the CI/hash
+preconditions govern the one approved attempt.
 
 The script must require HTTP 206, exact URL, `Content-Range` including the
 published total, `Content-Length`, identity encoding and an exact 8,192-byte
