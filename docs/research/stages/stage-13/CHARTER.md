@@ -200,7 +200,8 @@ inventory's result QA; it grants no source replay or later pilot QA.
 DEC-106 separately grants one existing-reviewer pre-read QA follow-up for
 the proposed 2016 schema pilot and reserves one result QA follow-up if an
 exact member read is later approved. It excludes all Kelmarsh 2016 turbine
-data from future formal roles; no member access or source admission follows.
+data from future formal roles. Pre-read QA returned `PASS` on `a0821e4` and
+used that follow-up; no member access or source admission follows.
 
 ## User approval
 

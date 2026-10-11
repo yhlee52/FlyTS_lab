@@ -1,7 +1,8 @@
 # Proposed lowest-byte Kelmarsh 2016 schema pilot
 
-Status: **DEC-106 approved audit-only 2016 exclusion, tool preparation and
-two existing-reviewer follow-ups; source-file access pending**. Stage 13
+Status: **DEC-106 approved audit-only 2016 exclusion and tool/QA preparation;
+independent [pre-read QA PASS](KELMARSH_2016_SCHEMA_PILOT_PREREAD_QA.md),
+source-file access pending**. Stage 13
 remains `HOLD`. This packet follows the bounded DEC-104 ZIP directory
 inventory and its [independent report QA](KELMARSH_ZIP_INVENTORY_RESULT_QA.md).
 
@@ -28,8 +29,8 @@ cannot establish 27 simultaneous usable channels, independent farms, paired
    one HTTP Range of **bytes 0–8191** from the same 97,915,553-byte official
    `Kelmarsh_SCADA_2016_3082.zip` URL used in DEC-104. Maximum application
    source bytes: **8,192**, once, with no retry, redirect or full-file
-   fallback. DEC-106 authorizes one existing-reviewer pre-read code/fixture
-   QA and one later result QA; the earlier follow-up budget was exhausted.
+   fallback. DEC-106's existing-reviewer pre-read code/fixture QA returned
+   `PASS`; one later result QA follow-up remains reserved.
    A final script, synthetic tests, exact script hash and independent pre-read
    `PASS` and a separate PI access `GO` must exist before execution.
 

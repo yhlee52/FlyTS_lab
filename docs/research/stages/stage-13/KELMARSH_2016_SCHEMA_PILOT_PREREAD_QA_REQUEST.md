@@ -1,7 +1,8 @@
 # Kelmarsh 2016 schema pilot: independent pre-read QA request
 
-Status: **DEC-106 grants one existing-reviewer read-only follow-up; review
-pending.** No member or signal access is approved. The exact proposal is
+Status: **DEC-106's pre-read follow-up completed with independent
+[PASS](KELMARSH_2016_SCHEMA_PILOT_PREREAD_QA.md).** No member or signal
+access is approved. The exact proposal is
 [here](KELMARSH_2016_SCHEMA_PILOT_PROPOSAL.md).
 
 Review the fixed turbine-1 first-member choice and audit-only 2016 exclusion;

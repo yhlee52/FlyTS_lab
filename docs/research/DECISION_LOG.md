@@ -17,6 +17,10 @@
   and a separate PI source-file access decision are still required. No other
   year/member, formal source/use, role/split, protocol, compute, Stage 14 or
   publication gate is granted.
+- Outcome to date: independent pre-read QA `PASS` on PR #35 head `a0821e4`
+  after two safety fixes. See
+  `stages/stage-13/KELMARSH_2016_SCHEMA_PILOT_PREREAD_QA.md`. The pre-read
+  follow-up is used; result QA remains conditional and source access pending.
 
 ## DEC-105 — PI approves one bounded ZIP-inventory result QA follow-up
 
