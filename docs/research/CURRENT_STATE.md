@@ -1,149 +1,99 @@
 # FlyTS Current Research State
 
-Updated: 2026-09-30
+Updated: 2026-10-11
 
 ## Current stage
 
-Stage 08 is closed with independent QA `PASS` and is merged at `9f41e0f`.
-Stage 09 is closed at `HOLD`; DEC-057 independent QA remains `FAIL`, and the
-PI-authorized PR #15 was merged into GitHub `main` at
-`af46eb6058c4abc13535c063295431a94dca640e`. The merge tree
-`077a555156384b4ec7562dcaa321c1ec9d4ed7a2` equals the reviewed Stage 09 head
-tree. No numerical freeze, formal training, final-held-out opening or formal
-analysis occurred. Stage 10 M0 is recorded, and DEC-061 gives Charter `GO` for
-M2 through independent release QA. DEC-063 resolves the M7 decision gate by
-selecting MIT and preserving but archive-excluding two historical personal-path
-files. M7 and M8 passed for the pre-integration candidate. The first M9 review of
-`d6e44f7` failed under DEC-064; remediation commit `d4407e8` fixed all four
-findings and DEC-065 records the independent delta `PASS`. M2–M9 are complete.
-DEC-066 M10A delivery merged through PR #16 at `b193d91`. The independently
-reviewed documentation closeout merged through PR #17 at `27f81eb`. PR #18 merged
-the DEC-070 no-release closeout at `a6000c1` with no tree drift. DEC-071 records
-PI selection of Option A for the proposed formal training/evaluation phase.
+Stage 08 closed with independent QA `PASS`. Stage 09 closed at PI-accepted
+`HOLD` (DEC-058) with DEC-057 final reporter QA `FAIL`; its PR #15 merged without
+changing the reviewed tree. No numerical freeze, formal training, formal/final
+analysis or Electricity opening occurred. H-01–H-03 have no formal result; H-04
+is `not tested`. Stage 10 engineering closeout merged through PR #18, but DEC-070
+stopped M10B public release. PR #19 merged the proposed Phase 02 plan into
+`main` at `52fd44af0145e19d5f26138382bb0661e975eb09`. DEC-071 approved its
+objective; DEC-072 authorizes Stage 11 document-only contract work. Stage 11
+independent QA recorded `CONDITIONAL PASS`; result PI gate remains pending.
 
 ## Current goal
 
-Plan Phase 02 formal training and scientific evaluation without starting it.
-Present the Stage 11–19 decomposition and Stage 11 Charter for explicit PI `GO`.
-DEC-070 continues to prohibit public release and checkpoint publication.
+Complete Stage 11's falsifiable Q0–Q3 contract, prospective H/R ownership,
+Stage 12 adequacy and Stage 13 budget-information handoffs, and independent QA.
+Seek a separate PI decision on the Stage 11 result before a Stage 12 Charter;
+Stage 12 data work requires its own later authorization. DEC-070 no-release
+boundary remains in force.
 
 ## Canonical references
 
-- `docs/research/stages/stage-10/CHARTER.md`
 - `docs/research/PHASE_02_FORMAL_VALIDATION_PLAN.md`
 - `docs/research/stages/stage-11/CHARTER.md`
-- `docs/research/stages/stage-10/M8_REPRODUCIBILITY.md`
-- `docs/research/stages/stage-09/RESULT.md`
-- `docs/research/stages/stage-09/QA_REPORT.md`
-- `docs/DEVELOPMENT_PLAN.md`
-- `docs/EXPERIMENT_PROTOCOL.md`
-- `docs/PROJECT_CONSENSUS.md`
+- `docs/research/stages/stage-11/RESULT.md`
+- `docs/research/stages/stage-11/QA_REPORT.md`
+- `docs/research/DECISION_LOG.md` (DEC-070–072)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
+- `docs/research/stages/stage-09/RESULT.md`
+- `docs/research/stages/stage-09/QA_REPORT.md`
+- `docs/EXPERIMENT_PROTOCOL.md`
+- `docs/DEVELOPMENT_PLAN.md`
 
 ## Confirmed decisions
 
-- The user remains the final `GO`, `REVISE`, `HOLD` or `STOP` authority.
-- Stage 10 targets `FlyTS-Mini v0.1 Research Preview`, an engineering/research
-  preview rather than a validated model or scientific completion claim.
-- Python package `flyts 0.2.0` and research artifact `v0.1` remain separate
-  version axes. No package downgrade or PyPI publication is planned.
-- No pretrained checkpoint is included. Stage 8 pilot artifacts cannot be
-  promoted to selected, validated or optimal models.
-- The prospective release code may remove the Stage 09 reporter's live-config
-  dependency and reject numeric seed aliases. It cannot change Stage 09 reports,
-  hashes, `HOLD` status or QA `FAIL`.
-- The former candidate tag `flyts-mini-v0.1-preview.1` remains uncreated. DEC-070
-  closes M10B at `STOP`; no public Research Preview release is authorized.
-- The reproducibility package includes source, wheel/sdist, exact supported
-  configs, documents, manifest/checksums, a synthetic fixture and offline verify
-  instructions. It excludes raw data, outputs, checkpoints, embeddings, HARTH
-  artifacts, Electricity model outputs and an unspecified wheelhouse.
-- H-01 through H-03 have no formal result. H-04 is `not tested`; topology,
-  robustness, foundation quality, transfer, CUDA and semiconductor claims remain
-  unverified.
-- Appliances and Beijing remain pretrain, Bike development-only and Electricity
-  final-held-out. No dataset role, split, metric or scientific acceptance rule
-  changes in Stage 10.
-- Stage 10 uses at most three specialists, at most two concurrently, after Charter
-  approval. The Research Director works alone through the Charter gate.
-- DEC-061 approved the Stage 10 Charter and M2 through independent release QA.
-- DEC-063 selects MIT and immutable historical-file treatment: the affected
-  Stage 0/8 files stay byte-identical in Git but are excluded from new release
-  archives by both `export-ignore` and the curated builder.
-- DEC-064 preserves the first M9 `FAIL` and authorizes only the Charter-defined
-  fixes for archive path validation, the generated fixture, QA manifest binding
-  and stale M8 wording, followed by one independent recheck.
-- DEC-065 records independent remediation `PASS`; it completes M9 evidence but
-  does not authorize push, Draft PR, merge, tag or prerelease.
-- DEC-066 grants M10A `GO` for branch push and Draft PR only. Merge, tag,
-  prerelease, PyPI/checkpoint publication and future research remain unauthorized.
-  The authorized PR #16 is merged at `b193d91`.
-- DEC-067 through DEC-069 preserve the post-merge QA `FAIL`, bounded remediation
-  and independent `PASS`; PR #17 merged that documentation without tree drift.
-- DEC-070 records the PI's M10B `STOP` and prohibits public release actions.
-- DEC-071 approves Option A's phase objective: preregistered public-data formal
-  validation, development-only private checkpoint selection and gated final work.
+- The PI is the final `GO`, `REVISE`, `HOLD` or `STOP` authority. DEC-072 covers
+  only Stage 11 documentation, Program Integrator review and independent QA.
+- Q0 means bounded CPU engineering operation; Q1 requires valid frozen H-01–H-03
+  evaluation; Q2 additionally needs registered H-01/H-02 and admitted-target
+  H-04 support; Q3 additionally needs H-03 support against both matched topology
+  controls. These are proposed qualification rules pending Stage 11 result gate,
+  not achieved scientific claims.
+- Stage 09's `HOLD`, QA `FAIL`, reports/hashes and unfrozen v2 matrix are historical.
+  Prospective Stage 10 reporter hardening does not retrospectively repair them.
+- Appliances/Beijing remain pretrain, Bike development-only and Electricity
+  sealed final-held-out. HARTH remains unadmitted. Stage 11 changes no role,
+  split, metric, numerical rule, seed, run matrix or compute budget.
+- Stage 12 must measure adequacy and seek separate source/role/split decisions;
+  Stage 13 must offer low/medium/high budgets and seek protocol/compute `GO`.
+  Stage 15 execution and Stage 17 H-04/final opening have further distinct gates.
+- DEC-070 prohibits tag, GitHub release/prerelease, PyPI and checkpoint
+  publication. Package `flyts 0.2.0` and research artifact `v0.1` remain distinct.
+  Existing Stage 10 CPU/offline evidence has no CUDA or scientific inference.
 
 ## Open questions
 
-- The Phase 02 stage plan and Stage 11 Charter await explicit PI approval.
+- Stage 11 QA recorded `CONDITIONAL PASS`; the Director corrected its final
+  gate-wording condition after the permitted delta review. Independent final
+  `PASS` and PI result disposition remain pending. Acceptance may authorize
+  drafting a Stage 12 Charter only, not data work.
+- Dataset suitability/admission, minimum coverage, statistical thresholds,
+  seed/matrix, budget, H-04 target, CUDA environment and final open remain future
+  decisions with the named stage gates.
 
 ## Active risks
 
-- A Research Preview could be mistaken for a validated foundation or production
-  model despite the absence of a checkpoint and formal/final evidence.
-- Reporter hardening could accidentally mutate or appear to supersede historical
-  Stage 09 evidence and QA `FAIL`.
-- Package `0.2.0` and research artifact `v0.1` could be conflated without explicit
-  dual-version metadata and artifact hashes.
-- Release archives could capture raw/ignored artifacts, credentials, absolute
-  paths, user/company information or rights-unclear data.
-- A dependency wheelhouse without an exact target OS/Python/PyTorch/device contract
-  would overstate offline portability.
-- Final-held-out/test access, new training or post-result numerical selection would
-  reopen scientific work and invalidate the release-only scope.
-- CUDA hardware remains unavailable; CPU evidence cannot create a CUDA claim.
-- Existing Stage 09 risks concerning pseudo-replication, graph-cache drift,
-  incomplete sufficient statistics and mutable replay inputs remain historical.
-- Historical personal-path files remain in Git history. DEC-063 controls new
-  archive redistribution but does not erase already-published history.
-- Public release could overstate incomplete science; DEC-070 prevents publication
-  while Stage 09 remains `HOLD`, CUDA is untested and formal evidence is absent.
+- RK-08, RK-33 and RK-51–55: final/test leakage, pseudo-replication, selection
+  leakage, post-result scope expansion, compute infeasibility and historical
+  Stage 09 or Stage 11 gates being misread as new authority.
+- H-04 can remain `not tested`; without an admitted target Q2/Q3 are unavailable.
+  A valid negative, inconclusive or infeasible result is still a research result.
+- CUDA hardware remains unvalidated; CPU evidence cannot establish CUDA behavior.
+  Public release remains stopped despite Stage 10 engineering QA `PASS`.
 
 ## Latest evidence
 
-- Stage 09 final reporter QA remains `FAIL`: `REPORT-v2` reads a live evaluation
-  config and accepts a numeric directory alias such as `runs/07`.
-- Stage 09 preserved original/v2 report hashes remain
-  `1bb8c7f9…e5b520` and `8ab632b5…60db3`.
-- Electricity final-held-out evidence remains unopened and HARTH remains unadmitted.
-- DEC-063 adds MIT and dual archive exclusion. M7 re-audit passes: the commit-bound
-  source, wheel, sdist and offline bundle contain no detected private path/name,
-  secret, raw/checkpoint/embedding or traversal member; both historical files
-  remain byte-identical in Git and absent from release archives.
-- M8 passes: final full suite `160 passed, 4 skipped` in 210.72 s; wheel/sdist
-  no-index installs and `pip check` pass; installed-wheel CPU smoke, exact model
-  resume, embedding export, prospective replay and bundle verification pass.
-  Three skips report unavailable CUDA hardware and one reports Windows symlink
-  creation unavailable; no CUDA support claim is made.
-- First M9 verdict is `FAIL` on `d6e44f7`. The reviewed candidate itself was
-  byte-stable and contained no detected unsafe member or private content, but the
-  prospective input validator and bundle/manifest contract were incomplete.
-- Remediation `d4407e800eb3ff54f205726626cee51aeed1e467` / tree
-  `0c18e766e6d9a5666d6b28444b52d14e79f1b168` rejects portable absolute/traversal
-  members, includes and verifies a 12-record generated fixture, and binds the QA
-  report/verdict. Two candidates were byte-identical; full/focused tests, package
-  installs, archive checks and Stage 09 immutability passed independent recheck.
-- PR #16 merged as `b193d91198adf8f7c5e5b1d7e177783252b7d932`; merge tree
-  `1f590601b977b5fb9d6cc9d219a0e8478ec4a4d5` exactly equals reviewed head
-  `cb1a4b67be266438ae9565f5f10240cbc7397519`, so integration added no drift.
-- PR #18 merged as `a6000c14bce5fc655a2b7120acf09d430595e72b`; tree
-  `8b39210d06a517b56f2aebbb35adf02b33259f71` equals reviewed head `aaf6a8f`.
-  Both CI jobs passed; no candidate tag or public release exists.
+- Stage 09 original/v2 report SHA-256 values remain
+  `1bb8c7f9d1811ee0caceaaabbb65f146ee892e2f0e84bb88433fb5b844e5b520`
+  and `8ab632b54e36c22ee7bc89212e53904092dba3cfa6e8fc0bc29a7285b4760db3`;
+  final QA `FAIL` cites live-config replay and numeric seed-directory alias.
+- Stage 10 M8 CPU/offline evidence passed; its candidate was not publicly
+  released. PR #18 preserved the DEC-070 `STOP` closeout without tree drift.
+- Stage 11 contract/result drafts are documentation only. Program Integrator
+  read-only audit found a premature Stage 11 envelope choice and stale
+  Stage 09/opening references. QA's first and delta reviews were conditional;
+  the final wording correction has Director-only verification.
 
 ## Next action
 
-Review the proposed Phase 02 plan and Stage 11 Charter. Do not activate Stage 11,
-download data, train, evaluate or create checkpoints before explicit PI `GO`.
+Deliver a Draft PR with the `CONDITIONAL PASS` and corrected final wording
+disclosed. Obtain PI Stage 11 result disposition and, if required, approval for
+one extra bounded independent QA recheck. Keep Electricity/target test sealed
+and do not begin Stage 12 data work.

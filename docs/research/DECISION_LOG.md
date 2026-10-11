@@ -1,5 +1,21 @@
 # FlyTS Decision Log
 
+## DEC-072 — PI authorizes Stage 11 qualification-contract work
+
+- Date: 2026-10-11
+- Decision authority: explicit PI request to implement the bounded Stage 11 plan.
+- Scope: documentation-only Q0–Q3 contract, H/R prospective stage traceability,
+  Stage 12 adequacy measures, Stage 13 low/medium/high envelope fields, Stage
+  12–19 handoff gates, independent QA and a Draft PR.
+- Interpretation: remove Stage 11's premature compute/data-envelope selection;
+  Stage 12 decides admission/role/split separately and Stage 13 later proposes
+  budget options and freezes a PI-approved protocol. This decision selects no
+  dataset, numerical rule, seed, experiment matrix or compute budget.
+- Boundary: Stage 09 `HOLD`, final QA `FAIL`, preserved reports/hashes and DEC-070
+  public-release `STOP` remain in force. Electricity and target test stay sealed.
+  Stage 11 results, Stage 12 data work, training and publication are not approved
+  by this implementation request.
+
 ## DEC-071 — PI selects scientific validation-first for Phase 02
 
 - Date: 2026-09-30
