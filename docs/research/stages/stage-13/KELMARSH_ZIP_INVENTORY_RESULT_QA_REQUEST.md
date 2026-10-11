@@ -1,7 +1,7 @@
 # Proposed independent QA of DEC-104 ZIP inventory result
 
-Status: **one existing-reviewer read-only follow-up requested; PI decision
-pending**. DEC-103's one pre-read follow-up is consumed by the
+Status: **one existing-reviewer read-only follow-up PI `GO` (DEC-105),
+review pending**. DEC-103's one pre-read follow-up is consumed by the
 [PASS review](KELMARSH_ZIP_INVENTORY_PREREAD_QA.md). This request does not
 increase the specialist count or two-agent parallel ceiling.
 

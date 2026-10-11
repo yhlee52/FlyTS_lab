@@ -195,6 +195,8 @@ DEC-103 grants one further existing-reviewer follow-up for the exact
 Kelmarsh ZIP inventory pre-read QA only; it does not restore pre-freeze QA.
 DEC-104 separately approves the revised bounded ZIP inventory access after
 that QA PASS; source/use, role and split remain pending.
+DEC-105 permits one more existing-reviewer read-only follow-up for this
+inventory's result QA; it grants no source replay or later pilot QA.
 
 ## User approval
 

@@ -1,5 +1,20 @@
 # FlyTS Decision Log
 
+## DEC-105 — PI approves one bounded ZIP-inventory result QA follow-up
+
+- Date: 2026-10-11.
+- Decision authority: explicit PI `GO` after Draft PR #35's 1,198-byte
+  Director report and exact
+  `stages/stage-13/KELMARSH_ZIP_INVENTORY_RESULT_QA_REQUEST.md` were shown.
+- Staffing: one further read-only follow-up by the same existing independent
+  reviewer to check the DEC-104 report, code/hash/CI provenance, directory
+  summary and claim limits. The reviewer may run local synthetic validators.
+  The specialist count and parallel ceiling remain unchanged.
+- Boundary: no Zenodo/source replay, member or signal read, test/Electricity,
+  tracked edit, source/use, role/split, protocol/budget, Stage 14 or release.
+  Source responses and span hashes remain Director-reported; this decision
+  does not make them independently observed.
+
 ## DEC-104 — PI approves revised two-Range ZIP inventory access
 
 - Date: 2026-10-11.
