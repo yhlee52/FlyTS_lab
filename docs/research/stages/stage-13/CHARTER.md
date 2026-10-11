@@ -130,7 +130,7 @@ result is a later scientific outcome, not a reason to rewrite this design.
 | Decision | Required before | State |
 |---|---|---|
 | Stage 13 Charter `GO`/`REVISE`/`HOLD` | Units 1–5, subject to their additional gates | `GO`, DEC-082 |
-| Bounded metadata-only candidate search | Any search for a new source | DEC-083's three human-sensor candidates exhausted; DEC-093 separately allows at most three non-human open-license official-document candidates |
+| Bounded metadata-only candidate search | Any search for a new source | DEC-083 and DEC-093 three-source screens exhausted; DEC-094 separately allows at most three targeted high-channel, non-human open-data official-document candidates |
 | Candidate access, then source/use, role and split | First access/admission or change for each named source | PhysioNet sidecars `GO` DEC-084, six headers `GO` DEC-085, six full in-memory EDF streams `GO` DEC-087 and three audit-only subject exclusions `GO` DEC-088; source/use admission, development role and formal split pending |
 | Non-final/synthetic resource measurement, if needed | That measurement | pending |
 | Exact v3 and selected compute envelope `GO` | Freeze/Stage 14 handoff | pending |
@@ -187,6 +187,10 @@ authorizes source access, admission, role/split, protocol or compute.
 
 ## User approval
 
+- Targeted non-human high-channel candidate discovery: `GO`, DEC-094, on
+  official publisher rights/schema pages for at most three further sources;
+  at least 27 concurrent channels, multiple original entities and a clear
+  record-specific reuse license are screening targets, not admission facts.
 - Non-human open-license candidate discovery: `GO`, DEC-093, on official
   publisher landing/license/schema/documentation pages only, at most three
   candidates. No source-file access or admission follows.

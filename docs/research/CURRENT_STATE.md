@@ -16,8 +16,7 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-DEC-093's three non-human publisher-document screens found no full H-01 count
-remedy; independent QA `PASS` followed a rights correction. Sources stay HOLD.
+DEC-094 screen has independent document QA PASS; no admission or freeze.
 
 ## Canonical references
 
@@ -29,7 +28,7 @@ remedy; independent QA `PASS` followed a rights correction. Sources stay HOLD.
 - `docs/research/stages/stage-12/RESULT.md` (QA PASS; PI GO)
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
-- `docs/research/stages/stage-13/OPEN_LICENSE_CANDIDATE_SCREEN.md` (screen)
+- `docs/research/stages/stage-13/HIGH_CHANNEL_OPEN_CANDIDATE_SCREEN.md` (screen)
 - `docs/research/stages/stage-13/PHYSIONET_SOURCE_USE_GATE.md` (rights HOLD)
 - `docs/research/DECISION_LOG.md` (DEC-070–089)
 - `docs/research/HYPOTHESES.md`
@@ -83,7 +82,8 @@ remedy; independent QA `PASS` followed a rights correction. Sources stay HOLD.
 - DEC-083–085 permit three official-page candidates, PhysioNet sidecars and
   six specified EDF headers only; signal/access/admission/role/split gated.
 - DEC-086–090 cover bounded staffing, six EDF/audit-only access and retry.
-  DEC-091 inquiry stopped under DEC-092; DEC-093 permits three official screens.
+  DEC-091 inquiry stopped under DEC-092; DEC-093 screen closed with QA PASS.
+  DEC-094 permits one targeted three-source official-document screen only.
 
 ## Open questions
 
@@ -141,9 +141,10 @@ remedy; independent QA `PASS` followed a rights correction. Sources stay HOLD.
 - Stage 13 Charter has document-only QA `PASS`, PI `GO` DEC-082 and two CI
   `pytest` passes; PR #23 is open and PR #24 stacks the screened shortlist.
 - Draft PR #28 records bounded PhysioNet QA `PASS`; rights remain HOLD.
-- DEC-093's three official screens have QA `PASS`; channel/time/rights gaps remain.
+- DEC-093/094 screens have QA `PASS`; DEC-094 finds UCI rights/entity gaps,
+  Harvard synthetic-only units and SMD data-rights uncertainty.
 
 ## Next action
 
-Seek PI direction for any further search; Stage 13 freeze remains HOLD.
+Seek PI direction for any next source gate; Stage 13 freeze remains HOLD.
 Keep Electricity/test sealed, H-01 unfrozen and DEC-070 `STOP`.
