@@ -143,7 +143,7 @@ Formal Stage 13 and both Stage 14 tracks HOLD; new-source screen request pending
   prefix; one comma field is not a channel count. Both responses remain
   Director-reported; source admission, protocol v3 and compute remain HOLD.
 - PR #37 static guards are merged; prior CI smoke is excluded from evidence.
-  A new-source screen/QA request is drafted; no search or access performed.
+  Draft PR #38 proposes a new-source screen/QA gate; no search or access occurred.
 
 ## Next action
 
