@@ -1,5 +1,94 @@
 # FlyTS Decision Log
 
+## DEC-116 — PI authorizes merging the two open research PRs
+
+- Date: 2026-10-12.
+- Decision authority: explicit PI instruction to merge **all open PRs** and
+  then proceed toward Stage 14. The open set at the decision was PR #36 and
+  PR #37; both targeted `main` and had no reported merge conflict.
+- Integration order: merge PR #36 first because its commit is also an ancestor
+  of PR #37; then recheck PR #37 against the updated `main` before merging.
+  PR #36 merged at `7395b34820e6c7076ff90c06e31cef0aed080aeb`.
+- Boundary: PR integration accepts the documented static preparation and
+  current `HOLD` records. It does not reverse DEC-115's Stage 14 execution
+  `HOLD`, freeze Stage 13 protocol/budget, authorize CPU tests/checkpoints,
+  admit data, open Electricity/test, enter Stage 15 or reverse DEC-070 release
+  `STOP`. Use merge messages that skip the existing automatic CPU smoke.
+
+## DEC-115 — PI holds Stage 14 engineering execution without a runnable environment
+
+- Date: 2026-10-12.
+- Decision authority: explicit PI reply that no existing offline CPU Python
+  environment with NumPy and PyTorch is available; **execution HOLD**.
+- Effect: DEC-114 Charter `GO` and the static Draft PR #37 preparation remain
+  valid, but no exact runnable manifest, resource cap or independent
+  pre-execution QA verdict exists. Do not run the opt-in Stage 14 cases,
+  synthetic rehearsal or checkpoint path. No installation or download is
+  authorized by this reply.
+- Resume gate: identify or separately authorize a suitable CPU environment,
+  complete exact manifest/resource bounds, obtain independent pre-execution
+  QA and a separate PI `GO` for that exact run. The previous automatic CI
+  smoke described in `stages/stage-14/CI_BOUNDARY.md` is excluded from evidence.
+- Formal Stage 13 remains `HOLD`; no Q0 result, Stage 15, sealed-data opening,
+  PR merge or public release follows. DEC-070 and Stage 09 history persist.
+
+## DEC-114 — PI approves Stage 14 engineering Charter, without execution
+
+- Date: 2026-10-12.
+- Decision authority: explicit PI `GO` for the bounded synthetic/CPU Stage 14
+  engineering Charter after the independent document `CONDITIONAL PASS` and
+  Director correction of its pre-GO smoke/test ambiguity. The correction was
+  not independently delta-reviewed; this limit remains visible in the
+  Charter QA report.
+- Authorized work: Unit 1 code, synthetic fixture, guard, exact-manifest and
+  focused-test **preparation**, with static/document checks only. No
+  model-executing test, smoke measurement, synthetic checkpoint or CPU run
+  occurs before independent exact-manifest pre-execution QA and a separate PI
+  `GO` for the exact resource cap and execution.
+- Formal Stage 13 protocol/budget freeze remains `HOLD`; the engineering track
+  has a Q0 ceiling and cannot authorize formal Stage 14 completion, Stage 15,
+  H-01–H-04 claims, source/data access, Electricity/test opening, CUDA or
+  publication. Stage 09 evidence and DEC-070 release `STOP` remain unchanged.
+
+## DEC-113 — PI approves bounded Stage 14 engineering QA staffing
+
+- Date: 2026-10-12.
+- Decision authority: explicit PI approval of one independent QA reviewer for
+  the DEC-112 synthetic-only engineering track: one Charter document review,
+  one exact-manifest pre-execution follow-up and one result follow-up.
+- Limit: at most one Implementation specialist in the track and two agents
+  active concurrently, as proposed in `stages/stage-14/CHARTER.md`. The Stage
+  13 reviewer allowance remains exhausted; this is a new scoped budget, not a
+  retroactive expansion of the formal Stage 13 protocol review.
+- This decision does not approve the Stage 14 Charter, CPU run/resource cap,
+  synthetic checkpoint creation, real-data access, formal protocol/budget
+  freeze, Stage 15, Electricity/test opening, PR merge or release. Independent
+  QA must report its own verdict before a Charter decision is requested.
+- Outcome of the initial document review: independent `CONDITIONAL PASS` on
+  `1950938`, with one pre-GO smoke/test ambiguity; see
+  `stages/stage-14/CHARTER_QA_REPORT.md`. The Director's correction has no
+  independent delta verdict. Both follow-ups remain unused.
+
+## DEC-112 — PI selects a bounded engineering preflight route
+
+- Date: 2026-10-12.
+- Decision authority: after reviewing the three routes in
+  `stages/stage-13/NARROW_PREFLIGHT_PROPOSAL.md`, the PI selected **A** to
+  reduce the prolonged Stage 13 work to a quality-controlled engineering path.
+- Direction: prepare a CPU-only, synthetic Stage 14 engineering track with no
+  new-source search or real-data read. Its ceiling is an engineering
+  `PASS`/`FAIL`/`HOLD` and Q0; no H-01–H-03 scientific outcome, H-04 target,
+  Q1–Q3 qualification, formal Stage 14 completion or Stage 15 authorization
+  follows from this choice. The Stage 11 Q0–Q3 definitions stay unchanged.
+- Gate: draft prospective Stage 13/14 Charter and Phase 02 amendments, an
+  exact synthetic preflight contract and resource cap, and obtain independent
+  document/pre-execution QA and PI approval of the exact bounded run before
+  executing it. Existing Stage 13 formal freeze remains `HOLD`; its source,
+  protocol and budget requirements still apply before formal training.
+- No data access, compute run, checkpoint, Electricity/test opening, source
+  admission, role/split change, PR merge or release is approved here. Stage 09
+  historical status and hashes and DEC-070 public-release `STOP` persist.
+
 ## DEC-111 — PI authorizes PR #35 merge; Stage 14 gate remains unmet
 
 - Date: 2026-10-12.

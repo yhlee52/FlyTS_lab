@@ -6,6 +6,12 @@ The Charter remains approved (DEC-082); the current freeze attempt closed
 at PI `HOLD` (DEC-099) with independent document QA `PASS` (DEC-100).
 Acceptance criteria are unchanged.
 
+DEC-112 selected a **separate, prospective engineering-only Stage 14 track**
+described in [the narrow proposal](NARROW_PREFLIGHT_PROPOSAL.md) and the
+[Stage 14 Charter](../stage-14/CHARTER.md). DEC-113/114 approved engineering
+QA staffing and the Charter only. No formal Stage 13 acceptance item below is
+complete; the exact engineering resource cap and execution remain gated.
+
 PI Charter `GO` was granted on 2026-10-11 (DEC-082), after independent
 document-only QA `PASS` and Draft PR #23 review. This activates the bounded
 Charter; it does not approve candidate discovery, source access/admission,
