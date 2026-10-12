@@ -1,5 +1,22 @@
 # FlyTS Decision Log
 
+## DEC-115 — PI holds Stage 14 engineering execution without a runnable environment
+
+- Date: 2026-10-12.
+- Decision authority: explicit PI reply that no existing offline CPU Python
+  environment with NumPy and PyTorch is available; **execution HOLD**.
+- Effect: DEC-114 Charter `GO` and the static Draft PR #37 preparation remain
+  valid, but no exact runnable manifest, resource cap or independent
+  pre-execution QA verdict exists. Do not run the opt-in Stage 14 cases,
+  synthetic rehearsal or checkpoint path. No installation or download is
+  authorized by this reply.
+- Resume gate: identify or separately authorize a suitable CPU environment,
+  complete exact manifest/resource bounds, obtain independent pre-execution
+  QA and a separate PI `GO` for that exact run. The previous automatic CI
+  smoke described in `stages/stage-14/CI_BOUNDARY.md` is excluded from evidence.
+- Formal Stage 13 remains `HOLD`; no Q0 result, Stage 15, sealed-data opening,
+  PR merge or public release follows. DEC-070 and Stage 09 history persist.
+
 ## DEC-114 — PI approves Stage 14 engineering Charter, without execution
 
 - Date: 2026-10-12.

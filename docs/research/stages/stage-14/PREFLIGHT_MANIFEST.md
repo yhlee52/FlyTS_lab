@@ -1,7 +1,7 @@
 # Stage 14 engineering preflight — exact-run packet (draft)
 
-Status: **static preparation only; no execution approval**. DEC-114 approved the
-engineering Charter, not this packet, a resource cap, model tests or a CPU run.
+Status: **static preparation only; execution HOLD (DEC-115)**. DEC-114 approved
+the engineering Charter, not this packet, a resource cap, model tests or a CPU run.
 Formal Stage 13 remains `HOLD`; this packet cannot serve as protocol v3 or a
 formal Stage 14 handoff.
 
@@ -35,7 +35,7 @@ on any difference. This rule changes no historical registry or matrix blob.
 | Field | Current status and completion rule |
 |---|---|
 | Code commit and input hashes | **Pending** final static code review and commit. Generate from that commit, then verify worktree bytes before QA. Do not rewrite historical manifest or registry hashes. |
-| Python/dependency lock | **Pending runnable environment.** The currently selected local Python is 3.14.5 and lacks NumPy and PyTorch; no local venv is present. Record exact Python executable/version and installed distribution versions only in the chosen offline CPU environment. |
+| Python/dependency lock | **HOLD, DEC-115.** The currently selected local Python is 3.14.5 and lacks NumPy and PyTorch; the PI confirmed no existing offline CPU environment. Record exact Python executable/version and installed distribution versions only if a suitable environment is later separately provided or authorized. |
 | CPU identity and limits | **Pending.** Pin platform, machine, processor, logical CPU count, float32, one thread, a timeout, observed peak RSS bound and output disk bound. Obtain the PI's exact numerical approval before any model test or smoke. |
 | Commands and fixture | Pin the one opt-in command, four rows, seed 7, prepared adversarial cases and the exact stdout/stderr/output hash ledger contract. Seed 7 is an existing synthetic fixture selector, not a formal seed freeze. |
 | Network and process isolation | Python socket denial is proposed for child interpreters, but it is not universal network isolation. Confirm child process tree timeout handling and decide whether an OS network block is needed before QA. |

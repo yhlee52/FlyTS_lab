@@ -14,11 +14,12 @@ splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
 document-only QA `PASS`/PI `GO` (DEC-082); PI froze Stage 13 at `HOLD`
 (DEC-099) with document QA `PASS` (DEC-100); PRs #23–34 merged (DEC-101).
 PR #35 merged at `dab9ac5`; DEC-112/113/114 approved engineering scope/staff/Charter.
+DEC-115 holds Stage 14 execution because no runnable offline CPU environment exists.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Formal Stage 13 HOLD; Stage 14 static preparation authorized, no execution GO.
+Formal Stage 13 HOLD; Stage 14 static preparation done, execution HOLD (DEC-115).
 
 ## Canonical references
 
@@ -33,7 +34,7 @@ Formal Stage 13 HOLD; Stage 14 static preparation authorized, no execution GO.
 - `docs/research/stages/stage-13/RESULT.md` (PI HOLD; document QA PASS)
 - `docs/research/stages/stage-14/CHARTER.md` (engineering-only GO; DEC-114)
 - `docs/research/stages/stage-14/PREFLIGHT_MANIFEST.md` (static draft; exact run pending)
-- `docs/research/DECISION_LOG.md` (DEC-070–114)
+- `docs/research/DECISION_LOG.md` (DEC-070–115)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -90,8 +91,8 @@ Formal Stage 13 HOLD; Stage 14 static preparation authorized, no execution GO.
 
 ## Open questions
 
-- Engineering manifest/CPU cap and formal data/protocol/H-04/CUDA/final gates
-  remain pending; DEC-113/114 approve only Charter/QA staffing, not execution.
+- Engineering execution is HOLD (DEC-115): no existing offline CPU environment;
+  exact manifest/cap, QA and PI run GO remain absent. Formal gates stay closed.
 
 ## Active risks
 
@@ -123,7 +124,6 @@ Formal Stage 13 HOLD; Stage 14 static preparation authorized, no execution GO.
   a separate blinded metadata audit; otherwise admission stays `HOLD`. No data
   or ignored report bytes were opened. PR #21 carried the proposal and merged
   into `main` at `f83f894`; later Stage 12 audit QA is recorded separately.
-- PR #21 CI passed on `d729d8c`; DEC-075/076 grant bounded authority, not model results.
 - Added local `data/` contains canonical Stage 06 r2 manifest (SHA `44bafe...`),
   three matching official archives and 98/98 hash-matched approved train/val
   arrays. Original entities: Appliances 1, Beijing 12, Bike 1; Bike 71 train
@@ -147,4 +147,4 @@ Formal Stage 13 HOLD; Stage 14 static preparation authorized, no execution GO.
 
 ## Next action
 
-Commit static preparation; assemble exact CPU packet for QA. Run GO pending; Stage 13 stays HOLD.
+Await a separately authorized CPU environment; then prepare exact QA/PI run packet. Stage 13 stays HOLD.

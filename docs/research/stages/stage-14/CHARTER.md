@@ -102,7 +102,7 @@ undeclared inputs, preserving exact provenance and replaying failures?
 | Decision gate | Required before | State |
 |---|---|---|
 | Engineering Charter and QA staffing | Unit 1 implementation | QA staffing `GO` DEC-113; Charter `GO` DEC-114 |
-| Exact synthetic manifest, CPU cap and execution | Unit 2 run | pending after pre-execution QA |
+| Exact synthetic manifest, CPU cap and execution | Unit 2 run | **HOLD**, DEC-115: no existing runnable offline CPU environment; exact QA/PI run GO absent |
 | Engineering result acceptance | Any later engineering claim | pending after independent result QA |
 
 ## Agent plan and budget proposal
@@ -126,7 +126,7 @@ agent_budget:
   user_approval_for_expansion: true
 ```
 
-CPU compute and wall-time cap: **pending exact manifest and PI decision**.
+CPU compute and wall-time cap: **unselected; execution HOLD (DEC-115)**.
 No GPU or new data budget is proposed.
 
 ## Risks and stop conditions
@@ -145,6 +145,6 @@ limits and obtain PI acceptance or add stronger controls before execution.
 
 - Narrow route A: selected, DEC-112.
 - QA staffing: **GO**, DEC-113; Charter: **GO**, DEC-114. Exact resource cap
-  and execution: **pending**.
+  and execution: **HOLD**, DEC-115; no existing offline CPU environment.
 - Formal Stage 13 freeze, Stage 15, final/test opening and release: **not
   approved**.
