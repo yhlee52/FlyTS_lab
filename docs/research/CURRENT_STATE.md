@@ -123,9 +123,7 @@ Formal Stage 13 HOLD; Stage 14 static preparation authorized, no execution GO.
   a separate blinded metadata audit; otherwise admission stays `HOLD`. No data
   or ignored report bytes were opened. PR #21 carried the proposal and merged
   into `main` at `f83f894`; later Stage 12 audit QA is recorded separately.
-- PR #21 CI `tests` passed on `d729d8c` (existing governance, pytest and
-  isolated synthetic CPU smoke); this is proposal engineering evidence only.
-  DEC-075/076 are PI authority records, not adequacy or model results.
+- PR #21 CI passed on `d729d8c`; DEC-075/076 grant bounded authority, not model results.
 - Added local `data/` contains canonical Stage 06 r2 manifest (SHA `44bafe...`),
   three matching official archives and 98/98 hash-matched approved train/val
   arrays. Original entities: Appliances 1, Beijing 12, Bike 1; Bike 71 train
@@ -144,6 +142,8 @@ Formal Stage 13 HOLD; Stage 14 static preparation authorized, no execution GO.
   members, with bounded DEC-105 QA PASS. DEC-107 read one 8,192-byte member
   prefix; one comma field is not a channel count. Both responses remain
   Director-reported; source admission, protocol v3 and compute remain HOLD.
+- Draft PR #37 head `ed4933b` prepares opt-in synthetic CPU guards and an
+  incomplete exact-run packet. Static validators pass; no Stage 14 run or QA.
 
 ## Next action
 
