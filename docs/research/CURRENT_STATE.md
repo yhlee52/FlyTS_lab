@@ -19,7 +19,7 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-DEC-117 screen QA CONDITIONAL PASS; Stage 13 and both Stage 14 tracks HOLD.
+Paessler one-issue clarification proposed; Stage 13 and both Stage 14 tracks HOLD.
 
 ## Canonical references
 
@@ -33,7 +33,7 @@ DEC-117 screen QA CONDITIONAL PASS; Stage 13 and both Stage 14 tracks HOLD.
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
 - `docs/research/stages/stage-13/RESULT.md` (PI HOLD; document QA PASS)
 - `docs/research/stages/stage-14/CHARTER.md` (engineering-only GO; DEC-114)
-- `docs/research/stages/stage-13/FORMAL_RECOVERY_SEARCH_REQUEST.md` (PI decision pending)
+- `docs/research/stages/stage-13/PAESSLER_OWNER_CLARIFICATION_REQUEST.md` (PI pending)
 - `docs/research/DECISION_LOG.md` (DEC-070–116)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
@@ -147,4 +147,4 @@ DEC-117 screen QA CONDITIONAL PASS; Stage 13 and both Stage 14 tracks HOLD.
 
 ## Next action
 
-Await a new PI recovery decision; Stage 13/formal Stage 14 remain HOLD.
+Seek PI decision on one Paessler owner issue; Stage 13/formal Stage 14 HOLD.
