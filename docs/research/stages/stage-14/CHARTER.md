@@ -45,7 +45,12 @@ undeclared inputs, preserving exact provenance and replaying failures?
 
 - Approved Stage 11 contract and Stage 13 Charter/RESULT, DEC-099/110/112.
 - Existing tracked code/config and synthetic test fixtures only, bound to one
-  reviewed Git commit; no `data/` or `outputs/` input path.
+  reviewed Git commit; no `data/` or **preexisting** `outputs/` input path.
+  A checkpoint generated inside the same approved synthetic run may be read
+  once for its declared resume check.
+- The historical Stage 09 unfrozen matrix may be reused only as an immutable
+  **synthetic fixture selector**. Its run count, seeds, thresholds and claim
+  rules are not adopted as a Phase 02 protocol or budget.
 - A preflight manifest proposed before execution: exact commands, source/config
   and fixture hashes, dependency lock, seed, CPU environment, timeout, storage
   location and resource cap. Propose numerical limits from a conservative
@@ -88,7 +93,7 @@ undeclared inputs, preserving exact provenance and replaying failures?
 | Unit | Work | Gate |
 |---|---|---|
 | 0 | Director finalizes this Charter, scope crosswalk and resource-measurement method. | Independent document QA, then PI Charter/QA-budget `GO`. No execution before this. |
-| 1 | One Implementation owner prepares exact synthetic fixture, fail-closed guards, manifest and focused test code. Static/document checks only; no model-executing test, smoke measurement or checkpoint. | Independent pre-execution QA and PI `GO` for exact CPU cap/run. |
+| 1 | One Implementation owner prepares exact synthetic fixture, fail-closed guards, manifest and focused test code. Static/document checks only; new model-executing cases must not be collected by automatic PR CI before the exact run `GO`. No smoke measurement or checkpoint. | Independent pre-execution QA and PI `GO` for exact CPU cap/run. |
 | 2 | Run the approved focused tests and declared synthetic preflight only; capture ignored artifacts and failure ledger. | Stop on source/seal/network/hash violation or cap breach; no automatic retry. |
 | 3 | Director writes bounded result and notebook; independent QA checks replay and claim limits. | PI accepts engineering result. Formal Stage 13/14 and Stage 15 gates remain separate. |
 
@@ -131,6 +136,10 @@ registry/worktree hash mismatch, undeclared input, reporter replay failure,
 resource-cap breach or missing independent QA produces `HOLD`/`FAIL` and stops
 the run. Repair requires a new manifest, QA and PI review. A synthetic success
 is only engineering evidence and never replaces held-out H-01 count coverage.
+The proposed Python socket guard does not block every possible non-Python
+network path, and proposed memory/disk checks observe each completed row rather
+than enforce an OS-level hard limit. The exact run packet must describe these
+limits and obtain PI acceptance or add stronger controls before execution.
 
 ## User approval
 

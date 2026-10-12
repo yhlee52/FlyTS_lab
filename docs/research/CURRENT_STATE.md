@@ -31,7 +31,8 @@ Formal Stage 13 HOLD; Stage 14 static preparation authorized, no execution GO.
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
 - `docs/research/stages/stage-13/RESULT.md` (PI HOLD; document QA PASS)
-- `docs/research/stages/stage-14/CHARTER.md` (engineering proposal; pending)
+- `docs/research/stages/stage-14/CHARTER.md` (engineering-only GO; DEC-114)
+- `docs/research/stages/stage-14/PREFLIGHT_MANIFEST.md` (static draft; exact run pending)
 - `docs/research/DECISION_LOG.md` (DEC-070–114)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
@@ -89,14 +90,13 @@ Formal Stage 13 HOLD; Stage 14 static preparation authorized, no execution GO.
 
 ## Open questions
 
-- Exact engineering Charter/QA budget, manifest and CPU run cap are pending;
-  formal data admission, protocol, H-04, CUDA and final open remain gated.
+- Engineering manifest/CPU cap and formal data/protocol/H-04/CUDA/final gates
+  remain pending; DEC-113/114 approve only Charter/QA staffing, not execution.
 
 ## Active risks
 
-- RK-04, RK-08, RK-33, RK-51–55 and RK-59: unclear rights, leakage,
-  pseudo-replication, selection, compute/transfer uncertainty and historical
-  Stage 09 or Stage 11 gates being misread as new authority.
+- RK-04/08/33/51–55/59/61/62: rights, leakage, pseudo-replication,
+  selection, compute and gate-misreading risks remain active.
 - H-04 can remain `not tested`; without an admitted target Q2/Q3 are unavailable.
   A valid negative, inconclusive or infeasible result is still a research result.
 - CUDA hardware remains unvalidated; CPU evidence cannot establish CUDA behavior.
@@ -147,4 +147,4 @@ Formal Stage 13 HOLD; Stage 14 static preparation authorized, no execution GO.
 
 ## Next action
 
-Prepare synthetic code/manifest statically; exact CPU run gate stays pending.
+Commit static preparation; assemble exact CPU packet for QA. Run GO pending; Stage 13 stays HOLD.

@@ -1,9 +1,18 @@
+.gitattributes text eol=lf
 configs/baselines/stage07-*.json text eol=lf
+configs/domain_roles_v1.json text eol=lf
+configs/formal/stage09/matrix_proposal.json text eol=lf
+pyproject.toml text eol=lf
 reports/baselines/stage07-baselines.* text eol=lf
 src/flyts/*.py text eol=lf
 src/flyts/backbones/*.py text eol=lf
+src/flyts/datasets/*.py text eol=lf
 src/flyts/topology/*.py text eol=lf
 tools/report_stage07_baselines.py text eol=lf
+tools/stage09_readiness.py text eol=lf
+tools/stage14_preflight.py text eol=lf
+tools/stage14_preflight_cases.py text eol=lf
+tools/stage14_offline/sitecustomize.py text eol=lf
 reports/PILOT_RESULTS.json export-ignore
 docs/BASELINE_VALIDATION.md export-ignore
 reports/releases/**/*.json text eol=lf
