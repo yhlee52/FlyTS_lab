@@ -1,10 +1,10 @@
-# Stage 14 Charter proposal — bounded engineering preflight
+# Stage 14 Charter — bounded engineering preflight
 
-Status: proposed
+Status: approved
 
-PI selected this narrow route in
-DEC-112. The formal Stage 13 protocol/budget freeze remains `HOLD` under
-DEC-099/110. This Charter proposes an **engineering track only** within Stage
+PI selected this narrow route in DEC-112 and approved this Charter in DEC-114.
+The formal Stage 13 protocol/budget freeze remains `HOLD` under DEC-099/110.
+This Charter governs an **engineering track only** within Stage
 14; it cannot satisfy the formal Stage 14 handoff or Stage 15 entry.
 Initial independent document QA was `CONDITIONAL PASS` on `1950938`; its
 [condition and Director correction](CHARTER_QA_REPORT.md) are recorded without
@@ -16,7 +16,7 @@ Can the current CPU runner, reporter and artifact path complete a deterministic,
 closed-network rehearsal on synthetic inputs while rejecting sealed and
 undeclared inputs, preserving exact provenance and replaying failures?
 
-## In scope after separate Charter and exact-run GO
+## In scope for execution after the separate exact-run GO
 
 - One declared synthetic fixture family, tiny CPU forward/backward and
   save/load/resume paths, and the declared topology/control code paths. These
@@ -64,7 +64,7 @@ undeclared inputs, preserving exact provenance and replaying failures?
 
 ## Acceptance criteria
 
-- [ ] PI approves this exact engineering-only Charter and a bounded QA/agent
+- [x] PI approves this exact engineering-only Charter and a bounded QA/agent
   budget; its formal-stage limitations appear in traceability and current state.
 - [ ] Before execution, a reviewed manifest binds one code commit, commands,
   fixture/config/dependency hashes, CPU environment, seed, timeout and
@@ -96,7 +96,7 @@ undeclared inputs, preserving exact provenance and replaying failures?
 
 | Decision gate | Required before | State |
 |---|---|---|
-| Engineering Charter and QA staffing | Unit 1 implementation | QA staffing `GO` DEC-113; Charter pending |
+| Engineering Charter and QA staffing | Unit 1 implementation | QA staffing `GO` DEC-113; Charter `GO` DEC-114 |
 | Exact synthetic manifest, CPU cap and execution | Unit 2 run | pending after pre-execution QA |
 | Engineering result acceptance | Any later engineering claim | pending after independent result QA |
 
@@ -135,7 +135,7 @@ is only engineering evidence and never replaces held-out H-01 count coverage.
 ## User approval
 
 - Narrow route A: selected, DEC-112.
-- QA staffing: **GO**, DEC-113; Charter, exact resource cap and execution:
-  **pending**.
+- QA staffing: **GO**, DEC-113; Charter: **GO**, DEC-114. Exact resource cap
+  and execution: **pending**.
 - Formal Stage 13 freeze, Stage 15, final/test opening and release: **not
   approved**.

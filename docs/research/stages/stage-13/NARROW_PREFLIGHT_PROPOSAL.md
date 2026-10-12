@@ -1,7 +1,7 @@
 # Proposed narrow exit from the Stage 13 HOLD
 
-Status: **route A selected by PI (DEC-112); exact Charter, resource and run
-gates pending**. Baseline: PR #35 merged at
+Status: **route A selected (DEC-112); engineering Charter `GO` (DEC-114);
+exact resource and run gates pending**. Baseline: PR #35 merged at
 `dab9ac5830c418da16aabf5b2418b97da41e5f9d`. The approved Stage 13
 Charter still blocks its formal protocol freeze and Stage 14 handoff. This
 document scopes a prospective change; it does not reinterpret DEC-099/110 or

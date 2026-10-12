@@ -1,5 +1,23 @@
 # FlyTS Decision Log
 
+## DEC-114 — PI approves Stage 14 engineering Charter, without execution
+
+- Date: 2026-10-12.
+- Decision authority: explicit PI `GO` for the bounded synthetic/CPU Stage 14
+  engineering Charter after the independent document `CONDITIONAL PASS` and
+  Director correction of its pre-GO smoke/test ambiguity. The correction was
+  not independently delta-reviewed; this limit remains visible in the
+  Charter QA report.
+- Authorized work: Unit 1 code, synthetic fixture, guard, exact-manifest and
+  focused-test **preparation**, with static/document checks only. No
+  model-executing test, smoke measurement, synthetic checkpoint or CPU run
+  occurs before independent exact-manifest pre-execution QA and a separate PI
+  `GO` for the exact resource cap and execution.
+- Formal Stage 13 protocol/budget freeze remains `HOLD`; the engineering track
+  has a Q0 ceiling and cannot authorize formal Stage 14 completion, Stage 15,
+  H-01–H-04 claims, source/data access, Electricity/test opening, CUDA or
+  publication. Stage 09 evidence and DEC-070 release `STOP` remain unchanged.
+
 ## DEC-113 — PI approves bounded Stage 14 engineering QA staffing
 
 - Date: 2026-10-12.

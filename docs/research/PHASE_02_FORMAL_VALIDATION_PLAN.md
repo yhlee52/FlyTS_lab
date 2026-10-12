@@ -152,8 +152,11 @@ The PI selected route A in
 Stage 14 engineering preflight to reduce the cost of the stalled eligibility
 search. The [Stage 14 Charter proposal](stages/stage-14/CHARTER.md) defines a
 separate pre-execution QA, exact resource/run PI gate and bounded result QA.
-This addendum is **prospective pending Charter and QA approval**; the formal
-Stage 13 and formal Stage 14 exit requirements in the table remain unchanged.
+The engineering Charter received PI `GO` in DEC-114 after an independent
+`CONDITIONAL PASS` and a Director correction that was not independently
+delta-reviewed. Its exact manifest, pre-execution QA and resource/run gate
+remain pending; the formal Stage 13 and formal Stage 14 exit requirements in
+the table remain unchanged.
 Engineering-track completion permits only a bounded Q0 operational statement.
 It cannot establish H-01–H-04 outcomes, Q1–Q3, formal Stage 14 completion or
 Stage 15 entry. No real data, Electricity/test, CUDA, source admission or
