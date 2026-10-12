@@ -19,13 +19,13 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Formal Stage 13 and both Stage 14 tracks HOLD; new-source screen request pending.
+DEC-117 screen QA CONDITIONAL PASS; Stage 13 and both Stage 14 tracks HOLD.
 
 ## Canonical references
 
 - `docs/research/PHASE_02_FORMAL_VALIDATION_PLAN.md`
 - `docs/research/stages/stage-11/RESULT.md`
-- `docs/research/stages/stage-11/QA_REPORT.md`
+- `docs/research/stages/stage-13/FORMAL_RECOVERY_SCREEN.md` (DEC-117 QA limited)
 - `docs/research/stages/stage-12/CHARTER.md` (closed; DEC-075–079)
 - `docs/research/stages/stage-12/ADEQUACY_PACKET.md` (bounded evidence)
 - `docs/research/stages/stage-12/RESULT.md` (QA PASS; PI GO)
@@ -143,8 +143,8 @@ Formal Stage 13 and both Stage 14 tracks HOLD; new-source screen request pending
   prefix; one comma field is not a channel count. Both responses remain
   Director-reported; source admission, protocol v3 and compute remain HOLD.
 - PR #37 static guards are merged; prior CI smoke is excluded from evidence.
-  Draft PR #38 proposes a new-source screen/QA gate; no search or access occurred.
+  DEC-117 screened three pages; QA CONDITIONAL PASS, no source files opened.
 
 ## Next action
 
-Seek PI decision on the bounded new-source screen and one result QA follow-up.
+Await a new PI recovery decision; Stage 13/formal Stage 14 remain HOLD.

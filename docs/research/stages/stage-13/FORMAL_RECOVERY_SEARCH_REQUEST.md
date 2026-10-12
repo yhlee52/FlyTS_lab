@@ -1,6 +1,6 @@
 # Stage 13 formal recovery: new-source metadata screen request
 
-Status: **proposed; PI decision pending** (2026-10-13). Stage 13 remains
+Status: **PI `GO`, DEC-117** (2026-10-13). Stage 13 remains
 `HOLD` under DEC-099/110. This request preserves the Stage 11 H-01/Q1
 contract and does not activate formal Stage 14.
 

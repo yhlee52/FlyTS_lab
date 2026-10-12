@@ -97,3 +97,19 @@ On 2026-10-12 the PI selected a CPU-only synthetic engineering route
 (DEC-113/114). This does not reopen the formal Stage 13 result or authorize a
 formal Stage 14 handoff. Initial Charter QA was `CONDITIONAL PASS`; the exact
 engineering manifest, pre-execution QA and resource/run decision remain pending.
+
+## Bounded formal recovery screen (DEC-117)
+
+On 2026-10-13, the PI approved one exact, metadata-only screen of at most three
+previously unscreened non-human official sources and one independent result QA.
+The [screen](FORMAL_RECOVERY_SCREEN.md) selected three pages within four of the
+eight allowed queries. One article archive was inaccessible, and no selected
+source documented the complete rights, concurrent measured-channel,
+independent held-out unit and leakage-safe split requirements. The
+[independent QA](FORMAL_RECOVERY_SCREEN_QA.md) returned `CONDITIONAL PASS` for
+this bounded document screen; search order was not independently replayed.
+No source/use, role or split was admitted, and no source file was opened.
+The search and QA allowance are spent. Stage 13 remains `HOLD`, with protocol
+v3, compute selection, independent pre-freeze QA `PASS` and PI Stage 13 `GO`
+absent. Formal Stage 14 and Stage 15 remain `NO GO`; the DEC-112-115
+engineering-only execution remains `HOLD`. Prior exclusions and seals stand.
