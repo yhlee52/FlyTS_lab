@@ -13,12 +13,12 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
 document-only QA `PASS`/PI `GO` (DEC-082); PI froze Stage 13 at `HOLD`
 (DEC-099) with document QA `PASS` (DEC-100); PRs #23–34 merged (DEC-101).
-DEC-107/109 QA PASS; PR #35 merged at `dab9ac5` (DEC-111); Stage 14 NO GO.
+PR #35 merged at `dab9ac5` (DEC-111); DEC-112 chose synthetic-only route A.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Stage 13 HOLD; PR #35 merged, source admission and v3 freeze pending; no Stage 14.
+Formal Stage 13 HOLD; Stage 14 engineering Charter proposed, no execution GO.
 
 ## Canonical references
 
@@ -31,7 +31,7 @@ Stage 13 HOLD; PR #35 merged, source admission and v3 freeze pending; no Stage 1
 - `docs/research/stages/stage-12/QA_REPORT.md` (independent audit PASS)
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
 - `docs/research/stages/stage-13/RESULT.md` (PI HOLD; document QA PASS)
-- `docs/research/stages/stage-13/RECOVERY_OPTIONS.md` (unapproved routes)
+- `docs/research/stages/stage-14/CHARTER.md` (engineering proposal; pending)
 - `docs/research/DECISION_LOG.md` (DEC-070–110)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
@@ -89,8 +89,8 @@ Stage 13 HOLD; PR #35 merged, source admission and v3 freeze pending; no Stage 1
 
 ## Open questions
 
-- Candidate access/admission, minimum coverage, statistical
-  thresholds, seed/matrix, budget, H-04 target, CUDA and final open remain gated.
+- Exact engineering Charter/QA budget, manifest and CPU run cap are pending;
+  formal data admission, protocol, H-04, CUDA and final open remain gated.
 
 ## Active risks
 
@@ -147,4 +147,4 @@ Stage 13 HOLD; PR #35 merged, source admission and v3 freeze pending; no Stage 1
 
 ## Next action
 
-Stage 13 HOLD after PR #35 merge (DEC-111); no Stage 14 without v3/budget gates.
+Obtain engineering Charter/QA/resource GO; formal Stage 13 and Stage 14 stay HOLD.

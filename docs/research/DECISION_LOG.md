@@ -1,5 +1,25 @@
 # FlyTS Decision Log
 
+## DEC-112 — PI selects a bounded engineering preflight route
+
+- Date: 2026-10-12.
+- Decision authority: after reviewing the three routes in
+  `stages/stage-13/NARROW_PREFLIGHT_PROPOSAL.md`, the PI selected **A** to
+  reduce the prolonged Stage 13 work to a quality-controlled engineering path.
+- Direction: prepare a CPU-only, synthetic Stage 14 engineering track with no
+  new-source search or real-data read. Its ceiling is an engineering
+  `PASS`/`FAIL`/`HOLD` and Q0; no H-01–H-03 scientific outcome, H-04 target,
+  Q1–Q3 qualification, formal Stage 14 completion or Stage 15 authorization
+  follows from this choice. The Stage 11 Q0–Q3 definitions stay unchanged.
+- Gate: draft prospective Stage 13/14 Charter and Phase 02 amendments, an
+  exact synthetic preflight contract and resource cap, and obtain independent
+  document/pre-execution QA and PI approval of the exact bounded run before
+  executing it. Existing Stage 13 formal freeze remains `HOLD`; its source,
+  protocol and budget requirements still apply before formal training.
+- No data access, compute run, checkpoint, Electricity/test opening, source
+  admission, role/split change, PR merge or release is approved here. Stage 09
+  historical status and hashes and DEC-070 public-release `STOP` persist.
+
 ## DEC-111 — PI authorizes PR #35 merge; Stage 14 gate remains unmet
 
 - Date: 2026-10-12.

@@ -91,3 +91,9 @@ remain absent. Stage 14 is **NO GO**. No further source access or external
 outreach was performed. The PI later authorized PR #35's merge (DEC-111),
 and it merged at `dab9ac5830c418da16aabf5b2418b97da41e5f9d`. This
 integrates the bounded HOLD packet without satisfying the freeze gate.
+
+On 2026-10-12 the PI selected a prospective CPU-only synthetic engineering
+route (DEC-112). Its [scope proposal](NARROW_PREFLIGHT_PROPOSAL.md) and the
+[Stage 14 Charter proposal](../stage-14/CHARTER.md) do not reopen this formal
+Stage 13 result or authorize a formal Stage 14 handoff. Independent document
+QA and an exact engineering Charter/resource/run decision remain pending.

@@ -145,6 +145,20 @@ run matrix before any formal result; Stage 11 selects no values or option.
 | 18 — One-time final evaluation | Evaluate the already selected checkpoint once on the frozen final/target evidence; never tune, rerank or add runs from the result. | Atomic unseal record, final predictions/sufficient statistics, locked report and independent QA. | PI accepts `support`, `no-support`, `harm`, `inconclusive` or invalid/stop outcome. No automatic rerun. |
 | 19 — Phase closeout | Map all valid outcomes to Q0–Q3, decide private checkpoint retention and record limitations and the next research decision. | Final evidence matrix, model card update, private checkpoint disposition, phase result and QA report. | PI `GO`, `HOLD` or `STOP`. Publication remains a separate future decision and defaults to no release. |
 
+### Proposed narrow engineering track after DEC-112
+
+The PI selected route A in
+`stages/stage-13/NARROW_PREFLIGHT_PROPOSAL.md`: prepare a CPU-only, synthetic
+Stage 14 engineering preflight to reduce the cost of the stalled eligibility
+search. The [Stage 14 Charter proposal](stages/stage-14/CHARTER.md) defines a
+separate pre-execution QA, exact resource/run PI gate and bounded result QA.
+This addendum is **prospective pending Charter and QA approval**; the formal
+Stage 13 and formal Stage 14 exit requirements in the table remain unchanged.
+Engineering-track completion permits only a bounded Q0 operational statement.
+It cannot establish H-01–H-04 outcomes, Q1–Q3, formal Stage 14 completion or
+Stage 15 entry. No real data, Electricity/test, CUDA, source admission or
+release permission follows from DEC-112.
+
 ## Cross-stage invariants
 
 - Stage 09 reports, hashes, `HOLD` and final QA `FAIL` remain historical and are

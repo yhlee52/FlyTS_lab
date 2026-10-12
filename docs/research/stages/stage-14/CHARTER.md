@@ -1,0 +1,136 @@
+# Stage 14 Charter proposal — bounded engineering preflight
+
+Status: proposed
+
+PI selected this narrow route in
+DEC-112. The formal Stage 13 protocol/budget freeze remains `HOLD` under
+DEC-099/110. This Charter proposes an **engineering track only** within Stage
+14; it cannot satisfy the formal Stage 14 handoff or Stage 15 entry.
+
+## Research question
+
+Can the current CPU runner, reporter and artifact path complete a deterministic,
+closed-network rehearsal on synthetic inputs while rejecting sealed and
+undeclared inputs, preserving exact provenance and replaying failures?
+
+## In scope after separate Charter and exact-run GO
+
+- One declared synthetic fixture family, tiny CPU forward/backward and
+  save/load/resume paths, and the declared topology/control code paths. These
+  check mechanics and matching assertions, not topology effect or model quality.
+- Synthetic permutation and paired-mask identity, integer channel-removal
+  accounting (including a zero-removal case), sufficient-statistic and
+  reporter-replay adversarial cases.
+- Pre-load raw-byte hash checks for the role registry to catch CRLF worktree
+  drift; fail-closed role/test/Electricity path checks before any data loader.
+- Local closed-network check, exact CPU/Python/dependency environment capture,
+  elapsed time and peak memory/disk accounting, cache/checkpoint/resume and
+  failure-ledger tests. Synthetic outputs and checkpoints stay ignored locally.
+
+## Out of scope
+
+- Any real source signal or mask read, new dataset search/download/admission,
+  formal training/evaluation, development score inspection, Electricity or any
+  test opening, target task, CUDA support claim, private candidate selection,
+  public release or semiconductor transfer.
+- H-01–H-04 support claims, Q1–Q3 qualification, formal Stage 14 completion,
+  Stage 15 execution, and retrospective repair of Stage 09 reports or hashes.
+- Relaxing the original Stage 13 acceptance criteria or treating Stage 08/10
+  engineering observations as a frozen Phase 02 formal protocol.
+
+## Inputs
+
+- Approved Stage 11 contract and Stage 13 Charter/RESULT, DEC-099/110/112.
+- Existing tracked code/config and synthetic test fixtures only, bound to one
+  reviewed Git commit; no `data/` or `outputs/` input path.
+- A preflight manifest proposed before execution: exact commands, source/config
+  and fixture hashes, dependency lock, seed, CPU environment, timeout, storage
+  location and resource cap. Its numerical limits must be justified by a local
+  non-final smoke measurement or a conservative device bound and approved by
+  the PI; none is frozen by this proposal.
+
+## Deliverables
+
+| Deliverable | Path | Owner |
+|---|---|---|
+| Exact preflight manifest and bounded CPU resource request | `docs/research/stages/stage-14/PREFLIGHT_MANIFEST.md` or versioned config | Director/Implementation |
+| Minimal guard, runner/reporter and synthetic-fixture changes with focused tests | `src/flyts/`, `tools/`, `tests/`, as needed | One Implementation owner |
+| Ignored local execution log, hashes, failure ledger, resource record | `outputs/` only | Implementation |
+| Result and independent QA | `docs/research/stages/stage-14/RESULT.md`, `QA_REPORT.md` | Director, independent QA |
+
+## Acceptance criteria
+
+- [ ] PI approves this exact engineering-only Charter and a bounded QA/agent
+  budget; its formal-stage limitations appear in traceability and current state.
+- [ ] Before execution, a reviewed manifest binds one code commit, commands,
+  fixture/config/dependency hashes, CPU environment, seed, timeout and
+  memory/disk cap. PI approves that exact cap and run.
+- [ ] Independent pre-execution QA verifies no real-array path, network access,
+  Electricity/test resolution or live-config fallback is possible; registry
+  byte mismatch fails before loader use.
+- [ ] Declared synthetic cases pass deterministic pair identity, integer mask,
+  topology/control matching, cache, checkpoint/resume, failure-ledger and
+  reporter replay checks. Invalid hashes, seed aliases, nonfinite data and
+  undeclared inputs fail closed.
+- [ ] The run stays within the approved resource cap and records exact
+  environment, time, memory/disk and output hashes. Independent result QA
+  reports `PASS`, `CONDITIONAL PASS` or `FAIL` with omitted checks explicit.
+- [ ] The result labels H-01–H-04 `not tested`, keeps Stage 13 formal freeze
+  `HOLD`, Q0 as highest possible level, Stage 15 `NO GO`, sealed assets intact
+  and DEC-070 release `STOP`.
+
+## Ordered work
+
+| Unit | Work | Gate |
+|---|---|---|
+| 0 | Director finalizes this Charter, scope crosswalk and resource-measurement method. | Independent document QA, then PI Charter/QA-budget `GO`. No execution before this. |
+| 1 | One Implementation owner prepares exact synthetic fixture, fail-closed guards, manifest and smallest focused tests. | Independent pre-execution QA and PI `GO` for exact CPU cap/run. |
+| 2 | Execute only the declared synthetic preflight; capture ignored artifacts and failure ledger. | Stop on source/seal/network/hash violation or cap breach; no automatic retry. |
+| 3 | Director writes bounded result and notebook; independent QA checks replay and claim limits. | PI accepts engineering result. Formal Stage 13/14 and Stage 15 gates remain separate. |
+
+## User checkpoints
+
+| Decision gate | Required before | State |
+|---|---|---|
+| Engineering Charter and QA staffing | Unit 1 implementation | pending; route A only selected in DEC-112 |
+| Exact synthetic manifest, CPU cap and execution | Unit 2 run | pending after pre-execution QA |
+| Engineering result acceptance | Any later engineering claim | pending after independent result QA |
+
+## Agent plan and budget proposal
+
+- Director owns Charter, decisions, scope crosswalk and result.
+- One Implementation owner may edit the preflight code path after Charter GO.
+- One independent QA reviewer performs one Charter review, one exact-manifest
+  pre-execution follow-up and one result follow-up; QA does not edit tracked
+  files. The existing Stage 13 reviewer follow-up allowance is exhausted, so
+  this **new scoped budget requires explicit PI approval** before activation.
+- No Data or Experiment specialist is needed for this engineering-only path.
+
+```yaml
+agent_budget:
+  default_mode: single_agent
+  max_specialists: 2
+  max_parallel_agents: 2
+  max_debate_rounds: 0
+  max_followups_per_agent: 2
+  max_agent_report_words: 500
+  user_approval_for_expansion: true
+```
+
+CPU compute and wall-time cap: **pending exact manifest and PI decision**.
+No GPU or new data budget is proposed.
+
+## Risks and stop conditions
+
+Real-data path resolution, source/test/Electricity read, network request,
+registry/worktree hash mismatch, undeclared input, reporter replay failure,
+resource-cap breach or missing independent QA produces `HOLD`/`FAIL` and stops
+the run. Repair requires a new manifest, QA and PI review. A synthetic success
+is only engineering evidence and never replaces held-out H-01 count coverage.
+
+## User approval
+
+- Narrow route A: selected, DEC-112.
+- This Charter, QA staffing, exact resource cap and execution: **pending**.
+- Formal Stage 13 freeze, Stage 15, final/test opening and release: **not
+  approved**.
