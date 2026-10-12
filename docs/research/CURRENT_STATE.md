@@ -13,7 +13,7 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
 document-only QA `PASS`/PI `GO` (DEC-082); PI froze Stage 13 at `HOLD`
 (DEC-099) with document QA `PASS` (DEC-100); PRs #23–34 merged (DEC-101).
-PR #35 merged at `dab9ac5` (DEC-111); DEC-112 chose synthetic-only route A.
+PR #35 merged at `dab9ac5`; DEC-112 chose route A; DEC-113 approved QA staff.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
@@ -32,7 +32,7 @@ Formal Stage 13 HOLD; Stage 14 engineering Charter proposed, no execution GO.
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
 - `docs/research/stages/stage-13/RESULT.md` (PI HOLD; document QA PASS)
 - `docs/research/stages/stage-14/CHARTER.md` (engineering proposal; pending)
-- `docs/research/DECISION_LOG.md` (DEC-070–110)
+- `docs/research/DECISION_LOG.md` (DEC-070–113)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`

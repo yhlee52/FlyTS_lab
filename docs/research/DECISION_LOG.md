@@ -1,5 +1,20 @@
 # FlyTS Decision Log
 
+## DEC-113 — PI approves bounded Stage 14 engineering QA staffing
+
+- Date: 2026-10-12.
+- Decision authority: explicit PI approval of one independent QA reviewer for
+  the DEC-112 synthetic-only engineering track: one Charter document review,
+  one exact-manifest pre-execution follow-up and one result follow-up.
+- Limit: at most one Implementation specialist in the track and two agents
+  active concurrently, as proposed in `stages/stage-14/CHARTER.md`. The Stage
+  13 reviewer allowance remains exhausted; this is a new scoped budget, not a
+  retroactive expansion of the formal Stage 13 protocol review.
+- This decision does not approve the Stage 14 Charter, CPU run/resource cap,
+  synthetic checkpoint creation, real-data access, formal protocol/budget
+  freeze, Stage 15, Electricity/test opening, PR merge or release. Independent
+  QA must report its own verdict before a Charter decision is requested.
+
 ## DEC-112 — PI selects a bounded engineering preflight route
 
 - Date: 2026-10-12.

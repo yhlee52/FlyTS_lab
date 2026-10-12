@@ -92,7 +92,7 @@ undeclared inputs, preserving exact provenance and replaying failures?
 
 | Decision gate | Required before | State |
 |---|---|---|
-| Engineering Charter and QA staffing | Unit 1 implementation | pending; route A only selected in DEC-112 |
+| Engineering Charter and QA staffing | Unit 1 implementation | QA staffing `GO` DEC-113; Charter pending |
 | Exact synthetic manifest, CPU cap and execution | Unit 2 run | pending after pre-execution QA |
 | Engineering result acceptance | Any later engineering claim | pending after independent result QA |
 
@@ -103,7 +103,7 @@ undeclared inputs, preserving exact provenance and replaying failures?
 - One independent QA reviewer performs one Charter review, one exact-manifest
   pre-execution follow-up and one result follow-up; QA does not edit tracked
   files. The existing Stage 13 reviewer follow-up allowance is exhausted, so
-  this **new scoped budget requires explicit PI approval** before activation.
+  this new scoped budget was **approved in DEC-113** before activation.
 - No Data or Experiment specialist is needed for this engineering-only path.
 
 ```yaml
@@ -131,6 +131,7 @@ is only engineering evidence and never replaces held-out H-01 count coverage.
 ## User approval
 
 - Narrow route A: selected, DEC-112.
-- This Charter, QA staffing, exact resource cap and execution: **pending**.
+- QA staffing: **GO**, DEC-113; Charter, exact resource cap and execution:
+  **pending**.
 - Formal Stage 13 freeze, Stage 15, final/test opening and release: **not
   approved**.
