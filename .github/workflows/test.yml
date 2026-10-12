@@ -6,7 +6,7 @@ on:
 
 jobs:
   stage14-static-only:
-    if: github.ref_name == 'codex/stage-13-narrow-preflight-proposal' || github.head_ref == 'codex/stage-13-narrow-preflight-proposal'
+    if: github.ref_name == 'codex/stage-13-narrow-preflight-proposal' || github.head_ref == 'codex/stage-13-narrow-preflight-proposal' || github.ref_name == 'codex/stage13-formal-recovery-gate' || github.head_ref == 'codex/stage13-formal-recovery-gate'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,8 +16,8 @@ jobs:
       - run: python tools/validate_research_governance.py
       - run: python -c "import ast, pathlib; [ast.parse(pathlib.Path(p).read_text(encoding='utf-8'), filename=p) for p in ('tools/stage14_preflight.py', 'tools/stage14_preflight_cases.py', 'tools/stage14_offline/sitecustomize.py')]"
   pytest:
-    # This branch has an exact PI run gate; default CI creates model outputs.
-    if: github.ref_name != 'codex/stage-13-narrow-preflight-proposal' && github.head_ref != 'codex/stage-13-narrow-preflight-proposal'
+    # Gated research branches cannot run the default model smoke before PI approval.
+    if: github.ref_name != 'codex/stage-13-narrow-preflight-proposal' && github.head_ref != 'codex/stage-13-narrow-preflight-proposal' && github.ref_name != 'codex/stage13-formal-recovery-gate' && github.head_ref != 'codex/stage13-formal-recovery-gate'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

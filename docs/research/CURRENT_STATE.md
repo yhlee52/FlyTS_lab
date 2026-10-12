@@ -1,6 +1,6 @@
 # FlyTS Current Research State
 
-Updated: 2026-10-12
+Updated: 2026-10-13
 
 ## Current stage
 
@@ -19,7 +19,7 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Formal Stage 13 HOLD; Stage 14 static preparation done, execution HOLD (DEC-115).
+Formal Stage 13 and both Stage 14 tracks HOLD; new-source screen request pending.
 
 ## Canonical references
 
@@ -33,7 +33,7 @@ Formal Stage 13 HOLD; Stage 14 static preparation done, execution HOLD (DEC-115)
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
 - `docs/research/stages/stage-13/RESULT.md` (PI HOLD; document QA PASS)
 - `docs/research/stages/stage-14/CHARTER.md` (engineering-only GO; DEC-114)
-- `docs/research/stages/stage-14/PREFLIGHT_MANIFEST.md` (static draft; exact run pending)
+- `docs/research/stages/stage-13/FORMAL_RECOVERY_SEARCH_REQUEST.md` (PI decision pending)
 - `docs/research/DECISION_LOG.md` (DEC-070–116)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
@@ -142,9 +142,9 @@ Formal Stage 13 HOLD; Stage 14 static preparation done, execution HOLD (DEC-115)
   members, with bounded DEC-105 QA PASS. DEC-107 read one 8,192-byte member
   prefix; one comma field is not a channel count. Both responses remain
   Director-reported; source admission, protocol v3 and compute remain HOLD.
-- PR #37 prepares static guards; automatic CI smoke ran before its branch
-  guard and is excluded from evidence (Stage 14 CI_BOUNDARY.md). Run GO/QA pending.
+- PR #37 static guards are merged; prior CI smoke is excluded from evidence.
+  A new-source screen/QA request is drafted; no search or access performed.
 
 ## Next action
 
-Await a separately authorized CPU environment; then prepare exact QA/PI run packet. Stage 13 stays HOLD.
+Seek PI decision on the bounded new-source screen and one result QA follow-up.
