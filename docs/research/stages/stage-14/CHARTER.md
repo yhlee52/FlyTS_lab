@@ -6,6 +6,9 @@ PI selected this narrow route in
 DEC-112. The formal Stage 13 protocol/budget freeze remains `HOLD` under
 DEC-099/110. This Charter proposes an **engineering track only** within Stage
 14; it cannot satisfy the formal Stage 14 handoff or Stage 15 entry.
+Initial independent document QA was `CONDITIONAL PASS` on `1950938`; its
+[condition and Director correction](CHARTER_QA_REPORT.md) are recorded without
+claiming an independent delta `PASS`.
 
 ## Research question
 
@@ -45,16 +48,17 @@ undeclared inputs, preserving exact provenance and replaying failures?
   reviewed Git commit; no `data/` or `outputs/` input path.
 - A preflight manifest proposed before execution: exact commands, source/config
   and fixture hashes, dependency lock, seed, CPU environment, timeout, storage
-  location and resource cap. Its numerical limits must be justified by a local
-  non-final smoke measurement or a conservative device bound and approved by
-  the PI; none is frozen by this proposal.
+  location and resource cap. Propose numerical limits from a conservative
+  device bound and obtain PI approval before any model-executing test or smoke
+  measurement; none is frozen by this proposal. A preliminary measurement,
+  if later needed, requires its own exact PI run approval first.
 
 ## Deliverables
 
 | Deliverable | Path | Owner |
 |---|---|---|
 | Exact preflight manifest and bounded CPU resource request | `docs/research/stages/stage-14/PREFLIGHT_MANIFEST.md` or versioned config | Director/Implementation |
-| Minimal guard, runner/reporter and synthetic-fixture changes with focused tests | `src/flyts/`, `tools/`, `tests/`, as needed | One Implementation owner |
+| Minimal guard, runner/reporter and synthetic-fixture changes; test code prepared before execution | `src/flyts/`, `tools/`, `tests/`, as needed | One Implementation owner |
 | Ignored local execution log, hashes, failure ledger, resource record | `outputs/` only | Implementation |
 | Result and independent QA | `docs/research/stages/stage-14/RESULT.md`, `QA_REPORT.md` | Director, independent QA |
 
@@ -84,8 +88,8 @@ undeclared inputs, preserving exact provenance and replaying failures?
 | Unit | Work | Gate |
 |---|---|---|
 | 0 | Director finalizes this Charter, scope crosswalk and resource-measurement method. | Independent document QA, then PI Charter/QA-budget `GO`. No execution before this. |
-| 1 | One Implementation owner prepares exact synthetic fixture, fail-closed guards, manifest and smallest focused tests. | Independent pre-execution QA and PI `GO` for exact CPU cap/run. |
-| 2 | Execute only the declared synthetic preflight; capture ignored artifacts and failure ledger. | Stop on source/seal/network/hash violation or cap breach; no automatic retry. |
+| 1 | One Implementation owner prepares exact synthetic fixture, fail-closed guards, manifest and focused test code. Static/document checks only; no model-executing test, smoke measurement or checkpoint. | Independent pre-execution QA and PI `GO` for exact CPU cap/run. |
+| 2 | Run the approved focused tests and declared synthetic preflight only; capture ignored artifacts and failure ledger. | Stop on source/seal/network/hash violation or cap breach; no automatic retry. |
 | 3 | Director writes bounded result and notebook; independent QA checks replay and claim limits. | PI accepts engineering result. Formal Stage 13/14 and Stage 15 gates remain separate. |
 
 ## User checkpoints

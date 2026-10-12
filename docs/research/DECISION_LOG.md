@@ -14,6 +14,10 @@
   synthetic checkpoint creation, real-data access, formal protocol/budget
   freeze, Stage 15, Electricity/test opening, PR merge or release. Independent
   QA must report its own verdict before a Charter decision is requested.
+- Outcome of the initial document review: independent `CONDITIONAL PASS` on
+  `1950938`, with one pre-GO smoke/test ambiguity; see
+  `stages/stage-14/CHARTER_QA_REPORT.md`. The Director's correction has no
+  independent delta verdict. Both follow-ups remain unused.
 
 ## DEC-112 — PI selects a bounded engineering preflight route
 

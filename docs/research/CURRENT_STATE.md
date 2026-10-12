@@ -18,7 +18,7 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Formal Stage 13 HOLD; Stage 14 engineering Charter proposed, no execution GO.
+Formal Stage 13 HOLD; Stage 14 Charter QA conditional, no execution GO.
 
 ## Canonical references
 
@@ -147,4 +147,4 @@ Formal Stage 13 HOLD; Stage 14 engineering Charter proposed, no execution GO.
 
 ## Next action
 
-Obtain engineering Charter/QA/resource GO; formal Stage 13 and Stage 14 stay HOLD.
+Seek engineering Charter GO after QA condition fix; exact CPU run gate stays pending.

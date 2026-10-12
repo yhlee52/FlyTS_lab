@@ -37,9 +37,11 @@ engineering `PASS`/`FAIL`/`HOLD`, not a model-quality or topology conclusion.
 Before execution, freeze a small **preflight manifest** containing the code
 commit, synthetic fixture generator/config hashes, runner/reporter invocation,
 Python/dependency/CPU environment, seed, timeout and resource cap. The cap is
-measured or justified from a local non-final smoke baseline and approved at
-the separate exact-run gate; no formal low/medium/high training envelope is
-implied. A raw-byte hash check must catch Windows CRLF changes to the role
+justified from a conservative device bound and approved at the separate
+exact-run gate before any model-executing test or smoke measurement. Any
+preliminary measurement needs its own exact PI run approval. No formal
+low/medium/high training envelope is implied. A raw-byte hash check must catch
+Windows CRLF changes to the role
 registry before any loader uses it; historical registry/manifest hashes stay
 unchanged.
 
@@ -73,9 +75,10 @@ work. It does not satisfy the formal Stage 14 exit gate or Stage 15 entry.
 2. Independent document QA checks that Q0/Q1 meanings, existing data roles,
    seals, formal Stage 13 `HOLD` and Stage 15 gate cannot be bypassed. PI accepts
    the amended engineering-only Charter; the exact CPU cap has its own PI gate.
-3. Freeze the small synthetic preflight manifest and run only its smallest
-   relevant tests. Independent QA checks the exact manifest and code before
-   execution; PI separately authorizes the bounded Stage 14 engineering run.
+3. Freeze the small synthetic preflight manifest and prepare focused test code
+   without executing model code. Independent QA checks the exact manifest and
+   code before execution; PI separately authorizes the bounded Stage 14
+   engineering run and its focused tests.
 4. Execute the bounded synthetic run, record provenance and resource use, and
    obtain independent result QA. Keep any synthetic checkpoint in ignored
    local storage; do not treat it as a model candidate.
