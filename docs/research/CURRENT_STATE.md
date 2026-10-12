@@ -14,7 +14,7 @@ splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
 document-only QA `PASS`/PI `GO` (DEC-082); PI froze Stage 13 at `HOLD`
 (DEC-099) with document QA `PASS` (DEC-100); PRs #23–34 merged (DEC-101).
 PR #35 merged at `dab9ac5`; DEC-112/113/114 approved engineering scope/staff/Charter.
-DEC-115 holds Stage 14 execution because no runnable offline CPU environment exists.
+DEC-115 holds Stage 14 execution; DEC-116 authorizes PR #36/#37 integration.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
@@ -34,7 +34,7 @@ Formal Stage 13 HOLD; Stage 14 static preparation done, execution HOLD (DEC-115)
 - `docs/research/stages/stage-13/RESULT.md` (PI HOLD; document QA PASS)
 - `docs/research/stages/stage-14/CHARTER.md` (engineering-only GO; DEC-114)
 - `docs/research/stages/stage-14/PREFLIGHT_MANIFEST.md` (static draft; exact run pending)
-- `docs/research/DECISION_LOG.md` (DEC-070–115)
+- `docs/research/DECISION_LOG.md` (DEC-070–116)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -142,7 +142,7 @@ Formal Stage 13 HOLD; Stage 14 static preparation done, execution HOLD (DEC-115)
   members, with bounded DEC-105 QA PASS. DEC-107 read one 8,192-byte member
   prefix; one comma field is not a channel count. Both responses remain
   Director-reported; source admission, protocol v3 and compute remain HOLD.
-- Draft PR #37 prepares static guards; automatic CI smoke ran before its branch
+- PR #37 prepares static guards; automatic CI smoke ran before its branch
   guard and is excluded from evidence (Stage 14 CI_BOUNDARY.md). Run GO/QA pending.
 
 ## Next action

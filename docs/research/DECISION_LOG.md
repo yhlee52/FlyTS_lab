@@ -1,5 +1,20 @@
 # FlyTS Decision Log
 
+## DEC-116 — PI authorizes merging the two open research PRs
+
+- Date: 2026-10-12.
+- Decision authority: explicit PI instruction to merge **all open PRs** and
+  then proceed toward Stage 14. The open set at the decision was PR #36 and
+  PR #37; both targeted `main` and had no reported merge conflict.
+- Integration order: merge PR #36 first because its commit is also an ancestor
+  of PR #37; then recheck PR #37 against the updated `main` before merging.
+  PR #36 merged at `7395b34820e6c7076ff90c06e31cef0aed080aeb`.
+- Boundary: PR integration accepts the documented static preparation and
+  current `HOLD` records. It does not reverse DEC-115's Stage 14 execution
+  `HOLD`, freeze Stage 13 protocol/budget, authorize CPU tests/checkpoints,
+  admit data, open Electricity/test, enter Stage 15 or reverse DEC-070 release
+  `STOP`. Use merge messages that skip the existing automatic CPU smoke.
+
 ## DEC-115 — PI holds Stage 14 engineering execution without a runnable environment
 
 - Date: 2026-10-12.
