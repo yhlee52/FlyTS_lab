@@ -16,6 +16,8 @@ synthetic fixture rows: 0, 15, 30 and 45. The resulting four arm observations
 are mechanics checks, not four formal runs or scientific evidence. The opt-in
 `tools/stage14_preflight_cases.py` cases are outside pytest's automatic `tests/`
 collection and also wait for the exact execution decision.
+The PR branch uses a [static-only CI guard](CI_BOUNDARY.md); earlier automatic
+CI smoke runs are excluded from Stage 14 evidence.
 
 Only generated toy arrays and same-run resume checkpoints may be read. The
 allowlist includes the Stage 09 matrix, role registry, source modules and the

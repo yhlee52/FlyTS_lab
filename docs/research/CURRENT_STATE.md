@@ -142,8 +142,8 @@ Formal Stage 13 HOLD; Stage 14 static preparation authorized, no execution GO.
   members, with bounded DEC-105 QA PASS. DEC-107 read one 8,192-byte member
   prefix; one comma field is not a channel count. Both responses remain
   Director-reported; source admission, protocol v3 and compute remain HOLD.
-- Draft PR #37 head `ed4933b` prepares opt-in synthetic CPU guards and an
-  incomplete exact-run packet. Static validators pass; no Stage 14 run or QA.
+- Draft PR #37 prepares static guards; automatic CI smoke ran before its branch
+  guard and is excluded from evidence (Stage 14 CI_BOUNDARY.md). Run GO/QA pending.
 
 ## Next action
 

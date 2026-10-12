@@ -5,7 +5,19 @@ on:
   pull_request:
 
 jobs:
+  stage14-static-only:
+    if: github.ref_name == 'codex/stage-13-narrow-preflight-proposal' || github.head_ref == 'codex/stage-13-narrow-preflight-proposal'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python tools/validate_research_governance.py
+      - run: python -c "import ast, pathlib; [ast.parse(pathlib.Path(p).read_text(encoding='utf-8'), filename=p) for p in ('tools/stage14_preflight.py', 'tools/stage14_preflight_cases.py', 'tools/stage14_offline/sitecustomize.py')]"
   pytest:
+    # This branch has an exact PI run gate; default CI creates model outputs.
+    if: github.ref_name != 'codex/stage-13-narrow-preflight-proposal' && github.head_ref != 'codex/stage-13-narrow-preflight-proposal'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
