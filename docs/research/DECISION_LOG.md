@@ -1,5 +1,22 @@
 # FlyTS Decision Log
 
+## DEC-111 — PI authorizes PR #35 merge; Stage 14 gate remains unmet
+
+- Date: 2026-10-12.
+- Decision authority: the PI explicitly authorized merging the completed Stage 13
+  recovery PR #35 and expressed a preference to proceed to Stage 14.
+- Integration outcome: PR #35 merged into `main` at
+  `dab9ac5830c418da16aabf5b2418b97da41e5f9d`; both PR `pytest` checks
+  passed before merge. This integrates bounded recovery evidence only.
+- Gate disposition: Stage 13 remains `HOLD` under DEC-099/110. No Kelmarsh
+  source/use, role or split was admitted; held-out paired H-01 count coverage,
+  protocol v3, compute envelope, freeze manifest, independent pre-freeze QA
+  `PASS` and an exact PI protocol/budget `GO` remain absent. The Stage 13
+  Charter therefore blocks Stage 14 entry. The preference to proceed is not
+  recorded as a protocol/budget freeze or a waiver of its acceptance criteria.
+- Electricity and target tests remain sealed; Stage 09 historical status and
+  hashes, H-04 `not tested` and DEC-070 release `STOP` remain unchanged.
+
 ## DEC-110 — PI delegates bounded continuation; Director retains Stage 13 HOLD
 
 - Date: 2026-10-12.

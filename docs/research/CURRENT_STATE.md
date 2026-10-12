@@ -13,12 +13,12 @@ Stage 11's qualification contract received independent QA `PASS` and PI `GO`
 splits. PR #21/#22 merged at `f83f894`/`392b785`. The Stage 13 Charter has
 document-only QA `PASS`/PI `GO` (DEC-082); PI froze Stage 13 at `HOLD`
 (DEC-099) with document QA `PASS` (DEC-100); PRs #23–34 merged (DEC-101).
-PI chose route A; DEC-107/109 bounded QA PASS; DEC-110 retains Stage 13 HOLD.
+DEC-107/109 QA PASS; PR #35 merged at `dab9ac5` (DEC-111); Stage 14 NO GO.
 Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Stage 13 HOLD; bounded ZIP inventory QA PASS, source admission pending; no Stage 14.
+Stage 13 HOLD; PR #35 merged, source admission and v3 freeze pending; no Stage 14.
 
 ## Canonical references
 
@@ -147,4 +147,4 @@ Stage 13 HOLD; bounded ZIP inventory QA PASS, source admission pending; no Stage
 
 ## Next action
 
-Stage 13 recovery HOLD; no Stage 14 or further source access under DEC-110.
+Stage 13 HOLD after PR #35 merge (DEC-111); no Stage 14 without v3/budget gates.
