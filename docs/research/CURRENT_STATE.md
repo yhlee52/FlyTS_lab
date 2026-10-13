@@ -19,7 +19,7 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Paessler one-issue clarification proposed; Stage 13 and both Stage 14 tracks HOLD.
+DEC-118 Paessler issue POST blocked (403); Stage 13 and both Stage 14 tracks HOLD.
 
 ## Canonical references
 
@@ -33,8 +33,8 @@ Paessler one-issue clarification proposed; Stage 13 and both Stage 14 tracks HOL
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
 - `docs/research/stages/stage-13/RESULT.md` (PI HOLD; document QA PASS)
 - `docs/research/stages/stage-14/CHARTER.md` (engineering-only GO; DEC-114)
-- `docs/research/stages/stage-13/PAESSLER_OWNER_CLARIFICATION_REQUEST.md` (PI pending)
-- `docs/research/DECISION_LOG.md` (DEC-070–116)
+- `docs/research/stages/stage-13/PAESSLER_OWNER_CLARIFICATION_REQUEST.md` (DEC-118 blocked)
+- `docs/research/DECISION_LOG.md` (through DEC-118)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -143,8 +143,8 @@ Paessler one-issue clarification proposed; Stage 13 and both Stage 14 tracks HOL
   prefix; one comma field is not a channel count. Both responses remain
   Director-reported; source admission, protocol v3 and compute remain HOLD.
 - PR #37 static guards are merged; prior CI smoke is excluded from evidence.
-  DEC-117 screened three pages; QA CONDITIONAL PASS, no source files opened.
+  DEC-117 screen QA CONDITIONAL PASS; DEC-118 issue POST got 403, no issue.
 
 ## Next action
 
-Seek PI decision on one Paessler owner issue; Stage 13/formal Stage 14 HOLD.
+Await new PI route decision or keep HOLD; no Paessler issue or source access.

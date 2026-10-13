@@ -113,3 +113,8 @@ The search and QA allowance are spent. Stage 13 remains `HOLD`, with protocol
 v3, compute selection, independent pre-freeze QA `PASS` and PI Stage 13 `GO`
 absent. Formal Stage 14 and Stage 15 remain `NO GO`; the DEC-112-115
 engineering-only execution remains `HOLD`. Prior exclusions and seals stand.
+
+The PI then approved one exact Paessler owner clarification issue (DEC-118).
+The GitHub integration rejected the single post with HTTP 403; no issue was
+created or reply read. The approved request stops on posting failure, so no
+alternate outreach occurred. Stage 13 and formal Stage 14 remain `HOLD`.

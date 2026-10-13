@@ -1,5 +1,22 @@
 # FlyTS Decision Log
 
+## DEC-118 — PI approves one Paessler owner issue; integration blocks posting
+
+- Date: 2026-10-13. The PI explicitly approved the exact public issue and
+  one-owner-reply read in Draft PR #38's
+  `stages/stage-13/PAESSLER_OWNER_CLARIFICATION_REQUEST.md`. The approval
+  covered no alternative channel, second post or retry.
+- At 14:14 UTC, one `create_issue` call to `PaesslerAG/prtg-open-dataset`
+  returned HTTP 403 `Resource not accessible by integration`. No issue was
+  created and no reply was read. The request's failure stop rule applied;
+  no fallback or external outreach followed.
+- Stage 13 and formal Stage 14 stay `HOLD`; source/use, role/split, protocol,
+  compute, QA and all later gates remain unapproved. The DEC-117 screen and
+  its `CONDITIONAL PASS` are unchanged. A different delivery route requires
+  a new explicit PI decision. Electricity/test seals, Stage 09 history,
+  H-04 `not tested`, DEC-112-115 engineering `HOLD` and DEC-070 release
+  `STOP` remain in force.
+
 ## DEC-117 — PI approves one bounded formal Stage 13 metadata screen and QA
 
 - Date: 2026-10-13.

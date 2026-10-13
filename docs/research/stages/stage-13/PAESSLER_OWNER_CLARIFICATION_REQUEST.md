@@ -1,6 +1,6 @@
 # Stage 13 formal recovery: one Paessler owner clarification request
 
-Status: **proposed; PI decision pending; not independently reviewed**
+Status: **PI `GO` (DEC-118); posting failed, no issue created**
 (2026-10-13). Stage 13 remains
 `HOLD` and formal Stage 14 remains `NO GO`. DEC-117's search and result-QA
 allowance is spent. This proposal creates a new, separate permission boundary.
@@ -19,6 +19,14 @@ comment or follow-up. No independent QA staffing is requested at this step.
 | `GO` (recommended) | Permit that one public issue and one owner-reply read only. |
 | `REVISE` | Change the exact wording, public channel or cap before any contact. |
 | `HOLD` | Send nothing; retain Stage 13 and formal Stage 14 at `HOLD`. |
+
+The PI selected `GO` on the exact Draft PR #38 request. At 2026-10-13
+14:14 UTC, the GitHub integration rejected the single create-issue call for
+`PaesslerAG/prtg-open-dataset` with HTTP 403, `Resource not accessible by
+integration`. No issue URL or sent text exists; no owner reply was read.
+The stated failure rule stops this route. No alternate account, channel,
+post, comment, or retry was used. A new PI decision would be required to
+change the delivery route.
 
 ## Why this candidate and this limit
 
