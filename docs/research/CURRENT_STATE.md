@@ -1,6 +1,6 @@
 # FlyTS Current Research State
 
-Updated: 2026-10-12
+Updated: 2026-10-13
 
 ## Current stage
 
@@ -19,13 +19,13 @@ Electricity and all target test signals/scores remain sealed.
 
 ## Current goal
 
-Formal Stage 13 HOLD; Stage 14 static preparation done, execution HOLD (DEC-115).
+DEC-118 Paessler issue POST blocked (403); Stage 13 and both Stage 14 tracks HOLD.
 
 ## Canonical references
 
 - `docs/research/PHASE_02_FORMAL_VALIDATION_PLAN.md`
 - `docs/research/stages/stage-11/RESULT.md`
-- `docs/research/stages/stage-11/QA_REPORT.md`
+- `docs/research/stages/stage-13/FORMAL_RECOVERY_SCREEN.md` (DEC-117 QA limited)
 - `docs/research/stages/stage-12/CHARTER.md` (closed; DEC-075–079)
 - `docs/research/stages/stage-12/ADEQUACY_PACKET.md` (bounded evidence)
 - `docs/research/stages/stage-12/RESULT.md` (QA PASS; PI GO)
@@ -33,8 +33,8 @@ Formal Stage 13 HOLD; Stage 14 static preparation done, execution HOLD (DEC-115)
 - `docs/research/stages/stage-13/CHARTER.md` (approved; DEC-082)
 - `docs/research/stages/stage-13/RESULT.md` (PI HOLD; document QA PASS)
 - `docs/research/stages/stage-14/CHARTER.md` (engineering-only GO; DEC-114)
-- `docs/research/stages/stage-14/PREFLIGHT_MANIFEST.md` (static draft; exact run pending)
-- `docs/research/DECISION_LOG.md` (DEC-070–116)
+- `docs/research/stages/stage-13/PAESSLER_OWNER_CLARIFICATION_REQUEST.md` (DEC-118 blocked)
+- `docs/research/DECISION_LOG.md` (through DEC-118)
 - `docs/research/HYPOTHESES.md`
 - `docs/research/REQUIREMENTS_TRACEABILITY.md`
 - `docs/research/RISK_REGISTER.md`
@@ -142,9 +142,9 @@ Formal Stage 13 HOLD; Stage 14 static preparation done, execution HOLD (DEC-115)
   members, with bounded DEC-105 QA PASS. DEC-107 read one 8,192-byte member
   prefix; one comma field is not a channel count. Both responses remain
   Director-reported; source admission, protocol v3 and compute remain HOLD.
-- PR #37 prepares static guards; automatic CI smoke ran before its branch
-  guard and is excluded from evidence (Stage 14 CI_BOUNDARY.md). Run GO/QA pending.
+- PR #37 static guards are merged; prior CI smoke is excluded from evidence.
+  DEC-117 screen QA CONDITIONAL PASS; DEC-118 issue POST got 403, no issue.
 
 ## Next action
 
-Await a separately authorized CPU environment; then prepare exact QA/PI run packet. Stage 13 stays HOLD.
+Await new PI route decision or keep HOLD; no Paessler issue or source access.

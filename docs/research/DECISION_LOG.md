@@ -1,5 +1,47 @@
 # FlyTS Decision Log
 
+## DEC-118 — PI approves one Paessler owner issue; integration blocks posting
+
+- Date: 2026-10-13. The PI explicitly approved the exact public issue and
+  one-owner-reply read in Draft PR #38's
+  `stages/stage-13/PAESSLER_OWNER_CLARIFICATION_REQUEST.md`. The approval
+  covered no alternative channel, second post or retry.
+- At 14:14 UTC, one `create_issue` call to `PaesslerAG/prtg-open-dataset`
+  returned HTTP 403 `Resource not accessible by integration`. No issue was
+  created and no reply was read. The request's failure stop rule applied;
+  no fallback or external outreach followed.
+- Stage 13 and formal Stage 14 stay `HOLD`; source/use, role/split, protocol,
+  compute, QA and all later gates remain unapproved. The DEC-117 screen and
+  its `CONDITIONAL PASS` are unchanged. A different delivery route requires
+  a new explicit PI decision. Electricity/test seals, Stage 09 history,
+  H-04 `not tested`, DEC-112-115 engineering `HOLD` and DEC-070 release
+  `STOP` remain in force.
+
+## DEC-117 — PI approves one bounded formal Stage 13 metadata screen and QA
+
+- Date: 2026-10-13.
+- Decision authority: explicit PI `GO` on Draft PR #38's
+  `stages/stage-13/FORMAL_RECOVERY_SEARCH_REQUEST.md` after reviewing its
+  exact scope. The PI approved one metadata-only search of at most three
+  previously unscreened non-human official sources, using the request's
+  eight-query, five-results-per-query and page limits, plus one read-only
+  independent result QA follow-up.
+- This reopens only the bounded Stage 13 candidate-screen work. It does not
+  approve a source file, archive, sidecar, sample, signal, label or test read;
+  source/use, role, split, protocol v3, compute, model execution, formal
+  Stage 14, PR merge and public release remain gated. No previous screen or
+  Kelmarsh/PhysioNet exclusion is reversed.
+- Stage 13 and formal Stage 14 remain `HOLD`; DEC-112~115 engineering execution
+  remains `HOLD`. Electricity and target tests stay sealed, H-04 is `not
+  tested`, Stage 09 history remains unchanged, and DEC-070 release `STOP`
+  continues.
+- Outcome: the three-page screen closed after query 4 with no admitted
+  candidate. Independent bounded result QA returned `CONDITIONAL PASS`:
+  one selected article archive was inaccessible and search ranking was not
+  independently replayed. See `stages/stage-13/FORMAL_RECOVERY_SCREEN.md`
+  and `FORMAL_RECOVERY_SCREEN_QA.md`. The search and QA allowance are spent;
+  no further access or Stage 13 freeze follows.
+
 ## DEC-116 — PI authorizes merging the two open research PRs
 
 - Date: 2026-10-12.
